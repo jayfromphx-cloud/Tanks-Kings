@@ -90,11 +90,20 @@ workflows:
           fi
           app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key /tmp/tk_dist_key.pem --create
           rm -f /tmp/tk_dist_key.pem
+      - name: Add certificates to keychain
+        script: |
+          keychain add-certificates
+      - name: Set up code signing settings on Xcode project
+        script: |
+          # Applies the fetched provisioning profiles to the Xcode project and
+          # generates ~/export_options.plist, which build-ipa requires.
+          xcode-project use-profiles --project "$XCODE_PROJECT"
       - name: Build signed IPA
         script: |
           xcode-project build-ipa \
             --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+            --scheme "$XCODE_SCHEME" \
+            --export-options-plist "$HOME/export_options.plist"
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
