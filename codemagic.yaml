@@ -69,11 +69,27 @@ workflows:
       - name: Set up keychain for code signing
         script: |
           keychain initialize
-      - name: Fetch App Store signing files
-        script: |
-          # Creates the distribution certificate + App Store provisioning
-          # profile automatically on first run via the ASC API key.
-          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key @env:CERTIFICATE_PRIVATE_KEY --create
+- name: Fetch App Store signing files
+  script: |
+    # Creates the distribution certificate + App Store provisioning
+    # profile automatically on first run via the ASC API key.
+    # The persistent signing key MUST be set in Codemagic as a Secure
+    # variable named CERTIFICATE_PRIVATE_KEY (group 'revenuecat').
+    if [ -z "$CERTIFICATE_PRIVATE_KEY" ]; then
+      echo "ERROR: CERTIFICATE_PRIVATE_KEY is empty or not set."
+      echo "Add it in Codemagic > your app > Environment variables,"
+      echo "group 'revenuecat', Secure ON, full PEM including BEGIN/END lines."
+      exit 1
+    fi
+    printf '%s' "$CERTIFICATE_PRIVATE_KEY" > /tmp/tk_dist_key.pem
+    chmod 600 /tmp/tk_dist_key.pem
+    if ! head -1 /tmp/tk_dist_key.pem | grep -q "BEGIN RSA PRIVATE KEY"; then
+      echo "ERROR: CERTIFICATE_PRIVATE_KEY is malformed — first line must be -----BEGIN RSA PRIVATE KEY-----"
+      echo "Re-paste the full key from tk-distribution-key.pem (Secure ON)."
+      exit 1
+    fi
+    app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key /tmp/tk_dist_key.pem --create
+    rm -f /tmp/tk_dist_key.pem
       - name: Build signed IPA
         script: |
           xcode-project build-ipa \
