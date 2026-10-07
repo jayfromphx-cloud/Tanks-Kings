@@ -1,0 +1,1121 @@
+{
+  "build": "df1cd83bf1",
+  "html": "77a058fcd8",
+  "assetCount": 220,
+  "assets": [
+    {
+      "file": "assets/battle-environment-key-art.webp",
+      "bytes": 466472,
+      "md5": "b0ab06fb7b57be82cbb0777812ea6438"
+    },
+    {
+      "file": "assets/bg-bloom-vale.jpg",
+      "bytes": 499591,
+      "md5": "3e19686ccca5e5f70d1bdba183cf1b4a"
+    },
+    {
+      "file": "assets/bg-ember-wastes.jpg",
+      "bytes": 414588,
+      "md5": "c047462f3a8f142806e4bddcd49edc0f"
+    },
+    {
+      "file": "assets/bg-storm-coast.jpg",
+      "bytes": 400556,
+      "md5": "265db0cb695d0fd75e4a06b6567293b0"
+    },
+    {
+      "file": "assets/bg-volt-highlands.jpg",
+      "bytes": 394774,
+      "md5": "e2f7e02bdcf29dd7d80fef74373a80dd"
+    },
+    {
+      "file": "assets/bgm-honorable-march.mp3",
+      "bytes": 4291968,
+      "md5": "3ffcf96537e15b93f23fc131a2d35e86"
+    },
+    {
+      "file": "assets/bgm-war-pulse.mp3",
+      "bytes": 4293697,
+      "md5": "525c5801cc55661bec89ee90c0543e3e"
+    },
+    {
+      "file": "assets/btn-melee.webp",
+      "bytes": 144090,
+      "md5": "41c0e12bd86e118ffe68d36a02eca38e"
+    },
+    {
+      "file": "assets/btn-missile.webp",
+      "bytes": 124892,
+      "md5": "b8d7df9e2ddbfe6acc125bec9b48f007"
+    },
+    {
+      "file": "assets/btn-parry.webp",
+      "bytes": 40158,
+      "md5": "dd485425b2f4816aecb89466414f58c8"
+    },
+    {
+      "file": "assets/btn-ult.webp",
+      "bytes": 305700,
+      "md5": "22648b0d677f934d87fb1909e085cb4e"
+    },
+    {
+      "file": "assets/enemy-boss-bloomvale.webp",
+      "bytes": 67030,
+      "md5": "db6b4245da85fc5cf0686ff804d49ed8"
+    },
+    {
+      "file": "assets/enemy-boss-ember.webp",
+      "bytes": 152672,
+      "md5": "70d517860971c38bdc57ea54c5f0cd30"
+    },
+    {
+      "file": "assets/enemy-boss-ironhold.webp",
+      "bytes": 137804,
+      "md5": "f19fb77296ed5b2201520fab13da9154"
+    },
+    {
+      "file": "assets/enemy-boss-tidereign.webp",
+      "bytes": 66430,
+      "md5": "fc8682a871404adce4fba00b284a2aa5"
+    },
+    {
+      "file": "assets/enemy-boss-voltspire.webp",
+      "bytes": 65002,
+      "md5": "a9ea920dee39cb71b7512ef0a04d3b2f"
+    },
+    {
+      "file": "assets/enemy-grunt-bloomvale.webp",
+      "bytes": 46758,
+      "md5": "1fd4399d30a9e3e321dabb5a2bc3be14"
+    },
+    {
+      "file": "assets/enemy-grunt-ember.webp",
+      "bytes": 47830,
+      "md5": "4a5f0e00b0d08e8a8bf0381f8589c104"
+    },
+    {
+      "file": "assets/enemy-grunt-ironhold.webp",
+      "bytes": 51048,
+      "md5": "4fcce658016ae8ccd026b370b47e2164"
+    },
+    {
+      "file": "assets/enemy-grunt-tidereign.webp",
+      "bytes": 46886,
+      "md5": "4a112180d7589b5db058e0822aacad4e"
+    },
+    {
+      "file": "assets/enemy-grunt-voltspire.webp",
+      "bytes": 45898,
+      "md5": "8f5fda50aa696b15c1009d61df3ac524"
+    },
+    {
+      "file": "assets/enemy-heavy-bloomvale.webp",
+      "bytes": 53822,
+      "md5": "ca445c29c7faa3cf482232e3c4e4a372"
+    },
+    {
+      "file": "assets/enemy-heavy-ember.webp",
+      "bytes": 51220,
+      "md5": "cfce816a5c2f5d9fc9bd5f7a39d1ce67"
+    },
+    {
+      "file": "assets/enemy-heavy-ironhold.webp",
+      "bytes": 58550,
+      "md5": "648f809b40aaadcd3ade28cd96cd274c"
+    },
+    {
+      "file": "assets/enemy-heavy-tidereign.webp",
+      "bytes": 53782,
+      "md5": "0306259a7784d6d20c4cf2e9d3022598"
+    },
+    {
+      "file": "assets/enemy-heavy-voltspire.webp",
+      "bytes": 52236,
+      "md5": "0bf889678c1b1fb071dccfcc10185205"
+    },
+    {
+      "file": "assets/enemy-swift-bloomvale.webp",
+      "bytes": 31006,
+      "md5": "dc97cc5c75227064bffc4494917e20e1"
+    },
+    {
+      "file": "assets/enemy-swift-ember.webp",
+      "bytes": 30092,
+      "md5": "835047881ec864e0238df3ecbb203d04"
+    },
+    {
+      "file": "assets/enemy-swift-ironhold.webp",
+      "bytes": 36244,
+      "md5": "3d9b88e2891d469355ccf7e1d1b0c393"
+    },
+    {
+      "file": "assets/enemy-swift-tidereign.webp",
+      "bytes": 30838,
+      "md5": "1f5e8cbaa33bf5095a5d3f7c5e30f15d"
+    },
+    {
+      "file": "assets/enemy-swift-voltspire.webp",
+      "bytes": 30296,
+      "md5": "5bbc6e663711697658fe81ba7507a37a"
+    },
+    {
+      "file": "assets/enemy-tank.mp3",
+      "bytes": 61440,
+      "md5": "0670d800778c490f9e2e74cf71a96a28"
+    },
+    {
+      "file": "assets/evo-godking-bloom-artillery.webp",
+      "bytes": 367302,
+      "md5": "d5e9e40817a4674e326026fd51b7cde5"
+    },
+    {
+      "file": "assets/evo-godking-bloom.webp",
+      "bytes": 781728,
+      "md5": "50a8d47ad1287a1e298737f4c67fc9bd"
+    },
+    {
+      "file": "assets/evo-godking-ember-artillery.webp",
+      "bytes": 245454,
+      "md5": "c6f81a83fcbc57413febc98a03e4c492"
+    },
+    {
+      "file": "assets/evo-godking-ember.webp",
+      "bytes": 606584,
+      "md5": "ba50347ffa4eb61b42c24ca295ef4930"
+    },
+    {
+      "file": "assets/evo-godking-ironhold-artillery.webp",
+      "bytes": 261870,
+      "md5": "25d585887b7baa48cefaa433d116c807"
+    },
+    {
+      "file": "assets/evo-godking-ironhold.webp",
+      "bytes": 629940,
+      "md5": "2d0858acd5a79b9c7f9381b5e006f788"
+    },
+    {
+      "file": "assets/evo-godking-tidereign-artillery.webp",
+      "bytes": 283212,
+      "md5": "ea57d213e6e5bbab15e42d7d1a11abba"
+    },
+    {
+      "file": "assets/evo-godking-tidereign.webp",
+      "bytes": 433380,
+      "md5": "9e19307a422980cdc7c0ed67c444ed11"
+    },
+    {
+      "file": "assets/evo-godking-voltspire-artillery.webp",
+      "bytes": 245804,
+      "md5": "bac4747f9a73e5e6bb89022fb45c8f70"
+    },
+    {
+      "file": "assets/evo-godking-voltspire.webp",
+      "bytes": 609336,
+      "md5": "5eec71684dbe07993959de222bf48c3b"
+    },
+    {
+      "file": "assets/evo-knight-bloom-artillery-battle.webp",
+      "bytes": 221114,
+      "md5": "88bffb205b4176c03e765ada0017309e"
+    },
+    {
+      "file": "assets/evo-knight-bloom-artillery.webp",
+      "bytes": 226478,
+      "md5": "888d67e3fb93161f3e33877268cd6720"
+    },
+    {
+      "file": "assets/evo-knight-bloom-battle.webp",
+      "bytes": 319118,
+      "md5": "3997658f8103a02985b526684f5a43f8"
+    },
+    {
+      "file": "assets/evo-knight-bloom.webp",
+      "bytes": 365380,
+      "md5": "95885c4b6d982f81741a0de9e35998de"
+    },
+    {
+      "file": "assets/evo-knight-ember-artillery-battle.webp",
+      "bytes": 186652,
+      "md5": "4b1360ec037fc0b6e5fbc399bcb44721"
+    },
+    {
+      "file": "assets/evo-knight-ember-artillery.webp",
+      "bytes": 199852,
+      "md5": "5e0418ed23711d366bb20c6dc7e5e473"
+    },
+    {
+      "file": "assets/evo-knight-ember-battle.webp",
+      "bytes": 265096,
+      "md5": "345fa3dde83de7c5b0d8fe47848944b7"
+    },
+    {
+      "file": "assets/evo-knight-ember.webp",
+      "bytes": 275352,
+      "md5": "30f36a14cb10717578a3ba17cf6d3bf6"
+    },
+    {
+      "file": "assets/evo-knight-ironhold-artillery-battle.webp",
+      "bytes": 223404,
+      "md5": "8e4576987079d599e87ad4dab72c41fa"
+    },
+    {
+      "file": "assets/evo-knight-ironhold-artillery.webp",
+      "bytes": 237738,
+      "md5": "01aaa56aa110a3f74f6d8c87855c9c52"
+    },
+    {
+      "file": "assets/evo-knight-ironhold-battle.webp",
+      "bytes": 320902,
+      "md5": "f305d35677db6f3fe1e12cc92442a3aa"
+    },
+    {
+      "file": "assets/evo-knight-ironhold.webp",
+      "bytes": 355322,
+      "md5": "11c98d2a10c2e5b66292032c9fc34f7b"
+    },
+    {
+      "file": "assets/evo-knight-tidereign-artillery-battle.webp",
+      "bytes": 231012,
+      "md5": "a2c3b64e52b917e23a224c184a514acc"
+    },
+    {
+      "file": "assets/evo-knight-tidereign-artillery.webp",
+      "bytes": 196914,
+      "md5": "db19c13304834ad0f642deebe832a501"
+    },
+    {
+      "file": "assets/evo-knight-tidereign-battle.webp",
+      "bytes": 297918,
+      "md5": "60fedc5b8a862f7f11791b8c7dab9072"
+    },
+    {
+      "file": "assets/evo-knight-tidereign.webp",
+      "bytes": 324288,
+      "md5": "4d74321abac67864eba0581b825e19ff"
+    },
+    {
+      "file": "assets/evo-knight-voltspire-artillery-battle.webp",
+      "bytes": 174286,
+      "md5": "56723cdb8f601bed9b5008c96918b33e"
+    },
+    {
+      "file": "assets/evo-knight-voltspire-artillery.webp",
+      "bytes": 163534,
+      "md5": "9a4624ff6812b8f563401eb926a67c66"
+    },
+    {
+      "file": "assets/evo-knight-voltspire-battle.webp",
+      "bytes": 300526,
+      "md5": "c8e0d803d1aaecc1a2d549413b6dc2fe"
+    },
+    {
+      "file": "assets/evo-knight-voltspire.webp",
+      "bytes": 311560,
+      "md5": "cb3c1f1374f979ebbf33d4c59e579cba"
+    },
+    {
+      "file": "assets/evo-paladin-bloom-artillery-battle.webp",
+      "bytes": 250344,
+      "md5": "44fcef41444119badcaba320f9b658d9"
+    },
+    {
+      "file": "assets/evo-paladin-bloom-artillery.webp",
+      "bytes": 267264,
+      "md5": "bec393690476b54e299a81efb2142d35"
+    },
+    {
+      "file": "assets/evo-paladin-bloom-battle.webp",
+      "bytes": 245010,
+      "md5": "9d37e86ad6156badd0b1b40b7c52e022"
+    },
+    {
+      "file": "assets/evo-paladin-bloom.webp",
+      "bytes": 253094,
+      "md5": "136556431cea451bdaf49ab5c25aa85e"
+    },
+    {
+      "file": "assets/evo-paladin-ember-artillery-battle.webp",
+      "bytes": 216424,
+      "md5": "af0b3b1fc6158fb85e348f370f26a70d"
+    },
+    {
+      "file": "assets/evo-paladin-ember-artillery.webp",
+      "bytes": 218300,
+      "md5": "c4ecef79c4b664449e8f5b5a4a71c1e0"
+    },
+    {
+      "file": "assets/evo-paladin-ember-battle.webp",
+      "bytes": 253736,
+      "md5": "c20734a98ccba7926becfe65aa574cf2"
+    },
+    {
+      "file": "assets/evo-paladin-ember.webp",
+      "bytes": 227102,
+      "md5": "066b5d866fe3c907405b9f964b0a98ee"
+    },
+    {
+      "file": "assets/evo-paladin-ironhold-artillery-battle.webp",
+      "bytes": 182122,
+      "md5": "045f18d4a3724c3d662f0950f6c0d74f"
+    },
+    {
+      "file": "assets/evo-paladin-ironhold-artillery.webp",
+      "bytes": 196786,
+      "md5": "a7e8350bd4d25143604da74e3923aaba"
+    },
+    {
+      "file": "assets/evo-paladin-ironhold-battle.webp",
+      "bytes": 273270,
+      "md5": "b6ebbd2d9bd9d321d573d105a1052a1d"
+    },
+    {
+      "file": "assets/evo-paladin-ironhold.webp",
+      "bytes": 284006,
+      "md5": "536b8aabb369039aab7a638a8b820332"
+    },
+    {
+      "file": "assets/evo-paladin-tidereign-artillery-battle.webp",
+      "bytes": 274394,
+      "md5": "e3b8e53e66c05383dc1086bb375acb1a"
+    },
+    {
+      "file": "assets/evo-paladin-tidereign-artillery.webp",
+      "bytes": 275828,
+      "md5": "2540e244024fd74c06f61b5fe416586a"
+    },
+    {
+      "file": "assets/evo-paladin-tidereign-battle.webp",
+      "bytes": 289300,
+      "md5": "33b6f97c1ba57e981fe3acf7ccbacf3d"
+    },
+    {
+      "file": "assets/evo-paladin-tidereign.webp",
+      "bytes": 262980,
+      "md5": "9bc2783e6bc2cfd5480c79f40e537468"
+    },
+    {
+      "file": "assets/evo-paladin-voltspire-artillery-battle.webp",
+      "bytes": 268980,
+      "md5": "af49f682fc3c16e2af70331e1c2fca71"
+    },
+    {
+      "file": "assets/evo-paladin-voltspire-artillery.webp",
+      "bytes": 252248,
+      "md5": "a9515202e4a41a3ba29bfe8167cc2bf6"
+    },
+    {
+      "file": "assets/evo-paladin-voltspire-battle.webp",
+      "bytes": 302470,
+      "md5": "e7b4d85ec12c449c188e99c7bae4cd4f"
+    },
+    {
+      "file": "assets/evo-paladin-voltspire.webp",
+      "bytes": 259950,
+      "md5": "27a7286403872c02b5c1893e66332cfd"
+    },
+    {
+      "file": "assets/explosion-aaa-v2.webp",
+      "bytes": 301044,
+      "md5": "47e559f61554da18fd85bc1b5359fca3"
+    },
+    {
+      "file": "assets/faction-emblem-bloom.webp",
+      "bytes": 42202,
+      "md5": "bd010d58f2f48c852f90eb0bfe80505e"
+    },
+    {
+      "file": "assets/faction-emblem-ember.webp",
+      "bytes": 42470,
+      "md5": "a19dad1d92d5e01232fcca4b5cd11847"
+    },
+    {
+      "file": "assets/faction-emblem-ironhold.webp",
+      "bytes": 33694,
+      "md5": "2b544633950fd803bb7672e018c8565a"
+    },
+    {
+      "file": "assets/faction-emblem-tide.webp",
+      "bytes": 41746,
+      "md5": "2d4155f81fff561c1d9597022a7df574"
+    },
+    {
+      "file": "assets/faction-emblem-voltspire.webp",
+      "bytes": 47360,
+      "md5": "57b06327f2c93f04892a5dabf85035c4"
+    },
+    {
+      "file": "assets/frame-epic.webp",
+      "bytes": 22160,
+      "md5": "9b141413ecdf640374e278b41e781031"
+    },
+    {
+      "file": "assets/frame-legendary.webp",
+      "bytes": 23474,
+      "md5": "df31671ecd2966cfba11df06c411de51"
+    },
+    {
+      "file": "assets/frame-rare.webp",
+      "bytes": 27660,
+      "md5": "72eddfdcc2e5dcb306903b7542d9c9e0"
+    },
+    {
+      "file": "assets/godskin-crag.webp",
+      "bytes": 270306,
+      "md5": "4ecdde0d90b7e17cdeee54eafe72a9ce"
+    },
+    {
+      "file": "assets/godskin-frost.webp",
+      "bytes": 369708,
+      "md5": "752b9c773de890b5046ad06e8b832778"
+    },
+    {
+      "file": "assets/godskin-pontiff.webp",
+      "bytes": 598480,
+      "md5": "c1775b4405448e01b14b8cdd77006dc0"
+    },
+    {
+      "file": "assets/godskin-pyra.webp",
+      "bytes": 289374,
+      "md5": "3faff16db506a76060e9b1cbfabd9673"
+    },
+    {
+      "file": "assets/godskin-solarion.webp",
+      "bytes": 183672,
+      "md5": "05384e7130bb38c24048145e66acdfc6"
+    },
+    {
+      "file": "assets/godskin-tempestra.webp",
+      "bytes": 161254,
+      "md5": "66892a15e766b615007023c3923cf5ff"
+    },
+    {
+      "file": "assets/godskin-thorn.webp",
+      "bytes": 355294,
+      "md5": "a809e27bbc2cfbdaf45c5e26fe9e7276"
+    },
+    {
+      "file": "assets/godskin-tidefather.webp",
+      "bytes": 644576,
+      "md5": "5bb28f5e40bb30783e6c5dff511a8b24"
+    },
+    {
+      "file": "assets/godskin-umbra.webp",
+      "bytes": 267800,
+      "md5": "91d64f0c9f589dcb7c6234245d88c13d"
+    },
+    {
+      "file": "assets/icon-cannon.webp",
+      "bytes": 9318,
+      "md5": "c78757274efc982ab8e79d23e1c5d89b"
+    },
+    {
+      "file": "assets/icon-core.webp",
+      "bytes": 18824,
+      "md5": "70a3ab3ab6ea5a412067dceeb365e11f"
+    },
+    {
+      "file": "assets/icon-engine.webp",
+      "bytes": 17262,
+      "md5": "1680e3dbb9d895fa137e92ea5450250d"
+    },
+    {
+      "file": "assets/icon-hull.webp",
+      "bytes": 9936,
+      "md5": "4de13f675d2a093cd03309070969a19e"
+    },
+    {
+      "file": "assets/icon-plating.webp",
+      "bytes": 13742,
+      "md5": "b0fe4f176548655593a7c3e39d161b32"
+    },
+    {
+      "file": "assets/icon-treads.webp",
+      "bytes": 15086,
+      "md5": "1e96599fd94d626051965e4ea99cdef2"
+    },
+    {
+      "file": "assets/impact.mp3",
+      "bytes": 32436,
+      "md5": "32654ef8ca651484ed3deea05193839b"
+    },
+    {
+      "file": "assets/logo.webp",
+      "bytes": 261940,
+      "md5": "665fcc276a2013e12a377ca28ace7cc2"
+    },
+    {
+      "file": "assets/melee-icon-fist-256.webp",
+      "bytes": 14770,
+      "md5": "f3c3430f3d076d050f9df7bbe8de0538"
+    },
+    {
+      "file": "assets/melee-impact-bloomvale.webp",
+      "bytes": 498364,
+      "md5": "1c5f24551670d711a9244240d14d1062"
+    },
+    {
+      "file": "assets/melee-impact-ember.webp",
+      "bytes": 333522,
+      "md5": "d36d506a206fe7fe9d74657f2056e53c"
+    },
+    {
+      "file": "assets/melee-impact-ironhold.webp",
+      "bytes": 268138,
+      "md5": "bf0629f70548d97dbb839df3ec5928b3"
+    },
+    {
+      "file": "assets/melee-impact-tidereign.webp",
+      "bytes": 194156,
+      "md5": "07673208bdb065321f376882ac786b76"
+    },
+    {
+      "file": "assets/melee-impact-voltspire.webp",
+      "bytes": 289312,
+      "md5": "55cc1d5d34b5ed150da393b13c2f5074"
+    },
+    {
+      "file": "assets/missile-bloom.webp",
+      "bytes": 288044,
+      "md5": "4a56281093b5c8d481c45cad39a9d0b6"
+    },
+    {
+      "file": "assets/missile-ember.webp",
+      "bytes": 251426,
+      "md5": "1ca99150340e48ccc55db7e69e1fe161"
+    },
+    {
+      "file": "assets/missile-iron.webp",
+      "bytes": 223618,
+      "md5": "7542484166aa01cc4aebda426b48dd3f"
+    },
+    {
+      "file": "assets/missile-tide.webp",
+      "bytes": 397444,
+      "md5": "cbc1f0cbe6d5af69e0431d54763573aa"
+    },
+    {
+      "file": "assets/missile-volt.webp",
+      "bytes": 209892,
+      "md5": "a6ce7594bd3e9d5716eca0d9369f8818"
+    },
+    {
+      "file": "assets/missile.mp3",
+      "bytes": 30137,
+      "md5": "1364bc66c02184b042163380d19cd848"
+    },
+    {
+      "file": "assets/mode-icon-campaign-clean.webp",
+      "bytes": 142006,
+      "md5": "a3daaefd60b47a33be8d374eab950a3d"
+    },
+    {
+      "file": "assets/mode-icon-campaign.webp",
+      "bytes": 10044,
+      "md5": "49715ab92bc6e27c11f0aa11a3d38948"
+    },
+    {
+      "file": "assets/mode-icon-dungeon-clean.webp",
+      "bytes": 15186,
+      "md5": "cef82833b4c2ebb8ff66728f6ff2fe88"
+    },
+    {
+      "file": "assets/mode-icon-dungeon.webp",
+      "bytes": 15146,
+      "md5": "4465b1b1cd9f27816798b103492f79ab"
+    },
+    {
+      "file": "assets/mode-icon-glory-clean.webp",
+      "bytes": 8824,
+      "md5": "d7b13e86b106ac0dd074e0cd0baccbdc"
+    },
+    {
+      "file": "assets/mode-icon-glory.webp",
+      "bytes": 11790,
+      "md5": "896ee0cf238d21713ed8f2119abaa5c6"
+    },
+    {
+      "file": "assets/mode-icon-tower-clean.webp",
+      "bytes": 194960,
+      "md5": "07ee8ac7c3b2d494e4c5aa4ba5cfb290"
+    },
+    {
+      "file": "assets/mode-icon-tower.webp",
+      "bytes": 11596,
+      "md5": "cb0a26fbeee7b54871c68469d1b19e33"
+    },
+    {
+      "file": "assets/parry.mp3",
+      "bytes": 28256,
+      "md5": "f514ccad0296b875d713eeea1631ab22"
+    },
+    {
+      "file": "assets/prod-chest-common.webp",
+      "bytes": 30132,
+      "md5": "f2958d6e81ce08439fe27b62658c551e"
+    },
+    {
+      "file": "assets/prod-chest-epic.webp",
+      "bytes": 51646,
+      "md5": "5847cc0133f429a2c1c8e0eb221666fc"
+    },
+    {
+      "file": "assets/prod-chest-legendary.webp",
+      "bytes": 63762,
+      "md5": "6ec57d3fb1e13caafda9dcfa234d725f"
+    },
+    {
+      "file": "assets/prod-chest-rare.webp",
+      "bytes": 33590,
+      "md5": "e935f3996257cf4998d75cd897cbbc3e"
+    },
+    {
+      "file": "assets/prod-evolution-cache.webp",
+      "bytes": 77746,
+      "md5": "b21553884137cce09da8163460bd0f55"
+    },
+    {
+      "file": "assets/prod-gem.webp",
+      "bytes": 69800,
+      "md5": "b76a280596b53fb9c3138cd2d56fd682"
+    },
+    {
+      "file": "assets/prod-starter-gift.webp",
+      "bytes": 45780,
+      "md5": "ab4d26e4ce1292beac1e6483690f41fc"
+    },
+    {
+      "file": "assets/prod2-prestige-emblem.webp",
+      "bytes": 52024,
+      "md5": "6ec7c3d4a3f5344dafc3897686be9ff9"
+    },
+    {
+      "file": "assets/prod2-promotion-chevron.webp",
+      "bytes": 52222,
+      "md5": "ab44e77a561d68cc75a20c3f4d5341c6"
+    },
+    {
+      "file": "assets/prod2-royal-seal.webp",
+      "bytes": 65444,
+      "md5": "ddf3146c6cc30e3f83ec76138d5a3f20"
+    },
+    {
+      "file": "assets/prod2-scrap-pile.webp",
+      "bytes": 65968,
+      "md5": "b72db43466840c832ed04f0bfb7e1418"
+    },
+    {
+      "file": "assets/prod2-skill-shard.webp",
+      "bytes": 40002,
+      "md5": "9f8a61eb973c3ff7ee7f0e19a3eb3286"
+    },
+    {
+      "file": "assets/prod2-slot-cannon.webp",
+      "bytes": 31878,
+      "md5": "d8ad18182d96666d626e389088c349eb"
+    },
+    {
+      "file": "assets/prod2-slot-core.webp",
+      "bytes": 49442,
+      "md5": "a3e0959df478da5bd9f799f0227e9ae8"
+    },
+    {
+      "file": "assets/prod2-slot-engine.webp",
+      "bytes": 42668,
+      "md5": "2022e014b6eb5fd737efce025b62640f"
+    },
+    {
+      "file": "assets/prod2-slot-hull.webp",
+      "bytes": 41784,
+      "md5": "c4611d90a74af2876df460048bb3a916"
+    },
+    {
+      "file": "assets/prod2-slot-plating.webp",
+      "bytes": 36656,
+      "md5": "ca5f1f8c561b27e3f398e58ca5b94eb8"
+    },
+    {
+      "file": "assets/prod2-slot-treads.webp",
+      "bytes": 27158,
+      "md5": "22dea7c911b106542655aa6b7751567b"
+    },
+    {
+      "file": "assets/prod2-valor-medal.webp",
+      "bytes": 52796,
+      "md5": "f373083376fd2d17ed5edc961419abc9"
+    },
+    {
+      "file": "assets/projectile-bloom.webp",
+      "bytes": 283614,
+      "md5": "ba1f32fde480105f7dfbc06258f8b442"
+    },
+    {
+      "file": "assets/projectile-ember.webp",
+      "bytes": 373512,
+      "md5": "07d3b7ef642fa22129d143ae5c0a256e"
+    },
+    {
+      "file": "assets/projectile-gk-bloom.webp",
+      "bytes": 329362,
+      "md5": "6c026c27bf0d369f9af5008cd458baed"
+    },
+    {
+      "file": "assets/projectile-gk-ember.webp",
+      "bytes": 312218,
+      "md5": "9f7f5a6fd6de04c02ca06f297c5b48c6"
+    },
+    {
+      "file": "assets/projectile-gk-iron.webp",
+      "bytes": 333276,
+      "md5": "2049ae728f708f8471ee2fa1f2a66c88"
+    },
+    {
+      "file": "assets/projectile-gk-tide.webp",
+      "bytes": 311148,
+      "md5": "ca16257fc62a98d3ab63d0bdff1bcc58"
+    },
+    {
+      "file": "assets/projectile-gk-volt.webp",
+      "bytes": 362880,
+      "md5": "fb13e819fb445c890246a75cf69aa7cb"
+    },
+    {
+      "file": "assets/projectile-iron.webp",
+      "bytes": 308586,
+      "md5": "315b35cff300b6c45cdbc3029cb7a6ac"
+    },
+    {
+      "file": "assets/projectile-tide.webp",
+      "bytes": 217750,
+      "md5": "d80f75866de47a634149cc41836c9c1a"
+    },
+    {
+      "file": "assets/projectile-v1.webp",
+      "bytes": 328726,
+      "md5": "3a46ec0ccf95f405b68ff31da6bcd6cf"
+    },
+    {
+      "file": "assets/projectile-volt.webp",
+      "bytes": 170028,
+      "md5": "5485e1c5c82be55f79239e6898a3051e"
+    },
+    {
+      "file": "assets/projectile.mp3",
+      "bytes": 17613,
+      "md5": "41a39d122a48719caf60a0fc999e1460"
+    },
+    {
+      "file": "assets/shield-bloom.webp",
+      "bytes": 1426032,
+      "md5": "26445c78f04a359da8dcdb125c55712e"
+    },
+    {
+      "file": "assets/shield-ember.webp",
+      "bytes": 1007972,
+      "md5": "2505f804396899c8ead18ed016752285"
+    },
+    {
+      "file": "assets/shield-ironhold.webp",
+      "bytes": 582442,
+      "md5": "50af53b7325f8c69adde9bab9c765355"
+    },
+    {
+      "file": "assets/shield-tidereign.webp",
+      "bytes": 940982,
+      "md5": "88e368cdb87fbb6c75dca8be0163de8b"
+    },
+    {
+      "file": "assets/shield-voltspire.webp",
+      "bytes": 1455656,
+      "md5": "b83a107dc9b47c71a0b8059b3db23ce0"
+    },
+    {
+      "file": "assets/tank-bloomvale-artillery.webp",
+      "bytes": 55456,
+      "md5": "74830616f4226c4153db7d218b24a6f5"
+    },
+    {
+      "file": "assets/tank-bloomvale-vanguard.webp",
+      "bytes": 78222,
+      "md5": "d6b1252e5e4acfd7949f6663c43df279"
+    },
+    {
+      "file": "assets/tank-ember-artillery.webp",
+      "bytes": 52938,
+      "md5": "8c52326bf1baeff4d91068997e193be0"
+    },
+    {
+      "file": "assets/tank-ember-vanguard.webp",
+      "bytes": 68130,
+      "md5": "b8c94091d215833a49f6b9ed56435fac"
+    },
+    {
+      "file": "assets/tank-ironhold-artillery.webp",
+      "bytes": 39406,
+      "md5": "035ef379af4dca429fc80d5f51253fbf"
+    },
+    {
+      "file": "assets/tank-ironhold-vanguard.webp",
+      "bytes": 61602,
+      "md5": "74c05c344f15f9d70a4c00fb555649bb"
+    },
+    {
+      "file": "assets/tank-tidereign-artillery.webp",
+      "bytes": 47782,
+      "md5": "cc66ac1c97fa21e5ebd6971ac36a1661"
+    },
+    {
+      "file": "assets/tank-tidereign-vanguard.webp",
+      "bytes": 67326,
+      "md5": "0961c5c716ddd231b055a7abfdc033fe"
+    },
+    {
+      "file": "assets/tank-voltspire-artillery.webp",
+      "bytes": 54010,
+      "md5": "5958e60b7c077da114ec9f5ba3fcf377"
+    },
+    {
+      "file": "assets/tank-voltspire-vanguard.webp",
+      "bytes": 215988,
+      "md5": "a821ce4495c543eec9baa59aa7df914b"
+    },
+    {
+      "file": "assets/title-key-art-portrait.webp",
+      "bytes": 548620,
+      "md5": "0d72dbb099326561ab3c6c916ffa98e5"
+    },
+    {
+      "file": "assets/title-key-art.webp",
+      "bytes": 616064,
+      "md5": "4edccd592f25e1b1682ec2278785a51b"
+    },
+    {
+      "file": "assets/tower-ascent-backdrop.webp",
+      "bytes": 634024,
+      "md5": "a0c04b62c596a7296c757ff73445b9bb"
+    },
+    {
+      "file": "assets/tower-badge-10.webp",
+      "bytes": 321092,
+      "md5": "bb4b8458d9182fda970e99fa6d431859"
+    },
+    {
+      "file": "assets/tower-badge-100.webp",
+      "bytes": 459518,
+      "md5": "1b2fe29f8f907df483486b9139e190bf"
+    },
+    {
+      "file": "assets/tower-badge-30.webp",
+      "bytes": 394804,
+      "md5": "5e3a2c14e1c8a8d05740e6bb84fd7e58"
+    },
+    {
+      "file": "assets/tower-badge-50.webp",
+      "bytes": 488548,
+      "md5": "1581f470aaca265b126a1f126718d9b2"
+    },
+    {
+      "file": "assets/tower-boss-crag.webp",
+      "bytes": 341744,
+      "md5": "cec1a1ab980474be59e777106804c356"
+    },
+    {
+      "file": "assets/tower-boss-frost-hd.webp",
+      "bytes": 321734,
+      "md5": "1b42eeae02f2f4902b8a4cfe5b74292a"
+    },
+    {
+      "file": "assets/tower-boss-frost.webp",
+      "bytes": 372912,
+      "md5": "a3753051f1a7cd28f468c4afb6e13495"
+    },
+    {
+      "file": "assets/tower-boss-gale-hd.webp",
+      "bytes": 679326,
+      "md5": "8c5260d96ed27c084681e235c87baefc"
+    },
+    {
+      "file": "assets/tower-boss-gale.webp",
+      "bytes": 638300,
+      "md5": "67c85c04f8f6df6aab9ff5b0a3af778b"
+    },
+    {
+      "file": "assets/tower-boss-pontiff.webp",
+      "bytes": 600348,
+      "md5": "207ef4503ac10ca6f804f858617e349a"
+    },
+    {
+      "file": "assets/tower-boss-pyra-hd.webp",
+      "bytes": 258014,
+      "md5": "f6bee547c97ba7a9dabe2e824faef460"
+    },
+    {
+      "file": "assets/tower-boss-pyra.webp",
+      "bytes": 296502,
+      "md5": "d138924f0c66a2325d22c022fd80edb0"
+    },
+    {
+      "file": "assets/tower-boss-solarion.webp",
+      "bytes": 264640,
+      "md5": "e98593dcc9c09a8ee8a388e7c0cf15f1"
+    },
+    {
+      "file": "assets/tower-boss-tempestra.webp",
+      "bytes": 264830,
+      "md5": "59d8c2e7ba3c001e795d84ead1f26902"
+    },
+    {
+      "file": "assets/tower-boss-thorn-hd.webp",
+      "bytes": 303242,
+      "md5": "b4bb1b29e5beed2418dc3fb01e91c6c8"
+    },
+    {
+      "file": "assets/tower-boss-thorn.webp",
+      "bytes": 360304,
+      "md5": "0ce88d53354395a9e19ed261c805665b"
+    },
+    {
+      "file": "assets/tower-boss-tidefather.webp",
+      "bytes": 323126,
+      "md5": "0fb11721749ca56dd39217c43219cec7"
+    },
+    {
+      "file": "assets/tower-boss-umbra-hd.webp",
+      "bytes": 250476,
+      "md5": "7a21b1ec0956b689a75952b60dae9547"
+    },
+    {
+      "file": "assets/tower-boss-umbra.webp",
+      "bytes": 298504,
+      "md5": "bf359b864aeadf9efc5fbe524bb4834b"
+    },
+    {
+      "file": "assets/tower-gate-portal.webp",
+      "bytes": 346074,
+      "md5": "9e549de13632f96cace8b81a330c687c"
+    },
+    {
+      "file": "assets/ult-bloomvale.mp3",
+      "bytes": 161280,
+      "md5": "f7124672610fc11d0310827a1400cc3a"
+    },
+    {
+      "file": "assets/ult-ember.mp3",
+      "bytes": 161280,
+      "md5": "f7124672610fc11d0310827a1400cc3a"
+    },
+    {
+      "file": "assets/ult-icon-knight-256.webp",
+      "bytes": 13526,
+      "md5": "27b388bc918310e0b6751e7988a19bfe"
+    },
+    {
+      "file": "assets/ult-ironhold.mp3",
+      "bytes": 161280,
+      "md5": "f7124672610fc11d0310827a1400cc3a"
+    },
+    {
+      "file": "assets/ult-projectile-bloom.webp",
+      "bytes": 558260,
+      "md5": "04630728d2567c3eb9afb11cee3b4cde"
+    },
+    {
+      "file": "assets/ult-projectile-cinder.webp",
+      "bytes": 353844,
+      "md5": "1ad852a980f587d2e855130c5334c9d1"
+    },
+    {
+      "file": "assets/ult-projectile-iron.webp",
+      "bytes": 557114,
+      "md5": "7b1e05975001e6830580db63699c61a3"
+    },
+    {
+      "file": "assets/ult-projectile-tide.webp",
+      "bytes": 503010,
+      "md5": "6239dadab9a260981816f8237940913b"
+    },
+    {
+      "file": "assets/ult-projectile-volt.webp",
+      "bytes": 316952,
+      "md5": "58b44e57100455a1199ecc698f4b3892"
+    },
+    {
+      "file": "assets/ult-tank-bloomvale-artillery.webp",
+      "bytes": 13794,
+      "md5": "36b8ef48acb3dbc0bc99bb9cd770083b"
+    },
+    {
+      "file": "assets/ult-tank-bloomvale-vanguard.webp",
+      "bytes": 10542,
+      "md5": "d1981bd06dce9a1eadff860d8459f4c6"
+    },
+    {
+      "file": "assets/ult-tank-ember-artillery.webp",
+      "bytes": 9286,
+      "md5": "5ebe144ba7f3f4aa4a8f11d08347af5d"
+    },
+    {
+      "file": "assets/ult-tank-ember-vanguard.webp",
+      "bytes": 13196,
+      "md5": "c68a2810414cb2fdd3f7eb5421b90f36"
+    },
+    {
+      "file": "assets/ult-tank-ironhold-artillery.webp",
+      "bytes": 9358,
+      "md5": "100cc1b33ba9948f3b50156fa0f4b60c"
+    },
+    {
+      "file": "assets/ult-tank-ironhold-vanguard.webp",
+      "bytes": 7784,
+      "md5": "3bee30d0656407b3fdc0cbf2a300d93e"
+    },
+    {
+      "file": "assets/ult-tank-tidereign-artillery.webp",
+      "bytes": 12022,
+      "md5": "65eed022f2802f95bda3ebc5d0a6b020"
+    },
+    {
+      "file": "assets/ult-tank-tidereign-vanguard.webp",
+      "bytes": 9180,
+      "md5": "494e1b5271213f04c48be750154d5adb"
+    },
+    {
+      "file": "assets/ult-tank-voltspire-artillery.webp",
+      "bytes": 12246,
+      "md5": "4008b2886dbd68946c2411a0378557fe"
+    },
+    {
+      "file": "assets/ult-tank-voltspire-vanguard.webp",
+      "bytes": 12482,
+      "md5": "9d32a651d3a20af44cc5502c90ea908c"
+    },
+    {
+      "file": "assets/ult-tidereign.mp3",
+      "bytes": 161280,
+      "md5": "f7124672610fc11d0310827a1400cc3a"
+    },
+    {
+      "file": "assets/ult-voltspire.mp3",
+      "bytes": 161280,
+      "md5": "f7124672610fc11d0310827a1400cc3a"
+    },
+    {
+      "file": "assets/ultimate-arcane.webp",
+      "bytes": 528536,
+      "md5": "46a9abc92ae01d8b368e7499c39f2880"
+    }
+  ],
+  "audio": {
+    "bgm-honorable-march.mp3": "3ffcf96537e15b93f23fc131a2d35e86",
+    "bgm-war-pulse.mp3": "525c5801cc55661bec89ee90c0543e3e",
+    "enemy-tank.mp3": "0670d800778c490f9e2e74cf71a96a28",
+    "impact.mp3": "32654ef8ca651484ed3deea05193839b",
+    "missile.mp3": "1364bc66c02184b042163380d19cd848",
+    "parry.mp3": "f514ccad0296b875d713eeea1631ab22",
+    "projectile.mp3": "41a39d122a48719caf60a0fc999e1460",
+    "ult-bloomvale.mp3": "f7124672610fc11d0310827a1400cc3a",
+    "ult-ember.mp3": "f7124672610fc11d0310827a1400cc3a",
+    "ult-ironhold.mp3": "f7124672610fc11d0310827a1400cc3a",
+    "ult-tidereign.mp3": "f7124672610fc11d0310827a1400cc3a",
+    "ult-voltspire.mp3": "f7124672610fc11d0310827a1400cc3a"
+  }
+}

@@ -1,0 +1,72 @@
+# Tanks & Kings — iOS release pipeline (Codemagic)
+#
+# What this does on every push to main/master:
+#   1. npm ci
+#   2. npx cap sync ios
+#   3. Fetches/creates App Store signing cert + provisioning profile
+#      via your App Store Connect API key (automatic code signing)
+#   4. Archives with Xcode (26+ / iOS 26 SDK per Apple's 2026-04-28 minimum)
+#   5. Uploads the .ipa to TestFlight
+#
+# ONE-TIME SETUP (Codemagic web UI, ~5 min):
+#   a) codemagic.io -> "Continue with GitHub" -> Add application -> pick this repo
+#   b) In the app: Teams & integrations -> Developer Portal / App Store Connect
+#      API -> add key: Issuer ID + Key ID + the .p8 file
+#      (Apple Developer portal -> Users and Access -> Integrations ->
+#       App Store Connect API -> Team Keys -> +)
+#      This powers BOTH code signing (fetch-signing-files --create) and the
+#      TestFlight upload below. No manual certificates needed.
+#   c) Apple Developer portal: make sure the App ID for
+#      com.tanksandkings.app exists, and the app record exists in
+#      App Store Connect.
+#
+# Docs: https://docs.codemagic.io/yaml-quick-start/building-an-ios-app/
+
+workflows:
+  ios-release:
+    name: iOS Release (TestFlight)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      vars:
+        XCODE_PROJECT: "ios/App/App.xcodeproj"
+        XCODE_SCHEME: "App"
+        BUNDLE_ID: "com.tanksandkings.app"
+      xcode: latest # Apple requires Xcode 26+ / iOS 26 SDK since 2026-04-28
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+        - pattern: master
+          include: true
+          source: true
+    scripts:
+      - name: Install node dependencies
+        script: |
+          npm ci
+      - name: Sync Capacitor iOS project
+        script: |
+          npx cap sync ios
+      - name: Set up keychain for code signing
+        script: |
+          keychain initialize
+      - name: Fetch App Store signing files
+        script: |
+          # Creates the distribution certificate + App Store provisioning
+          # profile automatically on first run via the ASC API key.
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+      - name: Build signed IPA
+        script: |
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration # uses the API key added in the Codemagic UI
+        submit_to_testflight: true
