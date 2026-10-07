@@ -51,7 +51,7 @@ workflows:
     scripts:
       - name: Install node dependencies
         script: |
-          npm ci
+          npm install
       - name: Inject RevenueCat key
         script: |
           # TK_REVENUECAT_KEY is set as an encrypted environment variable
