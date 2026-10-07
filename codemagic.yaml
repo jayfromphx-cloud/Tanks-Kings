@@ -88,11 +88,14 @@ workflows:
             echo "Re-paste the full key from tk-distribution-key.pem (Secure ON)."
             exit 1
           fi
-          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key /tmp/tk_dist_key.pem --create
+          mkdir -p /tmp/tk_signing
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key "@file:/tmp/tk_dist_key.pem" --certificates-dir /tmp/tk_signing --create
           rm -f /tmp/tk_dist_key.pem
+          echo "Signing files saved:"
+          ls -la /tmp/tk_signing/
       - name: Add certificates to keychain
         script: |
-          keychain add-certificates
+          keychain add-certificates --certificate "/tmp/tk_signing/*.p12"
       - name: Set up code signing settings on Xcode project
         script: |
           # Applies the fetched provisioning profiles to the Xcode project and
