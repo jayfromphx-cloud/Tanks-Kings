@@ -72,7 +72,7 @@ workflows:
         script: |
           # Creates the distribution certificate + App Store provisioning
           # profile automatically on first run via the ASC API key.
-          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key @env:CERTIFICATE_PRIVATE_KEY --create
       - name: Build signed IPA
         script: |
           xcode-project build-ipa \
