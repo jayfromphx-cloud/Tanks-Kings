@@ -1,0 +1,7 @@
+cd ~/workspace/tanks-kings-native
+git init
+git add .
+git commit -m "Tanks & Kings v1.0 iOS"
+git branch -M main
+git remote add origin <your-repo-url>
+git push -u origin main
