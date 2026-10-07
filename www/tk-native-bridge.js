@@ -12,6 +12,19 @@
   var Capacitor = window.Capacitor;
   if (!Capacitor || !Capacitor.isNativePlatform()) return;
 
+/* ---- Production hardening (native only) ----
+ * Hide dev/web-only surfaces that must not ship in the App Store build:
+ * - Diagnostics button (internal Tower-freeze debug tooling)
+ * - Check-for-update button + build status (web hot-update mechanism;
+ *   native updates come through the App Store, not this)
+ * The bridge only runs natively, so the web game is untouched. */
+try {
+  document.documentElement.classList.add('tk-native');
+  var prodCss = document.createElement('style');
+  prodCss.textContent = 'html.tk-native #diagnosticsBtn,html.tk-native #updateCheckBtn,html.tk-native #updateStatus{display:none!important}';
+  (document.head || document.documentElement).appendChild(prodCss);
+} catch (e) {}
+
   var CloudSync = null;
   try { CloudSync = Capacitor.Plugins.TKiCloudSync; } catch (e) {}
 
