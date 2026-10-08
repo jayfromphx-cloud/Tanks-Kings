@@ -2,7 +2,7 @@
 # Tanks & Kings — iOS release pipeline (Codemagic)
 #
 # What this does on every push to main/master:
-#   1. npm ci
+#   1. npm install
 #   2. npx cap sync ios
 #   3. Fetches/creates App Store signing cert + provisioning profile
 #      via your App Store Connect API key (automatic code signing)
@@ -52,7 +52,7 @@ workflows:
     scripts:
       - name: Install node dependencies
         script: |
-          npm ci
+          npm install
       - name: Inject RevenueCat key
         script: |
           # TK_REVENUECAT_KEY is set as an encrypted environment variable
