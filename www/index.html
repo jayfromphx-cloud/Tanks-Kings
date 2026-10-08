@@ -2771,7 +2771,7 @@ letter-spacing:2.5px}
  box-shadow:0 0 0 1px #0a0302,0 0 0 2px #7e2a1c,0 0 0 3px #ffa37a,0 0 0 4px #7e2a1c,0 0 0 5px #0d0503,0 12px 24px rgba(0,0,0,.85),0 0 40px rgba(255,84,48,.45),0 0 18px rgba(255,140,80,.3),inset 0 2px 4px rgba(255,214,170,.45),inset 0 -6px 12px rgba(0,0,0,.7)}
 #meleeBtn .melee-icon{background:radial-gradient(circle at 50% 34%,#fff0cd 0%,#ff9a5c 40%,#c33d24 74%,#571c10 100%)}
 #meleeBtn .melee-label{color:#ffd9a8;text-shadow:0 0 10px rgba(255,110,60,.85),0 1px 2px #000,0 -1px 1px rgba(255,255,255,.25)}
-#meleeBtn .melee-arc circle{stroke:rgba(255,96,60,.25)}
+#meleeBtn .melee-arc circle:not(.melee-arc-fill){stroke:rgba(255,96,60,.25)}
 #meleeBtn .melee-arc-fill{stroke:#ff7a50;filter:drop-shadow(0 0 3px rgba(255,120,70,.95))}
 #meleeBtn .melee-sweep{background:conic-gradient(from 0deg,transparent 0deg,rgba(255,120,70,.16) 40deg,transparent 85deg)}
 #meleeBtn.melee-button{filter:drop-shadow(0 0 12px rgba(255,100,60,.5)) drop-shadow(0 3px 6px rgba(0,0,0,.55))!important}
@@ -4439,6 +4439,36 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
 @media(prefers-reduced-motion:reduce){#tutorialRing{animation:none}}
 </style>
 <script src="tk-native-bridge.js"></script>
+<style id="landscapeShortFit">
+/* ===== Short-landscape fit — iPhone landscape (2026-10-08) =====
+   iPhone 11/12/13/14/15/16 landscape heights are 390-440px. The battle
+   flex column (top bar + stage min-height + console) summed past the
+   viewport, so #battleScreen's overflow:hidden clipped the bottom: the
+   safe-area padding vanished and the UPGRADE / EQUIPMENT / SKILLS tabs
+   ended up under the home indicator. This compacts CHROME ONLY — the
+   battleground min-height is untouched:
+   - vitals plate overlays the stage bottom (absolute, the pre-approved
+     overlay design) instead of consuming flow space
+   - console top padding 19px -> 6px, control row 86px -> 70px
+   - top bar + console gain left/right safe-area padding (notch side)
+   Safe-area bottom padding is preserved, never reduced. */
+@media (orientation:landscape){
+  #battleScreen .battle-top{
+    padding-left:max(12px,env(safe-area-inset-left))!important;
+    padding-right:max(12px,env(safe-area-inset-right))!important;
+  }
+}
+@media (orientation:landscape) and (max-height:460px){
+  #battleScreen .battle-controls{position:relative!important;overflow:visible!important;padding-top:6px!important}
+  #battleScreen .battle-controls .player-vitals{
+    position:absolute!important;left:50%!important;translate:-50% 0!important;top:-48px!important;
+    width:min(48vw,440px)!important;height:42px!important;margin:0!important;z-index:7!important;
+  }
+  #battleScreen .battle-controls .control-row{min-height:70px!important;padding-top:2px!important;padding-bottom:2px!important}
+  #battleScreen .battle-controls .panel-row{margin-top:6px!important}
+  #battleScreen .battle-controls .battle-sub{margin-top:4px!important;padding-top:0!important;gap:8px!important}
+}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
