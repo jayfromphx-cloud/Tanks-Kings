@@ -76,25 +76,22 @@ workflows:
           # via com.apple.developer.ubiquity-kvstore-identifier in
           # App.entitlements), so the App Store provisioning profile MUST carry
           # the iCloud capability or the Xcode archive dies at code signing.
-          # There is deliberately no `|| true` below: a silent no-op here is
-          # exactly what let the previous "fix" fail identically.
+          # NOTE: there is deliberately NO auto-enable attempt below. Two fixes
+          # died on it: first an argparse bug, then Apple's own API rejecting
+          # iCloud enablement (409: CloudKitVersion of 'null' is invalid) — and
+          # the app-store-connect CLI cannot send the required ICLOUD_VERSION
+          # setting at all. Enabling iCloud is a ONE-TIME manual toggle in the
+          # Developer Portal; it stays on permanently. This step asserts it and
+          # fails fast with exact instructions if it is off.
           set -e
           IDS_JSON=$(app-store-connect bundle-ids list --bundle-id-identifier "$BUNDLE_ID" --strict-match-identifier --json)
           BID=$(printf '%s' "$IDS_JSON" | python3 -c "import json,sys; ids=[b['id'] for b in json.load(sys.stdin)]; print(ids[0] if ids else '')")
           [ -n "$BID" ] || { echo "FATAL: Bundle ID $BUNDLE_ID not found in the Developer Portal."; exit 1; }
           echo "Bundle ID resource: $BID"
           CAPS_JSON=$(app-store-connect bundle-ids capabilities "$BID" --json)
-          if ! printf '%s' "$CAPS_JSON" | grep -q '"ICLOUD"'; then
-            echo "iCloud not enabled on $BUNDLE_ID — enabling now..."
-            app-store-connect bundle-ids enable-capabilities "$BID" --capability iCloud || echo "WARNING: enable-capabilities exited non-zero; re-checking state below."
-            CAPS_JSON=$(app-store-connect bundle-ids capabilities "$BID" --json)
-          else
-            echo "iCloud already enabled on $BUNDLE_ID."
-          fi
           printf '%s' "$CAPS_JSON" | grep -q '"ICLOUD"' || {
             echo "FATAL: iCloud capability is NOT enabled on $BUNDLE_ID."
-            echo "The App Store Connect API key (Codemagic integration) needs the Admin role to manage bundle IDs."
-            echo "Alternative: enable it manually once — developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > $BUNDLE_ID > check iCloud > Save — then rebuild."
+            echo "One-time manual fix (~30s, permanent): developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > $BUNDLE_ID > check iCloud > Save — then rebuild."
             exit 1
           }
           echo "OK: iCloud capability confirmed on $BUNDLE_ID."
