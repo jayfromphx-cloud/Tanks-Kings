@@ -1,8 +1,7 @@
-# trigger rebuild
 # Tanks & Kings — iOS release pipeline (Codemagic)
 #
 # What this does on every push to main/master:
-#   1. npm install
+#   1. npm ci
 #   2. npx cap sync ios
 #   3. Fetches/creates App Store signing cert + provisioning profile
 #      via your App Store Connect API key (automatic code signing)
@@ -48,11 +47,13 @@ workflows:
           include: true
           source: true
     integrations:
+      # Must match the name you gave the key in Codemagic:
+      # Settings -> Integrations -> Apple Developer Portal
       app_store_connect: Codemagic
     scripts:
       - name: Install node dependencies
         script: |
-          npm install
+          npm ci
       - name: Inject RevenueCat key
         script: |
           # TK_REVENUECAT_KEY is set as an encrypted environment variable
@@ -69,41 +70,6 @@ workflows:
       - name: Set up keychain for code signing
         script: |
           keychain initialize
-      - name: Sync App ID capabilities (iCloud)
-        script: |
-          # STRICT STEP — aborts loudly in seconds if anything here is wrong.
-          # The app legitimately uses iCloud key-value storage (TKiCloudSync,
-          # via com.apple.developer.ubiquity-kvstore-identifier in
-          # App.entitlements), so the App Store provisioning profile MUST carry
-          # the iCloud capability or the Xcode archive dies at code signing.
-          # NOTE: there is deliberately NO auto-enable attempt below. Two fixes
-          # died on it: first an argparse bug, then Apple's own API rejecting
-          # iCloud enablement (409: CloudKitVersion of 'null' is invalid) — and
-          # the app-store-connect CLI cannot send the required ICLOUD_VERSION
-          # setting at all. Enabling iCloud is a ONE-TIME manual toggle in the
-          # Developer Portal; it stays on permanently. This step asserts it and
-          # fails fast with exact instructions if it is off.
-          set -e
-          IDS_JSON=$(app-store-connect bundle-ids list --bundle-id-identifier "$BUNDLE_ID" --strict-match-identifier --json)
-          BID=$(printf '%s' "$IDS_JSON" | python3 -c "import json,sys; ids=[b['id'] for b in json.load(sys.stdin)]; print(ids[0] if ids else '')")
-          [ -n "$BID" ] || { echo "FATAL: Bundle ID $BUNDLE_ID not found in the Developer Portal."; exit 1; }
-          echo "Bundle ID resource: $BID"
-          CAPS_JSON=$(app-store-connect bundle-ids capabilities "$BID" --json)
-          printf '%s' "$CAPS_JSON" | grep -q '"ICLOUD"' || {
-            echo "FATAL: iCloud capability is NOT enabled on $BUNDLE_ID."
-            echo "One-time manual fix (~30s, permanent): developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > $BUNDLE_ID > check iCloud > Save — then rebuild."
-            exit 1
-          }
-          echo "OK: iCloud capability confirmed on $BUNDLE_ID."
-          PROFILES_JSON=$(app-store-connect bundle-ids profiles --bundle-ids "$BID" --type IOS_APP_STORE --json)
-          PIDS=$(printf '%s' "$PROFILES_JSON" | python3 -c "import json,sys; print(' '.join(p['id'] for p in json.load(sys.stdin)))")
-          for PID in $PIDS; do
-            echo "Deleting stale App Store profile $PID (next step regenerates it WITH iCloud)"
-            app-store-connect profiles delete "$PID"
-          done
-          REMAINING=$(app-store-connect bundle-ids profiles --bundle-ids "$BID" --type IOS_APP_STORE --json | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")
-          [ "$REMAINING" -eq 0 ] || { echo "FATAL: $REMAINING stale App Store profile(s) still exist for $BUNDLE_ID; --create would reuse them."; exit 1; }
-          echo "OK: no stale App Store profiles remain; fetch-signing-files --create regenerates one with iCloud next."
       - name: Fetch App Store signing files
         script: |
           # Creates the distribution certificate + App Store provisioning
@@ -123,99 +89,19 @@ workflows:
             echo "Re-paste the full key from tk-distribution-key.pem (Secure ON)."
             exit 1
           fi
-          mkdir -p /tmp/tk_signing
-          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key "@file:/tmp/tk_dist_key.pem" --certificates-dir /tmp/tk_signing --create
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --certificate-key /tmp/tk_dist_key.pem --create
           rm -f /tmp/tk_dist_key.pem
-          echo "Signing files saved:"
-          ls -la /tmp/tk_signing/
-      - name: Verify provisioning profile carries iCloud
+      - name: Bump build number
         script: |
-          # FAIL-FAST: decode the profile(s) fetch-signing-files just produced
-          # and PROVE one for com.tanksandkings.app carries the iCloud
-          # key-value-store entitlement. Without this, a stale profile wastes
-          # a full ~10-minute Xcode archive before dying at
-          # GatherProvisioningInputs with a cryptic exit 65.
-          set -e
-          python3 - <<'PYEOF_VERIFY'
-          import glob, os, plistlib, subprocess, sys
-          # Xcode 16+ stores profiles in ~/Library/Developer/Xcode/UserData/Provisioning Profiles;
-          # Xcode <=15 used ~/Library/MobileDevice/Provisioning Profiles. Scan both.
-          dirs = [
-              os.path.expanduser("~/Library/Developer/Xcode/UserData/Provisioning Profiles"),
-              os.path.expanduser("~/Library/MobileDevice/Provisioning Profiles"),
-          ]
-          files = []
-          for d in dirs:
-              found = sorted(glob.glob(os.path.join(d, "*.mobileprovision")))
-              print(f"profiles on disk: {len(found)} in {d}")
-              files.extend(found)
-          ok = False
-          for f in files:
-              raw = subprocess.run(["security", "cms", "-D", "-i", f], capture_output=True).stdout
-              try:
-                  pl = plistlib.loads(raw)
-              except Exception as e:
-                  print(f"  SKIP (undecodable): {f}: {e}")
-                  continue
-              ents = pl.get("Entitlements", {}) or {}
-              appid = ents.get("application-identifier", "")
-              kv = "com.apple.developer.ubiquity-kvstore-identifier" in ents
-              print(f"  - {pl.get('Name')} | UUID={pl.get('UUID')} | appid={appid} | iCloud-kvstore={kv}")
-              if "com.tanksandkings.app" in appid and kv:
-                  ok = True
-          if not ok:
-              print("FATAL: no provisioning profile for com.tanksandkings.app carries the iCloud key-value-store entitlement.")
-              print("The App ID capability change did not make it into a regenerated profile — inspect the 'Sync App ID capabilities' step output above.")
-              sys.exit(1)
-          print("OK: App Store profile carries the iCloud entitlement; archive may proceed.")
-          PYEOF_VERIFY
-      - name: Add certificates to keychain
-        script: |
-          keychain add-certificates --certificate "/tmp/tk_signing/*.p12"
-      - name: Set up code signing settings on Xcode project
-        script: |
-          # Applies the fetched provisioning profiles to the Xcode project and
-          # generates ~/export_options.plist, which build-ipa requires.
-          xcode-project use-profiles --project "$XCODE_PROJECT"
+          # Apple rejects re-uploads of the same CFBundleVersion (build 18 failed:
+          # "bundle version must be higher than the previously uploaded version: 1").
+          # Tie it to Codemagic's ever-increasing build index so every build is unique.
+          cd ios/App && xcrun agvtool new-version -all "$BUILD_NUMBER"
       - name: Build signed IPA
         script: |
-          # NOTE: we deliberately do NOT use `xcode-project build-ipa` here.
-          # That wrapper swallows xcodebuild's output and prints only a
-          # 12-line summary, which made "exit code 65" undiagnosable twice.
-          # These explicit xcodebuild calls tee the FULL log to files and
-          # print the actual error lines on failure.
-          set -o pipefail
-          ARCHIVE_PATH="$HOME/build/ios/xcarchive/App.xcarchive"
-          IPA_DIR="build/ios/ipa"
-          mkdir -p "$(dirname "$ARCHIVE_PATH")" "$IPA_DIR"
-          echo "=== xcodebuild archive (full log: $HOME/xcodebuild-archive.log) ==="
-          xcodebuild \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -archivePath "$ARCHIVE_PATH" \
-            -destination 'generic/platform=iOS' \
-            COMPILER_INDEX_STORE_ENABLE=NO \
-            CODE_SIGN_STYLE=Manual \
-            archive 2>&1 | tee "$HOME/xcodebuild-archive.log"
-          if [ ${PIPESTATUS[0]} -ne 0 ]; then
-            echo "=== ARCHIVE FAILED — likely error lines ==="
-            grep -aiE "error:|ERROR|failed|no .*provisioning|provisioning profile|code sign|signing certificate|bundle id|entitlement" "$HOME/xcodebuild-archive.log" | head -50
-            echo "=== last 40 lines of archive log ==="
-            tail -40 "$HOME/xcodebuild-archive.log"
-            exit 1
-          fi
-          echo "=== xcodebuild -exportArchive (full log: $HOME/xcodebuild-export.log) ==="
-          xcodebuild -exportArchive \
-            -archivePath "$ARCHIVE_PATH" \
-            -exportPath "$IPA_DIR" \
-            -exportOptionsPlist "$HOME/export_options.plist" 2>&1 | tee "$HOME/xcodebuild-export.log"
-          if [ ${PIPESTATUS[0]} -ne 0 ]; then
-            echo "=== EXPORT FAILED ==="
-            tail -40 "$HOME/xcodebuild-export.log"
-            exit 1
-          fi
-          echo "IPA built:"
-          ls -la "$IPA_DIR"
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
