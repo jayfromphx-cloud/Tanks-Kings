@@ -124,10 +124,43 @@ workflows:
           xcode-project use-profiles --project "$XCODE_PROJECT"
       - name: Build signed IPA
         script: |
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME" \
-            --export-options-plist "$HOME/export_options.plist"
+          # NOTE: we deliberately do NOT use `xcode-project build-ipa` here.
+          # That wrapper swallows xcodebuild's output and prints only a
+          # 12-line summary, which made "exit code 65" undiagnosable twice.
+          # These explicit xcodebuild calls tee the FULL log to files and
+          # print the actual error lines on failure.
+          set -o pipefail
+          ARCHIVE_PATH="$HOME/build/ios/xcarchive/App.xcarchive"
+          IPA_DIR="build/ios/ipa"
+          mkdir -p "$(dirname "$ARCHIVE_PATH")" "$IPA_DIR"
+          echo "=== xcodebuild archive (full log: $HOME/xcodebuild-archive.log) ==="
+          xcodebuild \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -archivePath "$ARCHIVE_PATH" \
+            -destination 'generic/platform=iOS' \
+            COMPILER_INDEX_STORE_ENABLE=NO \
+            CODE_SIGN_STYLE=Manual \
+            archive 2>&1 | tee "$HOME/xcodebuild-archive.log"
+          if [ ${PIPESTATUS[0]} -ne 0 ]; then
+            echo "=== ARCHIVE FAILED — likely error lines ==="
+            grep -aiE "error:|ERROR|failed|no .*provisioning|provisioning profile|code sign|signing certificate|bundle id|entitlement" "$HOME/xcodebuild-archive.log" | head -50
+            echo "=== last 40 lines of archive log ==="
+            tail -40 "$HOME/xcodebuild-archive.log"
+            exit 1
+          fi
+          echo "=== xcodebuild -exportArchive (full log: $HOME/xcodebuild-export.log) ==="
+          xcodebuild -exportArchive \
+            -archivePath "$ARCHIVE_PATH" \
+            -exportPath "$IPA_DIR" \
+            -exportOptionsPlist "$HOME/export_options.plist" 2>&1 | tee "$HOME/xcodebuild-export.log"
+          if [ ${PIPESTATUS[0]} -ne 0 ]; then
+            echo "=== EXPORT FAILED ==="
+            tail -40 "$HOME/xcodebuild-export.log"
+            exit 1
+          fi
+          echo "IPA built:"
+          ls -la "$IPA_DIR"
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
