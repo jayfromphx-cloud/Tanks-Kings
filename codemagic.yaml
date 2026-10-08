@@ -86,7 +86,7 @@ workflows:
           CAPS_JSON=$(app-store-connect bundle-ids capabilities "$BID" --json)
           if ! printf '%s' "$CAPS_JSON" | grep -q '"ICLOUD"'; then
             echo "iCloud not enabled on $BUNDLE_ID — enabling now..."
-            app-store-connect bundle-ids enable-capabilities --capability iCloud "$BID" || echo "WARNING: enable-capabilities exited non-zero; re-checking state below."
+            app-store-connect bundle-ids enable-capabilities "$BID" --capability iCloud || echo "WARNING: enable-capabilities exited non-zero; re-checking state below."
             CAPS_JSON=$(app-store-connect bundle-ids capabilities "$BID" --json)
           else
             echo "iCloud already enabled on $BUNDLE_ID."
