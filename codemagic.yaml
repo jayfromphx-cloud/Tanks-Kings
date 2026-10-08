@@ -52,7 +52,7 @@ workflows:
     scripts:
       - name: Install node dependencies
         script: |
-          npm install
+          npm ci
       - name: Inject RevenueCat key
         script: |
           # TK_REVENUECAT_KEY is set as an encrypted environment variable
@@ -71,25 +71,42 @@ workflows:
           keychain initialize
       - name: Sync App ID capabilities (iCloud)
         script: |
-          # The app uses iCloud key-value storage (TKiCloudSync via
-          # com.apple.developer.ubiquity-kvstore-identifier in App.entitlements).
-          # If the App ID lacks the iCloud capability, the generated provisioning
-          # profile won't carry the entitlement and the Xcode archive fails at
-          # code signing. This step enables it automatically and drops stale
-          # profiles so fetch-signing-files --create regenerates them WITH it.
-          BID=$(app-store-connect bundle-ids list --bundle-id-identifier "$BUNDLE_ID" --strict-match-identifier --json 2>/dev/null | python3 -c "import json,sys; ids=[b['id'] for b in json.load(sys.stdin)]; print(ids[0] if ids else '')")
-          if [ -z "$BID" ]; then
-            echo "Bundle ID $BUNDLE_ID not found, skipping capability sync"
-            exit 0
-          fi
+          # STRICT STEP — aborts loudly in seconds if anything here is wrong.
+          # The app legitimately uses iCloud key-value storage (TKiCloudSync,
+          # via com.apple.developer.ubiquity-kvstore-identifier in
+          # App.entitlements), so the App Store provisioning profile MUST carry
+          # the iCloud capability or the Xcode archive dies at code signing.
+          # There is deliberately no `|| true` below: a silent no-op here is
+          # exactly what let the previous "fix" fail identically.
+          set -e
+          IDS_JSON=$(app-store-connect bundle-ids list --bundle-id-identifier "$BUNDLE_ID" --strict-match-identifier --json)
+          BID=$(printf '%s' "$IDS_JSON" | python3 -c "import json,sys; ids=[b['id'] for b in json.load(sys.stdin)]; print(ids[0] if ids else '')")
+          [ -n "$BID" ] || { echo "FATAL: Bundle ID $BUNDLE_ID not found in the Developer Portal."; exit 1; }
           echo "Bundle ID resource: $BID"
-          app-store-connect bundle-ids enable-capabilities --capability iCloud "$BID" || true
-          echo "Enabled capabilities:"
-          app-store-connect bundle-ids capabilities "$BID" || true
-          for PID in $(app-store-connect bundle-ids profiles --bundle-ids "$BID" --type IOS_APP_STORE --json 2>/dev/null | python3 -c "import json,sys; print(' '.join(p['id'] for p in json.load(sys.stdin)))"); do
-            echo "Deleting stale App Store profile $PID (will be regenerated with iCloud)"
-            app-store-connect profiles delete "$PID" || true
+          CAPS_JSON=$(app-store-connect bundle-ids capabilities "$BID" --json)
+          if ! printf '%s' "$CAPS_JSON" | grep -q '"ICLOUD"'; then
+            echo "iCloud not enabled on $BUNDLE_ID — enabling now..."
+            app-store-connect bundle-ids enable-capabilities --capability iCloud "$BID" || echo "WARNING: enable-capabilities exited non-zero; re-checking state below."
+            CAPS_JSON=$(app-store-connect bundle-ids capabilities "$BID" --json)
+          else
+            echo "iCloud already enabled on $BUNDLE_ID."
+          fi
+          printf '%s' "$CAPS_JSON" | grep -q '"ICLOUD"' || {
+            echo "FATAL: iCloud capability is NOT enabled on $BUNDLE_ID."
+            echo "The App Store Connect API key (Codemagic integration) needs the Admin role to manage bundle IDs."
+            echo "Alternative: enable it manually once — developer.apple.com > Certificates, Identifiers & Profiles > Identifiers > $BUNDLE_ID > check iCloud > Save — then rebuild."
+            exit 1
+          }
+          echo "OK: iCloud capability confirmed on $BUNDLE_ID."
+          PROFILES_JSON=$(app-store-connect bundle-ids profiles --bundle-ids "$BID" --type IOS_APP_STORE --json)
+          PIDS=$(printf '%s' "$PROFILES_JSON" | python3 -c "import json,sys; print(' '.join(p['id'] for p in json.load(sys.stdin)))")
+          for PID in $PIDS; do
+            echo "Deleting stale App Store profile $PID (next step regenerates it WITH iCloud)"
+            app-store-connect profiles delete "$PID"
           done
+          REMAINING=$(app-store-connect bundle-ids profiles --bundle-ids "$BID" --type IOS_APP_STORE --json | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")
+          [ "$REMAINING" -eq 0 ] || { echo "FATAL: $REMAINING stale App Store profile(s) still exist for $BUNDLE_ID; --create would reuse them."; exit 1; }
+          echo "OK: no stale App Store profiles remain; fetch-signing-files --create regenerates one with iCloud next."
       - name: Fetch App Store signing files
         script: |
           # Creates the distribution certificate + App Store provisioning
@@ -114,6 +131,39 @@ workflows:
           rm -f /tmp/tk_dist_key.pem
           echo "Signing files saved:"
           ls -la /tmp/tk_signing/
+      - name: Verify provisioning profile carries iCloud
+        script: |
+          # FAIL-FAST: decode the profile(s) fetch-signing-files just produced
+          # and PROVE one for com.tanksandkings.app carries the iCloud
+          # key-value-store entitlement. Without this, a stale profile wastes
+          # a full ~10-minute Xcode archive before dying at
+          # GatherProvisioningInputs with a cryptic exit 65.
+          set -e
+          python3 - <<'PYEOF_VERIFY'
+          import glob, os, plistlib, subprocess, sys
+          d = os.path.expanduser("~/Library/MobileDevice/Provisioning Profiles")
+          files = sorted(glob.glob(os.path.join(d, "*.mobileprovision")))
+          print(f"profiles on disk: {len(files)} in {d}")
+          ok = False
+          for f in files:
+              raw = subprocess.run(["security", "cms", "-D", "-i", f], capture_output=True).stdout
+              try:
+                  pl = plistlib.loads(raw)
+              except Exception as e:
+                  print(f"  SKIP (undecodable): {f}: {e}")
+                  continue
+              ents = pl.get("Entitlements", {}) or {}
+              appid = ents.get("application-identifier", "")
+              kv = "com.apple.developer.ubiquity-kvstore-identifier" in ents
+              print(f"  - {pl.get('Name')} | UUID={pl.get('UUID')} | appid={appid} | iCloud-kvstore={kv}")
+              if "com.tanksandkings.app" in appid and kv:
+                  ok = True
+          if not ok:
+              print("FATAL: no provisioning profile for com.tanksandkings.app carries the iCloud key-value-store entitlement.")
+              print("The App ID capability change did not make it into a regenerated profile — inspect the 'Sync App ID capabilities' step output above.")
+              sys.exit(1)
+          print("OK: App Store profile carries the iCloud entitlement; archive may proceed.")
+          PYEOF_VERIFY
       - name: Add certificates to keychain
         script: |
           keychain add-certificates --certificate "/tmp/tk_signing/*.p12"
