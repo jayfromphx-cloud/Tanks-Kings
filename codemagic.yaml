@@ -69,6 +69,27 @@ workflows:
       - name: Set up keychain for code signing
         script: |
           keychain initialize
+      - name: Sync App ID capabilities (iCloud)
+        script: |
+          # The app uses iCloud key-value storage (TKiCloudSync via
+          # com.apple.developer.ubiquity-kvstore-identifier in App.entitlements).
+          # If the App ID lacks the iCloud capability, the generated provisioning
+          # profile won't carry the entitlement and the Xcode archive fails at
+          # code signing. This step enables it automatically and drops stale
+          # profiles so fetch-signing-files --create regenerates them WITH it.
+          BID=$(app-store-connect bundle-ids list --bundle-id-identifier "$BUNDLE_ID" --strict-match-identifier --json 2>/dev/null | python3 -c "import json,sys; ids=[b['id'] for b in json.load(sys.stdin)]; print(ids[0] if ids else '')")
+          if [ -z "$BID" ]; then
+            echo "Bundle ID $BUNDLE_ID not found, skipping capability sync"
+            exit 0
+          fi
+          echo "Bundle ID resource: $BID"
+          app-store-connect bundle-ids enable-capabilities --capability iCloud "$BID" || true
+          echo "Enabled capabilities:"
+          app-store-connect bundle-ids capabilities "$BID" || true
+          for PID in $(app-store-connect bundle-ids profiles --bundle-ids "$BID" --type IOS_APP_STORE --json 2>/dev/null | python3 -c "import json,sys; print(' '.join(p['id'] for p in json.load(sys.stdin)))"); do
+            echo "Deleting stale App Store profile $PID (will be regenerated with iCloud)"
+            app-store-connect profiles delete "$PID" || true
+          done
       - name: Fetch App Store signing files
         script: |
           # Creates the distribution certificate + App Store provisioning
