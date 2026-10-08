@@ -138,9 +138,17 @@ workflows:
           set -e
           python3 - <<'PYEOF_VERIFY'
           import glob, os, plistlib, subprocess, sys
-          d = os.path.expanduser("~/Library/MobileDevice/Provisioning Profiles")
-          files = sorted(glob.glob(os.path.join(d, "*.mobileprovision")))
-          print(f"profiles on disk: {len(files)} in {d}")
+          # Xcode 16+ stores profiles in ~/Library/Developer/Xcode/UserData/Provisioning Profiles;
+          # Xcode <=15 used ~/Library/MobileDevice/Provisioning Profiles. Scan both.
+          dirs = [
+              os.path.expanduser("~/Library/Developer/Xcode/UserData/Provisioning Profiles"),
+              os.path.expanduser("~/Library/MobileDevice/Provisioning Profiles"),
+          ]
+          files = []
+          for d in dirs:
+              found = sorted(glob.glob(os.path.join(d, "*.mobileprovision")))
+              print(f"profiles on disk: {len(found)} in {d}")
+              files.extend(found)
           ok = False
           for f in files:
               raw = subprocess.run(["security", "cms", "-D", "-i", f], capture_output=True).stdout
