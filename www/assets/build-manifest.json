@@ -29,12 +29,12 @@
       "md5": "e2f7e02bdcf29dd7d80fef74373a80dd"
     },
     {
-      "file": "assets/bgm-honorable-march.mp3",
+      "file": "assets/bgm-honorable-march.bin",
       "bytes": 4291968,
       "md5": "3ffcf96537e15b93f23fc131a2d35e86"
     },
     {
-      "file": "assets/bgm-war-pulse.mp3",
+      "file": "assets/bgm-war-pulse.bin",
       "bytes": 4293697,
       "md5": "525c5801cc55661bec89ee90c0543e3e"
     },
@@ -159,7 +159,7 @@
       "md5": "5bbc6e663711697658fe81ba7507a37a"
     },
     {
-      "file": "assets/enemy-tank.mp3",
+      "file": "assets/enemy-tank.bin",
       "bytes": 61440,
       "md5": "0670d800778c490f9e2e74cf71a96a28"
     },
@@ -534,7 +534,7 @@
       "md5": "1e96599fd94d626051965e4ea99cdef2"
     },
     {
-      "file": "assets/impact.mp3",
+      "file": "assets/impact.bin",
       "bytes": 32436,
       "md5": "32654ef8ca651484ed3deea05193839b"
     },
@@ -599,7 +599,7 @@
       "md5": "a6ce7594bd3e9d5716eca0d9369f8818"
     },
     {
-      "file": "assets/missile.mp3",
+      "file": "assets/missile.bin",
       "bytes": 30137,
       "md5": "1364bc66c02184b042163380d19cd848"
     },
@@ -644,7 +644,7 @@
       "md5": "cb0a26fbeee7b54871c68469d1b19e33"
     },
     {
-      "file": "assets/parry.mp3",
+      "file": "assets/parry.bin",
       "bytes": 28256,
       "md5": "f514ccad0296b875d713eeea1631ab22"
     },
@@ -799,7 +799,7 @@
       "md5": "5485e1c5c82be55f79239e6898a3051e"
     },
     {
-      "file": "assets/projectile.mp3",
+      "file": "assets/projectile.bin",
       "bytes": 17613,
       "md5": "41a39d122a48719caf60a0fc999e1460"
     },
@@ -994,12 +994,12 @@
       "md5": "9e549de13632f96cace8b81a330c687c"
     },
     {
-      "file": "assets/ult-bloomvale.mp3",
+      "file": "assets/ult-bloomvale.bin",
       "bytes": 161280,
       "md5": "f7124672610fc11d0310827a1400cc3a"
     },
     {
-      "file": "assets/ult-ember.mp3",
+      "file": "assets/ult-ember.bin",
       "bytes": 161280,
       "md5": "f7124672610fc11d0310827a1400cc3a"
     },
@@ -1009,7 +1009,7 @@
       "md5": "27b388bc918310e0b6751e7988a19bfe"
     },
     {
-      "file": "assets/ult-ironhold.mp3",
+      "file": "assets/ult-ironhold.bin",
       "bytes": 161280,
       "md5": "f7124672610fc11d0310827a1400cc3a"
     },
@@ -1089,12 +1089,12 @@
       "md5": "9d32a651d3a20af44cc5502c90ea908c"
     },
     {
-      "file": "assets/ult-tidereign.mp3",
+      "file": "assets/ult-tidereign.bin",
       "bytes": 161280,
       "md5": "f7124672610fc11d0310827a1400cc3a"
     },
     {
-      "file": "assets/ult-voltspire.mp3",
+      "file": "assets/ult-voltspire.bin",
       "bytes": 161280,
       "md5": "f7124672610fc11d0310827a1400cc3a"
     },
