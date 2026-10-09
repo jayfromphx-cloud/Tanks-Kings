@@ -227,4 +227,8 @@ workflows:
     publishing:
       app_store_connect:
         auth: integration # uses the API key added in the Codemagic UI
-        submit_to_testflight: true
+        # false: builds upload for internal TestFlight (no review needed).
+        # Beta-review auto-submit caused 422 collisions ("another build in
+        # review") on rapid pushes — Apple's one-at-a-time rule. Submit
+        # manually in App Store Connect when external testers need a build.
+        submit_to_testflight: false
