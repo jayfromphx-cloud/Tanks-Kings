@@ -1,6 +1,6 @@
 {
-  "build": "7d162c82e7",
-  "html": "0c69e38ce9",
+  "build": "6cef160888",
+  "html": "1106dedca3",
   "assetCount": 220,
   "assets": [
     {
@@ -330,8 +330,8 @@
     },
     {
       "file": "assets/evo-paladin-bloom.webp",
-      "bytes": 253094,
-      "md5": "136556431cea451bdaf49ab5c25aa85e"
+      "bytes": 458652,
+      "md5": "6159fb019f3e8ebdcec25acbd30100b3"
     },
     {
       "file": "assets/evo-paladin-ember-artillery-battle.webp",
@@ -350,8 +350,8 @@
     },
     {
       "file": "assets/evo-paladin-ember.webp",
-      "bytes": 227102,
-      "md5": "066b5d866fe3c907405b9f964b0a98ee"
+      "bytes": 458796,
+      "md5": "8239b49012f8721712185303c67ddbe1"
     },
     {
       "file": "assets/evo-paladin-ironhold-artillery-battle.webp",
@@ -370,8 +370,8 @@
     },
     {
       "file": "assets/evo-paladin-ironhold.webp",
-      "bytes": 284006,
-      "md5": "536b8aabb369039aab7a638a8b820332"
+      "bytes": 464590,
+      "md5": "aedcea00948e7c2cb1e3f4bf19e7af2e"
     },
     {
       "file": "assets/evo-paladin-tidereign-artillery-battle.webp",
@@ -390,8 +390,8 @@
     },
     {
       "file": "assets/evo-paladin-tidereign.webp",
-      "bytes": 262980,
-      "md5": "9bc2783e6bc2cfd5480c79f40e537468"
+      "bytes": 505068,
+      "md5": "58ce7a179c3c4ff0c1a37ba5bd03cec8"
     },
     {
       "file": "assets/evo-paladin-voltspire-artillery-battle.webp",
@@ -410,8 +410,8 @@
     },
     {
       "file": "assets/evo-paladin-voltspire.webp",
-      "bytes": 259950,
-      "md5": "27a7286403872c02b5c1893e66332cfd"
+      "bytes": 436734,
+      "md5": "70fd3d4cc48b12bcd99a563279ed71ed"
     },
     {
       "file": "assets/explosion-aaa-v2.webp",
