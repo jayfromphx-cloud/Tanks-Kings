@@ -1,6 +1,6 @@
 {
-  "build": "8c4224d142",
-  "html": "fcb6622ff3",
+  "build": "7d162c82e7",
+  "html": "0c69e38ce9",
   "assetCount": 220,
   "assets": [
     {
@@ -220,8 +220,8 @@
     },
     {
       "file": "assets/evo-knight-bloom-artillery.webp",
-      "bytes": 473712,
-      "md5": "7b12d920b74274868f8a7c93985a9dab"
+      "bytes": 539958,
+      "md5": "34b495762ec58516060f9df351c562d1"
     },
     {
       "file": "assets/evo-knight-bloom-battle.webp",
