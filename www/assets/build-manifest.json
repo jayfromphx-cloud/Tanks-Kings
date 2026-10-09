@@ -1,6 +1,6 @@
 {
-  "build": "817d7b7f00",
-  "html": "afd18eb042",
+  "build": "7e58ee9086",
+  "html": "542fa2d7e5",
   "assetCount": 220,
   "assets": [
     {
@@ -240,8 +240,8 @@
     },
     {
       "file": "assets/evo-knight-ember-artillery.webp",
-      "bytes": 199852,
-      "md5": "5e0418ed23711d366bb20c6dc7e5e473"
+      "bytes": 429644,
+      "md5": "4568a3263c6f8042fe69c9059b63de88"
     },
     {
       "file": "assets/evo-knight-ember-battle.webp",
