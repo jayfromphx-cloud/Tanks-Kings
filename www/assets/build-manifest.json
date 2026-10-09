@@ -1,6 +1,6 @@
 {
-  "build": "883a0aab93",
-  "html": "d5c513ccff",
+  "build": "9cb3c07de3",
+  "html": "06792c54ef",
   "assetCount": 220,
   "assets": [
     {
@@ -270,8 +270,8 @@
     },
     {
       "file": "assets/evo-knight-ironhold.webp",
-      "bytes": 355322,
-      "md5": "11c98d2a10c2e5b66292032c9fc34f7b"
+      "bytes": 529786,
+      "md5": "47d3e71b30c2ee1a82a18295858ea0d8"
     },
     {
       "file": "assets/evo-knight-tidereign-artillery-battle.webp",
