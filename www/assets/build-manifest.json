@@ -1,6 +1,6 @@
 {
-  "build": "7e58ee9086",
-  "html": "542fa2d7e5",
+  "build": "82c87d0c06",
+  "html": "729e361880",
   "assetCount": 220,
   "assets": [
     {
@@ -300,8 +300,8 @@
     },
     {
       "file": "assets/evo-knight-voltspire-artillery.webp",
-      "bytes": 163534,
-      "md5": "9a4624ff6812b8f563401eb926a67c66"
+      "bytes": 383620,
+      "md5": "9d2156a012b76431b50f5e0e9ad5eba0"
     },
     {
       "file": "assets/evo-knight-voltspire-battle.webp",
