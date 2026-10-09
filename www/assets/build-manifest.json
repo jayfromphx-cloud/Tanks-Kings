@@ -1,6 +1,6 @@
 {
-  "build": "df1cd83bf1",
-  "html": "77a058fcd8",
+  "build": "883a0aab93",
+  "html": "d5c513ccff",
   "assetCount": 220,
   "assets": [
     {
@@ -940,8 +940,8 @@
     },
     {
       "file": "assets/tower-boss-pontiff.webp",
-      "bytes": 600348,
-      "md5": "207ef4503ac10ca6f804f858617e349a"
+      "bytes": 632244,
+      "md5": "e0d0d370e0eea69cab089acb436ba43e"
     },
     {
       "file": "assets/tower-boss-pyra-hd.webp",
