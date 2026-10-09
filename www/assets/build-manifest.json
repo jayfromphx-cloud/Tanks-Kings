@@ -1,6 +1,6 @@
 {
-  "build": "6cef160888",
-  "html": "1106dedca3",
+  "build": "eba1294c24",
+  "html": "651b6a80b7",
   "assetCount": 220,
   "assets": [
     {
@@ -280,8 +280,8 @@
     },
     {
       "file": "assets/evo-knight-tidereign-artillery.webp",
-      "bytes": 652918,
-      "md5": "836f1f9648aad361c1c228aadc7dae3e"
+      "bytes": 528758,
+      "md5": "1ac4bd8846d255d303a9205a09f9f5bf"
     },
     {
       "file": "assets/evo-knight-tidereign-battle.webp",
