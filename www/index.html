@@ -2889,6 +2889,15 @@ letter-spacing:2.5px}
   0 4px 10px rgba(0,0,0,.55),0 0 16px var(--rarglow)}
 #revealSheet .reveal-card .rc-slot-ic img{width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
 
+/* Compact skill rows for in-battle sheet */
+.skill-row{display:flex;align-items:center;gap:10px;padding:10px;border:2px solid var(--line);border-radius:14px;background:var(--soft);margin-bottom:8px}
+.skill-row .skill-icon{width:38px;height:38px;flex:none}
+.skill-row-info{flex:1;min-width:0}
+.skill-row-info b{display:block;font-size:13px}
+.skill-row-info span{font-size:11px;color:var(--muted);font-weight:700}
+.skill-row.locked{opacity:.55}
+.skill-row .skill-up{flex:none}
+.skill-locked,.skill-maxed{font-size:10px;font-weight:900;color:var(--muted);flex:none}
 /* ================= Skill Mastery screen ================= */
 #skillsScreen{flex-direction:column;background:linear-gradient(180deg,#0d1826,#08111d)}
 .skills-wrap{width:100%;max-width:760px;margin:0 auto;padding:max(16px,calc(env(safe-area-inset-top) + 8px)) 18px calc(30px + env(safe-area-inset-bottom))}
@@ -4651,6 +4660,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
     </div>
   </div>
 </section>
+<div id="skillsSheet" class="sheet-backdrop"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-head"><div class="sheet-title"><h2>Skill Mastery</h2><div class="sheet-sub" id="skillsSheetSub">Champion skills</div></div><button class="close" data-close="skillsSheet">×</button></div><div class="skills-wallet"><img src="assets/prod2-skill-shard.webp" alt="Skill Shard"><div><b id="skillsSheetShardCount">0</b><span>SKILL SHARDS</span></div></div><button id="skillsSheetAutoUp" class="skill-auto-up" type="button">⚡ AUTO UPGRADE</button><div id="skillsSheetList" class="skills-list"></div></div></div>
 <section id="skillsScreen" class="screen">
   <div class="top-actions"><button id="skillsBackBtn" class="char-back">‹ Back</button><button class="icon-btn soundBtn" aria-label="Toggle sound"></button></div>
   <div class="skills-wrap">
@@ -4746,7 +4756,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
 <div id="revealSheet" class="sheet-backdrop"><div class="sheet store-sheet" id="revealBox"></div></div>
 <div id="upgradeSheet" class="sheet-backdrop"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-head"><h2>Tank Workshop</h2><button class="close" data-close="upgradeSheet">×</button></div><div class="level-card"><div><span class="mini-label">Power up</span><h3 id="upTankName"></h3><p id="upgradeCopy"></p></div><div class="level-actions"><button id="levelBtn" class="primary"></button><button id="levelMaxBtn" class="primary max-level-btn" type="button">MAX LEVEL</button></div></div><button id="shopNudge" class="shop-nudge" hidden>⚙ Short on Scrap? <b>Visit the Royal Shop ›</b></button><div id="statsGrid" class="stats-grid"></div><section id="evolutionPanel" class="evolution-panel" aria-labelledby="evolutionTitle"><div class="evo-head"><h3 id="evolutionTitle">Evolution</h3><span id="currentRankBadge" class="rank-badge"></span></div><div id="evoPath" class="evo-path"></div><div id="evoRequirements" class="requirements"></div><button id="evolveBtn" class="evolve-btn" disabled>EVOLVE</button><button id="evolveNudge" class="shop-nudge" hidden></button></section></div></div>
 <div id="evolutionCelebration" class="evolution-celebration" role="status" aria-live="assertive"><div class="evolution-banner"><small>ROYAL EVOLUTION</small><span id="evolutionBannerText"></span></div></div>
-<div id="itemsSheet" class="sheet-backdrop"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-head"><div class="sheet-title"><h2>Royal Equipment</h2><div class="sheet-sub">Six relics of the royal brigade</div></div><button class="close" data-close="itemsSheet">×</button></div><div class="equip-topbar"><button id="autoEquip" type="button">⚙ Auto-Equip Best</button></div><div id="gearSummary" class="gear-summary"></div><div id="slots" class="slots"></div><div id="setBox" class="setbox"></div><div class="inventory-title"><div class="inventory-title-copy"><h3>Battle Loot</h3><span id="inventoryCount" class="inventory-count"></span></div><button id="salvageAll" type="button">Scrap Unused Gears</button></div><p class="salvage-note">Scrap every unequipped relic in your inventory. Equipped relics are always protected.</p><div id="salvageStatus" class="salvage-status" role="status" aria-live="polite"></div><div id="inventory" class="inventory"></div><nav id="inventoryPager" class="inventory-pager" aria-label="Inventory pages"><button id="inventoryPrev" class="inventory-page-btn" type="button">‹ Previous</button><span id="inventoryPageInfo" class="inventory-page-info"></span><button id="inventoryNext" class="inventory-page-btn" type="button">Next ›</button></nav></div></div>
+<div id="itemsSheet" class="sheet-backdrop"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-head"><div class="sheet-title"><h2>Royal Equipment</h2><div class="sheet-sub">Six relics of the royal brigade</div></div><button class="close" data-close="itemsSheet">×</button></div><div class="equip-topbar"><button id="autoEquip" type="button">⚙ Auto-Equip Best</button><button id="autoForge" type="button">🔨 Auto-Forge All</button></div><div id="gearSummary" class="gear-summary"></div><div id="slots" class="slots"></div><div id="setBox" class="setbox"></div><div class="inventory-title"><div class="inventory-title-copy"><h3>Battle Loot</h3><span id="inventoryCount" class="inventory-count"></span></div><button id="salvageAll" type="button">Scrap Unused Gears</button></div><p class="salvage-note">Scrap every unequipped relic in your inventory. Equipped relics are always protected.</p><div id="salvageStatus" class="salvage-status" role="status" aria-live="polite"></div><div id="inventory" class="inventory"></div><nav id="inventoryPager" class="inventory-pager" aria-label="Inventory pages"><button id="inventoryPrev" class="inventory-page-btn" type="button">‹ Previous</button><span id="inventoryPageInfo" class="inventory-page-info"></span><button id="inventoryNext" class="inventory-page-btn" type="button">Next ›</button></nav></div></div>
 <!-- ROYAL LOGIN BONUS -->
 <div id="loginSvgDefs" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></div>
 <div id="loginSheet" class="login-backdrop" role="dialog" aria-modal="true" aria-label="Daily login reward"><div class="login-card" id="loginCard"><i class="rivet tl"></i><i class="rivet tr"></i><i class="rivet bl"></i><i class="rivet br"></i><div class="login-rays" aria-hidden="true"></div><div id="loginBody"></div></div></div>
@@ -5002,7 +5012,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='9ef4ab88ee';
-const __HTML_V='73b36e6d0f';
+const __HTML_V='e295f395e7';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6418,8 +6428,35 @@ function prestigeSetUltBonus(){const b=prestigeSetBonus();return b?b.tier.set:0}
 /* Emblems persist in two store-keeping buckets (login grants vs Shop purchases); spend both. */
 function prestigeEmblemTotal(){return (state.prestigeEmblems||0)+(typeof STORE!=='undefined'?(STORE.emblems||0):0)}
 function spendPrestigeEmblem(){let need=1;const fromState=Math.min(state.prestigeEmblems||0,need);state.prestigeEmblems=(state.prestigeEmblems||0)-fromState;need-=fromState;if(need>0&&typeof STORE!=='undefined'){STORE.emblems=Math.max(0,(STORE.emblems||0)-need);if(typeof storeSave==='function')storeSave()}if(typeof renderStoreWallet==='function')renderStoreWallet()}
-function rankUpSlot(slot){const r=gearRankOf(slot);if(r>=GEAR_RANK_MAX)return;const c=gearRankCost(r);if(state.scrap<c)return;state.scrap-=c;state.gearRanks[slot]=r+1;savePrestige();sfx('coin');const old=state.maxHp;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-old)));showToast(slot+' forged to Rank '+(r+1));renderItems();updateHUD()}
-function prestigeSlot(slot){const stars=gearStarsOf(slot),rank=gearRankOf(slot);if(stars>=PRESTIGE_MAX_STARS||rank<GEAR_RANK_MAX)return;const scrap=PRESTIGE_SCRAP_COST[stars+1];if(state.scrap<scrap||prestigeEmblemTotal()<1)return;state.scrap-=scrap;spendPrestigeEmblem();state.gearRanks[slot]=1;state.gearStars[slot]=stars+1;savePrestige();const old=state.maxHp;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-old)));renderItems();updateHUD();celebratePrestige(slot,stars+1)}
+function rankUpSlot(slot){const r=gearRankOf(slot);if(r>=GEAR_RANK_MAX)return;const c=gearRankCost(r);if(state.scrap<c)return;state.scrap-=c;state.gearRanks[slot]=r+1;savePrestige();sfx('coin');const old=state.maxHp;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-old)));showToast(slot+' forged to Rank '+(r+1));renderSlots();updateHUD()}
+/* AUTO-FORGE: spend scrap to forge all six gear slots as far as it goes, always
+ * upgrading the lowest-ranked slot first so all slots rise evenly. */
+function autoForgePlan(){
+ const ranks={},pool=Math.floor(state.scrap);
+ slots.forEach(function(s){ranks[s]=gearRankOf(s)});
+ let upgrades=0,spent=0,progress=true;
+ while(progress){
+  progress=false;let best=null;
+  slots.forEach(function(s){
+   if(ranks[s]>=GEAR_RANK_MAX)return;
+   if(pool-spent<gearRankCost(ranks[s]))return;
+   if(!best||ranks[s]<ranks[best])best=s;
+  });
+  if(best){const c=gearRankCost(ranks[best]);spent+=c;ranks[best]++;upgrades++;progress=true}
+ }
+ return {upgrades:upgrades,spent:spent,final:ranks};
+}
+function autoForgeGears(){
+ const plan=autoForgePlan();
+ if(plan.upgrades<1){sfx('deny');return}
+ state.scrap-=plan.spent;
+ slots.forEach(function(s){state.gearRanks[s]=plan.final[s]});
+ savePrestige();sfx('coin');
+ const old=state.maxHp;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-old)));
+ showToast('Auto-forged '+plan.upgrades+' ranks for '+plan.spent+' Scrap');
+ renderSlots();updateHUD();
+}
+function prestigeSlot(slot){const stars=gearStarsOf(slot),rank=gearRankOf(slot);if(stars>=PRESTIGE_MAX_STARS||rank<GEAR_RANK_MAX)return;const scrap=PRESTIGE_SCRAP_COST[stars+1];if(state.scrap<scrap||prestigeEmblemTotal()<1)return;state.scrap-=scrap;spendPrestigeEmblem();state.gearRanks[slot]=1;state.gearStars[slot]=stars+1;savePrestige();const old=state.maxHp;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-old)));renderSlots();updateHUD();celebratePrestige(slot,stars+1)}
 function celebratePrestige(slot,stars){const banner=$('evolutionCelebration'),tier=PRESTIGE_TIERS[stars];banner.querySelector('small').textContent='★ GEAR PRESTIGE ★';$('evolutionBannerText').textContent=slot.toUpperCase()+' ASCENDS TO '+tier.name.toUpperCase();banner.classList.remove('show');requestAnimationFrame(()=>requestAnimationFrame(()=>banner.classList.add('show')));evolutionFanfare();const slotEl=$('slot-'+slot);if(slotEl){slotEl.classList.add('just-prestiged');setTimeout(()=>slotEl.classList.remove('just-prestiged'),1200)}setTimeout(()=>{banner.classList.remove('show');banner.querySelector('small').textContent='ROYAL EVOLUTION'},2600)}
 loadPrestige();
 function dropItem(boss){let roll=Math.random(),rar=boss?(roll>.7?'Legendary':'Epic'):roll>.94?'Legendary':roll>.73?'Epic':roll>.38?'Rare':'Common';let mult={Common:1,Rare:1.6,Epic:2.5,Legendary:4}[rar],slot=slots[Math.floor(Math.random()*slots.length)],king=kingdoms[Math.floor(Math.random()*kingdoms.length)],item={id:Date.now()+Math.random(),slot:slot,rarity:rar,power:Math.round((3.5+state.wave*1.2)*mult),kingdom:king.id,ability:abilities[slot]};state.inventory.push(item);showToast(rar+' '+king.name+' '+slot+' found!');renderItems()}
@@ -6934,7 +6971,9 @@ function loop(now,g){
  __loopHeartbeat=performance.now();
  scheduleBattleLoop(g)
 }
-$('upgradeOpen').onclick=()=>{renderUpgrade();$('upgradeSheet').classList.add('open')};$('itemsOpen').onclick=()=>{inventoryPage=0;$('salvageStatus').textContent='';renderItems();$('itemsSheet').classList.add('open')};document.querySelectorAll('.close').forEach(b=>b.onclick=()=>{$(b.dataset.close).classList.remove('open');if((b.dataset.close==='upgradeSheet'||b.dataset.close==='itemsSheet')&&typeof renderSelect==='function')renderSelect()});document.querySelectorAll('.sheet-backdrop').forEach(b=>b.addEventListener('click',e=>{if(e.target===b){b.classList.remove('open');if((b.id==='upgradeSheet'||b.id==='itemsSheet')&&typeof renderSelect==='function')renderSelect()}}));
+$('upgradeOpen').onclick=()=>{renderUpgrade();$('upgradeSheet').classList.add('open')};$('itemsOpen').onclick=()=>{inventoryPage=0;$('salvageStatus').textContent='';$('itemsSheet').classList.add('open');renderSlots();
+ /* Defer the heavy inventory grid to the next frame so the sheet opens instantly. */
+ requestAnimationFrame(function(){try{renderInventory()}catch(e){}})};document.querySelectorAll('.close').forEach(b=>b.onclick=()=>{if(b.dataset.close==='skillsSheet'){closeSkills();return}$(b.dataset.close).classList.remove('open');if((b.dataset.close==='upgradeSheet'||b.dataset.close==='itemsSheet')&&typeof renderSelect==='function')renderSelect()});document.querySelectorAll('.sheet-backdrop').forEach(b=>b.addEventListener('click',e=>{if(e.target===b){if(b.id==='skillsSheet'){closeSkills();return}b.classList.remove('open');if((b.id==='upgradeSheet'||b.id==='itemsSheet')&&typeof renderSelect==='function')renderSelect()}}));
 function evolutionRequirements(){const prog=progressFor(chosenTank),rank=stageFor(chosenTank);if(!rank.next)return null;return {level:{value:prog.level,need:rank.cap,label:'Level'},valorMedals:{value:state.valorMedals,need:rank.cost.valorMedals||0,label:'Valor Medals'},royalSeals:{value:state.royalSeals,need:rank.cost.royalSeals||0,label:'Royal Seals'},prestigeEmblems:{value:prestigeEmblemTotal(),need:rank.cost.prestigeEmblems||0,label:'Prestige Emblems'},scrap:{value:Math.floor(state.scrap),need:rank.cost.scrap||0,label:'Scrap'}}}
 function canEvolve(){const req=evolutionRequirements();return !!req&&Object.values(req).every(r=>r.value>=r.need)}
 function renderEvolution(){const prog=progressFor(chosenTank),rank=stageFor(chosenTank),order=['squire','knight','paladin','godking'],idx=order.indexOf(prog.stage);$('currentRankBadge').className='rank-badge '+prog.stage;$('currentRankBadge').textContent=rank.name;$('evoPath').innerHTML=order.map((key,i)=>`${i?'<span class="evo-arrow">›</span>':''}<span class="evo-step ${i<idx?'complete':i===idx?'current':''}">${EVOLUTION_STAGES[key].name}<br>Lv ${EVOLUTION_STAGES[key].cap}</span>`).join('');const req=evolutionRequirements();if(!req){$('evoRequirements').innerHTML='<div class="max-rank">A God King reigns eternal — max Lv 100</div>';$('evolveBtn').hidden=true;$('evolveNudge').hidden=true;return}$('evolveBtn').hidden=false;$('evoRequirements').innerHTML=Object.values(req).map(r=>`<div class="requirement ${r.value>=r.need?'met':''}"><span class="req-mark">${r.value>=r.need?'✓':'·'}</span><span>${r.label} ${r.value} / ${r.need}</span></div>`).join('');$('evolveBtn').disabled=!canEvolve();$('evolveBtn').textContent='EVOLVE TO '+EVOLUTION_STAGES[rank.next].name.toUpperCase();const short3=Object.values(req).filter(function(r){return r.value<r.need});const evn=$('evolveNudge');if(!short3.length){evn.hidden=true}else{const names=short3.map(function(r){return r.label}).join(' & ');const fk=short3[0].label==='Royal Seals'?'seals':short3[0].label==='Valor Medals'?'valor':short3[0].label==='Scrap'?'scrap':'';evn.hidden=false;evn.innerHTML='⚙ Need '+names+'? <b>Visit the Royal Shop ›</b>';evn.onclick=function(){if(fk)triggerFlash(fk);openStore()}}}
@@ -6973,13 +7012,34 @@ function renderInventory(){
  $('salvageAll').disabled=!bulk.length;$('salvageAll').innerHTML='<strong>Scrap Unused Gears</strong><span>'+(bulk.length?bulk.length+' unequipped · ⚙ '+fmtN(bulkValue)+' Scrap':'No unused gears')+'</span>';
  setT('lootBadge',total)
 }
-function renderItems(){$('slots').innerHTML=slots.map(slotHTML).join('');$('slots').querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>{if(b.dataset.act==='rankup')rankUpSlot(b.dataset.slot);else prestigeSlot(b.dataset.slot)});const gsEl=$('gearSummary');if(gsEl){const gp=slots.reduce((a,s)=>a+Math.round(slotPower(s)),0),eqN=slots.filter(s=>state.equipped[s]).length;gsEl.innerHTML='<div class="gs-stat"><span class="gs-label">Gear Power</span><b class="gs-value">+'+gp+'</b></div><div class="gs-stat"><span class="gs-label">Relics Equipped</span><b class="gs-value">'+eqN+' / 6</b></div><div class="gs-stat"><span class="gs-label">Scrap in Vault</span><b class="gs-value">⚙ '+fmtN(Math.floor(state.scrap))+'</b></div>'}let counts={};Object.values(state.equipped).filter(Boolean).forEach(i=>counts[i.kingdom]=(counts[i.kingdom]||0)+1);let best=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];const pipsN=best?best[1]:0;let pips='<span class="set-pips" aria-hidden="true">';for(let p=0;p<6;p++)pips+='<i class="'+(p<pipsN?'on':'')+'"></i>';pips+='</span>';$('setBox').innerHTML=(best?`<b>${byK(best[0]).name} set • ${best[1]}/6 pieces</b>`+pips+`<br>2: +8% kingdom power &nbsp; 4: signature effect +25% &nbsp; 6: starts battle with 50% ULT`:'Equip two pieces from one kingdom to awaken its set bonus.')+'<br>'+prestigeSetLine();renderInventory()}
+/* LIGHTWEIGHT: re-render only the 6 gear slots + summary + auto-forge label.
+ * Skips the expensive inventory grid rebuild — use after rank/prestige/forge
+ * actions that don't touch the inventory. */
+function renderSlots(){
+ try{const afBtn=$('autoForge');if(afBtn){const plan=autoForgePlan();const allMax=slots.every(function(s){return gearRankOf(s)>=GEAR_RANK_MAX});
+  if(allMax){afBtn.disabled=true;afBtn.textContent='🔨 AUTO-FORGE · ALL MAXED'}
+  else if(plan.upgrades<1){afBtn.disabled=true;afBtn.textContent='🔨 AUTO-FORGE · NOT ENOUGH SCRAP'}
+  else{afBtn.disabled=false;afBtn.textContent='🔨 AUTO-FORGE · +'+plan.upgrades+' RANKS · '+fmtN(plan.spent)+' SCRAP'}}}catch(e){}
+ $('slots').innerHTML=slots.map(slotHTML).join('');
+ $('slots').querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>{if(b.dataset.act==='rankup')rankUpSlot(b.dataset.slot);else prestigeSlot(b.dataset.slot)});
+ const gsEl=$('gearSummary');
+ if(gsEl){const gp=slots.reduce((a,s)=>a+Math.round(slotPower(s)),0),eqN=slots.filter(s=>state.equipped[s]).length;
+  gsEl.innerHTML='<div class="gs-stat"><span class="gs-label">Gear Power</span><b class="gs-value">+'+gp+'</b></div><div class="gs-stat"><span class="gs-label">Relics Equipped</span><b class="gs-value">'+eqN+' / 6</b></div><div class="gs-stat"><span class="gs-label">Scrap in Vault</span><b class="gs-value">⚙ '+fmtN(Math.floor(state.scrap))+'</b></div>'}
+}
+function renderItems(){
+ /* AUTO-FORGE button: refresh label from the live plan. */
+ try{const afBtn=$('autoForge');if(afBtn){const plan=autoForgePlan();const allMax=slots.every(function(s){return gearRankOf(s)>=GEAR_RANK_MAX});
+  if(allMax){afBtn.disabled=true;afBtn.textContent='🔨 AUTO-FORGE · ALL MAXED'}
+  else if(plan.upgrades<1){afBtn.disabled=true;afBtn.textContent='🔨 AUTO-FORGE · NOT ENOUGH SCRAP'}
+  else{afBtn.disabled=false;afBtn.textContent='🔨 AUTO-FORGE · +'+plan.upgrades+' RANKS · '+fmtN(plan.spent)+' SCRAP'}}}catch(e){}
+ $('slots').innerHTML=slots.map(slotHTML).join('');$('slots').querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>{if(b.dataset.act==='rankup')rankUpSlot(b.dataset.slot);else prestigeSlot(b.dataset.slot)});const gsEl=$('gearSummary');if(gsEl){const gp=slots.reduce((a,s)=>a+Math.round(slotPower(s)),0),eqN=slots.filter(s=>state.equipped[s]).length;gsEl.innerHTML='<div class="gs-stat"><span class="gs-label">Gear Power</span><b class="gs-value">+'+gp+'</b></div><div class="gs-stat"><span class="gs-label">Relics Equipped</span><b class="gs-value">'+eqN+' / 6</b></div><div class="gs-stat"><span class="gs-label">Scrap in Vault</span><b class="gs-value">⚙ '+fmtN(Math.floor(state.scrap))+'</b></div>'}let counts={};Object.values(state.equipped).filter(Boolean).forEach(i=>counts[i.kingdom]=(counts[i.kingdom]||0)+1);let best=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];const pipsN=best?best[1]:0;let pips='<span class="set-pips" aria-hidden="true">';for(let p=0;p<6;p++)pips+='<i class="'+(p<pipsN?'on':'')+'"></i>';pips+='</span>';$('setBox').innerHTML=(best?`<b>${byK(best[0]).name} set • ${best[1]}/6 pieces</b>`+pips+`<br>2: +8% kingdom power &nbsp; 4: signature effect +25% &nbsp; 6: starts battle with 50% ULT`:'Equip two pieces from one kingdom to awaken its set bonus.')+'<br>'+prestigeSetLine();renderInventory()}
 function equipItem(id){let idx=state.inventory.findIndex(i=>String(i.id)===String(id)); /* item ids are numbers from drops/chests but strings from login rewards — compare as strings or login gear can never equip */if(idx<0)return;let item=state.inventory.splice(idx,1)[0],old=state.equipped[item.slot];if(old)state.inventory.push(old);state.equipped[item.slot]=item;let prev=state.maxHp,prevShield=state.maxShield;state.maxHp=playerMaxHp();state.hp=Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-prev));state.maxShield=shieldCapacity();state.shield=Math.min(state.maxShield,state.shield+Math.max(0,state.maxShield-prevShield));sfx('coin');renderItems();updateHUD()}
 function salvageItem(id){const idx=state.inventory.findIndex(i=>String(i.id)===String(id));if(idx<0)return;const item=state.inventory[idx];if(itemIsEquipped(item))return;const gained=salvageValue(item);state.inventory.splice(idx,1);state.scrap+=gained;sfx('coin');$('salvageStatus').textContent='Salvaged '+item.rarity+' '+item.slot+' for '+gained+' Scrap.';renderItems();updateHUD();progressSaveSoon()}
 function scrapUnusedGears(){let gained=0,count=0;const kept=[];state.inventory.forEach(function(item){if(!itemIsEquipped(item)){gained+=salvageValue(item);count++}else kept.push(item)});if(!count)return;state.inventory=kept;state.scrap+=gained;inventoryPage=0;sfx('coin');$('salvageStatus').textContent='Scrapped '+count+' unused gear'+(count===1?'':'s')+' for '+fmtN(gained)+' Scrap.';renderItems();updateHUD();progressSaveSoon()}
 $('inventory').onclick=function(e){const salvage=e.target.closest('[data-salvage-id]'),equip=e.target.closest('[data-equip-id]');if(salvage)salvageItem(salvage.dataset.salvageId);else if(equip)equipItem(equip.dataset.equipId)};
 $('inventoryPrev').onclick=function(){if(inventoryPage>0){inventoryPage--;renderInventory()}};$('inventoryNext').onclick=function(){if((inventoryPage+1)*INVENTORY_PAGE_SIZE<state.inventory.length){inventoryPage++;renderInventory()}};$('salvageAll').onclick=scrapUnusedGears;
 $('autoEquip').onclick=()=>{slots.forEach(slot=>{let candidates=state.inventory.filter(i=>i.slot===slot).concat(state.equipped[slot]?[state.equipped[slot]]:[]);if(!candidates.length)return;candidates.sort((a,b)=>itemScore(b)-itemScore(a));let best=candidates[0],all=candidates.slice(1);state.equipped[slot]=best;state.inventory=state.inventory.filter(i=>i.slot!==slot).concat(all)});state.maxHp=playerMaxHp();state.hp=Math.min(state.hp,state.maxHp);state.maxShield=shieldCapacity();state.shield=Math.min(state.shield,state.maxShield);sfx('coin');inventoryPage=0;renderItems();updateHUD()};
+$('autoForge').onclick=()=>{autoForgeGears()};
 $('pauseBtn').onclick=()=>{if(!state.running||state.screen!=='battle'||state.playerDead||$('pauseOverlay').classList.contains('open'))return;try{$('pauseWaveLine').textContent='Wave '+state.wave+' · '+byT(chosenTank).name+' · '+byK(chosenK).name}catch(e){}state.paused=true;$('pauseOverlay').classList.add('open')};
 $('resumeBtn').onclick=()=>{state.paused=false;$('pauseOverlay').classList.remove('open');state.last=performance.now()};
 $('pauseGarageBtn').onclick=()=>{state.paused=false;state.running=false;$('pauseOverlay').classList.remove('open');setScreen('select');renderSelect();loginPopupIfDue()};
@@ -8041,19 +8101,52 @@ function upgradeSkill(key){
  if(lvl>=SKILL_MAX||poolShards(key)<cost){sfx('deny');return}
  shardPools()[key]=poolShards(key)-cost;skillsFor(tid)[key]=lvl+1;syncShardMirror();
  sfx('coin');
- renderSkills();progressSave();
+ renderSkills();try{if($('skillsSheet').classList.contains('open'))renderSkillsSheet()}catch(e){}progressSave();
 }
 let skillsReturnTo='select',skillsPauseResume=false,shardConvFrom='parry',shardConvTo='charge';
+/* LIGHTWEIGHT in-battle skills sheet: compact rows, no exchange UI, no milestone
+ * details — just what you need for quick upgrades mid-battle. */
+function renderSkillsSheet(){
+ const tid=chosenTank,t=byT(tid);
+ const sub=$('skillsSheetSub');if(sub)sub.textContent=t.name+' · '+t.role;
+ setT('skillsSheetShardCount',totalShards());
+ const list=$('skillsSheetList');if(!list)return;
+ list.innerHTML=SKILL_KEYS.map(function(key){
+  const def=SKILL_DEFS[key],lvl=skillLvl(tid,key),avail=skillAvailable(tid,key),cost=skillUpgradeCost(lvl),maxed=lvl>=SKILL_MAX;
+  const btn=!avail?'<span class="skill-locked">'+(key==='charge'?'VANGUARD ONLY':'ARTILLERY ONLY')+'</span>'
+   :maxed?'<span class="skill-maxed">★ MAX</span>'
+   :'<button class="skill-up" data-skill="'+key+'"'+(poolShards(key)<cost?' disabled':'')+'>UP '+cost+' <img src="assets/prod2-skill-shard.webp" alt=""></button>';
+  return '<div class="skill-row'+(avail?'':' locked')+'"><div class="skill-icon">'+SKILL_ICONS[key]+'</div><div class="skill-row-info"><b>'+def.name+'</b><span>Lv '+lvl+'/'+SKILL_MAX+'</span></div>'+btn+'</div>';
+ }).join('');
+ list.querySelectorAll('.skill-up').forEach(function(b){b.onclick=function(){upgradeSkill(b.dataset.skill);renderSkillsSheet()}});
+ const autoBtn=$('skillsSheetAutoUp');
+ if(autoBtn){
+  const plan=autoUpgradePlan(tid);
+  const allMax=SKILL_KEYS.every(function(k){return !skillAvailable(tid,k)||skillLvl(tid,k)>=SKILL_MAX});
+  if(allMax){autoBtn.disabled=true;autoBtn.textContent='⚡ AUTO UPGRADE · ALL MASTERED'}
+  else if(plan.levels<1){autoBtn.disabled=true;autoBtn.textContent='⚡ AUTO UPGRADE · NOT ENOUGH SHARDS'}
+  else{autoBtn.disabled=false;autoBtn.textContent='⚡ AUTO UPGRADE · +'+plan.levels+' LVLS · '+plan.spent+' SHARDS'}
+  autoBtn.onclick=function(){autoUpgradeSkills();renderSkillsSheet()};
+ }
+}
 function openSkills(from){
  skillsReturnTo=from;
- if(from==='battle'){state.paused=true;skillsPauseResume=$('pauseOverlay').classList.contains('open');$('pauseOverlay').classList.remove('open')}
+ if(from==='battle'){
+  /* In-battle: open as lightweight overlay sheet, stay on battle screen. */
+  state.paused=true;skillsPauseResume=$('pauseOverlay').classList.contains('open');$('pauseOverlay').classList.remove('open');
+  renderSkillsSheet();$('skillsSheet').classList.add('open');return;
+ }
  document.querySelectorAll('.sheet-backdrop.open').forEach(function(b){b.classList.remove('open')});
  renderSkills();setScreen('skills');
 }
 function closeSkills(){
- setScreen(skillsReturnTo);
- if(skillsReturnTo==='battle'){updateHUD();if(skillsPauseResume){$('pauseOverlay').classList.add('open')}else{state.paused=false}armLoop()}
- else{try{renderSelect()}catch(e){}}
+ if(skillsReturnTo==='battle'){
+  $('skillsSheet').classList.remove('open');
+  updateHUD();if(skillsPauseResume){$('pauseOverlay').classList.add('open')}else{state.paused=false}armLoop();
+ }else{
+  setScreen(skillsReturnTo);
+  try{renderSelect()}catch(e){}
+ }
  skillsPauseResume=false;
 }
 $('skillsGarageBtn').onclick=function(){sfx('coin');openSkills('select')};
