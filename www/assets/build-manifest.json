@@ -1,6 +1,6 @@
 {
-  "build": "677e9f31bd",
-  "html": "4b67e617e7",
+  "build": "0b980108c4",
+  "html": "ae6ed509c6",
   "assetCount": 220,
   "assets": [
     {
@@ -260,8 +260,8 @@
     },
     {
       "file": "assets/evo-knight-ironhold-artillery.webp",
-      "bytes": 237738,
-      "md5": "01aaa56aa110a3f74f6d8c87855c9c52"
+      "bytes": 504266,
+      "md5": "ad7797840c346c9bb2225c940d308a86"
     },
     {
       "file": "assets/evo-knight-ironhold-battle.webp",
