@@ -1,6 +1,6 @@
 {
-  "build": "9cb3c07de3",
-  "html": "06792c54ef",
+  "build": "817d7b7f00",
+  "html": "afd18eb042",
   "assetCount": 220,
   "assets": [
     {
@@ -310,8 +310,8 @@
     },
     {
       "file": "assets/evo-knight-voltspire.webp",
-      "bytes": 311560,
-      "md5": "cb3c1f1374f979ebbf33d4c59e579cba"
+      "bytes": 502244,
+      "md5": "4f025e8afd2e3c1322d09eca8fd96303"
     },
     {
       "file": "assets/evo-paladin-bloom-artillery-battle.webp",
