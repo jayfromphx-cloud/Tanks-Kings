@@ -213,6 +213,11 @@ try {
     setTimeout(function () { clearInterval(hookTimer); }, 10000);
 
     document.addEventListener('pause', pushCloudSave, false);
+    /* 2026-10-10: native-backed background/foreground signals (stock Capacitor
+       fires DOM 'pause'/'resume' on real backgrounding, both platforms).
+       Suspend the shared AudioContext on lose-focus; resume on regain. */
+    document.addEventListener('pause', function(){try{if(typeof tkAudioLoseFocus==='function')tkAudioLoseFocus();}catch(e){}}, false);
+    document.addEventListener('resume', function(){try{if(typeof tkAudioRegainFocus==='function')tkAudioRegainFocus();}catch(e){}}, false);
     window.addEventListener('tkCloudSaveChanged', function () {
       // Another device pushed — pull on next foreground
       console.log('[TK] Cloud save changed remotely');

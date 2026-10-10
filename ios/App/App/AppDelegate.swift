@@ -47,8 +47,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        // 2026-10-10: Notification Center / Control Center pull-down fires NO
+        // web event, so suspend the shared Web Audio context from native here.
+        if let vc = window?.rootViewController as? CAPBridgeViewController {
+            vc.bridge?.webView?.evaluateJavaScript("try{if(typeof tkAudioLoseFocus==='function')tkAudioLoseFocus();}catch(e){}", completionHandler: nil)
+        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -64,6 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Re-assert the playback category: iOS may have reset the audio
         // session while we were backgrounded or interrupted.
         configureAudioSession()
+        // 2026-10-10: regain focus after pull-down / background — resume audio.
+        if let vc = window?.rootViewController as? CAPBridgeViewController {
+            vc.bridge?.webView?.evaluateJavaScript("try{if(typeof tkAudioRegainFocus==='function')tkAudioRegainFocus();}catch(e){}", completionHandler: nil)
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

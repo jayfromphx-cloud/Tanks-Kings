@@ -5525,8 +5525,8 @@ function initAudio(){
  }
  if(audioCtx.state!=='running')audioCtx.resume().catch(()=>{}); /* 2026-10-01: resume on ANY non-running state — iOS also uses the non-standard 'interrupted' state after calls/Siri */
  if(!audioCtx.__tkBgmWatch){audioCtx.__tkBgmWatch=true;
-  audioCtx.addEventListener('statechange',function(){try{if(typeof __tkLog==='function')__tkLog('audio:statechange',{state:audioCtx.state});}catch(e){}if(audioCtx.state==='running'){pinAudioSessionCategory(true);wireBgmSources();}else if(audioCtx.state!=='closed'){audioCtx.resume().catch(()=>{});}});
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)bgmRecover();},{passive:true});
+  audioCtx.addEventListener('statechange',function(){try{if(typeof __tkLog==='function')__tkLog('audio:statechange',{state:audioCtx.state});}catch(e){}if(audioCtx.state==='running'){pinAudioSessionCategory(true);wireBgmSources();}else if(audioCtx.state!=='closed'&&!tkBgSuspended){audioCtx.resume().catch(()=>{});}});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden){tkAudioRegainFocus();}else{tkAudioLoseFocus();}},{passive:true});
   window.addEventListener('pageshow',function(){bgmRecover();});
  }
  pinAudioSessionCategory(false);wireBgmSources();
@@ -5595,7 +5595,7 @@ async function playBgm(which,immediate){
   let buf=null;
   try{buf=await ensureBgmBuffer(which);}catch(e){return;}
   if(token!==bgmPlayToken||!buf)return;
-  if(audioCtx.state!=='running'){try{await audioCtx.resume();}catch(e){}}
+  if(audioCtx.state!=='running'&&!tkBgSuspended){try{await audioCtx.resume();}catch(e){}}
   if(token!==bgmPlayToken)return;
   const now=audioCtx.currentTime,fade=immediate?0.1:0.9;
   for(const k in bgmSources){if(k!==which)bgmStopTrack(k,fade,now);}
@@ -5621,6 +5621,22 @@ function applyBgmVol(){
 function refreshBgmForSoundToggle(){
   if(!bgmStarted)return;
   syncBgmBusGain();
+}
+/* 2026-10-10: focus-based audio pause. All audio (BGM loops, SFX, ULT/cannon
+   one-shots) renders in this single AudioContext, so suspend() silences
+   everything and resume() restores in place — BGM loop position, mid-crossfade
+   ramps, and slider volumes all survive. tkBgSuspended gates every resume
+   path so nothing auto-resumes while unfocused. */
+let tkBgSuspended=false;
+function tkAudioLoseFocus(){
+ if(tkBgSuspended||!audioCtx)return;tkBgSuspended=true;
+ try{audioCtx.suspend().catch(function(){});}catch(e){}
+ try{if(typeof __tkLog==='function')__tkLog('audio:lose_focus_suspend');}catch(e){}
+}
+function tkAudioRegainFocus(){
+ if(!tkBgSuspended)return;tkBgSuspended=false;
+ try{if(typeof __tkLog==='function')__tkLog('audio:regain_focus_resume');}catch(e){}
+ bgmRecover();
 }
 function bgmRecover(){
   pinAudioSessionCategory(false);
@@ -5658,7 +5674,7 @@ function sfx(type){
  try{
   if(!soundOn)return;var ctx=initAudio();if(!ctx)return;
   if(ctx.state==='running'){try{playSfxNow(type)}catch(e){}}
-  else ctx.resume().then(function(){if(soundOn){try{playSfxNow(type)}catch(e){}}}).catch(function(){});
+  else if(!tkBgSuspended)ctx.resume().then(function(){if(soundOn&&!tkBgSuspended){try{playSfxNow(type)}catch(e){}}}).catch(function(){});
  }catch(e){}
 }
 function bossRoar(){if(!soundOn)return;const ctx=initAudio();if(!ctx)return;const t=audioCtx.currentTime,duration=.92,master=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();filter.type='lowpass';filter.frequency.setValueAtTime(420,t);filter.frequency.exponentialRampToValueAtTime(110,t+duration);filter.Q.value=2.2;master.gain.setValueAtTime(.0001,t);master.gain.exponentialRampToValueAtTime(.24,t+.05);master.gain.setValueAtTime(.24,t+.28);master.gain.exponentialRampToValueAtTime(.0001,t+duration);filter.connect(master).connect(audioSfxBus);[64,43].forEach((frequency,index)=>{const o=audioCtx.createOscillator();o.type=index?'triangle':'sawtooth';o.frequency.setValueAtTime(frequency,t);o.frequency.exponentialRampToValueAtTime(index?28:34,t+duration);o.detune.setValueAtTime(index?7:-8,t);o.connect(filter);o.start(t);o.stop(t+duration)});const buffer=audioCtx.createBuffer(1,Math.ceil(audioCtx.sampleRate*duration),audioCtx.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*(1-i/data.length);const noise=audioCtx.createBufferSource();noise.buffer=buffer;noise.connect(filter);noise.start(t);noise.stop(t+duration)}
