@@ -5815,8 +5815,9 @@ function enemyKingdomForWave(){const playerKingdom=byT(chosenTank).k,rivals=king
    405 = mean base HP of the 10 tanks; lvl curve models an average build's level from scrap income;
    wave*24 approximates gear HP (item power*3 across the slots a typical build equips). */
 const ENEMY_TYPE_STATS={grunt:{hpMult:1,dmgMult:1,fireInterval:1.9,scrapMult:1},swift:{hpMult:.7,dmgMult:1.1,fireInterval:1.4,scrapMult:1.25},heavy:{hpMult:1.6,dmgMult:1.25,fireInterval:2.4,scrapMult:1.5},boss:{hpMult:1,dmgMult:1,fireInterval:1.5,scrapMult:1}};
-function enemyBaseHp(wave){var over=Math.max(0,wave-5);return Math.round(85+wave*16+over*over*1.6)}
-function enemyMaxHpFor(wave,type){if(type==='boss'){return Math.round(enemyBaseHp(wave)*5.5*(1+.15*(wave/10-1)))}return Math.round(enemyBaseHp(wave)*ENEMY_TYPE_STATS[type].hpMult)}
+function enemyBaseHp(wave){var over=Math.max(0,wave-5);return Math.round(85+wave*16+over*over*1.356)}
+function enemyBaseHpBoss(wave){var over=Math.max(0,wave-5);return Math.round(85+wave*16+over*over*1.6)}
+function enemyMaxHpFor(wave,type){if(type==='boss'){return Math.round(enemyBaseHpBoss(wave)*5.5*(1+.15*(wave/10-1)))}return Math.round(enemyBaseHp(wave)*ENEMY_TYPE_STATS[type].hpMult)}
 function enemyBaseDmg(wave){var over=Math.max(0,wave-5);return Math.round(12+wave*2.2+over*over*.14)}
 /* per-hit clamp: no single hit exceeds 25% of the player's LIVE max HP */
 function enemyHitDamage(wave,type){if(state.mode==='tower')return towerHitDamage(state.floor,type);if(state.mode==='dungeon')return dungeonHitDamage(type);var raw=Math.round(enemyBaseDmg(wave)*ENEMY_TYPE_STATS[type].dmgMult);return Math.min(raw,Math.round(Math.max(1,state.maxHp||playerMaxHp())*.25))}
