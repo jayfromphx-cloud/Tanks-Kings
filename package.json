@@ -1,8 +1,7 @@
 {
   "name": "tanks-kings-native",
-  "version": "1.0.0",
+  "version": "1.0",
   "description": "Tanks & Kings \u2014 side-scrolling idle battler",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
