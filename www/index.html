@@ -6742,6 +6742,8 @@ $('meleeBtn').onclick=function(){
     if(tryMeleeRam()){
       try{sfx('hit')}catch(e){}
       try{if(navigator&&navigator.vibrate)navigator.vibrate(18)}catch(e){}
+      /* Tutorial fix: advance on successful CHARGE (step 0 waits for victory, but user expects charge-tap to progress) */
+      try{if(typeof tutorialAt==='function'&&tutorialAt(0))tutorialBattleVictory(state.enemy);}catch(e){}
     } else if((state.meleeCd||0)>0){
       showToast('Charge recharging… '+Math.ceil(state.meleeCd)+'s');
       try{var mb=he('meleeBtn');if(mb){mb.classList.remove('tap-shake');void mb.offsetWidth;mb.classList.add('tap-shake');setTimeout(function(){try{mb.classList.remove('tap-shake')}catch(e){}},360)}}catch(e){}
@@ -10281,7 +10283,7 @@ function tutorialAdvance(eventName){
 }
 function tutorialTimeout(stepIndex){
  if(tutorialState.completed||tutorialState.step!==stepIndex)return;tutorialTrack('step_timeout',TUTORIAL_STEPS[stepIndex].waitForEvent);
- if(stepIndex===0){var rammed=false;if(state.enemy){try{rammed=tryMeleeRam();}catch(e){}}if(!rammed)tutorialBattleVictory(state.enemy);}
+ if(stepIndex===0){tutorialBattleVictory(state.enemy);}
  else if(stepIndex===1){var fc=document.querySelector('#factionGrid .faction-card');if(fc)fc.click();else tutorialAdvance('faction-picked')}
  else if(stepIndex===2){var tc=document.querySelector('#tankGrid .tank-card');if(tc)tc.click();else tutorialAdvance('tank-picked')}
  else if(stepIndex===3)tutorialOpenShop();
@@ -10319,7 +10321,7 @@ function tutorialBattleVictory(enemy){
     victory banner; the next beat owns clearing/repositioning the coach. */
  var battleScreen=$('battleScreen');if(battleScreen)battleScreen.classList.add('tutorial-layout-boot');
  var splash=$('tutorialVictory');if(splash)splash.classList.add('show');
- setTimeout(function(){if(splash)splash.classList.remove('show');if(battleScreen)battleScreen.classList.remove('tutorial-layout-boot');state.paused=false;tutorialAdvance('tutorial:victory')},850);
+ setTimeout(function(){if(!tutorialAt(0))return;if(splash)splash.classList.remove('show');if(battleScreen)battleScreen.classList.remove('tutorial-layout-boot');state.paused=false;tutorialAdvance('tutorial:victory')},850);
 }
 function tutorialOpenShop(){
  if(!tutorialAt(3))return;storeTab='featured';tutorialTrack('action','campaign-picked');openStore();tutorialAdvance('campaign-picked');
