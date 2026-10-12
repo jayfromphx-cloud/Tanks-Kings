@@ -1,7 +1,7 @@
 {
  "build": "4a8858666b",
  "html": "a98c3c13d6",
- "assetCount": 225,
+ "assetCount": 226,
  "assets": [
   {
    "file": "assets/battle-environment-key-art.webp",
@@ -502,6 +502,11 @@
    "file": "assets/godskin-pyra.webp",
    "bytes": 289374,
    "md5": "3faff16db506a76060e9b1cbfabd9673"
+  },
+  {
+   "file": "assets/godskin-season1.webp",
+   "bytes": 1685800,
+   "md5": "606cc17762ae82224a3dad91f297fc51"
   },
   {
    "file": "assets/godskin-solarion.webp",
