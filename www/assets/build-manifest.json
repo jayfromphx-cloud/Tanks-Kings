@@ -1,7 +1,7 @@
 {
-  "build": "b086ebcb6e",
-  "html": "4ac5b30312",
-  "assetCount": 228,
+  "build": "4a7f2d8047",
+  "html": "c5c05bdbf1",
+  "assetCount": 230,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -169,6 +169,11 @@
       "md5": "b31fbc905dfa73b14da208b3cd37cd30"
     },
     {
+      "file": "assets/evo-ascendant-bloomvale-vanguard.png",
+      "bytes": 2030656,
+      "md5": "9b73af930843c4eb7482bacacd056d32"
+    },
+    {
       "file": "assets/evo-ascendant-ember-artillery.png",
       "bytes": 2696499,
       "md5": "c222cb4bc7cd32239f2c0a24a10ebeb1"
@@ -197,6 +202,11 @@
       "file": "assets/evo-ascendant-voltspire-artillery.png",
       "bytes": 3147463,
       "md5": "7f405a5069b4d9a3397c55a5844fccac"
+    },
+    {
+      "file": "assets/evo-ascendant-voltspire-vanguard.png",
+      "bytes": 1654374,
+      "md5": "c376a2522da32267415e39dcf5c65623"
     },
     {
       "file": "assets/evo-godking-bloom-artillery.png",
@@ -1144,5 +1154,5 @@
       "md5": "e0e5b6afe5c5501f24587976aa441844"
     }
   ],
-  "audio": {}
+  "audio": []
 }
