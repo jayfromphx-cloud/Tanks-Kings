@@ -1,7 +1,7 @@
 {
-  "build": "bfec5409b4",
-  "html": "f287796fa9",
-  "assetCount": 227,
+  "build": "b086ebcb6e",
+  "html": "4ac5b30312",
+  "assetCount": 228,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -172,6 +172,11 @@
       "file": "assets/evo-ascendant-ember-artillery.png",
       "bytes": 2696499,
       "md5": "c222cb4bc7cd32239f2c0a24a10ebeb1"
+    },
+    {
+      "file": "assets/evo-ascendant-ember-vanguard.png",
+      "bytes": 1642390,
+      "md5": "faafc2d58d49d9e7eabebe7ed0943633"
     },
     {
       "file": "assets/evo-ascendant-ironhold-artillery.png",
