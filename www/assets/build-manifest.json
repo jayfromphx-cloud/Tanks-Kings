@@ -1,6 +1,6 @@
 {
-  "build": "bfd33242d4",
-  "html": "36ca8a587b",
+  "build": "b73fb777ac",
+  "html": "c4a1aa1bfc",
   "assetCount": 231,
   "assets": [
     {
@@ -195,8 +195,8 @@
     },
     {
       "file": "assets/evo-ascendant-tidereign-artillery.png",
-      "bytes": 1711148,
-      "md5": "b0427623b145590e9d62dd380e287c19"
+      "bytes": 1569889,
+      "md5": "58a0c4ce8f45e0c68be39882df9c7e17"
     },
     {
       "file": "assets/evo-ascendant-tidereign-vanguard.png",
