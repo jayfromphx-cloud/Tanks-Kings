@@ -156,7 +156,7 @@ button:not(:disabled):active{transform:translateY(3px) scale(.975)}
 /* The battlefield art is one continuous composition. It must move as one oversized
    plane: slicing the same image into independently translated bands breaks every
    mountain, fortress and terrain edge where those bands meet. */
-.world-bg .env-scene{position:absolute;z-index:0;left:-8vw;right:-8vw;top:-8vh;bottom:-8vh;background-image:url("assets/battle-environment-key-art.webp");background-size:cover;background-position:center 49%;background-repeat:no-repeat;pointer-events:none;will-change:transform;transform:translate3d(0,0,0);filter:var(--env-filter);backface-visibility:hidden}
+.world-bg .env-scene{position:absolute;z-index:0;left:-8vw;right:-8vw;top:-8vh;bottom:-8vh;background-image:url("assets/battle-environment-key-art.png");background-size:cover;background-position:center 49%;background-repeat:no-repeat;pointer-events:none;will-change:transform;transform:translate3d(0,0,0);filter:var(--env-filter);backface-visibility:hidden}
 /* The scene plane owns every painted feature. No clipped copies or independently
    moving scenery bands are allowed here: the viewport only reveals its overscan. */
 .world-bg:before{z-index:7;inset:0 0 25%;background:linear-gradient(107deg,transparent 0 13%,color-mix(in srgb,var(--env-light) 21%,transparent) 19%,transparent 27% 42%,color-mix(in srgb,var(--env-light) 14%,transparent) 49%,transparent 57% 100%);filter:none;mix-blend-mode:screen;opacity:.62;animation:rayDrift 12s ease-in-out infinite}
@@ -312,7 +312,7 @@ animation:parryRing .55s cubic-bezier(.2,.7,.3,1) forwards}
 
 /* === Ironhold Royal Garage + forged battle HUD === */
 #selectScreen{position:relative;isolation:isolate;background:#05090e;color:#f6f0df}
-#selectScreen:before{content:"";position:fixed;inset:0;z-index:-2;background:url("assets/title-key-art.webp") center 38%/cover no-repeat;filter:saturate(.7) contrast(1.2) brightness(.38)}
+#selectScreen:before{content:"";position:fixed;inset:0;z-index:-2;background:url("assets/title-key-art.png") center 38%/cover no-repeat;filter:saturate(.7) contrast(1.2) brightness(.38)}
 #selectScreen:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 25%,rgba(205,158,63,.12),transparent 34%),linear-gradient(180deg,rgba(4,8,13,.38),rgba(4,8,13,.88) 56%,#05090e 100%);box-shadow:inset 0 0 150px 35px rgba(0,0,0,.82)}
 .select-head{position:relative;padding-top:max(34px,calc(env(safe-area-inset-top) + 20px));padding-bottom:15px;text-align:center}
 .select-head:after{content:"";display:block;width:min(420px,72%);height:1px;margin:15px auto 0;background:linear-gradient(90deg,transparent,#8f6a28,#f1d477,#8f6a28,transparent);box-shadow:0 0 14px rgba(232,190,92,.35)}
@@ -417,7 +417,7 @@ animation:parryRing .55s cubic-bezier(.2,.7,.3,1) forwards}
 .layer-paint{position:absolute;inset:0;width:100%;height:100%}
 .layer-plume svg,.layer-banner svg,.layer-paint svg{width:100%;height:100%;display:block;overflow:visible}
 #characterScreen{position:relative;flex-direction:column;isolation:isolate;background:#05090e;color:#f6f0df;max-height:var(--app-vh,100svh);overflow-y:auto;overflow-x:hidden}
-#characterScreen:before{content:"";position:fixed;inset:0;z-index:-2;background:url("assets/title-key-art.webp") center 32%/cover no-repeat;filter:saturate(.6) contrast(1.18) brightness(.3)}
+#characterScreen:before{content:"";position:fixed;inset:0;z-index:-2;background:url("assets/title-key-art.png") center 32%/cover no-repeat;filter:saturate(.6) contrast(1.18) brightness(.3)}
 #characterScreen:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 18%,rgba(214,169,71,.1),transparent 40%),linear-gradient(180deg,rgba(4,8,13,.55),rgba(4,8,13,.92) 70%,#05090e 100%);box-shadow:inset 0 0 150px 35px rgba(0,0,0,.85)}
 .char-wrap{width:100%;max-width:1080px;margin:0 auto;padding:max(16px,calc(env(safe-area-inset-top) + 8px)) 18px calc(30px + env(safe-area-inset-bottom));position:relative}
 .char-head{display:flex;align-items:center;gap:12px;margin-bottom:2px}
@@ -1442,7 +1442,7 @@ letter-spacing:2.5px}
  filter:drop-shadow(0 18px 10px rgba(0,0,0,.72));}
 .rig-tank{opacity:1!important}
 .battle-stage .combatant img{background:transparent}
-/* Evolved forms: the approved -battle.webp cutouts render solid at full
+/* Evolved forms: the approved -battle.png cutouts render solid at full
    opacity — no blend, backing or filter may ghost or box them. */
 #playerSprite.evo-sprite{opacity:1!important;mix-blend-mode:normal!important;background:transparent!important}
 /* Buttons: one fitted row, never overflow, icons readable (not black discs) */
@@ -1678,7 +1678,7 @@ letter-spacing:2.5px}
 
 /* ---- Celestial tower backdrop on the existing single-plane background system ---- */
 .world-bg[data-kingdom="tower"]{--env-filter:none;--env-sky:#f5e2b0;--env-ground:#241a10;--env-light:#fff3c4;--env-haze:#ffe9ad}
-.world-bg[data-kingdom="tower"] .env-scene{background-image:url("assets/tower-ascent-backdrop.webp");filter:saturate(1.06) contrast(1.06) brightness(.96);background-position:center 42%}
+.world-bg[data-kingdom="tower"] .env-scene{background-image:url("assets/tower-ascent-backdrop.png");filter:saturate(1.06) contrast(1.06) brightness(.96);background-position:center 42%}
 .world-bg[data-kingdom="tower"]:before{opacity:.85}
 
 /* ---- Tower mode select screen ---- */
@@ -2817,10 +2817,10 @@ letter-spacing:2.5px}
   background-position:center!important;
   background-size:contain!important;
 }
-#parryBtn{background-image:url("assets/btn-parry.webp")!important}
-#meleeBtn{background-image:url("assets/btn-melee.webp")!important}
-#missileBtn{background-image:url("assets/btn-missile.webp")!important}
-#ultBtn{background-image:url("assets/btn-ult.webp")!important}
+#parryBtn{background-image:url("assets/btn-parry.png")!important}
+#meleeBtn{background-image:url("assets/btn-melee.png")!important}
+#missileBtn{background-image:url("assets/btn-missile.png")!important}
+#ultBtn{background-image:url("assets/btn-ult.png")!important}
 </style>
 <style id="rarityFramesAAA">
 /* ================= RARITY ART FRAMES — MACHINED JEWEL WELLS (2026-10-02) =================
@@ -4190,10 +4190,10 @@ html,body{background:var(--tk-bg);color:var(--tk-cream)}
   background-repeat:no-repeat!important;
   background-size:contain!important;
 }
-#parryBtn.parry-button{background-image:url("assets/btn-parry.webp")!important}
-#meleeBtn.melee-button{background-image:url("assets/btn-melee.webp")!important}
-#missileBtn.missile-button{background-image:url("assets/btn-missile.webp")!important}
-#ultBtn.ult-button{background-image:url("assets/btn-ult.webp")!important}
+#parryBtn.parry-button{background-image:url("assets/btn-parry.png")!important}
+#meleeBtn.melee-button{background-image:url("assets/btn-melee.png")!important}
+#missileBtn.missile-button{background-image:url("assets/btn-missile.png")!important}
+#ultBtn.ult-button{background-image:url("assets/btn-ult.png")!important}
 /* The painted button faces already include their own symbols. Keep only the
    labels, cooldown/charge arcs, sweep/shine and interaction state overlays. */
 .ability-cluster :is(.parry-icon,.melee-icon,.missile-icon,.ult-icon,.ult-crown){display:none!important}
@@ -4573,8 +4573,8 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   <nav class="menu-topbar title-topbar" aria-label="Royal menu"></nav>
   <div class="title-cloud c1"></div><div class="title-cloud c2"></div><div class="hill h1"></div><div class="hill h2"></div>
   <div class="title-wrap">
-    <img class="title-logo" src="assets/logo.webp" alt="Tanks &amp; Kings" draggable="false">
-    <div class="hero-stage"><picture><source media="(orientation: portrait)" srcset="assets/title-key-art-portrait.webp"><img src="assets/title-key-art.webp" alt="The Ironhold God King facing the Ironhold Vanguard beneath the golden Tanks &amp; Kings title"></picture></div>
+    <img class="title-logo" src="assets/logo.png" alt="Tanks &amp; Kings" draggable="false">
+    <div class="hero-stage"><picture><source media="(orientation: portrait)" srcset="assets/title-key-art-portrait.png"><img src="assets/title-key-art.png" alt="The Ironhold God King facing the Ironhold Vanguard beneath the golden Tanks &amp; Kings title"></picture></div>
     <div class="story">You are the young monarch of a fallen sixth kingdom. Rebuild your royal brigade with tanks from five kingdoms—and unite Tankania.</div>
     <div class="title-actions"><button id="startBtn" class="primary title-btn">Choose Your Faction</button><button class="menu-options-btn title-gear-btn" id="optionsTitleBtn" aria-label="Options"><svg class="gear-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></div>
     <button id="titleLeaderBtn" class="title-leader-btn">♛ View Rankings</button>
@@ -4607,8 +4607,8 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   <div id="seasonBanner" class="season-banner" role="button" tabindex="0" aria-label="Season Pass"></div>
   <div class="mode-cards">
     <article class="mode-card campaign-card" id="campaignCard" role="button" tabindex="0" aria-label="Royal Campaign — Wave Battles">
-      <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-campaign-clean.webp" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-campaign.webp" alt=""></div>
+      <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-campaign-clean.png" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-campaign.png" alt=""></div>
       <h2>Royal Campaign</h2><h3>Wave Battles</h3>
       <p>Play through story chapters and defend the kingdom in escalating waves.</p>
       <span class="mode-recommended">Recommended</span>
@@ -4616,16 +4616,16 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
       <button id="campaignBtn" class="mode-action" aria-hidden="true" tabindex="-1">Royal Campaign</button>
     </article>
     <article class="mode-card tower-card" id="towerCard" role="button" tabindex="0" aria-label="Tower of Gods — Endless">
-      <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-tower-clean.webp" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-tower.webp" alt=""></div>
+      <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-tower-clean.png" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-tower.png" alt=""></div>
       <h2>Tower of Gods</h2><h3>Endless</h3>
       <p>Survive infinite floors. Rise higher, earn greater rewards.</p>
       <div class="mode-best" id="towerBest"></div><div id="towerHonors" class="tower-honors" aria-label="Tower Honors"></div>
       <div class="tower-ctas"><label class="tower-auto-toggle"><input id="autoAscendSelect" type="checkbox" checked> Auto Ascent</label><button id="towerBtn" class="mode-action" aria-hidden="true" tabindex="-1">Tower of Gods</button><button id="towerResumeBtn" class="secondary" hidden></button><button id="towerRankLink" class="tower-rank-link">See how you rank among all knights ›</button></div>
     </article>
     <article class="mode-card glory-card" id="gloryCard" role="button" tabindex="0" aria-label="Battle for Glory — Arena">
-      <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-glory-clean.webp" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-glory-clean.webp" alt=""></div>
+      <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-glory-clean.png" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-glory-clean.png" alt=""></div>
       <h2>Battle for Glory</h2><h3>Arena</h3>
       <p>Compete in PvP battles. Climb the ranked ladder for glory.</p>
       <div class="mode-best" id="gloryBest"></div>
@@ -4654,7 +4654,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
       <div class="glory-best" id="gloryBestLine"></div>
     </div>
     <div class="glory-arena-card">
-      <div class="glory-arena-art"><img src="assets/battle-environment-key-art.webp" alt="The arena awaits"><div class="glory-arena-veil" aria-hidden="true"></div></div>
+      <div class="glory-arena-art"><img src="assets/battle-environment-key-art.png" alt="The arena awaits"><div class="glory-arena-veil" aria-hidden="true"></div></div>
       <button id="gloryFindBtn" class="primary glory-find">⚔ Find Battle</button>
       <p class="glory-note">Prototype: rivals are simulated knights. Online matchmaking arrives with the native app.</p>
     </div>
@@ -4708,7 +4708,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
     </div>
   </div>
 </section>
-<div id="skillsSheet" class="sheet-backdrop"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-head"><div class="sheet-title"><h2>Skill Mastery</h2><div class="sheet-sub" id="skillsSheetSub">Champion skills</div></div><button class="close" data-close="skillsSheet">×</button></div><div class="skills-wallet"><img src="assets/prod2-skill-shard.webp" alt="Skill Shard"><div><b id="skillsSheetShardCount">0</b><span>SKILL SHARDS</span></div></div><button id="skillsSheetAutoUp" class="skill-auto-up" type="button">⚡ AUTO UPGRADE</button><div id="skillsSheetList" class="skills-list"></div></div></div>
+<div id="skillsSheet" class="sheet-backdrop"><div class="sheet"><div class="sheet-handle"></div><div class="sheet-head"><div class="sheet-title"><h2>Skill Mastery</h2><div class="sheet-sub" id="skillsSheetSub">Champion skills</div></div><button class="close" data-close="skillsSheet">×</button></div><div class="skills-wallet"><img src="assets/prod2-skill-shard.png" alt="Skill Shard"><div><b id="skillsSheetShardCount">0</b><span>SKILL SHARDS</span></div></div><button id="skillsSheetAutoUp" class="skill-auto-up" type="button">⚡ AUTO UPGRADE</button><div id="skillsSheetList" class="skills-list"></div></div></div>
 <section id="skillsScreen" class="screen">
   <div class="top-actions"><button id="skillsBackBtn" class="char-back">‹ Back</button><button class="icon-btn soundBtn" aria-label="Toggle sound"></button></div>
   <div class="skills-wrap">
@@ -4717,7 +4717,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
       <h1 id="skillsTankName">Champion</h1>
       <p id="skillsTankSub"></p>
     </div>
-    <div class="skills-wallet"><img src="assets/prod2-skill-shard.webp" alt="Skill Shard"><div><b id="skillsShardCount">0</b><span>SKILL SHARDS</span></div><div class="shard-pools" aria-label="Shards by class"><span class="shard-chip">PARRY <b id="shardCt-parry">0</b></span><span class="shard-chip">CHARGE <b id="shardCt-charge">0</b></span><span class="shard-chip">MISSILE <b id="shardCt-missile">0</b></span><span class="shard-chip">ULTIMATE <b id="shardCt-ult">0</b></span></div><p>Each skill feeds on its own class shards. Bosses and Tower war-gods drop them; trade spares in the Exchange below.</p></div>
+    <div class="skills-wallet"><img src="assets/prod2-skill-shard.png" alt="Skill Shard"><div><b id="skillsShardCount">0</b><span>SKILL SHARDS</span></div><div class="shard-pools" aria-label="Shards by class"><span class="shard-chip">PARRY <b id="shardCt-parry">0</b></span><span class="shard-chip">CHARGE <b id="shardCt-charge">0</b></span><span class="shard-chip">MISSILE <b id="shardCt-missile">0</b></span><span class="shard-chip">ULTIMATE <b id="shardCt-ult">0</b></span></div><p>Each skill feeds on its own class shards. Bosses and Tower war-gods drop them; trade spares in the Exchange below.</p></div>
     <button id="skillsAutoUp" class="skill-auto-up" type="button">⚡ AUTO UPGRADE</button>
     <div id="shardExchange" class="shard-exchange"></div>
     <div id="skillsList" class="skills-list"></div>
@@ -4966,14 +4966,14 @@ const EVOLUTION_STAGES={
 };
 /* Every tank owns stage-keyed visual hooks so per-stage art can replace the base art without changing progression code.
    Knight / Paladin / God King stages swap in the approved evolution designs (all 30): Vanguard tanks use the
-   faction's evo-{stage}-{faction}.webp key art, while Artillery-class tanks (Artillery and Support roles share
-   the artillery hull line) use the separate evo-{stage}-{faction}-artillery.webp set. Garage and character
-   screens show that key art; the battle rig flies the matching transparent -battle.webp cutout cut from the
+   faction's evo-{stage}-{faction}.png key art, while Artillery-class tanks (Artillery and Support roles share
+   the artillery hull line) use the separate evo-{stage}-{faction}-artillery.png set. Garage and character
+   screens show that key art; the battle rig flies the matching transparent -battle.png cutout cut from the
    same design, so each class keeps its own look in battle too. The Knight and Paladin stages keep their aura
    classes; God King adds the prismatic god-aura + divine rays (see .tank-aura.godking). */
 const EVO_FACTION_ART={iron:'ironhold',ember:'ember',volt:'voltspire',bloom:'bloom',tide:'tidereign'};
 /* Generated from assets/build-manifest.json: exact shipped evolution files, never guessed paths. */
-const EVOLUTION_ART_MANIFEST={"godking":{"bloom":{"artillery":{"battleArt":"assets/evo-godking-bloom-artillery.webp","art":"assets/evo-godking-bloom-artillery.webp"},"vanguard":{"battleArt":"assets/evo-godking-bloom.webp","art":"assets/evo-godking-bloom.webp"}},"ember":{"artillery":{"battleArt":"assets/evo-godking-ember-artillery.webp","art":"assets/evo-godking-ember-artillery.webp"},"vanguard":{"battleArt":"assets/evo-godking-ember.webp","art":"assets/evo-godking-ember.webp"}},"ironhold":{"artillery":{"battleArt":"assets/evo-godking-ironhold-artillery.webp","art":"assets/evo-godking-ironhold-artillery.webp"},"vanguard":{"battleArt":"assets/evo-godking-ironhold.webp","art":"assets/evo-godking-ironhold.webp"}},"tidereign":{"artillery":{"battleArt":"assets/evo-godking-tidereign-artillery.webp","art":"assets/evo-godking-tidereign-artillery.webp"},"vanguard":{"battleArt":"assets/evo-godking-tidereign.webp","art":"assets/evo-godking-tidereign.webp"}},"voltspire":{"artillery":{"battleArt":"assets/evo-godking-voltspire-artillery.webp","art":"assets/evo-godking-voltspire-artillery.webp"},"vanguard":{"battleArt":"assets/evo-godking-voltspire.webp","art":"assets/evo-godking-voltspire.webp"}}},"knight":{"bloom":{"artillery":{"battleArt":"assets/evo-knight-bloom-artillery-battle.webp","art":"assets/evo-knight-bloom-artillery.webp"},"vanguard":{"battleArt":"assets/evo-knight-bloom-battle.webp","art":"assets/evo-knight-bloom.webp"}},"ember":{"artillery":{"battleArt":"assets/evo-knight-ember-artillery-battle.webp","art":"assets/evo-knight-ember-artillery.webp"},"vanguard":{"battleArt":"assets/evo-knight-ember-battle.webp","art":"assets/evo-knight-ember.webp"}},"ironhold":{"artillery":{"battleArt":"assets/evo-knight-ironhold-artillery-battle.webp","art":"assets/evo-knight-ironhold-artillery.webp"},"vanguard":{"battleArt":"assets/evo-knight-ironhold-battle.webp","art":"assets/evo-knight-ironhold.webp"}},"tidereign":{"artillery":{"battleArt":"assets/evo-knight-tidereign-artillery-battle.webp","art":"assets/evo-knight-tidereign-artillery.webp"},"vanguard":{"battleArt":"assets/evo-knight-tidereign-battle.webp","art":"assets/evo-knight-tidereign.webp"}},"voltspire":{"artillery":{"battleArt":"assets/evo-knight-voltspire-artillery-battle.webp","art":"assets/evo-knight-voltspire-artillery.webp"},"vanguard":{"battleArt":"assets/evo-knight-voltspire-battle.webp","art":"assets/evo-knight-voltspire.webp"}}},"paladin":{"bloom":{"artillery":{"battleArt":"assets/evo-paladin-bloom-artillery-battle.webp","art":"assets/evo-paladin-bloom-artillery.webp"},"vanguard":{"battleArt":"assets/evo-paladin-bloom-battle.webp","art":"assets/evo-paladin-bloom.webp"}},"ember":{"artillery":{"battleArt":"assets/evo-paladin-ember-artillery-battle.webp","art":"assets/evo-paladin-ember-artillery.webp"},"vanguard":{"battleArt":"assets/evo-paladin-ember-battle.webp","art":"assets/evo-paladin-ember.webp"}},"ironhold":{"artillery":{"battleArt":"assets/evo-paladin-ironhold-artillery-battle.webp","art":"assets/evo-paladin-ironhold-artillery.webp"},"vanguard":{"battleArt":"assets/evo-paladin-ironhold-battle.webp","art":"assets/evo-paladin-ironhold.webp"}},"tidereign":{"artillery":{"battleArt":"assets/evo-paladin-tidereign-artillery-battle.webp","art":"assets/evo-paladin-tidereign-artillery.webp"},"vanguard":{"battleArt":"assets/evo-paladin-tidereign-battle.webp","art":"assets/evo-paladin-tidereign.webp"}},"voltspire":{"artillery":{"battleArt":"assets/evo-paladin-voltspire-artillery-battle.webp","art":"assets/evo-paladin-voltspire-artillery.webp"},"vanguard":{"battleArt":"assets/evo-paladin-voltspire-battle.webp","art":"assets/evo-paladin-voltspire.webp"}}},"ascendant":{"bloom":{"artillery":{"battleArt":"assets/evo-ascendant-bloom-artillery.webp","art":"assets/evo-ascendant-bloom-artillery.webp"}},"ember":{"artillery":{"battleArt":"assets/evo-ascendant-ember-artillery.webp","art":"assets/evo-ascendant-ember-artillery.webp"}},"ironhold":{"artillery":{"battleArt":"assets/evo-ascendant-ironhold-artillery.webp","art":"assets/evo-ascendant-ironhold-artillery.webp"}},"tidereign":{"artillery":{"battleArt":"assets/evo-ascendant-tidereign-artillery.webp","art":"assets/evo-ascendant-tidereign-artillery.webp"}},"voltspire":{"artillery":{"battleArt":"assets/evo-ascendant-voltspire-artillery.webp","art":"assets/evo-ascendant-voltspire-artillery.webp"}}}};
+const EVOLUTION_ART_MANIFEST={"godking":{"bloom":{"artillery":{"battleArt":"assets/evo-godking-bloom-artillery.png","art":"assets/evo-godking-bloom-artillery.png"},"vanguard":{"battleArt":"assets/evo-godking-bloom.png","art":"assets/evo-godking-bloom.png"}},"ember":{"artillery":{"battleArt":"assets/evo-godking-ember-artillery.png","art":"assets/evo-godking-ember-artillery.png"},"vanguard":{"battleArt":"assets/evo-godking-ember.png","art":"assets/evo-godking-ember.png"}},"ironhold":{"artillery":{"battleArt":"assets/evo-godking-ironhold-artillery.png","art":"assets/evo-godking-ironhold-artillery.png"},"vanguard":{"battleArt":"assets/evo-godking-ironhold.png","art":"assets/evo-godking-ironhold.png"}},"tidereign":{"artillery":{"battleArt":"assets/evo-godking-tidereign-artillery.png","art":"assets/evo-godking-tidereign-artillery.png"},"vanguard":{"battleArt":"assets/evo-godking-tidereign.png","art":"assets/evo-godking-tidereign.png"}},"voltspire":{"artillery":{"battleArt":"assets/evo-godking-voltspire-artillery.png","art":"assets/evo-godking-voltspire-artillery.png"},"vanguard":{"battleArt":"assets/evo-godking-voltspire.png","art":"assets/evo-godking-voltspire.png"}}},"knight":{"bloom":{"artillery":{"battleArt":"assets/evo-knight-bloom-artillery-battle.png","art":"assets/evo-knight-bloom-artillery.png"},"vanguard":{"battleArt":"assets/evo-knight-bloom-battle.png","art":"assets/evo-knight-bloom.png"}},"ember":{"artillery":{"battleArt":"assets/evo-knight-ember-artillery-battle.png","art":"assets/evo-knight-ember-artillery.png"},"vanguard":{"battleArt":"assets/evo-knight-ember-battle.png","art":"assets/evo-knight-ember.png"}},"ironhold":{"artillery":{"battleArt":"assets/evo-knight-ironhold-artillery-battle.png","art":"assets/evo-knight-ironhold-artillery.png"},"vanguard":{"battleArt":"assets/evo-knight-ironhold-battle.png","art":"assets/evo-knight-ironhold.png"}},"tidereign":{"artillery":{"battleArt":"assets/evo-knight-tidereign-artillery-battle.png","art":"assets/evo-knight-tidereign-artillery.png"},"vanguard":{"battleArt":"assets/evo-knight-tidereign-battle.png","art":"assets/evo-knight-tidereign.png"}},"voltspire":{"artillery":{"battleArt":"assets/evo-knight-voltspire-artillery-battle.png","art":"assets/evo-knight-voltspire-artillery.png"},"vanguard":{"battleArt":"assets/evo-knight-voltspire-battle.png","art":"assets/evo-knight-voltspire.png"}}},"paladin":{"bloom":{"artillery":{"battleArt":"assets/evo-paladin-bloom-artillery-battle.png","art":"assets/evo-paladin-bloom-artillery.png"},"vanguard":{"battleArt":"assets/evo-paladin-bloom-battle.png","art":"assets/evo-paladin-bloom.png"}},"ember":{"artillery":{"battleArt":"assets/evo-paladin-ember-artillery-battle.png","art":"assets/evo-paladin-ember-artillery.png"},"vanguard":{"battleArt":"assets/evo-paladin-ember-battle.png","art":"assets/evo-paladin-ember.png"}},"ironhold":{"artillery":{"battleArt":"assets/evo-paladin-ironhold-artillery-battle.png","art":"assets/evo-paladin-ironhold-artillery.png"},"vanguard":{"battleArt":"assets/evo-paladin-ironhold-battle.png","art":"assets/evo-paladin-ironhold.png"}},"tidereign":{"artillery":{"battleArt":"assets/evo-paladin-tidereign-artillery-battle.png","art":"assets/evo-paladin-tidereign-artillery.png"},"vanguard":{"battleArt":"assets/evo-paladin-tidereign-battle.png","art":"assets/evo-paladin-tidereign.png"}},"voltspire":{"artillery":{"battleArt":"assets/evo-paladin-voltspire-artillery-battle.png","art":"assets/evo-paladin-voltspire-artillery.png"},"vanguard":{"battleArt":"assets/evo-paladin-voltspire-battle.png","art":"assets/evo-paladin-voltspire.png"}}},"ascendant":{"bloom":{"artillery":{"battleArt":"assets/evo-ascendant-bloom-artillery.png","art":"assets/evo-ascendant-bloom-artillery.png"}},"ember":{"artillery":{"battleArt":"assets/evo-ascendant-ember-artillery.png","art":"assets/evo-ascendant-ember-artillery.png"}},"ironhold":{"artillery":{"battleArt":"assets/evo-ascendant-ironhold-artillery.png","art":"assets/evo-ascendant-ironhold-artillery.png"}},"tidereign":{"artillery":{"battleArt":"assets/evo-ascendant-tidereign-artillery.png","art":"assets/evo-ascendant-tidereign-artillery.png"}},"voltspire":{"artillery":{"battleArt":"assets/evo-ascendant-voltspire-artillery.png","art":"assets/evo-ascendant-voltspire-artillery.png"}}}};
 const evolutionVisualHooks={};
 tanks.forEach(function(t){
  const faction=EVO_FACTION_ART[t.k]||'ironhold',line=t.role==='Vanguard'?'vanguard':'artillery';
@@ -5029,15 +5029,15 @@ function chargeCdMax(){return 10*skillCdMult(skillLvl(chosenTank,'charge'))}
 function missileCdMax(){return 12*skillCdMult(skillLvl(chosenTank,'missile'))}
 function ultSkillFactor(tid){const lvl=skillLvl(tid,'ult');return skillDmgMult(lvl)*(lvl>=10?1.6:lvl>=5?1.25:1)}
 const assetManifest={
- tanks:{bulwark:'assets/tank-ironhold-vanguard.webp',bastion:'assets/tank-ironhold-artillery.webp',cinder:'assets/tank-ember-vanguard.webp',flare:'assets/tank-ember-artillery.webp',zip:'assets/tank-voltspire-vanguard.webp',tesla:'assets/tank-voltspire-artillery.webp',bramble:'assets/tank-bloomvale-vanguard.webp',petal:'assets/tank-bloomvale-artillery.webp',tusk:'assets/tank-tidereign-vanguard.webp',ripple:'assets/tank-tidereign-artillery.webp'},
+ tanks:{bulwark:'assets/tank-ironhold-vanguard.png',bastion:'assets/tank-ironhold-artillery.png',cinder:'assets/tank-ember-vanguard.png',flare:'assets/tank-ember-artillery.png',zip:'assets/tank-voltspire-vanguard.png',tesla:'assets/tank-voltspire-artillery.png',bramble:'assets/tank-bloomvale-vanguard.png',petal:'assets/tank-bloomvale-artillery.png',tusk:'assets/tank-tidereign-vanguard.png',ripple:'assets/tank-tidereign-artillery.png'},
  enemies:{
-  grunt:{iron:'assets/enemy-grunt-ironhold.webp',ember:'assets/enemy-grunt-ember.webp',volt:'assets/enemy-grunt-voltspire.webp',bloom:'assets/enemy-grunt-bloomvale.webp',tide:'assets/enemy-grunt-tidereign.webp'},
-  swift:{iron:'assets/enemy-swift-ironhold.webp',ember:'assets/enemy-swift-ember.webp',volt:'assets/enemy-swift-voltspire.webp',bloom:'assets/enemy-swift-bloomvale.webp',tide:'assets/enemy-swift-tidereign.webp'},
-  heavy:{iron:'assets/enemy-heavy-ironhold.webp',ember:'assets/enemy-heavy-ember.webp',volt:'assets/enemy-heavy-voltspire.webp',bloom:'assets/enemy-heavy-bloomvale.webp',tide:'assets/enemy-heavy-tidereign.webp'},
-  boss:{iron:'assets/enemy-boss-ironhold.webp',ember:'assets/enemy-boss-ember.webp',volt:'assets/enemy-boss-voltspire.webp',bloom:'assets/enemy-boss-bloomvale.webp',tide:'assets/enemy-boss-tidereign.webp'}
+  grunt:{iron:'assets/enemy-grunt-ironhold.png',ember:'assets/enemy-grunt-ember.png',volt:'assets/enemy-grunt-voltspire.png',bloom:'assets/enemy-grunt-bloomvale.png',tide:'assets/enemy-grunt-tidereign.png'},
+  swift:{iron:'assets/enemy-swift-ironhold.png',ember:'assets/enemy-swift-ember.png',volt:'assets/enemy-swift-voltspire.png',bloom:'assets/enemy-swift-bloomvale.png',tide:'assets/enemy-swift-tidereign.png'},
+  heavy:{iron:'assets/enemy-heavy-ironhold.png',ember:'assets/enemy-heavy-ember.png',volt:'assets/enemy-heavy-voltspire.png',bloom:'assets/enemy-heavy-bloomvale.png',tide:'assets/enemy-heavy-tidereign.png'},
+  boss:{iron:'assets/enemy-boss-ironhold.png',ember:'assets/enemy-boss-ember.png',volt:'assets/enemy-boss-voltspire.png',bloom:'assets/enemy-boss-bloomvale.png',tide:'assets/enemy-boss-tidereign.png'}
  },
- ui:{Hull:'assets/icon-hull.webp',Cannon:'assets/icon-cannon.webp',Treads:'assets/icon-treads.webp',Engine:'assets/icon-engine.webp',Plating:'assets/icon-plating.webp',Core:'assets/icon-core.webp'},
- tower:{backdrop:'assets/tower-ascent-backdrop.webp',gate:'assets/tower-gate-portal.webp',gods:{solarion:'assets/tower-boss-solarion.webp',tempestra:'assets/tower-boss-tempestra.webp',tidefather:'assets/tower-boss-tidefather.webp',crag:'assets/tower-boss-crag.webp',pyra:'assets/tower-boss-pyra-hd.webp',frost:'assets/tower-boss-frost-hd.webp',thorn:'assets/tower-boss-thorn-hd.webp',umbra:'assets/tower-boss-umbra-hd.webp',gale:'assets/tower-boss-gale-hd.webp',pontiff:'assets/tower-boss-pontiff.webp'},badges:{10:'assets/tower-badge-10.webp',30:'assets/tower-badge-30.webp',50:'assets/tower-badge-50.webp',100:'assets/tower-badge-100.webp'}}, ult:{bulwark:'assets/ult-tank-ironhold-vanguard.webp',bastion:'assets/ult-tank-ironhold-artillery.webp',cinder:'assets/ult-tank-ember-vanguard.webp',flare:'assets/ult-tank-ember-artillery.webp',zip:'assets/ult-tank-voltspire-vanguard.webp',tesla:'assets/ult-tank-voltspire-artillery.webp',bramble:'assets/ult-tank-bloomvale-vanguard.webp',petal:'assets/ult-tank-bloomvale-artillery.webp',tusk:'assets/ult-tank-tidereign-vanguard.webp',ripple:'assets/ult-tank-tidereign-artillery.webp'},
+ ui:{Hull:'assets/icon-hull.png',Cannon:'assets/icon-cannon.png',Treads:'assets/icon-treads.png',Engine:'assets/icon-engine.png',Plating:'assets/icon-plating.png',Core:'assets/icon-core.png'},
+ tower:{backdrop:'assets/tower-ascent-backdrop.png',gate:'assets/tower-gate-portal.png',gods:{solarion:'assets/tower-boss-solarion.png',tempestra:'assets/tower-boss-tempestra.png',tidefather:'assets/tower-boss-tidefather.png',crag:'assets/tower-boss-crag.png',pyra:'assets/tower-boss-pyra-hd.png',frost:'assets/tower-boss-frost-hd.png',thorn:'assets/tower-boss-thorn-hd.png',umbra:'assets/tower-boss-umbra-hd.png',gale:'assets/tower-boss-gale-hd.png',pontiff:'assets/tower-boss-pontiff.png'},badges:{10:'assets/tower-badge-10.png',30:'assets/tower-badge-30.png',50:'assets/tower-badge-50.png',100:'assets/tower-badge-100.png'}}, ult:{bulwark:'assets/ult-tank-ironhold-vanguard.png',bastion:'assets/ult-tank-ironhold-artillery.png',cinder:'assets/ult-tank-ember-vanguard.png',flare:'assets/ult-tank-ember-artillery.png',zip:'assets/ult-tank-voltspire-vanguard.png',tesla:'assets/ult-tank-voltspire-artillery.png',bramble:'assets/ult-tank-bloomvale-vanguard.png',petal:'assets/ult-tank-bloomvale-artillery.png',tusk:'assets/ult-tank-tidereign-vanguard.png',ripple:'assets/ult-tank-tidereign-artillery.png'},
  ultimateAudio:{
   iron:{mp3:'assets/ult-ironhold.bin'},
   ember:{mp3:'assets/ult-ember.bin'},
@@ -5049,7 +5049,7 @@ const assetManifest={
  impactAudio:'assets/impact.bin',
  missileAudio:'assets/missile.bin',
  parryAudio:'assets/parry.bin',
- frames:{Rare:'assets/frame-rare.webp',Epic:'assets/frame-epic.webp',Legendary:'assets/frame-legendary.webp'}
+ frames:{Rare:'assets/frame-rare.png',Epic:'assets/frame-epic.png',Legendary:'assets/frame-legendary.png'}
 };
 /* Build fingerprint: __BUILD_ID is a content hash of every file under assets/
    (see assets/build-manifest.json), regenerated whenever any asset byte changes.
@@ -5061,16 +5061,16 @@ const assetManifest={
    hand-maintained version tags. On boot the page fetches the manifest with
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
-const __BUILD_ID='4a8858666b';
-const __HTML_V='a98c3c13d6';
+const __BUILD_ID='8222bf5f94';
+const __HTML_V='61dffc1d4d';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
    resolution goes through these helpers before a URL reaches an <img>. */
-const __TK_DEFAULT_PLAYER_ART='assets/tank-ironhold-vanguard.webp';
-const __TK_DEFAULT_ENEMY_ART='assets/enemy-grunt-ironhold.webp';
+const __TK_DEFAULT_PLAYER_ART='assets/tank-ironhold-vanguard.png';
+const __TK_DEFAULT_ENEMY_ART='assets/enemy-grunt-ironhold.png';
 const __TK_INLINE_TANK_FALLBACK='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180"><g fill="#687887" stroke="#e9bb49" stroke-width="8"><rect x="42" y="96" width="238" height="50" rx="22"/><path d="M94 96l20-42h96l25 42M165 54V29h84" fill="none"/></g></svg>');
-const __TK_PACKAGED_ART_FILES=new Set(["assets/battle-environment-key-art.webp","assets/bg-bloom-vale.jpg","assets/bg-ember-wastes.jpg","assets/bg-storm-coast.jpg","assets/bg-volt-highlands.jpg","assets/bgm-honorable-march.bin","assets/bgm-war-pulse.bin","assets/btn-melee.webp","assets/btn-missile.webp","assets/btn-parry.webp","assets/btn-ult.webp","assets/enemy-boss-bloomvale.webp","assets/enemy-boss-ember.webp","assets/enemy-boss-ironhold.webp","assets/enemy-boss-tidereign.webp","assets/enemy-boss-voltspire.webp","assets/enemy-grunt-bloomvale.webp","assets/enemy-grunt-ember.webp","assets/enemy-grunt-ironhold.webp","assets/enemy-grunt-tidereign.webp","assets/enemy-grunt-voltspire.webp","assets/enemy-heavy-bloomvale.webp","assets/enemy-heavy-ember.webp","assets/enemy-heavy-ironhold.webp","assets/enemy-heavy-tidereign.webp","assets/enemy-heavy-voltspire.webp","assets/enemy-swift-bloomvale.webp","assets/enemy-swift-ember.webp","assets/enemy-swift-ironhold.webp","assets/enemy-swift-tidereign.webp","assets/enemy-swift-voltspire.webp","assets/enemy-tank.bin","assets/evo-godking-bloom-artillery.webp","assets/evo-godking-bloom.webp","assets/evo-godking-ember-artillery.webp","assets/evo-godking-ember.webp","assets/evo-godking-ironhold-artillery.webp","assets/evo-godking-ironhold.webp","assets/evo-godking-tidereign-artillery.webp","assets/evo-godking-tidereign.webp","assets/evo-godking-voltspire-artillery.webp","assets/evo-godking-voltspire.webp","assets/evo-knight-bloom-artillery-battle.webp","assets/evo-knight-bloom-artillery.webp","assets/evo-knight-bloom-battle.webp","assets/evo-knight-bloom.webp","assets/evo-knight-ember-artillery-battle.webp","assets/evo-knight-ember-artillery.webp","assets/evo-knight-ember-battle.webp","assets/evo-knight-ember.webp","assets/evo-knight-ironhold-artillery-battle.webp","assets/evo-knight-ironhold-artillery.webp","assets/evo-knight-ironhold-battle.webp","assets/evo-knight-ironhold.webp","assets/evo-knight-tidereign-artillery-battle.webp","assets/evo-knight-tidereign-artillery.webp","assets/evo-knight-tidereign-battle.webp","assets/evo-knight-tidereign.webp","assets/evo-knight-voltspire-artillery-battle.webp","assets/evo-knight-voltspire-artillery.webp","assets/evo-knight-voltspire-battle.webp","assets/evo-knight-voltspire.webp","assets/evo-paladin-bloom-artillery-battle.webp","assets/evo-paladin-bloom-artillery.webp","assets/evo-paladin-bloom-battle.webp","assets/evo-paladin-bloom.webp","assets/evo-paladin-ember-artillery-battle.webp","assets/evo-paladin-ember-artillery.webp","assets/evo-paladin-ember-battle.webp","assets/evo-paladin-ember.webp","assets/evo-paladin-ironhold-artillery-battle.webp","assets/evo-paladin-ironhold-artillery.webp","assets/evo-paladin-ironhold-battle.webp","assets/evo-paladin-ironhold.webp","assets/evo-paladin-tidereign-artillery-battle.webp","assets/evo-paladin-tidereign-artillery.webp","assets/evo-paladin-tidereign-battle.webp","assets/evo-paladin-tidereign.webp","assets/evo-paladin-voltspire-artillery-battle.webp","assets/evo-paladin-voltspire-artillery.webp","assets/evo-paladin-voltspire-battle.webp","assets/evo-paladin-voltspire.webp","assets/evo-ascendant-bloom-artillery.webp","assets/evo-ascendant-ember-artillery.webp","assets/evo-ascendant-ironhold-artillery.webp","assets/evo-ascendant-tidereign-artillery.webp","assets/evo-ascendant-voltspire-artillery.webp","assets/explosion-aaa-v2.webp","assets/faction-emblem-bloom.webp","assets/faction-emblem-ember.webp","assets/faction-emblem-ironhold.webp","assets/faction-emblem-tide.webp","assets/faction-emblem-voltspire.webp","assets/frame-epic.webp","assets/frame-legendary.webp","assets/frame-rare.webp","assets/godskin-crag.webp","assets/godskin-frost.webp","assets/godskin-pontiff.webp","assets/godskin-pyra.webp","assets/godskin-solarion.webp","assets/godskin-tempestra.webp","assets/godskin-thorn.webp","assets/godskin-tidefather.webp","assets/godskin-umbra.webp","assets/icon-cannon.webp","assets/icon-core.webp","assets/icon-engine.webp","assets/icon-hull.webp","assets/icon-plating.webp","assets/icon-treads.webp","assets/impact.bin","assets/logo.webp","assets/melee-icon-fist-256.webp","assets/melee-impact-bloomvale.webp","assets/melee-impact-ember.webp","assets/melee-impact-ironhold.webp","assets/melee-impact-tidereign.webp","assets/melee-impact-voltspire.webp","assets/missile.bin","assets/mode-icon-campaign-clean.webp","assets/mode-icon-campaign.webp","assets/mode-icon-dungeon-clean.webp","assets/mode-icon-dungeon.webp","assets/mode-icon-glory-clean.webp","assets/mode-icon-glory.webp","assets/mode-icon-tower-clean.webp","assets/mode-icon-tower.webp","assets/parry.bin","assets/prod-chest-common.webp","assets/prod-chest-epic.webp","assets/prod-chest-legendary.webp","assets/prod-chest-rare.webp","assets/prod-evolution-cache.webp","assets/prod-gem.webp","assets/prod-starter-gift.webp","assets/prod2-prestige-emblem.webp","assets/prod2-promotion-chevron.webp","assets/prod2-royal-seal.webp","assets/prod2-scrap-pile.webp","assets/prod2-skill-shard.webp","assets/prod2-slot-cannon.webp","assets/prod2-slot-core.webp","assets/prod2-slot-engine.webp","assets/prod2-slot-hull.webp","assets/prod2-slot-plating.webp","assets/prod2-slot-treads.webp","assets/prod2-valor-medal.webp","assets/projectile-bloom.webp","assets/projectile-ember.webp","assets/projectile-gk-bloom.webp","assets/projectile-gk-ember.webp","assets/projectile-gk-iron.webp","assets/projectile-gk-tide.webp","assets/projectile-gk-volt.webp","assets/projectile-iron.webp","assets/projectile-tide.webp","assets/projectile-v1.webp","assets/projectile-volt.webp","assets/projectile.bin","assets/shield-bloom.webp","assets/shield-ember.webp","assets/shield-ironhold.webp","assets/shield-tidereign.webp","assets/shield-voltspire.webp","assets/tank-bloomvale-artillery.webp","assets/tank-bloomvale-vanguard.webp","assets/tank-ember-artillery.webp","assets/tank-ember-vanguard.webp","assets/tank-ironhold-artillery.webp","assets/tank-ironhold-vanguard.webp","assets/tank-tidereign-artillery.webp","assets/tank-tidereign-vanguard.webp","assets/tank-voltspire-artillery.webp","assets/tank-voltspire-vanguard.webp","assets/title-key-art-portrait.webp","assets/title-key-art.webp","assets/tower-ascent-backdrop.webp","assets/tower-badge-10.webp","assets/tower-badge-100.webp","assets/tower-badge-30.webp","assets/tower-badge-50.webp","assets/tower-boss-crag.webp","assets/tower-boss-frost-hd.webp","assets/tower-boss-frost.webp","assets/tower-boss-gale-hd.webp","assets/tower-boss-gale.webp","assets/tower-boss-pontiff.webp","assets/tower-boss-pyra-hd.webp","assets/tower-boss-pyra.webp","assets/tower-boss-solarion.webp","assets/tower-boss-tempestra.webp","assets/tower-boss-thorn-hd.webp","assets/tower-boss-thorn.webp","assets/tower-boss-tidefather.webp","assets/tower-boss-umbra-hd.webp","assets/tower-boss-umbra.webp","assets/tower-gate-portal.webp","assets/ult-bloomvale.bin","assets/ult-ember.bin","assets/ult-icon-knight-256.webp","assets/ult-ironhold.bin","assets/ult-projectile-bloom.webp","assets/ult-projectile-cinder.webp","assets/ult-projectile-iron.webp","assets/ult-projectile-tide.webp","assets/ult-projectile-volt.webp","assets/ult-tank-bloomvale-artillery.webp","assets/ult-tank-bloomvale-vanguard.webp","assets/ult-tank-ember-artillery.webp","assets/ult-tank-ember-vanguard.webp","assets/ult-tank-ironhold-artillery.webp","assets/ult-tank-ironhold-vanguard.webp","assets/ult-tank-tidereign-artillery.webp","assets/ult-tank-tidereign-vanguard.webp","assets/ult-tank-voltspire-artillery.webp","assets/ult-tank-voltspire-vanguard.webp","assets/ult-tidereign.bin","assets/ult-voltspire.bin","assets/ultimate-arcane.webp"]);
+const __TK_PACKAGED_ART_FILES=new Set(["assets/battle-environment-key-art.png","assets/bg-bloom-vale.jpg","assets/bg-ember-wastes.jpg","assets/bg-storm-coast.jpg","assets/bg-volt-highlands.jpg","assets/bgm-honorable-march.bin","assets/bgm-war-pulse.bin","assets/btn-melee.png","assets/btn-missile.png","assets/btn-parry.png","assets/btn-ult.png","assets/enemy-boss-bloomvale.png","assets/enemy-boss-ember.png","assets/enemy-boss-ironhold.png","assets/enemy-boss-tidereign.png","assets/enemy-boss-voltspire.png","assets/enemy-grunt-bloomvale.png","assets/enemy-grunt-ember.png","assets/enemy-grunt-ironhold.png","assets/enemy-grunt-tidereign.png","assets/enemy-grunt-voltspire.png","assets/enemy-heavy-bloomvale.png","assets/enemy-heavy-ember.png","assets/enemy-heavy-ironhold.png","assets/enemy-heavy-tidereign.png","assets/enemy-heavy-voltspire.png","assets/enemy-swift-bloomvale.png","assets/enemy-swift-ember.png","assets/enemy-swift-ironhold.png","assets/enemy-swift-tidereign.png","assets/enemy-swift-voltspire.png","assets/enemy-tank.bin","assets/evo-godking-bloom-artillery.png","assets/evo-godking-bloom.png","assets/evo-godking-ember-artillery.png","assets/evo-godking-ember.png","assets/evo-godking-ironhold-artillery.png","assets/evo-godking-ironhold.png","assets/evo-godking-tidereign-artillery.png","assets/evo-godking-tidereign.png","assets/evo-godking-voltspire-artillery.png","assets/evo-godking-voltspire.png","assets/evo-knight-bloom-artillery-battle.png","assets/evo-knight-bloom-artillery.png","assets/evo-knight-bloom-battle.png","assets/evo-knight-bloom.png","assets/evo-knight-ember-artillery-battle.png","assets/evo-knight-ember-artillery.png","assets/evo-knight-ember-battle.png","assets/evo-knight-ember.png","assets/evo-knight-ironhold-artillery-battle.png","assets/evo-knight-ironhold-artillery.png","assets/evo-knight-ironhold-battle.png","assets/evo-knight-ironhold.png","assets/evo-knight-tidereign-artillery-battle.png","assets/evo-knight-tidereign-artillery.png","assets/evo-knight-tidereign-battle.png","assets/evo-knight-tidereign.png","assets/evo-knight-voltspire-artillery-battle.png","assets/evo-knight-voltspire-artillery.png","assets/evo-knight-voltspire-battle.png","assets/evo-knight-voltspire.png","assets/evo-paladin-bloom-artillery-battle.png","assets/evo-paladin-bloom-artillery.png","assets/evo-paladin-bloom-battle.png","assets/evo-paladin-bloom.png","assets/evo-paladin-ember-artillery-battle.png","assets/evo-paladin-ember-artillery.png","assets/evo-paladin-ember-battle.png","assets/evo-paladin-ember.png","assets/evo-paladin-ironhold-artillery-battle.png","assets/evo-paladin-ironhold-artillery.png","assets/evo-paladin-ironhold-battle.png","assets/evo-paladin-ironhold.png","assets/evo-paladin-tidereign-artillery-battle.png","assets/evo-paladin-tidereign-artillery.png","assets/evo-paladin-tidereign-battle.png","assets/evo-paladin-tidereign.png","assets/evo-paladin-voltspire-artillery-battle.png","assets/evo-paladin-voltspire-artillery.png","assets/evo-paladin-voltspire-battle.png","assets/evo-paladin-voltspire.png","assets/evo-ascendant-bloom-artillery.png","assets/evo-ascendant-ember-artillery.png","assets/evo-ascendant-ironhold-artillery.png","assets/evo-ascendant-tidereign-artillery.png","assets/evo-ascendant-voltspire-artillery.png","assets/explosion-aaa-v2.png","assets/faction-emblem-bloom.png","assets/faction-emblem-ember.png","assets/faction-emblem-ironhold.png","assets/faction-emblem-tide.png","assets/faction-emblem-voltspire.png","assets/frame-epic.png","assets/frame-legendary.png","assets/frame-rare.png","assets/godskin-crag.png","assets/godskin-frost.png","assets/godskin-pontiff.png","assets/godskin-pyra.png","assets/godskin-solarion.png","assets/godskin-tempestra.png","assets/godskin-thorn.png","assets/godskin-tidefather.png","assets/godskin-umbra.png","assets/icon-cannon.png","assets/icon-core.png","assets/icon-engine.png","assets/icon-hull.png","assets/icon-plating.png","assets/icon-treads.png","assets/impact.bin","assets/logo.png","assets/melee-icon-fist-256.png","assets/melee-impact-bloomvale.png","assets/melee-impact-ember.png","assets/melee-impact-ironhold.png","assets/melee-impact-tidereign.png","assets/melee-impact-voltspire.png","assets/missile.bin","assets/mode-icon-campaign-clean.png","assets/mode-icon-campaign.png","assets/mode-icon-dungeon-clean.png","assets/mode-icon-dungeon.png","assets/mode-icon-glory-clean.png","assets/mode-icon-glory.png","assets/mode-icon-tower-clean.png","assets/mode-icon-tower.png","assets/parry.bin","assets/prod-chest-common.png","assets/prod-chest-epic.png","assets/prod-chest-legendary.png","assets/prod-chest-rare.png","assets/prod-evolution-cache.png","assets/prod-gem.png","assets/prod-starter-gift.png","assets/prod2-prestige-emblem.png","assets/prod2-promotion-chevron.png","assets/prod2-royal-seal.png","assets/prod2-scrap-pile.png","assets/prod2-skill-shard.png","assets/prod2-slot-cannon.png","assets/prod2-slot-core.png","assets/prod2-slot-engine.png","assets/prod2-slot-hull.png","assets/prod2-slot-plating.png","assets/prod2-slot-treads.png","assets/prod2-valor-medal.png","assets/projectile-bloom.png","assets/projectile-ember.png","assets/projectile-gk-bloom.png","assets/projectile-gk-ember.png","assets/projectile-gk-iron.png","assets/projectile-gk-tide.png","assets/projectile-gk-volt.png","assets/projectile-iron.png","assets/projectile-tide.png","assets/projectile-v1.png","assets/projectile-volt.png","assets/projectile.bin","assets/shield-bloom.png","assets/shield-ember.png","assets/shield-ironhold.png","assets/shield-tidereign.png","assets/shield-voltspire.png","assets/tank-bloomvale-artillery.png","assets/tank-bloomvale-vanguard.png","assets/tank-ember-artillery.png","assets/tank-ember-vanguard.png","assets/tank-ironhold-artillery.png","assets/tank-ironhold-vanguard.png","assets/tank-tidereign-artillery.png","assets/tank-tidereign-vanguard.png","assets/tank-voltspire-artillery.png","assets/tank-voltspire-vanguard.png","assets/title-key-art-portrait.png","assets/title-key-art.png","assets/tower-ascent-backdrop.png","assets/tower-badge-10.png","assets/tower-badge-100.png","assets/tower-badge-30.png","assets/tower-badge-50.png","assets/tower-boss-crag.png","assets/tower-boss-frost-hd.png","assets/tower-boss-frost.png","assets/tower-boss-gale-hd.png","assets/tower-boss-gale.png","assets/tower-boss-pontiff.png","assets/tower-boss-pyra-hd.png","assets/tower-boss-pyra.png","assets/tower-boss-solarion.png","assets/tower-boss-tempestra.png","assets/tower-boss-thorn-hd.png","assets/tower-boss-thorn.png","assets/tower-boss-tidefather.png","assets/tower-boss-umbra-hd.png","assets/tower-boss-umbra.png","assets/tower-gate-portal.png","assets/ult-bloomvale.bin","assets/ult-ember.bin","assets/ult-icon-knight-256.png","assets/ult-ironhold.bin","assets/ult-projectile-bloom.png","assets/ult-projectile-cinder.png","assets/ult-projectile-iron.png","assets/ult-projectile-tide.png","assets/ult-projectile-volt.png","assets/ult-tank-bloomvale-artillery.png","assets/ult-tank-bloomvale-vanguard.png","assets/ult-tank-ember-artillery.png","assets/ult-tank-ember-vanguard.png","assets/ult-tank-ironhold-artillery.png","assets/ult-tank-ironhold-vanguard.png","assets/ult-tank-tidereign-artillery.png","assets/ult-tank-tidereign-vanguard.png","assets/ult-tank-voltspire-artillery.png","assets/ult-tank-voltspire-vanguard.png","assets/ult-tidereign.bin","assets/ult-voltspire.bin","assets/ultimate-arcane.png"]);
 var __tkAssetFiles=__TK_PACKAGED_ART_FILES;
 function __tkAssetKey(src){return typeof src==='string'?src.split('#')[0].split('?')[0]:''}
 function __tkStampAsset(src){var key=__tkAssetKey(src);if(!key||key.indexOf('data:')===0)return key;return key+(key.indexOf('?')>=0?'&':'?')+'v='+__ASSET_V}
@@ -5101,7 +5101,7 @@ function __tkResolveEnemyArt(type,kingdomId,ownerId,override){
    injected dynamically (war chest/store/loyalty markup). Meta no-cache already covers
    the HTML itself; this just busts each image's own cache key. */
 (function bustLooseImgs(){try{var v='?v='+__ASSET_V;function stamp(el){if(!el||!el.getAttribute)return;var s=el.getAttribute('src');if(s&&s.indexOf('assets/')===0&&s.indexOf('?v=')<0)el.setAttribute('src',s+v)}document.querySelectorAll('img[src^="assets/"]').forEach(stamp);if(window.MutationObserver){try{new MutationObserver(function(muts){for(var i=0;i<muts.length;i++){var ad=muts[i].addedNodes;for(var j=0;j<(ad?ad.length:0);j++){var n=ad[j];if(!n||n.nodeType!==1)continue;stamp(n);if(n.querySelectorAll)n.querySelectorAll('img[src^="assets/"]').forEach(stamp)}}}).observe(document.documentElement,{childList:true,subtree:true})}catch(e){}}}catch(e){}})();
-(function bustCssBgs(){try{var v='?v='+__ASSET_V;['#selectScreen','#characterScreen'].forEach(function(sel){var el=document.querySelector(sel);if(!el)return;var bg=getComputedStyle(el,'::before').backgroundImage;if(bg&&bg.indexOf('assets/title-key-art.webp')>=0&&bg.indexOf('?v=')<0){var st=document.createElement('style');st.textContent=sel+'::before{background-image:url("assets/title-key-art.webp'+v+'")!important}';document.head.appendChild(st)}});['parryBtn','meleeBtn','missileBtn','ultBtn'].forEach(function(id){var el=document.getElementById(id);if(!el)return;var bg=getComputedStyle(el).backgroundImage;if(bg&&bg.indexOf('assets/btn-')>=0&&bg.indexOf('?v=')<0){var m=bg.match(/assets\/btn-[a-z]+\.webp/);if(m){var st2=document.createElement('style');st2.textContent='#'+id+'{background-image:url("'+m[0]+v+'")!important}';document.head.appendChild(st2)}}})}catch(e){}})();
+(function bustCssBgs(){try{var v='?v='+__ASSET_V;['#selectScreen','#characterScreen'].forEach(function(sel){var el=document.querySelector(sel);if(!el)return;var bg=getComputedStyle(el,'::before').backgroundImage;if(bg&&bg.indexOf('assets/title-key-art.png')>=0&&bg.indexOf('?v=')<0){var st=document.createElement('style');st.textContent=sel+'::before{background-image:url("assets/title-key-art.png'+v+'")!important}';document.head.appendChild(st)}});['parryBtn','meleeBtn','missileBtn','ultBtn'].forEach(function(id){var el=document.getElementById(id);if(!el)return;var bg=getComputedStyle(el).backgroundImage;if(bg&&bg.indexOf('assets/btn-')>=0&&bg.indexOf('?v=')<0){var m=bg.match(/assets\/btn-[a-z]+\.png/);if(m){var st2=document.createElement('style');st2.textContent='#'+id+'{background-image:url("'+m[0]+v+'")!important}';document.head.appendChild(st2)}}})}catch(e){}})();
 /* ---- Build integrity: content-hash version check, audio fingerprints, art review ----
    (1) Update check: the page fetches assets/build-manifest.json (no-store) on boot and
    from Options > Check for update. If the live asset build differs from __BUILD_ID
@@ -5198,11 +5198,11 @@ function tkArtList(){
   var factions=[['ironhold','Ironhold'],['ember','Ember Crown'],['voltspire','Voltspire'],['bloom','Bloomvale'],['tidereign','Tidereign']];
   var classes=[['','Vanguard'],['-artillery','Artillery']];
   stages.forEach(function(s){factions.forEach(function(f){classes.forEach(function(c){
-    list.push({src:'assets/evo-'+s[0]+'-'+f[0]+c[0]+'.webp',label:f[1]+' '+c[1]+' — '+s[1]+' portrait'});
-    if(s[0]!=='godking')list.push({src:'assets/evo-'+s[0]+'-'+f[0]+c[0]+'-battle.webp',label:f[1]+' '+c[1]+' — '+s[1]+' battle'});
+    list.push({src:'assets/evo-'+s[0]+'-'+f[0]+c[0]+'.png',label:f[1]+' '+c[1]+' — '+s[1]+' portrait'});
+    if(s[0]!=='godking')list.push({src:'assets/evo-'+s[0]+'-'+f[0]+c[0]+'-battle.png',label:f[1]+' '+c[1]+' — '+s[1]+' battle'});
   })})});
   [['ironhold','Ironhold'],['ember','Ember Crown'],['voltspire','Voltspire'],['bloom','Bloomvale'],['tidereign','Tidereign']].forEach(function(f){
-    list.push({src:'assets/shield-'+f[0]+'.webp',label:f[1]+' faction shield — parry dome'});
+    list.push({src:'assets/shield-'+f[0]+'.png',label:f[1]+' faction shield — parry dome'});
   });
   return list;
 }
@@ -5816,7 +5816,7 @@ window.tanksKingsAudioTest=function(){
 document.addEventListener('pointerdown',function(){if(!bgmStarted)return;if(audioCtx&&audioCtx.state!=='running')audioCtx.resume().catch(function(){});const w=bgmCurrent||'title';if(!bgmSources[w])playBgm(w,true);},true);
 syncVolUI();
 function rounded(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
-function renderFaction(){const host=$('factionGrid');if(!host)return;const factionEmblems={iron:'assets/faction-emblem-ironhold.webp',ember:'assets/faction-emblem-ember.webp',volt:'assets/faction-emblem-voltspire.webp',bloom:'assets/faction-emblem-bloom.webp',tide:'assets/faction-emblem-tide.webp'},factionLabels={iron:{name:'Ironhold',traits:'Impenetrable • Siege Masters'},ember:{name:'Ember',traits:'Scorched • Flameborne Fury'},volt:{name:'Voltspire',traits:'Charged • Lightning Storm'},bloom:{name:'Bloomvale',traits:"Verdant • Nature's Wardens"},tide:{name:'Tidereign',traits:'Frozen • Tide & Frost'}};host.innerHTML=kingdoms.map(function(k){const art=__tkResolveArt('faction-emblem:'+k.id,'faction emblem',[factionEmblems[k.id]],__TK_DEFAULT_PLAYER_ART).src||'',label=factionLabels[k.id];return `<button class="faction-card faction-${k.id}" data-k="${k.id}" style="--faction-glow:${k.colors[0]}55" aria-label="Choose ${label.name}"><div class="faction-art"><img src="${art}" alt="${label.name} shield emblem"></div><div class="faction-copy"><h2>${label.name}</h2><p>${label.traits}</p></div></button>`}).join('');host.querySelectorAll('.faction-card').forEach(function(card){card.onclick=function(){chosenK=card.dataset.k;chosenTank=tanks.find(function(t){return t.k===chosenK}).id;sfx('coin');setScreen('select');renderSelect();if(tutorialAt(1))tutorialAdvance('faction-picked')}})}
+function renderFaction(){const host=$('factionGrid');if(!host)return;const factionEmblems={iron:'assets/faction-emblem-ironhold.png',ember:'assets/faction-emblem-ember.png',volt:'assets/faction-emblem-voltspire.png',bloom:'assets/faction-emblem-bloom.png',tide:'assets/faction-emblem-tide.png'},factionLabels={iron:{name:'Ironhold',traits:'Impenetrable • Siege Masters'},ember:{name:'Ember',traits:'Scorched • Flameborne Fury'},volt:{name:'Voltspire',traits:'Charged • Lightning Storm'},bloom:{name:'Bloomvale',traits:"Verdant • Nature's Wardens"},tide:{name:'Tidereign',traits:'Frozen • Tide & Frost'}};host.innerHTML=kingdoms.map(function(k){const art=__tkResolveArt('faction-emblem:'+k.id,'faction emblem',[factionEmblems[k.id]],__TK_DEFAULT_PLAYER_ART).src||'',label=factionLabels[k.id];return `<button class="faction-card faction-${k.id}" data-k="${k.id}" style="--faction-glow:${k.colors[0]}55" aria-label="Choose ${label.name}"><div class="faction-art"><img src="${art}" alt="${label.name} shield emblem"></div><div class="faction-copy"><h2>${label.name}</h2><p>${label.traits}</p></div></button>`}).join('');host.querySelectorAll('.faction-card').forEach(function(card){card.onclick=function(){chosenK=card.dataset.k;chosenTank=tanks.find(function(t){return t.k===chosenK}).id;sfx('coin');setScreen('select');renderSelect();if(tutorialAt(1))tutorialAdvance('faction-picked')}})}
 function renderSelect(){const k=byK(chosenK);const banner=$('kingdomBanner');banner.className='kingdom-banner';banner.innerHTML=`<div class="crest" data-icon="${k.icon}">${k.icon}</div><div><h2>${k.name}</h2><p>${k.mechanic} · ${k.desc}</p></div>`;const tg=$('tankGrid');tg.innerHTML=tanks.filter(t=>t.k===chosenK).map((t,idx)=>{const prog=progressFor(t.id),rank=stageFor(t.id),isDamaged=tankDamage[t.id]===true,visual=evolutionVisualHooks[t.id][prog.stage],art=__tkResolvePlayerArt(t.id,'portrait').src;return `<button class="tank-card ${t.id===chosenTank?'selected':''}${isDamaged?' damaged':''}" style="--stag:${(idx*7/100).toFixed(2)}s" data-t="${t.id}">${isDamaged?'<span class="damage-smoke"><i></i><i></i><i></i></span><span class="damage-sparks"><i></i><i></i><i></i></span><span class="damage-ribbon">DAMAGED · HALF HP</span>':''}<img class="tank-art ${visual.art?'evo-art':''}" src="${art}" alt="${t.name}, ${k.name} ${t.role} tank"><span class="tank-role">${t.role}</span><span class="rank-badge ${prog.stage}">${rank.name} · Lv ${prog.level}</span><h3>${t.name}</h3><p>${t.ultDesc}</p><div class="statrow"><span class="stat">♥ ${isDamaged?Math.max(1,Math.round(totalHp(t.id)*.5)):totalHp(t.id)}</span><span class="stat">⚔ ${totalAtk(t.id)}</span><span class="stat">● ${t.rate.toFixed(1)}s</span></div><div class="ult-chip">ULT • ${t.ult}${prog.stage==='paladin'?' · +50%':prog.stage==='godking'?' · +100%':''}</div></button>`}).join('');tg.querySelectorAll('.tank-card').forEach(function(card){var tank=byT(card.dataset.t),img=card.querySelector('.tank-art');__tkSetImg(img,__tkResolvePlayerArt(tank.id,'portrait'),tank.name+', '+k.name+' '+tank.role+' tank');card.onclick=function(){chosenTank=card.dataset.t;renderSelect();if(tutorialAt(2)){setScreen('mode');renderModeSelect();tutorialAdvance('tank-picked')}}});$('deployName').textContent=byT(chosenTank).name;updateGarageRepairBtn()}
 $('startBtn').onclick=()=>{setTimeout(()=>{try{initAudio()}catch(e){}},0);tutorialOnTitleEnter();if(tutorialLive)return;setScreen('faction');renderFaction();loginPopupIfDue();};$('deployBtn').onclick=startBattle;
 function __tkShowEnemySilhouette(img,alt){if(!img)return;img.onerror=null;img.onload=null;img.removeAttribute('src');img.alt='';img.setAttribute('role','img');img.setAttribute('aria-label',alt||'Enemy tank silhouette');img.classList.add('enemy-silhouette');img.style.display='block';img.style.opacity='1';img.style.visibility='visible'}
@@ -5837,8 +5837,8 @@ function __tkSetImg(img,resolution,alt){
 function applyEvolutionVisual(){preloadFactionShield();const t=byT(chosenTank),prog=progressFor(chosenTank),stage=stageFor(chosenTank),visual=(evolutionVisualHooks[chosenTank]&&evolutionVisualHooks[chosenTank][prog.stage])||{art:null},resolved=__tkResolvePlayerArt(chosenTank,'battle');__tkSetImg($('playerSprite'),resolved,t.name+' '+stage.name+' tank');$('playerSprite').dataset.rank=prog.stage;$('playerSprite').classList.toggle('evo-sprite',!!visual.art);$('battleStage').classList.toggle('paladin-rank',prog.stage==='paladin');$('battleStage').classList.toggle('godking-rank',prog.stage==='godking');drawMini();return stage}
 function ensurePlayerBattleVisual(){if(state.screen!=='battle'||state.playerDead)return;const rig=$('playerRig'),img=$('playerSprite'),t=byT(chosenTank),stage=stageFor(chosenTank),resolved=__tkResolvePlayerArt(chosenTank,'battle');if(!rig||!img||!t)return;rig.classList.remove('defeat');rig.style.display='block';rig.style.opacity='1';rig.style.visibility='visible';__tkSetImg(img,resolved,t.name+' '+stage.name+' tank')}
 /* ---------- battle backgrounds: kingdom/god-themed scene planes ---------- */
-var BATTLE_BG_DEFAULT='assets/battle-environment-key-art.webp';
-var BATTLE_BG_TOWER_DEFAULT='assets/tower-ascent-backdrop.webp'; /* non-mapped tower floors keep the tower's current art */
+var BATTLE_BG_DEFAULT='assets/battle-environment-key-art.png';
+var BATTLE_BG_TOWER_DEFAULT='assets/tower-ascent-backdrop.png'; /* non-mapped tower floors keep the tower's current art */
 var BATTLE_BG_KINGDOM={ember:'assets/bg-ember-wastes.jpg',tide:'assets/bg-storm-coast.jpg',volt:'assets/bg-volt-highlands.jpg',bloom:'assets/bg-bloom-vale.jpg'};
 var BATTLE_BG_GOD={pyra:'assets/bg-ember-wastes.jpg',pontiff:'assets/bg-ember-wastes.jpg',tempestra:'assets/bg-volt-highlands.jpg',gale:'assets/bg-volt-highlands.jpg',tidefather:'assets/bg-storm-coast.jpg',thorn:'assets/bg-bloom-vale.jpg',solarion:'assets/bg-bloom-vale.jpg'};
 var battleBgPreloaded=false;
@@ -5858,7 +5858,7 @@ function startBattle(){
  __tkBattleInitStep('enemy spawn',spawnEnemy);
  __tkBattleInitStep('battle loop',armLoop);
  /* Everything below enriches an already-playable battle and may fail independently. */
- __tkBattleInitStep('battle labels',function(){$('battleName').textContent=t.name;$('ultName').textContent=t.ult;var ultIcon=$('ultIcon');if(ultIcon){ultIcon.src='assets/ult-icon-knight-256.webp?v='+__ASSET_V;ultIcon.alt='Ultimate'}});
+ __tkBattleInitStep('battle labels',function(){$('battleName').textContent=t.name;$('ultName').textContent=t.ult;var ultIcon=$('ultIcon');if(ultIcon){ultIcon.src='assets/ult-icon-knight-256.png?v='+__ASSET_V;ultIcon.alt='Ultimate'}});
  __tkBattleInitStep('battle scene',function(){$('battleStage').style.setProperty('--battleTint',k.colors[0]);$('battleStage').querySelector('.world-bg').dataset.kingdom=k.id;$('playerRig').classList.remove('defeat','hit');hideCampDefeat()});
  __tkBattleInitStep('player evolution art',applyEvolutionVisual);
  __tkBattleInitStep('custom layers',refreshBattleCustomLayers);
@@ -5947,7 +5947,7 @@ function spawnMeleeShockwave(){
    kingdom shield plate stands in front of the hull at full opacity, glowing in
    faction colors. Art swaps with the champion's kingdom. */
 const SHIELD_COLORS={iron:['#7ddcff','#e9bb49'],ember:['#ff7b4a','#ffad39'],volt:['#b89cff','#ffdc49'],bloom:['#76dd72','#f3a8c8'],tide:['#6fe0ff','#b7f4f3']};
-const FACTION_SHIELDS={iron:'assets/shield-ironhold.webp',ember:'assets/shield-ember.webp',volt:'assets/shield-voltspire.webp',bloom:'assets/shield-bloom.webp',tide:'assets/shield-tidereign.webp'};
+const FACTION_SHIELDS={iron:'assets/shield-ironhold.png',ember:'assets/shield-ember.png',volt:'assets/shield-voltspire.png',bloom:'assets/shield-bloom.png',tide:'assets/shield-tidereign.png'};
 function preloadFactionShield(){try{const s=FACTION_SHIELDS[byT(chosenTank).k];if(s){const im=new Image();im.src=s+'?v='+__ASSET_V}}catch(e){}}
 function updateShieldDome(){
   try{
@@ -6036,7 +6036,7 @@ function spawnParryRing(x){
     stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},600);
   }catch(e){}
 }
-const MELEE_IMPACT_ART={iron:'assets/melee-impact-ironhold.webp',ember:'assets/melee-impact-ember.webp',volt:'assets/melee-impact-voltspire.webp',bloom:'assets/melee-impact-bloomvale.webp',tide:'assets/melee-impact-tidereign.webp'};
+const MELEE_IMPACT_ART={iron:'assets/melee-impact-ironhold.png',ember:'assets/melee-impact-ember.png',volt:'assets/melee-impact-voltspire.png',bloom:'assets/melee-impact-bloomvale.png',tide:'assets/melee-impact-tidereign.png'};
 const MELEE_IMPACT_CACHE={};
 function preloadMeleeImpactArt(){
   try{
@@ -6941,16 +6941,16 @@ function __keyedSprite(img,rotateCW,keepAlpha){
 }
 (function(){
   function loadSprite(img,src,onload){let retried=false;img.onload=onload;img.onerror=function(){if(!retried){retried=true;img.src=src+'&retry=1'}else{console.warn('Sprite failed to load:',src)}};img.src=src}
-  const v1=new Image();loadSprite(v1,'assets/projectile-v1.webp?v='+__ASSET_V,function(){__v1Sprite=__keyedSprite(v1,true)});
-  const v5=new Image();loadSprite(v5,'assets/ultimate-arcane.webp?v='+__ASSET_V,function(){__ultSprite=__keyedSprite(v5,false)});
+  const v1=new Image();loadSprite(v1,'assets/projectile-v1.png?v='+__ASSET_V,function(){__v1Sprite=__keyedSprite(v1,true)});
+  const v5=new Image();loadSprite(v5,'assets/ultimate-arcane.png?v='+__ASSET_V,function(){__ultSprite=__keyedSprite(v5,false)});
   const factionUltFiles={iron:'iron',ember:'cinder',volt:'volt',bloom:'bloom',tide:'tide'};
   Object.keys(factionUltFiles).forEach(function(k){
-    const fi=new Image();loadSprite(fi,'assets/ult-projectile-'+factionUltFiles[k]+'.webp?v='+__ASSET_V,function(){__ultFactionSprites[k]=__keyedSprite(fi,false)});
+    const fi=new Image();loadSprite(fi,'assets/ult-projectile-'+factionUltFiles[k]+'.png?v='+__ASSET_V,function(){__ultFactionSprites[k]=__keyedSprite(fi,false)});
   });
   const factionV1Files={iron:'iron',ember:'ember',volt:'volt',bloom:'bloom',tide:'tide'};
   Object.keys(factionV1Files).forEach(function(k){
-    const fi=new Image();loadSprite(fi,'assets/projectile-'+factionV1Files[k]+'.webp?v='+__ASSET_V,function(){__v1FactionSprites[k]=__keyedSprite(fi,false,true)});
-    const gi=new Image();loadSprite(gi,'assets/projectile-gk-'+factionV1Files[k]+'.webp?v='+__ASSET_V,function(){__v1GkFactionSprites[k]=__keyedSprite(gi,false,true)});
+    const fi=new Image();loadSprite(fi,'assets/projectile-'+factionV1Files[k]+'.png?v='+__ASSET_V,function(){__v1FactionSprites[k]=__keyedSprite(fi,false,true)});
+    const gi=new Image();loadSprite(gi,'assets/projectile-gk-'+factionV1Files[k]+'.png?v='+__ASSET_V,function(){__v1GkFactionSprites[k]=__keyedSprite(gi,false,true)});
   });
 })();
 /* === Projectile prominence FX (2026-10-03): baked additive glow + short
@@ -7336,7 +7336,7 @@ function renderProgress(){
  +'<section class="record-card"><h4 class="char-h">Service Record</h4><div class="stat-cards">'+service+'</div></section>'
  +'<section class="record-card"><h4 class="char-h">Evolution Requirements</h4><div class="req-grid">'+reqHtml+'</div><p class="req-note">'+reqNote+'</p></section>'
  +'<section class="record-card"><h4 class="char-h">War Chest</h4><div class="wc-grid">'
- +[['assets/prod2-scrap-pile.webp',Math.floor(state.scrap),'SCRAP'],['assets/prod2-valor-medal.webp',state.valorMedals,'VALOR MEDALS'],['assets/prod2-royal-seal.webp',state.royalSeals,'ROYAL SEALS'],['assets/prod-gem.webp',state.gems,'GEMS'],['assets/prod2-skill-shard.webp',state.skillShards,'SKILL SHARDS'],['assets/prod2-prestige-emblem.webp',prestigeEmblemTotal(),'PRESTIGE EMBLEMS']].map(function(r){return '<div class="wc-card"><div class="wc-medal"><img src="'+r[0]+'" alt="'+r[2]+'"></div><div class="wc-val">'+r[1]+'</div><div class="wc-label">'+r[2]+'</div></div>'}).join('')
+ +[['assets/prod2-scrap-pile.png',Math.floor(state.scrap),'SCRAP'],['assets/prod2-valor-medal.png',state.valorMedals,'VALOR MEDALS'],['assets/prod2-royal-seal.png',state.royalSeals,'ROYAL SEALS'],['assets/prod-gem.png',state.gems,'GEMS'],['assets/prod2-skill-shard.png',state.skillShards,'SKILL SHARDS'],['assets/prod2-prestige-emblem.png',prestigeEmblemTotal(),'PRESTIGE EMBLEMS']].map(function(r){return '<div class="wc-card"><div class="wc-medal"><img src="'+r[0]+'" alt="'+r[2]+'"></div><div class="wc-val">'+r[1]+'</div><div class="wc-label">'+r[2]+'</div></div>'}).join('')
  +'</div></section></div></div>';
  const visual=evolutionVisualHooks[chosenTank][prog.stage],img=$('progressTankImg');
  __tkSetImg(img,__tkResolvePlayerArt(chosenTank,'portrait'),t.name+' '+rank.name+' tank portrait');img.classList.toggle('evo-art',!!visual.art);
@@ -8309,9 +8309,9 @@ $('charTabCustom').onclick=function(){sfx('coin');setCharacterTab('custom')};
 /* ================= Skill Mastery screen ================= */
 const SKILL_ICONS={
  parry:'<svg viewBox="0 0 24 24" fill="#bfe4ff" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="M12 4.2 6 6.4V11c0 3.9 2.6 7.4 6 8.8 3.4-1.4 6-4.9 6-8.8V6.4z" fill="#0b0f18" opacity=".55"/></svg>',
- charge:'<img src="assets/melee-icon-fist-256.webp" alt="">',
+ charge:'<img src="assets/melee-icon-fist-256.png" alt="">',
  missile:'<svg viewBox="0 0 24 24" fill="#ffc4a0" aria-hidden="true"><path d="M12 2c3 2 4 6 4 10l3 3-3 1c-1 2-2 4-4 6-2-2-3-4-4-6l-3-1 3-3c0-4 1-8 4-10z" opacity=".95"/><path d="M12 6v8" stroke="#7a2a1a" stroke-width="1.5"/></svg>',
- ult:'<img src="assets/ult-icon-knight-256.webp" alt="">'
+ ult:'<img src="assets/ult-icon-knight-256.png" alt="">'
 };
 const SKILL_DEFS={
  parry:{name:'PARRY',tag:'All classes',
@@ -8373,7 +8373,7 @@ function renderSkills(){
   let pips='';for(let i=1;i<=SKILL_MAX;i++)pips+='<i class="'+(i<=lvl?'on':'')+(i===5||i===10?' mile':'')+'"></i>';
   const foot=!avail?'<div class="skill-max">'+(key==='charge'?'VANGUARD CHAMPIONS ONLY':'ARTILLERY CHAMPIONS ONLY')+'</div>'
    :maxed?'<div class="skill-max">★ MASTERED — MAX LEVEL ★</div>'
-   :'<button class="skill-up" data-skill="'+key+'"'+(poolShards(key)<cost?' disabled':'')+'>UPGRADE TO LV '+(lvl+1)+' · '+cost+' '+SHARD_CLASS_NAMES[key].toUpperCase()+' <img src="assets/prod2-skill-shard.webp" alt="Skill Shards"></button>'+(poolShards(key)<cost?'<span class="skill-need">Need '+(cost-poolShards(key))+' more '+SHARD_CLASS_NAMES[key]+' Shards · you hold '+poolShards(key)+'</span>':'<span class="skill-need" style="color:#9be26b">You hold '+poolShards(key)+' '+SHARD_CLASS_NAMES[key]+' Shards</span>');
+   :'<button class="skill-up" data-skill="'+key+'"'+(poolShards(key)<cost?' disabled':'')+'>UPGRADE TO LV '+(lvl+1)+' · '+cost+' '+SHARD_CLASS_NAMES[key].toUpperCase()+' <img src="assets/prod2-skill-shard.png" alt="Skill Shards"></button>'+(poolShards(key)<cost?'<span class="skill-need">Need '+(cost-poolShards(key))+' more '+SHARD_CLASS_NAMES[key]+' Shards · you hold '+poolShards(key)+'</span>':'<span class="skill-need" style="color:#9be26b">You hold '+poolShards(key)+' '+SHARD_CLASS_NAMES[key]+' Shards</span>');
   return '<article class="skill-card'+(avail?'':' class-locked')+'"><div class="skill-icon">'+SKILL_ICONS[key]+'</div><div>'
    +'<div class="skill-top"><h3>'+def.name+'</h3><span class="skill-tag">'+def.tag+'</span><span class="skill-lvl">Lv '+lvl+' / '+SKILL_MAX+'</span></div>'
    +'<div class="skill-pips" aria-hidden="true">'+pips+'</div>'
@@ -8423,7 +8423,7 @@ function renderSkillsSheet(){
   const def=SKILL_DEFS[key],lvl=skillLvl(tid,key),avail=skillAvailable(tid,key),cost=skillUpgradeCost(lvl),maxed=lvl>=SKILL_MAX;
   const btn=!avail?'<span class="skill-locked">'+(key==='charge'?'VANGUARD ONLY':'ARTILLERY ONLY')+'</span>'
    :maxed?'<span class="skill-maxed">★ MAX</span>'
-   :'<button class="skill-up" data-skill="'+key+'"'+(poolShards(key)<cost?' disabled':'')+'>UP '+cost+' <img src="assets/prod2-skill-shard.webp" alt=""></button>';
+   :'<button class="skill-up" data-skill="'+key+'"'+(poolShards(key)<cost?' disabled':'')+'>UP '+cost+' <img src="assets/prod2-skill-shard.png" alt=""></button>';
   return '<div class="skill-row'+(avail?'':' locked')+'"><div class="skill-icon">'+SKILL_ICONS[key]+'</div><div class="skill-row-info"><b>'+def.name+'</b><span>Lv '+lvl+'/'+SKILL_MAX+'</span></div>'+btn+'</div>';
  }).join('');
  list.querySelectorAll('.skill-up').forEach(function(b){b.onclick=function(){upgradeSkill(b.dataset.skill);renderSkillsSheet()}});
@@ -8551,11 +8551,11 @@ function svgTag(inner){return '<svg viewBox="0 0 96 96" aria-hidden="true">'+inn
 function aaSpark(cx,cy,r,fill){r=r||6;fill=fill||'#ffffff';return '<path d="M'+cx+' '+(cy-r).toFixed(1)+' Q'+(cx+r*.22).toFixed(1)+' '+(cy-r*.22).toFixed(1)+' '+(cx+r).toFixed(1)+' '+cy+' Q'+(cx+r*.22).toFixed(1)+' '+(cy+r*.22).toFixed(1)+' '+cx+' '+(cy+r).toFixed(1)+' Q'+(cx-r*.22).toFixed(1)+' '+(cy+r*.22).toFixed(1)+' '+(cx-r).toFixed(1)+' '+cy+' Q'+(cx-r*.22).toFixed(1)+' '+(cy-r*.22).toFixed(1)+' '+cx+' '+(cy-r).toFixed(1)+' Z" fill="'+fill+'" opacity=".92"/>'}
 function aaShade(cx,cy,rx,ry,op){return '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" fill="#000" opacity="'+(op||.42)+'"/>'}
 /* n is legacy (gem-count tier); all gem packs intentionally share the single approved AAA gem art */
-function artGems(n){return '<img src="assets/prod-gem.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artScrap(){return '<img src="assets/prod2-scrap-pile.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artMedal(){return '<img src="assets/prod2-valor-medal.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artSeal(){return '<img src="assets/prod2-royal-seal.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artEvolve(){return '<img src="assets/prod-evolution-cache.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artGems(n){return '<img src="assets/prod-gem.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artScrap(){return '<img src="assets/prod2-scrap-pile.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artMedal(){return '<img src="assets/prod2-valor-medal.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artSeal(){return '<img src="assets/prod2-royal-seal.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artEvolve(){return '<img src="assets/prod-evolution-cache.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
 function artBolt(){
  return svgTag(aaShade(48,90,26,5)
  +'<circle cx="48" cy="48" r="36" fill="#ff9a3d" opacity=".14"/>'
@@ -8563,12 +8563,12 @@ function artBolt(){
  +'<polygon points="57,4 22,55 42,55 37,92 74,37 52,37" fill="none" stroke="#ffe9a8" stroke-width="1.6" opacity=".6"/>'
  +'<polygon points="55,16 38,52 50,52 44,78 62,44 50,44" fill="#fff6cd" opacity=".92"/>'
  +aaSpark(78,60,4.4)+aaSpark(18,66,3.8))}
-function artEmblem(){return '<img src="assets/prod2-prestige-emblem.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artShard(){return '<img src="assets/prod2-skill-shard.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artChest(color){var map={'#c8d4de':'assets/prod-chest-common.webp','#6db7ff':'assets/prod-chest-rare.webp','#c08eff':'assets/prod-chest-epic.webp','#ffb347':'assets/prod-chest-legendary.webp'};var src=map[String(color||'').toLowerCase()]||'assets/prod-chest-legendary.webp';return '<img src="'+src+'" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artSlotChest(slot,color){var map={Hull:'assets/prod2-slot-hull.webp',Cannon:'assets/prod2-slot-cannon.webp',Treads:'assets/prod2-slot-treads.webp',Engine:'assets/prod2-slot-engine.webp',Plating:'assets/prod2-slot-plating.webp',Core:'assets/prod2-slot-core.webp'};var src=map[slot]||'assets/prod2-slot-core.webp';return '<img src="'+src+'" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artGift(){return '<img src="assets/prod-starter-gift.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
-function artLevels(){return '<img src="assets/prod2-promotion-chevron.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artEmblem(){return '<img src="assets/prod2-prestige-emblem.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artShard(){return '<img src="assets/prod2-skill-shard.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artChest(color){var map={'#c8d4de':'assets/prod-chest-common.png','#6db7ff':'assets/prod-chest-rare.png','#c08eff':'assets/prod-chest-epic.png','#ffb347':'assets/prod-chest-legendary.png'};var src=map[String(color||'').toLowerCase()]||'assets/prod-chest-legendary.png';return '<img src="'+src+'" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artSlotChest(slot,color){var map={Hull:'assets/prod2-slot-hull.png',Cannon:'assets/prod2-slot-cannon.png',Treads:'assets/prod2-slot-treads.png',Engine:'assets/prod2-slot-engine.png',Plating:'assets/prod2-slot-plating.png',Core:'assets/prod2-slot-core.png'};var src=map[slot]||'assets/prod2-slot-core.png';return '<img src="'+src+'" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artGift(){return '<img src="assets/prod-starter-gift.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
+function artLevels(){return '<img src="assets/prod2-promotion-chevron.png" alt="" style="width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))"/>' }
 function skinPartId(setId,cat){return 'skin_'+setId+'_'+cat}
 function setPieceOpt(set,cat){const k=byK(set.kingdom||'iron'),rar=set.rar.toLowerCase();
  const plumeShapes={common:'fan',rare:'fan',epic:'crest',legendary:'twin'},paintShapes={common:'slashes',rare:'slashes',epic:'band',legendary:'honors'},bannerStyle={common:'kingdom',rare:'steel',epic:'conqueror',legendary:'crusader'}[rar],trimGlow={common:'rgba(200,212,222,.25)',rare:'rgba(109,183,255,.40)',epic:'rgba(192,142,255,.45)',legendary:'rgba(255,211,122,.60)'}[rar],trimAccent={common:'#c8d4de',rare:'#6db7ff',epic:'#c08eff',legendary:'#ffd98a'}[rar];
@@ -8603,16 +8603,16 @@ function grantCampaignSkinAt(wave){CAMPAIGN_SKINS.forEach(function(set){if(set.b
  * ========================================================================== */
 const GODSKIN_PRICE=2499,GODSKIN_ATK=.10,GODSKIN_HP=.10,GODSKIN_ULT=.10;
 const GODSKINS=[
- {id:'godskin_solarion',bossId:'solarion',bossName:'Solarion',floor:10,name:'Skin of Solarion',sprite:'assets/godskin-solarion.webp'},
- {id:'godskin_tempestra',bossId:'tempestra',bossName:'Tempestra',floor:20,name:'Skin of Tempestra',sprite:'assets/godskin-tempestra.webp'},
- {id:'godskin_tidefather',bossId:'tidefather',bossName:'Tidefather',floor:30,name:'Skin of Tidefather',sprite:'assets/godskin-tidefather.webp'},
- {id:'godskin_crag',bossId:'crag',bossName:'Crag Patriarch',floor:40,name:'Skin of Crag Patriarch',sprite:'assets/godskin-crag.webp'},
- {id:'godskin_pyra',bossId:'pyra',bossName:'Pyra',floor:50,name:'Skin of Pyra',sprite:'assets/godskin-pyra.webp'},
- {id:'godskin_frost',bossId:'frost',bossName:'Frost Jarl',floor:60,name:'Skin of Frost Jarl',sprite:'assets/godskin-frost.webp'},
- {id:'godskin_thorn',bossId:'thorn',bossName:'Thorn Sovereign',floor:70,name:'Skin of Thorn Sovereign',sprite:'assets/godskin-thorn.webp'},
- {id:'godskin_umbra',bossId:'umbra',bossName:'Umbra Viceroy',floor:80,name:'Skin of Umbra Viceroy',sprite:'assets/godskin-umbra.webp'},
- {id:'godskin_gale',bossId:'gale',bossName:'Gale Seraph',floor:90,name:'Skin of Gale Seraph',sprite:'assets/tower-boss-gale.webp'},
- {id:'godskin_pontiff',bossId:'pontiff',bossName:'War Pontiff',floor:100,name:'Skin of War Pontiff',sprite:'assets/godskin-pontiff.webp'},
+ {id:'godskin_solarion',bossId:'solarion',bossName:'Solarion',floor:10,name:'Skin of Solarion',sprite:'assets/godskin-solarion.png'},
+ {id:'godskin_tempestra',bossId:'tempestra',bossName:'Tempestra',floor:20,name:'Skin of Tempestra',sprite:'assets/godskin-tempestra.png'},
+ {id:'godskin_tidefather',bossId:'tidefather',bossName:'Tidefather',floor:30,name:'Skin of Tidefather',sprite:'assets/godskin-tidefather.png'},
+ {id:'godskin_crag',bossId:'crag',bossName:'Crag Patriarch',floor:40,name:'Skin of Crag Patriarch',sprite:'assets/godskin-crag.png'},
+ {id:'godskin_pyra',bossId:'pyra',bossName:'Pyra',floor:50,name:'Skin of Pyra',sprite:'assets/godskin-pyra.png'},
+ {id:'godskin_frost',bossId:'frost',bossName:'Frost Jarl',floor:60,name:'Skin of Frost Jarl',sprite:'assets/godskin-frost.png'},
+ {id:'godskin_thorn',bossId:'thorn',bossName:'Thorn Sovereign',floor:70,name:'Skin of Thorn Sovereign',sprite:'assets/godskin-thorn.png'},
+ {id:'godskin_umbra',bossId:'umbra',bossName:'Umbra Viceroy',floor:80,name:'Skin of Umbra Viceroy',sprite:'assets/godskin-umbra.png'},
+ {id:'godskin_gale',bossId:'gale',bossName:'Gale Seraph',floor:90,name:'Skin of Gale Seraph',sprite:'assets/tower-boss-gale.png'},
+ {id:'godskin_pontiff',bossId:'pontiff',bossName:'War Pontiff',floor:100,name:'Skin of War Pontiff',sprite:'assets/godskin-pontiff.png'},
  /* SEASON PLACEHOLDER: season-exclusive godskin — sprite is an existing godskin webp until final art ships */
  {id:'season1',bossId:null,bossName:'Season 1',floor:0,name:'Skin of the First Season',sprite:'assets/godskin-season1.png',season:1}
 ];
@@ -9007,7 +9007,7 @@ function addAAAPart(part){if(aaaParts.length>=220)return;if(!batterySaver||activ
    after every existing procedural pass, leaving their code and timing intact. */
 var impactSpriteImg=new Image(),impactSpriteParts=[];
 impactSpriteImg.decoding='async';
-impactSpriteImg.src='assets/explosion-aaa-v2.webp?v='+__ASSET_V;
+impactSpriteImg.src='assets/explosion-aaa-v2.png?v='+__ASSET_V;
 function spawnImpactSprite(x,y){
   if(impactSpriteParts.length>=18)impactSpriteParts.shift();
   impactSpriteParts.push({x:x*viewW,y:y*viewH,age:0,duration:.42,rotation:(Math.random()-.5)*.18});
@@ -9314,7 +9314,7 @@ function startTowerBattle(f,transition){
  var intro=$('bossIntro');intro.hidden=true;intro.classList.remove('show','divine');
  resetDamageNumbers();resetMeters();setScreen('battle');
  $('battleName').textContent=t.name;setT('playerHudName',t.name);$('ultName').textContent=t.ult;
- var ultIcon=$('ultIcon');if(ultIcon){ultIcon.src='assets/ult-icon-knight-256.webp?v='+__ASSET_V;ultIcon.alt='Ultimate'};
+ var ultIcon=$('ultIcon');if(ultIcon){ultIcon.src='assets/ult-icon-knight-256.png?v='+__ASSET_V;ultIcon.alt='Ultimate'};
  $('battleStage').style.setProperty('--battleTint',k.colors[0]);
  $('battleStage').querySelector('.world-bg').dataset.kingdom='tower';var tgf=(f%10===0)?towerGodFor(f):null;setBattleBackground((tgf&&BATTLE_BG_GOD[tgf])||BATTLE_BG_TOWER_DEFAULT);
  applyEvolutionVisual();refreshBattleCustomLayers();updateHUD();restoreAutoChips();
@@ -9920,7 +9920,7 @@ function renderDungeonCard(){
  var stateLine=info.weekend?'Steel Gauntlet returns Monday':info.claimed?'Cleared — Rewards Claimed':info.cleared?'Cleared — Tap to Sweep':'Today: '+info.element.name+' • Wave '+info.equivWave;
  card.classList.toggle('mode-locked',!!info.weekend);
  card.setAttribute('aria-disabled',info.weekend?'true':'false');
- card.innerHTML='<span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-dungeon-clean.webp" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-dungeon-clean.webp" alt=""></div>'
+ card.innerHTML='<span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-dungeon-clean.png" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div class="mode-icon" aria-hidden="true"><img src="assets/mode-icon-dungeon-clean.png" alt=""></div>'
   +'<h2>Dungeon of Steel</h2><h3>Daily Dungeon</h3>'
   +'<p>Limited daily run. Rare loot and resources reset daily.</p>'
   +'<div class="mode-best">'+stateLine+'</div><div class="dungeon-count" data-dungeon-count>'+dungeonCountdownText()+'</div>';
@@ -9942,7 +9942,7 @@ function startDungeonBattle(){
  state.running=true;state.paused=false;state.enemy=null;state.projectiles.length=0;state.particles=[];
  state.chillT=0;state.sunburnT=0;state.thornT=0;state.frostHitCd=0;state.repairCd=0;state.meleeCd=0;
  resetDamageNumbers();resetMeters();setScreen('battle');
- $('battleName').textContent=t.name;setT('playerHudName',t.name);$('ultName').textContent=t.ult;var ultIcon=$('ultIcon');if(ultIcon)ultIcon.src='assets/ult-icon-knight-256.webp?v='+__ASSET_V;
+ $('battleName').textContent=t.name;setT('playerHudName',t.name);$('ultName').textContent=t.ult;var ultIcon=$('ultIcon');if(ultIcon)ultIcon.src='assets/ult-icon-knight-256.png?v='+__ASSET_V;
  preloadFactionShield();
  $('battleStage').style.setProperty('--battleTint',k.colors[0]);
  $('battleStage').querySelector('.world-bg').dataset.kingdom=k.id;
@@ -10162,7 +10162,7 @@ function startGloryBattle(){
   state.gloryOpp=opp;
   resetDamageNumbers();resetMeters();setScreen('battle');
   $('battleName').textContent=t.name+'  vs  '+opp.name;
-  setT('playerHudName',t.name);$('ultName').textContent=t.ult;var ultIcon=$('ultIcon');if(ultIcon){ultIcon.src='assets/ult-icon-knight-256.webp?v='+__ASSET_V;ultIcon.alt='Ultimate'};
+  setT('playerHudName',t.name);$('ultName').textContent=t.ult;var ultIcon=$('ultIcon');if(ultIcon){ultIcon.src='assets/ult-icon-knight-256.png?v='+__ASSET_V;ultIcon.alt='Ultimate'};
   $('battleStage').style.setProperty('--battleTint',k.colors[0]);
   $('battleStage').querySelector('.world-bg').dataset.kingdom=k.id;
   $('playerRig').classList.remove('defeat','hit');hideCampDefeat();

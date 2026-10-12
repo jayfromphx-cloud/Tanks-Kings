@@ -1,12 +1,12 @@
 {
- "build": "4a8858666b",
- "html": "a98c3c13d6",
+ "build": "8222bf5f94",
+ "html": "61dffc1d4d",
  "assetCount": 226,
  "assets": [
   {
-   "file": "assets/battle-environment-key-art.webp",
-   "bytes": 466472,
-   "md5": "b0ab06fb7b57be82cbb0777812ea6438"
+   "file": "assets/battle-environment-key-art.png",
+   "bytes": 3779612,
+   "md5": "e7efe4a7bc45a417c09ae5ca940fb9ae"
   },
   {
    "file": "assets/bg-bloom-vale.jpg",
@@ -39,124 +39,124 @@
    "md5": "525c5801cc55661bec89ee90c0543e3e"
   },
   {
-   "file": "assets/btn-melee.webp",
-   "bytes": 144090,
-   "md5": "41c0e12bd86e118ffe68d36a02eca38e"
+   "file": "assets/btn-melee.png",
+   "bytes": 898261,
+   "md5": "661f01fceafe1d7cc6b99cef2743b1c4"
   },
   {
-   "file": "assets/btn-missile.webp",
-   "bytes": 124892,
-   "md5": "b8d7df9e2ddbfe6acc125bec9b48f007"
+   "file": "assets/btn-missile.png",
+   "bytes": 790681,
+   "md5": "5a107f547f4779a1664d0397bfb3dbda"
   },
   {
-   "file": "assets/btn-parry.webp",
-   "bytes": 40158,
-   "md5": "dd485425b2f4816aecb89466414f58c8"
+   "file": "assets/btn-parry.png",
+   "bytes": 275185,
+   "md5": "3495c7a009dac18e6bc6ad1cb8ff91be"
   },
   {
-   "file": "assets/btn-ult.webp",
-   "bytes": 305700,
-   "md5": "22648b0d677f934d87fb1909e085cb4e"
+   "file": "assets/btn-ult.png",
+   "bytes": 1978204,
+   "md5": "434d062f1433911667f547d5ab894b53"
   },
   {
-   "file": "assets/enemy-boss-bloomvale.webp",
-   "bytes": 67030,
-   "md5": "db6b4245da85fc5cf0686ff804d49ed8"
+   "file": "assets/enemy-boss-bloomvale.png",
+   "bytes": 336587,
+   "md5": "55c6921829c25540fc0933b9faf5ebd1"
   },
   {
-   "file": "assets/enemy-boss-ember.webp",
-   "bytes": 152672,
-   "md5": "70d517860971c38bdc57ea54c5f0cd30"
+   "file": "assets/enemy-boss-ember.png",
+   "bytes": 759670,
+   "md5": "d54bbb240b5119af0982cbbe9b17b9b4"
   },
   {
-   "file": "assets/enemy-boss-ironhold.webp",
-   "bytes": 137804,
-   "md5": "f19fb77296ed5b2201520fab13da9154"
+   "file": "assets/enemy-boss-ironhold.png",
+   "bytes": 688759,
+   "md5": "b7500f7aba589c16126e4096a8aa68f9"
   },
   {
-   "file": "assets/enemy-boss-tidereign.webp",
-   "bytes": 66430,
-   "md5": "fc8682a871404adce4fba00b284a2aa5"
+   "file": "assets/enemy-boss-tidereign.png",
+   "bytes": 336714,
+   "md5": "f794d6ec06c8c0b82749a63e83634259"
   },
   {
-   "file": "assets/enemy-boss-voltspire.webp",
-   "bytes": 65002,
-   "md5": "a9ea920dee39cb71b7512ef0a04d3b2f"
+   "file": "assets/enemy-boss-voltspire.png",
+   "bytes": 333775,
+   "md5": "907d4d74e59a064b4b4e079de941d50c"
   },
   {
-   "file": "assets/enemy-grunt-bloomvale.webp",
-   "bytes": 46758,
-   "md5": "1fd4399d30a9e3e321dabb5a2bc3be14"
+   "file": "assets/enemy-grunt-bloomvale.png",
+   "bytes": 216147,
+   "md5": "15462fd6cd49744522f1a83ba4f3cee9"
   },
   {
-   "file": "assets/enemy-grunt-ember.webp",
-   "bytes": 47830,
-   "md5": "4a5f0e00b0d08e8a8bf0381f8589c104"
+   "file": "assets/enemy-grunt-ember.png",
+   "bytes": 216648,
+   "md5": "786aa7d0b8e3b49386f152971104702e"
   },
   {
-   "file": "assets/enemy-grunt-ironhold.webp",
-   "bytes": 51048,
-   "md5": "4fcce658016ae8ccd026b370b47e2164"
+   "file": "assets/enemy-grunt-ironhold.png",
+   "bytes": 242294,
+   "md5": "936c8310260e3def72e6e31630049e08"
   },
   {
-   "file": "assets/enemy-grunt-tidereign.webp",
-   "bytes": 46886,
-   "md5": "4a112180d7589b5db058e0822aacad4e"
+   "file": "assets/enemy-grunt-tidereign.png",
+   "bytes": 218414,
+   "md5": "3963b24b6bc5dfe520ae614a8f7f8aa5"
   },
   {
-   "file": "assets/enemy-grunt-voltspire.webp",
-   "bytes": 45898,
-   "md5": "8f5fda50aa696b15c1009d61df3ac524"
+   "file": "assets/enemy-grunt-voltspire.png",
+   "bytes": 215775,
+   "md5": "72e0c56100f197a2ed5e4e6de39274b5"
   },
   {
-   "file": "assets/enemy-heavy-bloomvale.webp",
-   "bytes": 53822,
-   "md5": "ca445c29c7faa3cf482232e3c4e4a372"
+   "file": "assets/enemy-heavy-bloomvale.png",
+   "bytes": 272115,
+   "md5": "9fcab1b92c347db5378d0e7e4ce9bcb7"
   },
   {
-   "file": "assets/enemy-heavy-ember.webp",
-   "bytes": 51220,
-   "md5": "cfce816a5c2f5d9fc9bd5f7a39d1ce67"
+   "file": "assets/enemy-heavy-ember.png",
+   "bytes": 264272,
+   "md5": "dfcdefd2b1f2b2555eed976ad775fecd"
   },
   {
-   "file": "assets/enemy-heavy-ironhold.webp",
-   "bytes": 58550,
-   "md5": "648f809b40aaadcd3ade28cd96cd274c"
+   "file": "assets/enemy-heavy-ironhold.png",
+   "bytes": 279154,
+   "md5": "d2507f33d7a22cfce3417e8906ab8839"
   },
   {
-   "file": "assets/enemy-heavy-tidereign.webp",
-   "bytes": 53782,
-   "md5": "0306259a7784d6d20c4cf2e9d3022598"
+   "file": "assets/enemy-heavy-tidereign.png",
+   "bytes": 273845,
+   "md5": "afd1b009dfe217fdeb6f29bd4010eded"
   },
   {
-   "file": "assets/enemy-heavy-voltspire.webp",
-   "bytes": 52236,
-   "md5": "0bf889678c1b1fb071dccfcc10185205"
+   "file": "assets/enemy-heavy-voltspire.png",
+   "bytes": 269930,
+   "md5": "4d2078e05dd288eedd6c4820855158ca"
   },
   {
-   "file": "assets/enemy-swift-bloomvale.webp",
-   "bytes": 31006,
-   "md5": "dc97cc5c75227064bffc4494917e20e1"
+   "file": "assets/enemy-swift-bloomvale.png",
+   "bytes": 135760,
+   "md5": "493b10fee281e7b13b1e15c080ff4c87"
   },
   {
-   "file": "assets/enemy-swift-ember.webp",
-   "bytes": 30092,
-   "md5": "835047881ec864e0238df3ecbb203d04"
+   "file": "assets/enemy-swift-ember.png",
+   "bytes": 137424,
+   "md5": "6d38810c6d936df2743b2023758d56ec"
   },
   {
-   "file": "assets/enemy-swift-ironhold.webp",
-   "bytes": 36244,
-   "md5": "3d9b88e2891d469355ccf7e1d1b0c393"
+   "file": "assets/enemy-swift-ironhold.png",
+   "bytes": 150098,
+   "md5": "bccab3ea9b7d6e38f5c6ec49517642ed"
   },
   {
-   "file": "assets/enemy-swift-tidereign.webp",
-   "bytes": 30838,
-   "md5": "1f5e8cbaa33bf5095a5d3f7c5e30f15d"
+   "file": "assets/enemy-swift-tidereign.png",
+   "bytes": 135613,
+   "md5": "3fd943e3143e2438fee1bc845bf194b8"
   },
   {
-   "file": "assets/enemy-swift-voltspire.webp",
-   "bytes": 30296,
-   "md5": "5bbc6e663711697658fe81ba7507a37a"
+   "file": "assets/enemy-swift-voltspire.png",
+   "bytes": 135346,
+   "md5": "9d05cbb49a276a564a67b7e49eb04e4d"
   },
   {
    "file": "assets/enemy-tank.bin",
@@ -164,404 +164,404 @@
    "md5": "0670d800778c490f9e2e74cf71a96a28"
   },
   {
-   "file": "assets/evo-ascendant-bloom-artillery.webp",
-   "bytes": 1729446,
-   "md5": "c4ecc03ae2842a123977e6cbb44925eb"
+   "file": "assets/evo-ascendant-bloom-artillery.png",
+   "bytes": 2759694,
+   "md5": "b31fbc905dfa73b14da208b3cd37cd30"
   },
   {
-   "file": "assets/evo-ascendant-ember-artillery.webp",
-   "bytes": 1654406,
-   "md5": "c8131c02aea89102dfb688b05b4309e4"
+   "file": "assets/evo-ascendant-ember-artillery.png",
+   "bytes": 2696499,
+   "md5": "c222cb4bc7cd32239f2c0a24a10ebeb1"
   },
   {
-   "file": "assets/evo-ascendant-ironhold-artillery.webp",
-   "bytes": 1063114,
-   "md5": "c1472c471ba22ea699a5794b760581c1"
+   "file": "assets/evo-ascendant-ironhold-artillery.png",
+   "bytes": 1765740,
+   "md5": "a493aaf586778f08c87b72471d84856f"
   },
   {
-   "file": "assets/evo-ascendant-tidereign-artillery.webp",
-   "bytes": 1055006,
-   "md5": "396cb3e93b3a74a4332e18d7a441c1ad"
+   "file": "assets/evo-ascendant-tidereign-artillery.png",
+   "bytes": 1711148,
+   "md5": "b0427623b145590e9d62dd380e287c19"
   },
   {
-   "file": "assets/evo-ascendant-voltspire-artillery.webp",
-   "bytes": 317462,
-   "md5": "8e41d1b3f5cc91567058afc5cdf3baec"
+   "file": "assets/evo-ascendant-voltspire-artillery.png",
+   "bytes": 3147463,
+   "md5": "7f405a5069b4d9a3397c55a5844fccac"
   },
   {
-   "file": "assets/evo-godking-bloom-artillery.webp",
-   "bytes": 367302,
-   "md5": "d5e9e40817a4674e326026fd51b7cde5"
+   "file": "assets/evo-godking-bloom-artillery.png",
+   "bytes": 3240204,
+   "md5": "c1b40cb3b08adbfb85a82ace5b023ced"
   },
   {
-   "file": "assets/evo-godking-bloom.webp",
-   "bytes": 781728,
-   "md5": "50a8d47ad1287a1e298737f4c67fc9bd"
+   "file": "assets/evo-godking-bloom.png",
+   "bytes": 4144339,
+   "md5": "793ec4e182e8007de491b2c74e10396b"
   },
   {
-   "file": "assets/evo-godking-ember-artillery.webp",
-   "bytes": 245454,
-   "md5": "c6f81a83fcbc57413febc98a03e4c492"
+   "file": "assets/evo-godking-ember-artillery.png",
+   "bytes": 2500590,
+   "md5": "bd64baa9a014bfd31068a8fead05e0e2"
   },
   {
-   "file": "assets/evo-godking-ember.webp",
-   "bytes": 606584,
-   "md5": "ba50347ffa4eb61b42c24ca295ef4930"
+   "file": "assets/evo-godking-ember.png",
+   "bytes": 3040283,
+   "md5": "57f9a0c288e0b4f8e738eda5557cb01f"
   },
   {
-   "file": "assets/evo-godking-ironhold-artillery.webp",
-   "bytes": 261870,
-   "md5": "25d585887b7baa48cefaa433d116c807"
+   "file": "assets/evo-godking-ironhold-artillery.png",
+   "bytes": 2557194,
+   "md5": "962eaa091dc1caca09e82e2912fbe387"
   },
   {
-   "file": "assets/evo-godking-ironhold.webp",
-   "bytes": 629940,
-   "md5": "2d0858acd5a79b9c7f9381b5e006f788"
+   "file": "assets/evo-godking-ironhold.png",
+   "bytes": 2939023,
+   "md5": "3b21820eb93e41963ef7b31fe76eb1f9"
   },
   {
-   "file": "assets/evo-godking-tidereign-artillery.webp",
-   "bytes": 283212,
-   "md5": "ea57d213e6e5bbab15e42d7d1a11abba"
+   "file": "assets/evo-godking-tidereign-artillery.png",
+   "bytes": 2776719,
+   "md5": "ff6b35748714c9cf61de0ebc10255043"
   },
   {
-   "file": "assets/evo-godking-tidereign.webp",
-   "bytes": 433380,
-   "md5": "9e19307a422980cdc7c0ed67c444ed11"
+   "file": "assets/evo-godking-tidereign.png",
+   "bytes": 1714177,
+   "md5": "7555a58cb3f24f09174842c5682b357b"
   },
   {
-   "file": "assets/evo-godking-voltspire-artillery.webp",
-   "bytes": 245804,
-   "md5": "bac4747f9a73e5e6bb89022fb45c8f70"
+   "file": "assets/evo-godking-voltspire-artillery.png",
+   "bytes": 2413783,
+   "md5": "2b294c220d6edff2891f8a5260299187"
   },
   {
-   "file": "assets/evo-godking-voltspire.webp",
-   "bytes": 609336,
-   "md5": "5eec71684dbe07993959de222bf48c3b"
+   "file": "assets/evo-godking-voltspire.png",
+   "bytes": 3133766,
+   "md5": "ace58ecdeac6a603b9e7bd4891c1cbe6"
   },
   {
-   "file": "assets/evo-knight-bloom-artillery-battle.webp",
-   "bytes": 221114,
-   "md5": "88bffb205b4176c03e765ada0017309e"
+   "file": "assets/evo-knight-bloom-artillery-battle.png",
+   "bytes": 952718,
+   "md5": "0c7bf41de68b62c55cb69350f27c5706"
   },
   {
-   "file": "assets/evo-knight-bloom-artillery.webp",
-   "bytes": 539958,
-   "md5": "34b495762ec58516060f9df351c562d1"
+   "file": "assets/evo-knight-bloom-artillery.png",
+   "bytes": 2876420,
+   "md5": "dabd9ef042b8b74ee360e160ab142b0e"
   },
   {
-   "file": "assets/evo-knight-bloom-battle.webp",
-   "bytes": 319118,
-   "md5": "3997658f8103a02985b526684f5a43f8"
+   "file": "assets/evo-knight-bloom-battle.png",
+   "bytes": 1275605,
+   "md5": "e7a098daa7d947a19522e3513f77928a"
   },
   {
-   "file": "assets/evo-knight-bloom.webp",
-   "bytes": 365380,
-   "md5": "95885c4b6d982f81741a0de9e35998de"
+   "file": "assets/evo-knight-bloom.png",
+   "bytes": 2775309,
+   "md5": "1ea2c400e036af030a0649379625c277"
   },
   {
-   "file": "assets/evo-knight-ember-artillery-battle.webp",
-   "bytes": 186652,
-   "md5": "4b1360ec037fc0b6e5fbc399bcb44721"
+   "file": "assets/evo-knight-ember-artillery-battle.png",
+   "bytes": 863981,
+   "md5": "e2567de69d1e68278f05f22a2fc5e5e6"
   },
   {
-   "file": "assets/evo-knight-ember-artillery.webp",
-   "bytes": 573850,
-   "md5": "779a1144533c7c7685e6407f5fd792cf"
+   "file": "assets/evo-knight-ember-artillery.png",
+   "bytes": 3027725,
+   "md5": "0683e64e21686d5112c70dc9308127a8"
   },
   {
-   "file": "assets/evo-knight-ember-battle.webp",
-   "bytes": 265096,
-   "md5": "345fa3dde83de7c5b0d8fe47848944b7"
+   "file": "assets/evo-knight-ember-battle.png",
+   "bytes": 1212132,
+   "md5": "be6b62ce880ca6a382d5ffbb476c36f2"
   },
   {
-   "file": "assets/evo-knight-ember.webp",
-   "bytes": 275352,
-   "md5": "30f36a14cb10717578a3ba17cf6d3bf6"
+   "file": "assets/evo-knight-ember.png",
+   "bytes": 2626489,
+   "md5": "5da4a796996271ceab6763df5c301f92"
   },
   {
-   "file": "assets/evo-knight-ironhold-artillery-battle.webp",
-   "bytes": 223404,
-   "md5": "8e4576987079d599e87ad4dab72c41fa"
+   "file": "assets/evo-knight-ironhold-artillery-battle.png",
+   "bytes": 986894,
+   "md5": "e0c1fcda2adc8fec65a1717977b8de4e"
   },
   {
-   "file": "assets/evo-knight-ironhold-artillery.webp",
-   "bytes": 504266,
-   "md5": "ad7797840c346c9bb2225c940d308a86"
+   "file": "assets/evo-knight-ironhold-artillery.png",
+   "bytes": 2651326,
+   "md5": "e813c7f239570b557f319392bb7f3c91"
   },
   {
-   "file": "assets/evo-knight-ironhold-battle.webp",
-   "bytes": 320902,
-   "md5": "f305d35677db6f3fe1e12cc92442a3aa"
+   "file": "assets/evo-knight-ironhold-battle.png",
+   "bytes": 1359956,
+   "md5": "88227bce093fd85acaa7d91a85822034"
   },
   {
-   "file": "assets/evo-knight-ironhold.webp",
-   "bytes": 529786,
-   "md5": "47d3e71b30c2ee1a82a18295858ea0d8"
+   "file": "assets/evo-knight-ironhold.png",
+   "bytes": 2716616,
+   "md5": "a8dee5210a3afdd28e8a00f4ee531ef4"
   },
   {
-   "file": "assets/evo-knight-tidereign-artillery-battle.webp",
-   "bytes": 231012,
-   "md5": "a2c3b64e52b917e23a224c184a514acc"
+   "file": "assets/evo-knight-tidereign-artillery-battle.png",
+   "bytes": 982394,
+   "md5": "907ea5a239043f05ca49622a845a1dc1"
   },
   {
-   "file": "assets/evo-knight-tidereign-artillery.webp",
-   "bytes": 528758,
-   "md5": "1ac4bd8846d255d303a9205a09f9f5bf"
+   "file": "assets/evo-knight-tidereign-artillery.png",
+   "bytes": 2964517,
+   "md5": "847c422e0c236ec67d09bdaff09595bf"
   },
   {
-   "file": "assets/evo-knight-tidereign-battle.webp",
-   "bytes": 297918,
-   "md5": "60fedc5b8a862f7f11791b8c7dab9072"
+   "file": "assets/evo-knight-tidereign-battle.png",
+   "bytes": 1248785,
+   "md5": "8e57328fb3076c1421b8cde3954d9e7a"
   },
   {
-   "file": "assets/evo-knight-tidereign.webp",
-   "bytes": 324288,
-   "md5": "4d74321abac67864eba0581b825e19ff"
+   "file": "assets/evo-knight-tidereign.png",
+   "bytes": 2657842,
+   "md5": "25e22e1735386f8c069da96d9f30f657"
   },
   {
-   "file": "assets/evo-knight-voltspire-artillery-battle.webp",
-   "bytes": 174286,
-   "md5": "56723cdb8f601bed9b5008c96918b33e"
+   "file": "assets/evo-knight-voltspire-artillery-battle.png",
+   "bytes": 870012,
+   "md5": "a138b34fda5370d89f9a2bd875bbf356"
   },
   {
-   "file": "assets/evo-knight-voltspire-artillery.webp",
-   "bytes": 507480,
-   "md5": "3344f6a6598f588a16ba729e761e9cb6"
+   "file": "assets/evo-knight-voltspire-artillery.png",
+   "bytes": 2592058,
+   "md5": "d9f96d007a6bb4ff785382029fe32c2e"
   },
   {
-   "file": "assets/evo-knight-voltspire-battle.webp",
-   "bytes": 300526,
-   "md5": "c8e0d803d1aaecc1a2d549413b6dc2fe"
+   "file": "assets/evo-knight-voltspire-battle.png",
+   "bytes": 1297866,
+   "md5": "5596007bc9c82c1c2b763ab8af32aff8"
   },
   {
-   "file": "assets/evo-knight-voltspire.webp",
-   "bytes": 502244,
-   "md5": "4f025e8afd2e3c1322d09eca8fd96303"
+   "file": "assets/evo-knight-voltspire.png",
+   "bytes": 2757290,
+   "md5": "c19a1fbe43c3c3a24debcd1f82c67c0d"
   },
   {
-   "file": "assets/evo-paladin-bloom-artillery-battle.webp",
-   "bytes": 250344,
-   "md5": "44fcef41444119badcaba320f9b658d9"
+   "file": "assets/evo-paladin-bloom-artillery-battle.png",
+   "bytes": 1191837,
+   "md5": "a3e8cda34f14df8fc59e953cb248c369"
   },
   {
-   "file": "assets/evo-paladin-bloom-artillery.webp",
-   "bytes": 267264,
-   "md5": "bec393690476b54e299a81efb2142d35"
+   "file": "assets/evo-paladin-bloom-artillery.png",
+   "bytes": 2842223,
+   "md5": "885917c631b73d20ed0933e21232a353"
   },
   {
-   "file": "assets/evo-paladin-bloom-battle.webp",
-   "bytes": 245010,
-   "md5": "9d37e86ad6156badd0b1b40b7c52e022"
+   "file": "assets/evo-paladin-bloom-battle.png",
+   "bytes": 1132511,
+   "md5": "d2a7718d6058a7a520963cfba3a0eba6"
   },
   {
-   "file": "assets/evo-paladin-bloom.webp",
-   "bytes": 466710,
-   "md5": "44459c6c37ca38b76968b2a518eb92d2"
+   "file": "assets/evo-paladin-bloom.png",
+   "bytes": 2366516,
+   "md5": "d1b6e2626d2ea782c9330e02d31c027e"
   },
   {
-   "file": "assets/evo-paladin-ember-artillery-battle.webp",
-   "bytes": 216424,
-   "md5": "af0b3b1fc6158fb85e348f370f26a70d"
+   "file": "assets/evo-paladin-ember-artillery-battle.png",
+   "bytes": 996175,
+   "md5": "2ae19346bc1d4eecfceed657a00fa608"
   },
   {
-   "file": "assets/evo-paladin-ember-artillery.webp",
-   "bytes": 218300,
-   "md5": "c4ecef79c4b664449e8f5b5a4a71c1e0"
+   "file": "assets/evo-paladin-ember-artillery.png",
+   "bytes": 2409731,
+   "md5": "ef3c3b5248966824c92c0131d72abc55"
   },
   {
-   "file": "assets/evo-paladin-ember-battle.webp",
-   "bytes": 253736,
-   "md5": "c20734a98ccba7926becfe65aa574cf2"
+   "file": "assets/evo-paladin-ember-battle.png",
+   "bytes": 1240096,
+   "md5": "3d115989e974ddab825c653a9bc4f268"
   },
   {
-   "file": "assets/evo-paladin-ember.webp",
-   "bytes": 450344,
-   "md5": "6c0a0e5521ea1f56486a11bfd13cb024"
+   "file": "assets/evo-paladin-ember.png",
+   "bytes": 2476196,
+   "md5": "11b653a70c1930b01a40fda9cf63267f"
   },
   {
-   "file": "assets/evo-paladin-ironhold-artillery-battle.webp",
-   "bytes": 182122,
-   "md5": "045f18d4a3724c3d662f0950f6c0d74f"
+   "file": "assets/evo-paladin-ironhold-artillery-battle.png",
+   "bytes": 781839,
+   "md5": "e3c99c3faac1e52084d30e80f9d4f9e0"
   },
   {
-   "file": "assets/evo-paladin-ironhold-artillery.webp",
-   "bytes": 196786,
-   "md5": "a7e8350bd4d25143604da74e3923aaba"
+   "file": "assets/evo-paladin-ironhold-artillery.png",
+   "bytes": 2137440,
+   "md5": "a94308246f014ea19521a65f6d5b1483"
   },
   {
-   "file": "assets/evo-paladin-ironhold-battle.webp",
-   "bytes": 273270,
-   "md5": "b6ebbd2d9bd9d321d573d105a1052a1d"
+   "file": "assets/evo-paladin-ironhold-battle.png",
+   "bytes": 1327447,
+   "md5": "afba4d7286fb314d73bf8d57bc3c1a86"
   },
   {
-   "file": "assets/evo-paladin-ironhold.webp",
-   "bytes": 463106,
-   "md5": "f127b1182a4568b69512ab156cb8f179"
+   "file": "assets/evo-paladin-ironhold.png",
+   "bytes": 2472581,
+   "md5": "6df296a01f48ae72f53838fcc9037b3a"
   },
   {
-   "file": "assets/evo-paladin-tidereign-artillery-battle.webp",
-   "bytes": 274394,
-   "md5": "e3b8e53e66c05383dc1086bb375acb1a"
+   "file": "assets/evo-paladin-tidereign-artillery-battle.png",
+   "bytes": 1119431,
+   "md5": "0f0b3a5cb4ced5f6b301fabeaa011f98"
   },
   {
-   "file": "assets/evo-paladin-tidereign-artillery.webp",
-   "bytes": 275828,
-   "md5": "2540e244024fd74c06f61b5fe416586a"
+   "file": "assets/evo-paladin-tidereign-artillery.png",
+   "bytes": 3070918,
+   "md5": "7f56b79e37f17591126ac68cc65e0f42"
   },
   {
-   "file": "assets/evo-paladin-tidereign-battle.webp",
-   "bytes": 289300,
-   "md5": "33b6f97c1ba57e981fe3acf7ccbacf3d"
+   "file": "assets/evo-paladin-tidereign-battle.png",
+   "bytes": 1281174,
+   "md5": "c59203d590bc8626f8acb78d408dcfde"
   },
   {
-   "file": "assets/evo-paladin-tidereign.webp",
-   "bytes": 525190,
-   "md5": "0fea4822816c9c8da96f5ba1dc05c406"
+   "file": "assets/evo-paladin-tidereign.png",
+   "bytes": 2798751,
+   "md5": "3dc72d54614bbc68ffd536da265db4d2"
   },
   {
-   "file": "assets/evo-paladin-voltspire-artillery-battle.webp",
-   "bytes": 268980,
-   "md5": "af49f682fc3c16e2af70331e1c2fca71"
+   "file": "assets/evo-paladin-voltspire-artillery-battle.png",
+   "bytes": 1105394,
+   "md5": "ec0bc08bc18beb26fe85ee4383f0f9d7"
   },
   {
-   "file": "assets/evo-paladin-voltspire-artillery.webp",
-   "bytes": 252248,
-   "md5": "a9515202e4a41a3ba29bfe8167cc2bf6"
+   "file": "assets/evo-paladin-voltspire-artillery.png",
+   "bytes": 2608718,
+   "md5": "02e76325c70734ef798aebc53334c455"
   },
   {
-   "file": "assets/evo-paladin-voltspire-battle.webp",
-   "bytes": 302470,
-   "md5": "e7b4d85ec12c449c188e99c7bae4cd4f"
+   "file": "assets/evo-paladin-voltspire-battle.png",
+   "bytes": 1330309,
+   "md5": "0750766c492bac8997f5c3edac33b2b8"
   },
   {
-   "file": "assets/evo-paladin-voltspire.webp",
-   "bytes": 464632,
-   "md5": "6f06989fb6459d6dc27b923232c3ecb5"
+   "file": "assets/evo-paladin-voltspire.png",
+   "bytes": 2514737,
+   "md5": "7de311cc60272d9cf81cb6b26482bbbe"
   },
   {
-   "file": "assets/explosion-aaa-v2.webp",
-   "bytes": 301044,
-   "md5": "47e559f61554da18fd85bc1b5359fca3"
+   "file": "assets/explosion-aaa-v2.png",
+   "bytes": 2847681,
+   "md5": "4d93f3b5e5fa5b1c193430a73f7e3d59"
   },
   {
-   "file": "assets/faction-emblem-bloom.webp",
-   "bytes": 42202,
-   "md5": "bd010d58f2f48c852f90eb0bfe80505e"
+   "file": "assets/faction-emblem-bloom.png",
+   "bytes": 341906,
+   "md5": "b11e53d8faa34b881020d42be5e6303c"
   },
   {
-   "file": "assets/faction-emblem-ember.webp",
-   "bytes": 42470,
-   "md5": "a19dad1d92d5e01232fcca4b5cd11847"
+   "file": "assets/faction-emblem-ember.png",
+   "bytes": 339484,
+   "md5": "7891088ec858d1ba23e4a06c3565a8e8"
   },
   {
-   "file": "assets/faction-emblem-ironhold.webp",
-   "bytes": 33694,
-   "md5": "2b544633950fd803bb7672e018c8565a"
+   "file": "assets/faction-emblem-ironhold.png",
+   "bytes": 283515,
+   "md5": "991a47ec2153a19878cbfd66ce59f744"
   },
   {
-   "file": "assets/faction-emblem-tide.webp",
-   "bytes": 41746,
-   "md5": "2d4155f81fff561c1d9597022a7df574"
+   "file": "assets/faction-emblem-tide.png",
+   "bytes": 340403,
+   "md5": "246c3f7d562f2e46459db01152a507e1"
   },
   {
-   "file": "assets/faction-emblem-voltspire.webp",
-   "bytes": 47360,
-   "md5": "57b06327f2c93f04892a5dabf85035c4"
+   "file": "assets/faction-emblem-voltspire.png",
+   "bytes": 335349,
+   "md5": "f774c86f9e7416e7f23bad6b393dfef2"
   },
   {
-   "file": "assets/frame-epic.webp",
-   "bytes": 22160,
-   "md5": "9b141413ecdf640374e278b41e781031"
+   "file": "assets/frame-epic.png",
+   "bytes": 86651,
+   "md5": "89a6ed1a857abfed96f8bcb98cda6fe6"
   },
   {
-   "file": "assets/frame-legendary.webp",
-   "bytes": 23474,
-   "md5": "df31671ecd2966cfba11df06c411de51"
+   "file": "assets/frame-legendary.png",
+   "bytes": 95897,
+   "md5": "0ab930e39ea2c86952e0515fe4195b16"
   },
   {
-   "file": "assets/frame-rare.webp",
-   "bytes": 27660,
-   "md5": "72eddfdcc2e5dcb306903b7542d9c9e0"
+   "file": "assets/frame-rare.png",
+   "bytes": 93480,
+   "md5": "b6403f2b289ff24b8d58e05187e5e2ba"
   },
   {
-   "file": "assets/godskin-crag.webp",
-   "bytes": 270306,
-   "md5": "4ecdde0d90b7e17cdeee54eafe72a9ce"
+   "file": "assets/godskin-crag.png",
+   "bytes": 2017476,
+   "md5": "adc522547c2e543f9614c80ad83d60d6"
   },
   {
-   "file": "assets/godskin-frost.webp",
-   "bytes": 369708,
-   "md5": "752b9c773de890b5046ad06e8b832778"
+   "file": "assets/godskin-frost.png",
+   "bytes": 2445427,
+   "md5": "3edbdadf1c4b6db46ffeae532c0421e0"
   },
   {
-   "file": "assets/godskin-pontiff.webp",
-   "bytes": 598480,
-   "md5": "c1775b4405448e01b14b8cdd77006dc0"
+   "file": "assets/godskin-pontiff.png",
+   "bytes": 3086635,
+   "md5": "2eb2eba82ac61eca048e51d913377f11"
   },
   {
-   "file": "assets/godskin-pyra.webp",
-   "bytes": 289374,
-   "md5": "3faff16db506a76060e9b1cbfabd9673"
+   "file": "assets/godskin-pyra.png",
+   "bytes": 2019766,
+   "md5": "52bce60af9345e622f2270df857cab6c"
   },
   {
-   "file": "assets/godskin-season1.webp",
-   "bytes": 1685800,
-   "md5": "606cc17762ae82224a3dad91f297fc51"
+   "file": "assets/godskin-season1.png",
+   "bytes": 1787384,
+   "md5": "77c6cd08369d24327bbe5e4e49c68c22"
   },
   {
-   "file": "assets/godskin-solarion.webp",
-   "bytes": 183672,
-   "md5": "05384e7130bb38c24048145e66acdfc6"
+   "file": "assets/godskin-solarion.png",
+   "bytes": 1737723,
+   "md5": "f8c7e373fabf142db876c44259902e01"
   },
   {
-   "file": "assets/godskin-tempestra.webp",
-   "bytes": 161254,
-   "md5": "66892a15e766b615007023c3923cf5ff"
+   "file": "assets/godskin-tempestra.png",
+   "bytes": 1085978,
+   "md5": "6c28c24c1fd39f9793af9224a63a5f7d"
   },
   {
-   "file": "assets/godskin-thorn.webp",
-   "bytes": 355294,
-   "md5": "a809e27bbc2cfbdaf45c5e26fe9e7276"
+   "file": "assets/godskin-thorn.png",
+   "bytes": 2535248,
+   "md5": "83f19ef2cd8a7844481694b3f68da9b8"
   },
   {
-   "file": "assets/godskin-tidefather.webp",
-   "bytes": 644576,
-   "md5": "5bb28f5e40bb30783e6c5dff511a8b24"
+   "file": "assets/godskin-tidefather.png",
+   "bytes": 1710920,
+   "md5": "70f8f51d1ce89f99dcc367e71026d3bb"
   },
   {
-   "file": "assets/godskin-umbra.webp",
-   "bytes": 267800,
-   "md5": "91d64f0c9f589dcb7c6234245d88c13d"
+   "file": "assets/godskin-umbra.png",
+   "bytes": 2094797,
+   "md5": "a6b0cc7293b16c38e05f0621ac64b536"
   },
   {
-   "file": "assets/icon-cannon.webp",
-   "bytes": 9318,
-   "md5": "c78757274efc982ab8e79d23e1c5d89b"
+   "file": "assets/icon-cannon.png",
+   "bytes": 38498,
+   "md5": "fa48689627cbc420059da6158e203772"
   },
   {
-   "file": "assets/icon-core.webp",
-   "bytes": 18824,
-   "md5": "70a3ab3ab6ea5a412067dceeb365e11f"
+   "file": "assets/icon-core.png",
+   "bytes": 86443,
+   "md5": "da19cffb52136af779789c43a6fe5c31"
   },
   {
-   "file": "assets/icon-engine.webp",
-   "bytes": 17262,
-   "md5": "1680e3dbb9d895fa137e92ea5450250d"
+   "file": "assets/icon-engine.png",
+   "bytes": 71881,
+   "md5": "9bbbdfa7005799603e9a90a02f7f7b37"
   },
   {
-   "file": "assets/icon-hull.webp",
-   "bytes": 9936,
-   "md5": "4de13f675d2a093cd03309070969a19e"
+   "file": "assets/icon-hull.png",
+   "bytes": 40077,
+   "md5": "a052b6f8aa0fe026390beb4d06811480"
   },
   {
-   "file": "assets/icon-plating.webp",
-   "bytes": 13742,
-   "md5": "b0fe4f176548655593a7c3e39d161b32"
+   "file": "assets/icon-plating.png",
+   "bytes": 66349,
+   "md5": "7e07bfaab0093eafd7ee0ec0df6fe698"
   },
   {
-   "file": "assets/icon-treads.webp",
-   "bytes": 15086,
-   "md5": "1e96599fd94d626051965e4ea99cdef2"
+   "file": "assets/icon-treads.png",
+   "bytes": 60637,
+   "md5": "ce64c08026fe97c88ebda89dc98052c5"
   },
   {
    "file": "assets/impact.bin",
@@ -569,64 +569,64 @@
    "md5": "32654ef8ca651484ed3deea05193839b"
   },
   {
-   "file": "assets/logo.webp",
-   "bytes": 261940,
-   "md5": "665fcc276a2013e12a377ca28ace7cc2"
+   "file": "assets/logo.png",
+   "bytes": 1841504,
+   "md5": "b9c48aa7a33b92f247bfe85fb4ea0c95"
   },
   {
-   "file": "assets/melee-icon-fist-256.webp",
-   "bytes": 14770,
-   "md5": "f3c3430f3d076d050f9df7bbe8de0538"
+   "file": "assets/melee-icon-fist-256.png",
+   "bytes": 119730,
+   "md5": "399aee69536acee0b2c4e39ba00758c0"
   },
   {
-   "file": "assets/melee-impact-bloomvale.webp",
-   "bytes": 498364,
-   "md5": "1c5f24551670d711a9244240d14d1062"
+   "file": "assets/melee-impact-bloomvale.png",
+   "bytes": 3762813,
+   "md5": "16c4df318a7466e2c641994dcb47f626"
   },
   {
-   "file": "assets/melee-impact-ember.webp",
-   "bytes": 333522,
-   "md5": "d36d506a206fe7fe9d74657f2056e53c"
+   "file": "assets/melee-impact-ember.png",
+   "bytes": 2841818,
+   "md5": "a2a8cff52c34b67f724b6ba23446373c"
   },
   {
-   "file": "assets/melee-impact-ironhold.webp",
-   "bytes": 268138,
-   "md5": "bf0629f70548d97dbb839df3ec5928b3"
+   "file": "assets/melee-impact-ironhold.png",
+   "bytes": 1641965,
+   "md5": "e1d784d06a6b5084915c3edb6eeea94c"
   },
   {
-   "file": "assets/melee-impact-tidereign.webp",
-   "bytes": 194156,
-   "md5": "07673208bdb065321f376882ac786b76"
+   "file": "assets/melee-impact-tidereign.png",
+   "bytes": 1326015,
+   "md5": "1f838237c07b101296b45e4111f31813"
   },
   {
-   "file": "assets/melee-impact-voltspire.webp",
-   "bytes": 289312,
-   "md5": "55cc1d5d34b5ed150da393b13c2f5074"
+   "file": "assets/melee-impact-voltspire.png",
+   "bytes": 2158229,
+   "md5": "64cd741efda97047a516ce61eef1883d"
   },
   {
-   "file": "assets/missile-bloom.webp",
-   "bytes": 288044,
-   "md5": "4a56281093b5c8d481c45cad39a9d0b6"
+   "file": "assets/missile-bloom.png",
+   "bytes": 1843200,
+   "md5": "5c80e689a4f9d8883c7fb786d9441059"
   },
   {
-   "file": "assets/missile-ember.webp",
-   "bytes": 251426,
-   "md5": "1ca99150340e48ccc55db7e69e1fe161"
+   "file": "assets/missile-ember.png",
+   "bytes": 1408940,
+   "md5": "a7ca365babd66be262eccc3dfc80ebf8"
   },
   {
-   "file": "assets/missile-iron.webp",
-   "bytes": 223618,
-   "md5": "7542484166aa01cc4aebda426b48dd3f"
+   "file": "assets/missile-iron.png",
+   "bytes": 1195053,
+   "md5": "4838c6f11ca8fdb2ebfcf6e10846ebc1"
   },
   {
-   "file": "assets/missile-tide.webp",
-   "bytes": 397444,
-   "md5": "cbc1f0cbe6d5af69e0431d54763573aa"
+   "file": "assets/missile-tide.png",
+   "bytes": 2285953,
+   "md5": "07e5237782ebffdb6083c308f5621871"
   },
   {
-   "file": "assets/missile-volt.webp",
-   "bytes": 209892,
-   "md5": "a6ce7594bd3e9d5716eca0d9369f8818"
+   "file": "assets/missile-volt.png",
+   "bytes": 1384614,
+   "md5": "8e000c91c7920f5b44c382f7cf8d8b1b"
   },
   {
    "file": "assets/missile.bin",
@@ -634,44 +634,44 @@
    "md5": "1364bc66c02184b042163380d19cd848"
   },
   {
-   "file": "assets/mode-icon-campaign-clean.webp",
-   "bytes": 142006,
-   "md5": "a3daaefd60b47a33be8d374eab950a3d"
+   "file": "assets/mode-icon-campaign-clean.png",
+   "bytes": 722447,
+   "md5": "b3aecec6691e8e0963a1f9a3d96a6242"
   },
   {
-   "file": "assets/mode-icon-campaign.webp",
-   "bytes": 10044,
-   "md5": "49715ab92bc6e27c11f0aa11a3d38948"
+   "file": "assets/mode-icon-campaign.png",
+   "bytes": 60539,
+   "md5": "0eb906ff16b2a92bedf6276c8a8dc2eb"
   },
   {
-   "file": "assets/mode-icon-dungeon-clean.webp",
-   "bytes": 15186,
-   "md5": "cef82833b4c2ebb8ff66728f6ff2fe88"
+   "file": "assets/mode-icon-dungeon-clean.png",
+   "bytes": 83285,
+   "md5": "be447d877b0191e2895b16bcee637b87"
   },
   {
-   "file": "assets/mode-icon-dungeon.webp",
-   "bytes": 15146,
-   "md5": "4465b1b1cd9f27816798b103492f79ab"
+   "file": "assets/mode-icon-dungeon.png",
+   "bytes": 100038,
+   "md5": "cad392597581952a802cf5b371b6a910"
   },
   {
-   "file": "assets/mode-icon-glory-clean.webp",
-   "bytes": 8824,
-   "md5": "d7b13e86b106ac0dd074e0cd0baccbdc"
+   "file": "assets/mode-icon-glory-clean.png",
+   "bytes": 50674,
+   "md5": "045ee758e0fe9b8551bea7ea097ac1a6"
   },
   {
-   "file": "assets/mode-icon-glory.webp",
-   "bytes": 11790,
-   "md5": "896ee0cf238d21713ed8f2119abaa5c6"
+   "file": "assets/mode-icon-glory.png",
+   "bytes": 80480,
+   "md5": "d010fc3cb325e397af8b9c0e4a615acf"
   },
   {
-   "file": "assets/mode-icon-tower-clean.webp",
-   "bytes": 194960,
-   "md5": "07ee8ac7c3b2d494e4c5aa4ba5cfb290"
+   "file": "assets/mode-icon-tower-clean.png",
+   "bytes": 840859,
+   "md5": "9f4b5cc8770e1e9a4cc36d35e49ffa8f"
   },
   {
-   "file": "assets/mode-icon-tower.webp",
-   "bytes": 11596,
-   "md5": "cb0a26fbeee7b54871c68469d1b19e33"
+   "file": "assets/mode-icon-tower.png",
+   "bytes": 64127,
+   "md5": "e893273095149a5a22c6f53d7d297f23"
   },
   {
    "file": "assets/parry.bin",
@@ -679,154 +679,154 @@
    "md5": "f514ccad0296b875d713eeea1631ab22"
   },
   {
-   "file": "assets/prod-chest-common.webp",
-   "bytes": 30132,
-   "md5": "f2958d6e81ce08439fe27b62658c551e"
+   "file": "assets/prod-chest-common.png",
+   "bytes": 178107,
+   "md5": "8107752bd290ebd5a92befefc28d4ff5"
   },
   {
-   "file": "assets/prod-chest-epic.webp",
-   "bytes": 51646,
-   "md5": "5847cc0133f429a2c1c8e0eb221666fc"
+   "file": "assets/prod-chest-epic.png",
+   "bytes": 259558,
+   "md5": "180dad01d335a9275562bd673f258f45"
   },
   {
-   "file": "assets/prod-chest-legendary.webp",
-   "bytes": 63762,
-   "md5": "6ec57d3fb1e13caafda9dcfa234d725f"
+   "file": "assets/prod-chest-legendary.png",
+   "bytes": 305501,
+   "md5": "d6da4e98377e3269268ac15d9319de9e"
   },
   {
-   "file": "assets/prod-chest-rare.webp",
-   "bytes": 33590,
-   "md5": "e935f3996257cf4998d75cd897cbbc3e"
+   "file": "assets/prod-chest-rare.png",
+   "bytes": 162005,
+   "md5": "78184c20bee38effeaa61453c960d9d6"
   },
   {
-   "file": "assets/prod-evolution-cache.webp",
-   "bytes": 77746,
-   "md5": "b21553884137cce09da8163460bd0f55"
+   "file": "assets/prod-evolution-cache.png",
+   "bytes": 366050,
+   "md5": "6448cef837acf0c9114d97bb316a52df"
   },
   {
-   "file": "assets/prod-gem.webp",
-   "bytes": 69800,
-   "md5": "b76a280596b53fb9c3138cd2d56fd682"
+   "file": "assets/prod-gem.png",
+   "bytes": 398486,
+   "md5": "d7c0b57d16d9298af4d9dc1d6935cb78"
   },
   {
-   "file": "assets/prod-starter-gift.webp",
-   "bytes": 45780,
-   "md5": "ab4d26e4ce1292beac1e6483690f41fc"
+   "file": "assets/prod-starter-gift.png",
+   "bytes": 237675,
+   "md5": "b511a0324b14c96cfae55d1027e2accd"
   },
   {
-   "file": "assets/prod2-prestige-emblem.webp",
-   "bytes": 52024,
-   "md5": "6ec7c3d4a3f5344dafc3897686be9ff9"
+   "file": "assets/prod2-prestige-emblem.png",
+   "bytes": 269744,
+   "md5": "4cc222035a797fa4e482ff55d13147c5"
   },
   {
-   "file": "assets/prod2-promotion-chevron.webp",
-   "bytes": 52222,
-   "md5": "ab44e77a561d68cc75a20c3f4d5341c6"
+   "file": "assets/prod2-promotion-chevron.png",
+   "bytes": 301957,
+   "md5": "97e16bd82de6c4d1e039c64489b8a32c"
   },
   {
-   "file": "assets/prod2-royal-seal.webp",
-   "bytes": 65444,
-   "md5": "ddf3146c6cc30e3f83ec76138d5a3f20"
+   "file": "assets/prod2-royal-seal.png",
+   "bytes": 321453,
+   "md5": "c0e4d818f4363bccae9c35104a10b173"
   },
   {
-   "file": "assets/prod2-scrap-pile.webp",
-   "bytes": 65968,
-   "md5": "b72db43466840c832ed04f0bfb7e1418"
+   "file": "assets/prod2-scrap-pile.png",
+   "bytes": 340692,
+   "md5": "dad443e6de2f6ab0b18d074e995c2fb9"
   },
   {
-   "file": "assets/prod2-skill-shard.webp",
-   "bytes": 40002,
-   "md5": "9f8a61eb973c3ff7ee7f0e19a3eb3286"
+   "file": "assets/prod2-skill-shard.png",
+   "bytes": 207935,
+   "md5": "67669fbea6acfa31849fc5d23406e611"
   },
   {
-   "file": "assets/prod2-slot-cannon.webp",
-   "bytes": 31878,
-   "md5": "d8ad18182d96666d626e389088c349eb"
+   "file": "assets/prod2-slot-cannon.png",
+   "bytes": 166540,
+   "md5": "67e00eb9492eb498715f14bfabc5ae5c"
   },
   {
-   "file": "assets/prod2-slot-core.webp",
-   "bytes": 49442,
-   "md5": "a3e0959df478da5bd9f799f0227e9ae8"
+   "file": "assets/prod2-slot-core.png",
+   "bytes": 265217,
+   "md5": "cfd65627b79592ae03dec77f4268294d"
   },
   {
-   "file": "assets/prod2-slot-engine.webp",
-   "bytes": 42668,
-   "md5": "2022e014b6eb5fd737efce025b62640f"
+   "file": "assets/prod2-slot-engine.png",
+   "bytes": 224287,
+   "md5": "a77de5a399e385af65666d0c27cf8e1e"
   },
   {
-   "file": "assets/prod2-slot-hull.webp",
-   "bytes": 41784,
-   "md5": "c4611d90a74af2876df460048bb3a916"
+   "file": "assets/prod2-slot-hull.png",
+   "bytes": 233333,
+   "md5": "8437c72d021cbaa26b5bdb72bf9aae19"
   },
   {
-   "file": "assets/prod2-slot-plating.webp",
-   "bytes": 36656,
-   "md5": "ca5f1f8c561b27e3f398e58ca5b94eb8"
+   "file": "assets/prod2-slot-plating.png",
+   "bytes": 207104,
+   "md5": "0852137b82d77f7494e0c9f4bf88792b"
   },
   {
-   "file": "assets/prod2-slot-treads.webp",
-   "bytes": 27158,
-   "md5": "22dea7c911b106542655aa6b7751567b"
+   "file": "assets/prod2-slot-treads.png",
+   "bytes": 141487,
+   "md5": "e24b085a682e15c80b8742d8223eea03"
   },
   {
-   "file": "assets/prod2-valor-medal.webp",
-   "bytes": 52796,
-   "md5": "f373083376fd2d17ed5edc961419abc9"
+   "file": "assets/prod2-valor-medal.png",
+   "bytes": 258669,
+   "md5": "3d89039a48d4cf2d357687e91a1dd293"
   },
   {
-   "file": "assets/projectile-bloom.webp",
-   "bytes": 283614,
-   "md5": "ba1f32fde480105f7dfbc06258f8b442"
+   "file": "assets/projectile-bloom.png",
+   "bytes": 1538809,
+   "md5": "89f1340023d6967c5b5bf5f0293f95bb"
   },
   {
-   "file": "assets/projectile-ember.webp",
-   "bytes": 373512,
-   "md5": "07d3b7ef642fa22129d143ae5c0a256e"
+   "file": "assets/projectile-ember.png",
+   "bytes": 2088839,
+   "md5": "b05932f81a4aa2a6f16c44aeb6e2d6cb"
   },
   {
-   "file": "assets/projectile-gk-bloom.webp",
-   "bytes": 329362,
-   "md5": "6c026c27bf0d369f9af5008cd458baed"
+   "file": "assets/projectile-gk-bloom.png",
+   "bytes": 2488291,
+   "md5": "0b67d6861a8a36771913386f51d6d57e"
   },
   {
-   "file": "assets/projectile-gk-ember.webp",
-   "bytes": 312218,
-   "md5": "9f7f5a6fd6de04c02ca06f297c5b48c6"
+   "file": "assets/projectile-gk-ember.png",
+   "bytes": 2518542,
+   "md5": "5fde39ca8c4adcfda17919102ca85c0c"
   },
   {
-   "file": "assets/projectile-gk-iron.webp",
-   "bytes": 333276,
-   "md5": "2049ae728f708f8471ee2fa1f2a66c88"
+   "file": "assets/projectile-gk-iron.png",
+   "bytes": 2498855,
+   "md5": "4e79a68c1a5a38db0c731091d9840d08"
   },
   {
-   "file": "assets/projectile-gk-tide.webp",
-   "bytes": 311148,
-   "md5": "ca16257fc62a98d3ab63d0bdff1bcc58"
+   "file": "assets/projectile-gk-tide.png",
+   "bytes": 2393015,
+   "md5": "51a2b051fc57f5f3fdb2026cf2730cbb"
   },
   {
-   "file": "assets/projectile-gk-volt.webp",
-   "bytes": 362880,
-   "md5": "fb13e819fb445c890246a75cf69aa7cb"
+   "file": "assets/projectile-gk-volt.png",
+   "bytes": 2754182,
+   "md5": "b6cd1762348fde627f09e8f27df510ef"
   },
   {
-   "file": "assets/projectile-iron.webp",
-   "bytes": 308586,
-   "md5": "315b35cff300b6c45cdbc3029cb7a6ac"
+   "file": "assets/projectile-iron.png",
+   "bytes": 1646602,
+   "md5": "920c66e1a5e5292e0d57098621324335"
   },
   {
-   "file": "assets/projectile-tide.webp",
-   "bytes": 217750,
-   "md5": "d80f75866de47a634149cc41836c9c1a"
+   "file": "assets/projectile-tide.png",
+   "bytes": 1335892,
+   "md5": "366223cf25728a7ab7bccf8411684605"
   },
   {
-   "file": "assets/projectile-v1.webp",
-   "bytes": 328726,
-   "md5": "3a46ec0ccf95f405b68ff31da6bcd6cf"
+   "file": "assets/projectile-v1.png",
+   "bytes": 1819768,
+   "md5": "0a532020376d7235036e7a0bd8322734"
   },
   {
-   "file": "assets/projectile-volt.webp",
-   "bytes": 170028,
-   "md5": "5485e1c5c82be55f79239e6898a3051e"
+   "file": "assets/projectile-volt.png",
+   "bytes": 931618,
+   "md5": "1ccbb89248bf7bfe19e2341bbdeba405"
   },
   {
    "file": "assets/projectile.bin",
@@ -834,194 +834,194 @@
    "md5": "41a39d122a48719caf60a0fc999e1460"
   },
   {
-   "file": "assets/shield-bloom.webp",
-   "bytes": 1426032,
-   "md5": "26445c78f04a359da8dcdb125c55712e"
+   "file": "assets/shield-bloom.png",
+   "bytes": 6198808,
+   "md5": "68104e5d36760e931297a32a435647a8"
   },
   {
-   "file": "assets/shield-ember.webp",
-   "bytes": 1007972,
-   "md5": "2505f804396899c8ead18ed016752285"
+   "file": "assets/shield-ember.png",
+   "bytes": 6200577,
+   "md5": "2be4ec47d7fdf0057d6e3d2b1a4055d4"
   },
   {
-   "file": "assets/shield-ironhold.webp",
-   "bytes": 582442,
-   "md5": "50af53b7325f8c69adde9bab9c765355"
+   "file": "assets/shield-ironhold.png",
+   "bytes": 5055008,
+   "md5": "35032ef499950b7fdcdaf630326518f1"
   },
   {
-   "file": "assets/shield-tidereign.webp",
-   "bytes": 940982,
-   "md5": "88e368cdb87fbb6c75dca8be0163de8b"
+   "file": "assets/shield-tidereign.png",
+   "bytes": 6143475,
+   "md5": "a15487b8d0ef11434bbc224ad87907d9"
   },
   {
-   "file": "assets/shield-voltspire.webp",
-   "bytes": 1455656,
-   "md5": "b83a107dc9b47c71a0b8059b3db23ce0"
+   "file": "assets/shield-voltspire.png",
+   "bytes": 6505816,
+   "md5": "098f253cae49602bb02555a867b74ccc"
   },
   {
-   "file": "assets/tank-bloomvale-artillery.webp",
-   "bytes": 55456,
-   "md5": "74830616f4226c4153db7d218b24a6f5"
+   "file": "assets/tank-bloomvale-artillery.png",
+   "bytes": 244173,
+   "md5": "9e4a08f089b78b7809b79c0ce98f888e"
   },
   {
-   "file": "assets/tank-bloomvale-vanguard.webp",
-   "bytes": 78222,
-   "md5": "d6b1252e5e4acfd7949f6663c43df279"
+   "file": "assets/tank-bloomvale-vanguard.png",
+   "bytes": 370642,
+   "md5": "e310c713ac6e079942c8adfdb93d2c64"
   },
   {
-   "file": "assets/tank-ember-artillery.webp",
-   "bytes": 52938,
-   "md5": "8c52326bf1baeff4d91068997e193be0"
+   "file": "assets/tank-ember-artillery.png",
+   "bytes": 245770,
+   "md5": "f53feb95420e4cb39d758f4c4f45eef0"
   },
   {
-   "file": "assets/tank-ember-vanguard.webp",
-   "bytes": 68130,
-   "md5": "b8c94091d215833a49f6b9ed56435fac"
+   "file": "assets/tank-ember-vanguard.png",
+   "bytes": 331245,
+   "md5": "75205291bf68d51729ee18e200973d1a"
   },
   {
-   "file": "assets/tank-ironhold-artillery.webp",
-   "bytes": 39406,
-   "md5": "035ef379af4dca429fc80d5f51253fbf"
+   "file": "assets/tank-ironhold-artillery.png",
+   "bytes": 188946,
+   "md5": "865b2f366f034b69c120edab304fa866"
   },
   {
-   "file": "assets/tank-ironhold-vanguard.webp",
-   "bytes": 61602,
-   "md5": "74c05c344f15f9d70a4c00fb555649bb"
+   "file": "assets/tank-ironhold-vanguard.png",
+   "bytes": 309885,
+   "md5": "b0b737b4d9f456d124e36871e88f8eb0"
   },
   {
-   "file": "assets/tank-tidereign-artillery.webp",
-   "bytes": 47782,
-   "md5": "cc66ac1c97fa21e5ebd6971ac36a1661"
+   "file": "assets/tank-tidereign-artillery.png",
+   "bytes": 207295,
+   "md5": "852854a9eb16dbb53996bc3da3356d2f"
   },
   {
-   "file": "assets/tank-tidereign-vanguard.webp",
-   "bytes": 67326,
-   "md5": "0961c5c716ddd231b055a7abfdc033fe"
+   "file": "assets/tank-tidereign-vanguard.png",
+   "bytes": 328666,
+   "md5": "09a6c37b30fc45cfd6ada00f33e78c21"
   },
   {
-   "file": "assets/tank-voltspire-artillery.webp",
-   "bytes": 54010,
-   "md5": "5958e60b7c077da114ec9f5ba3fcf377"
+   "file": "assets/tank-voltspire-artillery.png",
+   "bytes": 238952,
+   "md5": "8a4c2c2b2f4d3b10e5fa3edb5006d6ad"
   },
   {
-   "file": "assets/tank-voltspire-vanguard.webp",
-   "bytes": 215988,
-   "md5": "a821ce4495c543eec9baa59aa7df914b"
+   "file": "assets/tank-voltspire-vanguard.png",
+   "bytes": 1155434,
+   "md5": "8c788f9f735a59ee9041daf2b913ecbe"
   },
   {
-   "file": "assets/title-key-art-portrait.webp",
-   "bytes": 548620,
-   "md5": "0d72dbb099326561ab3c6c916ffa98e5"
+   "file": "assets/title-key-art-portrait.png",
+   "bytes": 3921462,
+   "md5": "487a4b0e452a3043176ab489cfd45247"
   },
   {
-   "file": "assets/title-key-art.webp",
-   "bytes": 616064,
-   "md5": "4edccd592f25e1b1682ec2278785a51b"
+   "file": "assets/title-key-art.png",
+   "bytes": 4232727,
+   "md5": "524a6ee37bbd0596da1715c5f89a0760"
   },
   {
-   "file": "assets/tower-ascent-backdrop.webp",
-   "bytes": 634024,
-   "md5": "a0c04b62c596a7296c757ff73445b9bb"
+   "file": "assets/tower-ascent-backdrop.png",
+   "bytes": 3544234,
+   "md5": "2e7bc541898cbc303c8bd40808402027"
   },
   {
-   "file": "assets/tower-badge-10.webp",
-   "bytes": 321092,
-   "md5": "bb4b8458d9182fda970e99fa6d431859"
+   "file": "assets/tower-badge-10.png",
+   "bytes": 1659009,
+   "md5": "b1d310be95f1985fffa41cb29e9c70bd"
   },
   {
-   "file": "assets/tower-badge-100.webp",
-   "bytes": 459518,
-   "md5": "1b2fe29f8f907df483486b9139e190bf"
+   "file": "assets/tower-badge-100.png",
+   "bytes": 2720755,
+   "md5": "b77a4a168cb06680124269de564ae9ac"
   },
   {
-   "file": "assets/tower-badge-30.webp",
-   "bytes": 394804,
-   "md5": "5e3a2c14e1c8a8d05740e6bb84fd7e58"
+   "file": "assets/tower-badge-30.png",
+   "bytes": 2195806,
+   "md5": "d7afad7f7c6ab2d42f980a771035bbc7"
   },
   {
-   "file": "assets/tower-badge-50.webp",
-   "bytes": 488548,
-   "md5": "1581f470aaca265b126a1f126718d9b2"
+   "file": "assets/tower-badge-50.png",
+   "bytes": 3052752,
+   "md5": "90eb96f987657a5db5f02e7ae0819241"
   },
   {
-   "file": "assets/tower-boss-crag.webp",
-   "bytes": 341744,
-   "md5": "cec1a1ab980474be59e777106804c356"
+   "file": "assets/tower-boss-crag.png",
+   "bytes": 2006412,
+   "md5": "e77131a140e29961a3d4a58d461d8d61"
   },
   {
-   "file": "assets/tower-boss-frost-hd.webp",
-   "bytes": 321734,
-   "md5": "1b42eeae02f2f4902b8a4cfe5b74292a"
+   "file": "assets/tower-boss-frost-hd.png",
+   "bytes": 2447309,
+   "md5": "4dfb79d0f17c9d75dec58670945266ea"
   },
   {
-   "file": "assets/tower-boss-frost.webp",
-   "bytes": 372912,
-   "md5": "a3753051f1a7cd28f468c4afb6e13495"
+   "file": "assets/tower-boss-frost.png",
+   "bytes": 2482821,
+   "md5": "4b5df7557c2a4ee39397398ae7e2da63"
   },
   {
-   "file": "assets/tower-boss-gale-hd.webp",
-   "bytes": 679326,
-   "md5": "8c5260d96ed27c084681e235c87baefc"
+   "file": "assets/tower-boss-gale-hd.png",
+   "bytes": 3132282,
+   "md5": "37efabf49ca00638aab09a72a5a102c5"
   },
   {
-   "file": "assets/tower-boss-gale.webp",
-   "bytes": 638300,
-   "md5": "67c85c04f8f6df6aab9ff5b0a3af778b"
+   "file": "assets/tower-boss-gale.png",
+   "bytes": 2965274,
+   "md5": "aa5b4725083e83ca75171215a57f5a3d"
   },
   {
-   "file": "assets/tower-boss-pontiff.webp",
-   "bytes": 632244,
-   "md5": "e0d0d370e0eea69cab089acb436ba43e"
+   "file": "assets/tower-boss-pontiff.png",
+   "bytes": 3199546,
+   "md5": "fa23607e727bad0ebdfec655e7185d53"
   },
   {
-   "file": "assets/tower-boss-pyra-hd.webp",
-   "bytes": 258014,
-   "md5": "f6bee547c97ba7a9dabe2e824faef460"
+   "file": "assets/tower-boss-pyra-hd.png",
+   "bytes": 2035006,
+   "md5": "77bc82c60a90ba0118d2f1a20ef8ae6a"
   },
   {
-   "file": "assets/tower-boss-pyra.webp",
-   "bytes": 296502,
-   "md5": "d138924f0c66a2325d22c022fd80edb0"
+   "file": "assets/tower-boss-pyra.png",
+   "bytes": 2058600,
+   "md5": "aeb93708b550448bd1b85bb4ee16ee22"
   },
   {
-   "file": "assets/tower-boss-solarion.webp",
-   "bytes": 264640,
-   "md5": "e98593dcc9c09a8ee8a388e7c0cf15f1"
+   "file": "assets/tower-boss-solarion.png",
+   "bytes": 1773791,
+   "md5": "57a0c43f8af6fbb4520eda0bd4761b98"
   },
   {
-   "file": "assets/tower-boss-tempestra.webp",
-   "bytes": 264830,
-   "md5": "59d8c2e7ba3c001e795d84ead1f26902"
+   "file": "assets/tower-boss-tempestra.png",
+   "bytes": 1761991,
+   "md5": "4543796d44b77a8dbdc5c90b04059cea"
   },
   {
-   "file": "assets/tower-boss-thorn-hd.webp",
-   "bytes": 303242,
-   "md5": "b4bb1b29e5beed2418dc3fb01e91c6c8"
+   "file": "assets/tower-boss-thorn-hd.png",
+   "bytes": 2526292,
+   "md5": "5519a4f222bfab5f471d5395e16dace6"
   },
   {
-   "file": "assets/tower-boss-thorn.webp",
-   "bytes": 360304,
-   "md5": "0ce88d53354395a9e19ed261c805665b"
+   "file": "assets/tower-boss-thorn.png",
+   "bytes": 2570608,
+   "md5": "aa40be40b8477fa2aecb498d9e5356d6"
   },
   {
-   "file": "assets/tower-boss-tidefather.webp",
-   "bytes": 323126,
-   "md5": "0fb11721749ca56dd39217c43219cec7"
+   "file": "assets/tower-boss-tidefather.png",
+   "bytes": 2061202,
+   "md5": "10ad986a57bc9f521e012fb3bf948070"
   },
   {
-   "file": "assets/tower-boss-umbra-hd.webp",
-   "bytes": 250476,
-   "md5": "7a21b1ec0956b689a75952b60dae9547"
+   "file": "assets/tower-boss-umbra-hd.png",
+   "bytes": 2109764,
+   "md5": "713ab8e077d481e35b575b0d0660b371"
   },
   {
-   "file": "assets/tower-boss-umbra.webp",
-   "bytes": 298504,
-   "md5": "bf359b864aeadf9efc5fbe524bb4834b"
+   "file": "assets/tower-boss-umbra.png",
+   "bytes": 2147863,
+   "md5": "ab02b8eb2eb431435231d4f0f862b9d1"
   },
   {
-   "file": "assets/tower-gate-portal.webp",
-   "bytes": 346074,
-   "md5": "9e549de13632f96cace8b81a330c687c"
+   "file": "assets/tower-gate-portal.png",
+   "bytes": 3121207,
+   "md5": "bfb3712ee23850c3fd7e3815a2703fd1"
   },
   {
    "file": "assets/ult-bloomvale.bin",
@@ -1034,9 +1034,9 @@
    "md5": "f7124672610fc11d0310827a1400cc3a"
   },
   {
-   "file": "assets/ult-icon-knight-256.webp",
-   "bytes": 13526,
-   "md5": "27b388bc918310e0b6751e7988a19bfe"
+   "file": "assets/ult-icon-knight-256.png",
+   "bytes": 118026,
+   "md5": "b169df6782d79446a52ad349a570ae2c"
   },
   {
    "file": "assets/ult-ironhold.bin",
@@ -1044,79 +1044,79 @@
    "md5": "f7124672610fc11d0310827a1400cc3a"
   },
   {
-   "file": "assets/ult-projectile-bloom.webp",
-   "bytes": 558260,
-   "md5": "04630728d2567c3eb9afb11cee3b4cde"
+   "file": "assets/ult-projectile-bloom.png",
+   "bytes": 2963991,
+   "md5": "fa7393af48d05cc82584d666d9d945bd"
   },
   {
-   "file": "assets/ult-projectile-cinder.webp",
-   "bytes": 353844,
-   "md5": "1ad852a980f587d2e855130c5334c9d1"
+   "file": "assets/ult-projectile-cinder.png",
+   "bytes": 2540973,
+   "md5": "5325856b2c0376bd8fa0a766a2980231"
   },
   {
-   "file": "assets/ult-projectile-iron.webp",
-   "bytes": 557114,
-   "md5": "7b1e05975001e6830580db63699c61a3"
+   "file": "assets/ult-projectile-iron.png",
+   "bytes": 3347607,
+   "md5": "e837f9ba3f0bc3524426d5c6e65d2605"
   },
   {
-   "file": "assets/ult-projectile-tide.webp",
-   "bytes": 503010,
-   "md5": "6239dadab9a260981816f8237940913b"
+   "file": "assets/ult-projectile-tide.png",
+   "bytes": 2529508,
+   "md5": "ccb0248fa735bfb16066f1375e260aca"
   },
   {
-   "file": "assets/ult-projectile-volt.webp",
-   "bytes": 316952,
-   "md5": "58b44e57100455a1199ecc698f4b3892"
+   "file": "assets/ult-projectile-volt.png",
+   "bytes": 3504625,
+   "md5": "1b44a47ab2bd9c1cc64a02ce35ac5537"
   },
   {
-   "file": "assets/ult-tank-bloomvale-artillery.webp",
-   "bytes": 13794,
-   "md5": "36b8ef48acb3dbc0bc99bb9cd770083b"
+   "file": "assets/ult-tank-bloomvale-artillery.png",
+   "bytes": 60282,
+   "md5": "fd77233847ef9adf829c0815e2049a92"
   },
   {
-   "file": "assets/ult-tank-bloomvale-vanguard.webp",
-   "bytes": 10542,
-   "md5": "d1981bd06dce9a1eadff860d8459f4c6"
+   "file": "assets/ult-tank-bloomvale-vanguard.png",
+   "bytes": 44257,
+   "md5": "8b0b3c800e07a3b0d3d7ce96757cbfdd"
   },
   {
-   "file": "assets/ult-tank-ember-artillery.webp",
-   "bytes": 9286,
-   "md5": "5ebe144ba7f3f4aa4a8f11d08347af5d"
+   "file": "assets/ult-tank-ember-artillery.png",
+   "bytes": 41264,
+   "md5": "5e1869730cab9124a01f42680ff670a9"
   },
   {
-   "file": "assets/ult-tank-ember-vanguard.webp",
-   "bytes": 13196,
-   "md5": "c68a2810414cb2fdd3f7eb5421b90f36"
+   "file": "assets/ult-tank-ember-vanguard.png",
+   "bytes": 59564,
+   "md5": "63513b46befc6ed4a95430749cde8097"
   },
   {
-   "file": "assets/ult-tank-ironhold-artillery.webp",
-   "bytes": 9358,
-   "md5": "100cc1b33ba9948f3b50156fa0f4b60c"
+   "file": "assets/ult-tank-ironhold-artillery.png",
+   "bytes": 39836,
+   "md5": "91ac0fbe63e3a83cfdb3125d5156c296"
   },
   {
-   "file": "assets/ult-tank-ironhold-vanguard.webp",
-   "bytes": 7784,
-   "md5": "3bee30d0656407b3fdc0cbf2a300d93e"
+   "file": "assets/ult-tank-ironhold-vanguard.png",
+   "bytes": 32342,
+   "md5": "7f23b711bd7e671c27d0e588979ab004"
   },
   {
-   "file": "assets/ult-tank-tidereign-artillery.webp",
-   "bytes": 12022,
-   "md5": "65eed022f2802f95bda3ebc5d0a6b020"
+   "file": "assets/ult-tank-tidereign-artillery.png",
+   "bytes": 49339,
+   "md5": "2952d7bd4cd801b8555d6df2e79dc863"
   },
   {
-   "file": "assets/ult-tank-tidereign-vanguard.webp",
-   "bytes": 9180,
-   "md5": "494e1b5271213f04c48be750154d5adb"
+   "file": "assets/ult-tank-tidereign-vanguard.png",
+   "bytes": 39025,
+   "md5": "1f6589bb73292684863f043bf9365ad1"
   },
   {
-   "file": "assets/ult-tank-voltspire-artillery.webp",
-   "bytes": 12246,
-   "md5": "4008b2886dbd68946c2411a0378557fe"
+   "file": "assets/ult-tank-voltspire-artillery.png",
+   "bytes": 49467,
+   "md5": "30b818883fa5b8e8d83bfbcaa4a46693"
   },
   {
-   "file": "assets/ult-tank-voltspire-vanguard.webp",
-   "bytes": 12482,
-   "md5": "9d32a651d3a20af44cc5502c90ea908c"
+   "file": "assets/ult-tank-voltspire-vanguard.png",
+   "bytes": 53108,
+   "md5": "ee7d30a45f9be4d7bb4ec257e4444726"
   },
   {
    "file": "assets/ult-tidereign.bin",
@@ -1129,9 +1129,9 @@
    "md5": "f7124672610fc11d0310827a1400cc3a"
   },
   {
-   "file": "assets/ultimate-arcane.webp",
-   "bytes": 528536,
-   "md5": "46a9abc92ae01d8b368e7499c39f2880"
+   "file": "assets/ultimate-arcane.png",
+   "bytes": 2936323,
+   "md5": "e0e5b6afe5c5501f24587976aa441844"
   }
  ],
  "audio": {
