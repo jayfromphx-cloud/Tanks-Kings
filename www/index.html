@@ -5100,7 +5100,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b3cfe56d9d';
-const __HTML_V='9127f43e54';
+const __HTML_V='3a45cc90c5';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -10868,7 +10868,11 @@ var TUTORIAL_STEPS=[
  {trigger:'faction-picked',highlightTarget:'#tankGrid',text:'Vanguards charge into the fray. Artillery rains death from afar. Choose your fighter.',waitForEvent:'tank-picked',maxSeconds:15},
  {trigger:'tank-picked',highlightTarget:'#campaignCard',text:'The Campaign is your road to glory. The Tower and Arena await the bold.',waitForEvent:'campaign-picked',maxSeconds:15},
  {trigger:'campaign-picked',highlightTarget:'.tutorial-free-card',text:'A Commander\u2019s gift \u2014 +100 Scrap, +10 Gems. Yours to spend in the Shop.',waitForEvent:'reward-claimed',maxSeconds:15},
- {trigger:'reward-claimed',highlightTarget:'#tutorialReadyBtn',text:'You\u2019re ready, Commander. The realm awaits!',waitForEvent:'tutorial-complete',maxSeconds:10}
+ {trigger:'reward-claimed',highlightTarget:'.store-tabs [data-stab="gems"]',text:'Welcome to the Treasury, Commander \u2014 GEMS. Premium coin for chests, skins and swift power. Tap Gems.',waitForEvent:'shop-gems',maxSeconds:15},
+ {trigger:'shop-gems',highlightTarget:'.store-tabs [data-stab="supplies"]',text:'MATERIALS \u2014 Scrap, Medals, Seals and Shards. The lifeblood of every evolution. Tap Supplies.',waitForEvent:'shop-materials',maxSeconds:15},
+ {trigger:'shop-materials',highlightTarget:'.store-tabs [data-stab="godskins"]',text:'SKINS of the Gods \u2014 fell a war-god in the Tower and wear its hide. Tap Godskins.',waitForEvent:'shop-skins',maxSeconds:15},
+ {trigger:'shop-skins',highlightTarget:'#seasonBanner',text:'The SEASON PASS \u2014 finish missions, climb 30 tiers, and claim a godskin of legend. Tap the banner.',waitForEvent:'shop-pass',maxSeconds:15},
+ {trigger:'shop-pass',highlightTarget:'#tutorialReadyBtn',text:'You\u2019re ready, Commander. The realm awaits!',waitForEvent:'tutorial-complete',maxSeconds:10}
 ];
 var tutorialState={v:1,step:0,completed:false,rewardClaimed:false,startedAt:0,enteredAt:0,lastEvent:''};
 var tutorialLive=false; /* true once the player has entered from the title screen and the tutorial is actually running */
@@ -10895,7 +10899,7 @@ function tutorialLayout(){
  if(tutorialState.completed)return;
  var step=TUTORIAL_STEPS[tutorialState.step],coach=$('tutorialCoach');if(!step||!coach)return;
  coach.className=coach.className.replace(/\btutorial-step-\d+\b/g,'').trim()+' tutorial-step-'+tutorialState.step;
- var ready=$('tutorialReadyBtn');if(ready)ready.classList.toggle('show',tutorialState.step===5);
+ var ready=$('tutorialReadyBtn');if(ready)ready.classList.toggle('show',tutorialState.step===TUTORIAL_STEPS.length-1);
  var target=document.querySelector(step.highlightTarget);
  if(!target||target.hidden||!target.getClientRects().length){clearTimeout(tutorialPositionTimer);tutorialPositionTimer=setTimeout(tutorialLayout,80);return}
  /* Anchor the faction ring to the union of the five rendered cards, never to
@@ -10932,7 +10936,11 @@ function tutorialEnterStep(reason){
  else if(tutorialState.step===2){state.running=false;state.paused=false;setScreen('select');renderSelect()}
  else if(tutorialState.step===3){state.running=false;state.paused=false;setScreen('mode');renderModeSelect()}
  else if(tutorialState.step===4){storeTab='featured';if(state.screen!=='store')openStore();else renderStore()}
- else if(tutorialState.step===5){if(state.screen==='store')closeStore();setScreen('mode');renderModeSelect()}
+ else if(tutorialState.step===5){storeTab='gems';if(state.screen!=='store')openStore();else renderStore()}
+ else if(tutorialState.step===6){storeTab='supplies';if(state.screen!=='store')openStore();else renderStore()}
+ else if(tutorialState.step===7){storeTab='godskins';if(state.screen!=='store')openStore();else renderStore()}
+ else if(tutorialState.step===8){if(state.screen==='store')closeStore();setScreen('mode');renderModeSelect();try{renderSeasonBanner()}catch(e){}}
+ else if(tutorialState.step===9){if(state.screen==='store')closeStore();setScreen('mode');renderModeSelect()}
  requestAnimationFrame(function(){requestAnimationFrame(tutorialLayout)});
  tutorialTimer=setTimeout(function(){tutorialTimeout(tutorialState.step)},step.maxSeconds*1000);
 }
@@ -10947,6 +10955,7 @@ function tutorialTimeout(stepIndex){
  else if(stepIndex===2){var tc=document.querySelector('#tankGrid .tank-card');if(tc)tc.click();else tutorialAdvance('tank-picked')}
  else if(stepIndex===3)tutorialOpenShop();
  else if(stepIndex===4)tutorialClaimReward();
+ else if(stepIndex>=5&&stepIndex<=8)tutorialAdvance(TUTORIAL_STEPS[stepIndex].waitForEvent);
  else tutorialFinish(false);
 }
 function tutorialStartBattle(){
@@ -10989,7 +10998,7 @@ function tutorialClaimReward(){
  if(!tutorialAt(4))return;
  if(!tutorialState.rewardClaimed){tutorialState.rewardClaimed=true;state.scrap+=100;state.gems+=10;tutorialSave();try{progressSave()}catch(e){}tutorialTrack('reward','100-scrap-10-gems');try{sfx('coin');storeConfetti(0)}catch(e){}}
  tutorialSave();renderStoreWallet();updateHUD();showToast('Daily reward claimed · +100 Scrap · +10 Gems');
- setTimeout(function(){if(tutorialAt(4)){if(state.screen==='store')closeStore();tutorialAdvance('reward-claimed')}},350);
+ setTimeout(function(){if(tutorialAt(4)){tutorialAdvance('reward-claimed')}},350);
 }
 function tutorialReleaseToFreePlay(){
  tutorialClearTimers();tutorialHideCoach();var splash=$('tutorialVictory');if(splash)splash.classList.remove('show');state.tutorialMode=false;state.running=false;state.paused=false;state.playerDead=false;state.enemy=null;state.projectiles.length=0;
@@ -11029,6 +11038,18 @@ function tutorialBoot(){
 $('tutorialSkip').onclick=function(){tutorialFinish(true)};
 $('tutorialReadyBtn').onclick=function(){tutorialFinish(false)};
 document.addEventListener('click',function(ev){if(!tutorialAt(3))return;var card=ev.target&&ev.target.closest?ev.target.closest('#campaignCard'):null;if(!card)return;ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();tutorialOpenShop()},true);
+/* Shop tour (steps 5-8): tapping the highlighted section advances the tour.
+   Capture-phase + stopPropagation so the tab's own handler cannot re-render
+   over the beat the advance just entered. */
+document.addEventListener('click',function(ev){
+ var tab=ev.target&&ev.target.closest?ev.target.closest('.store-tabs [data-stab]'):null;
+ if(tab){
+  var adv=(tutorialAt(5)&&tab.dataset.stab==='gems')?'shop-gems':(tutorialAt(6)&&tab.dataset.stab==='supplies')?'shop-materials':(tutorialAt(7)&&tab.dataset.stab==='godskins')?'shop-skins':null;
+  if(adv){ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();try{sfx('coin')}catch(e){}tutorialAdvance(adv)}
+  return;
+ }
+ if(tutorialAt(8)){var sb=ev.target&&ev.target.closest?ev.target.closest('#seasonBanner'):null;if(sb){ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();tutorialAdvance('shop-pass')}}
+},true);
 window.addEventListener('resize',function(){if(!tutorialState.completed)tutorialLayout()});
 window.addEventListener('orientationchange',function(){if(!tutorialState.completed)setTimeout(tutorialLayout,120)});
 /* A phone/desktop preview or a second WebView can share the same save. Adopt only
