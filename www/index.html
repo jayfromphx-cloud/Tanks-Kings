@@ -4534,6 +4534,10 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
 .season-banner .sb-bar{height:8px;border-radius:4px;background:#232d3a;margin:6px 0;overflow:hidden}
 .season-banner .sb-fill{height:100%;background:linear-gradient(90deg,#e8bd58,#f0d68a);border-radius:4px;transition:width .4s}
 .season-banner .sb-copy small{color:#b9c9d6;font-size:12px;font-weight:700}
+.guild-input{flex:1;min-width:0;background:#17110a;border:1px solid #6d5320;color:#f3e5c0;border-radius:8px;padding:8px 10px;font:inherit}
+#guildBody .season-banner{margin:8px auto}
+#guildFightBtn{display:block;width:calc(100% - 24px);margin:6px auto 12px}
+#guildLeaveBtn{display:block;margin:16px auto 4px}
 .codex-tabs{display:flex;gap:8px;justify-content:center;margin:0 auto 14px;max-width:660px}
 .codex-tab{flex:1;padding:10px;border:1px solid #d2ae58;border-radius:10px;background:#1a222b;color:#b9c9d6;font:800 14px "Baloo 2",sans-serif;cursor:pointer}
 .codex-tab.active{background:linear-gradient(180deg,#3a2f18,#241d0e);color:#ffe9a8}
@@ -4625,7 +4629,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   <div class="deploy-wrap"><button id="charGarageBtn" class="char-entry">Character</button><button id="skillsGarageBtn" class="char-entry">Skills</button><button id="storeGarageBtn" class="char-entry">Shop<span class="store-badge" hidden></span></button><button id="leaderGarageBtn" class="char-entry">Ranks</button><button id="loginBtn" class="char-entry login-btn">Daily<span id="loginDot" class="login-dot" hidden></span></button><button id="repairGarageBtn" class="repair-btn" hidden></button><button id="deployBtn" class="primary">Continue with <span id="deployName"></span></button></div>
 </section>
 <section id="modeScreen" class="screen menu-screen">
-  <nav class="menu-topbar" aria-label="Royal menu"><div class="menu-tabs"><button class="menu-nav-btn" data-menu="shop">SHOP</button><button class="menu-nav-btn" data-menu="customize">CUSTOMIZE</button></div><button id="streakPill" class="streak-pill" aria-label="Login streak"></button><button id="codexBtn" class="menu-nav-btn" aria-label="Collection Codex">CODEX</button><button class="menu-options-btn" aria-label="Options"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></nav>
+  <nav class="menu-topbar" aria-label="Royal menu"><div class="menu-tabs"><button class="menu-nav-btn" data-menu="shop">SHOP</button><button class="menu-nav-btn" data-menu="customize">CUSTOMIZE</button></div><button id="streakPill" class="streak-pill" aria-label="Login streak"></button><button id="codexBtn" class="menu-nav-btn" aria-label="Collection Codex">CODEX</button><button id="guildBtn" class="menu-nav-btn" aria-label="Guild Hall">GUILD</button><button class="menu-options-btn" aria-label="Options"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></nav>
   <button id="modeBackBtn" class="char-back compact-back">‹ Champion</button>
   <div class="mode-side-motif mode-side-left" aria-hidden="true"><svg viewBox="0 0 100 110"><path class="motif-crown" d="M25 28 20 9l17 12L50 3l13 18L80 9l-5 19zM24 33h52"/><path d="M18 92 77 39M23 38l59 54M12 95l13-2-10-10M88 95l-13-2 10-10"/><path class="motif-laurel" d="M12 70c-6-19 1-34 12-44M88 70c6-19-1-34-12-44"/></svg></div>
   <div class="mode-side-motif mode-side-right" aria-hidden="true"><svg viewBox="0 0 100 110"><path class="motif-crown" d="M25 28 20 9l17 12L50 3l13 18L80 9l-5 19zM24 33h52"/><path d="M18 92 77 39M23 38l59 54M12 95l13-2-10-10M88 95l-13-2 10-10"/><path class="motif-laurel" d="M12 70c-6-19 1-34 12-44M88 70c6-19-1-34-12-44"/></svg></div>
@@ -4677,7 +4681,12 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   <div id="codexBody"></div>
   <div id="codexRewards"></div>
 </section>
-<section id="eventScreen" class="screen menu-screen">
+<section id="guildScreen" class="screen menu-screen">
+   <div class="top-actions"><button id="guildBackBtn" class="char-back">‹ Modes</button></div>
+   <div class="mode-head"><h1>Guild Hall</h1><span class="mode-kicker">Expedition Party · Weekly God-Boss</span></div>
+   <div id="guildBody"></div>
+ </section>
+ <section id="eventScreen" class="screen menu-screen">
   <div class="top-actions"><button class="char-back" onclick="setScreen('mode')">‹ Modes</button></div>
   <div id="eventScreenBody"></div>
 </section>
@@ -5100,7 +5109,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b3cfe56d9d';
-const __HTML_V='56da867597';
+const __HTML_V='1cfb7790ad';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5385,7 +5394,7 @@ function pulseMaxHp(){const hud=$('playerVitals');hud.classList.remove('max-bump
 const DAMAGE_NUMBER_CAP=16,damageNumberPool=[];let damageNumberSerial=0;
 (function initDamageNumberPool(){const layer=$('damageLayer');for(let i=0;i<DAMAGE_NUMBER_CAP;i++){const el=document.createElement('div');el.className='damage-number';el.innerHTML='<span class="damage-label"></span><span class="damage-copy"></span>';el.dataset.active='0';el.dataset.seq='0';el.addEventListener('animationend',()=>{el.dataset.active='0';el.classList.remove('active')});layer.appendChild(el);damageNumberPool.push(el)}})();
 function resetDamageNumbers(){damageNumberPool.forEach(el=>{el.dataset.active='0';el.className='damage-number'})}
-window.TanksKingsSave={save:function(){return JSON.parse(JSON.stringify({wave:state.wave,bestWave:state.bestWave,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,skillShards:state.skillShards,shardPools:state.shardPools,prestigeEmblems:state.prestigeEmblems,lastWaveBeatenWithoutDying:state.lastWaveBeatenWithoutDying,tankDamage:tankDamage,gearRanks:state.gearRanks,gearStars:state.gearStars,tankProgress:tankProgress,chosenTank:chosenTank,equipped:state.equipped,inventory:state.inventory,customization:customization,serviceRecord:serviceRecord,skills:skillLevels,loginData:loginData,season:season,weeklyEvent:weeklyEvent,codex:codex,idle:(typeof idleSaveSnapshot==='function'?idleSaveSnapshot():null)}))},load:function(data){if(!data)return;['wave','bestWave','scrap','gems','valorMedals','royalSeals','skillShards','prestigeEmblems','lastWaveBeatenWithoutDying'].forEach(function(k){if(data[k]===undefined)return;var n=Number(data[k]);if(Number.isFinite(n))state[k]=Math.max(0,n)});if(data.equipped&&typeof data.equipped==='object'&&!Array.isArray(data.equipped)){slots.forEach(function(slot){var item=data.equipped[slot];state.equipped[slot]=(item&&typeof item==='object'&&!Array.isArray(item))?Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0}):null})}if(Array.isArray(data.inventory)){state.inventory=data.inventory.filter(function(item){return item&&typeof item==='object'&&!Array.isArray(item)&&slots.indexOf(item.slot)>=0}).map(function(item){return Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0})})};if(data.tankDamage&&typeof data.tankDamage==='object'){try{Object.keys(data.tankDamage).forEach(function(id){tankDamage[id]=data.tankDamage[id]===true});saveTankDamage();updateDamageBadge()}catch(e){}}if(data.gearRanks)slots.forEach(s=>{if(data.gearRanks[s]!==undefined)state.gearRanks[s]=Math.max(1,Math.min(30,+data.gearRanks[s]||1))});if(data.gearStars)slots.forEach(s=>{if(data.gearStars[s]!==undefined)state.gearStars[s]=Math.max(0,Math.min(5,+data.gearStars[s]||0))});savePrestige();if(data.tankProgress&&typeof data.tankProgress==='object'&&!Array.isArray(data.tankProgress))tanks.forEach(function(t){var p=data.tankProgress[t.id];if(!p||typeof p!=='object'||Array.isArray(p))return;var stage=EVOLUTION_STAGES[p.stage]?p.stage:'squire',cap=EVOLUTION_STAGES[stage].cap;tankProgress[t.id]={stage:stage,level:Math.max(1,Math.min(cap,Math.floor(+p.level)||1))}});if(data.customization&&typeof data.customization==='object'&&!Array.isArray(data.customization))tanks.forEach(function(t){var c=data.customization[t.id];if(!c||typeof c!=='object'||Array.isArray(c))return;var clean={plume:'none',banner:'none',paint:'none',trim:'gold'};CUSTOM_CATS.forEach(function(cat){if(cat.opts.some(function(o){return o.id===c[cat.id]}))clean[cat.id]=c[cat.id]});customization[t.id]=clean});if(data.serviceRecord&&typeof data.serviceRecord==='object'&&!Array.isArray(data.serviceRecord))tanks.forEach(function(t){var r=data.serviceRecord[t.id];if(r&&typeof r==='object'&&!Array.isArray(r))serviceRecord[t.id]={kills:Math.max(0,Math.floor(+r.kills)||0),bosses:Math.max(0,Math.floor(+r.bosses)||0)}});if(data.skills)tanks.forEach(t=>{if(data.skills[t.id])SKILL_KEYS.forEach(k=>{const v=+data.skills[t.id][k];skillsFor(t.id)[k]=v>=1&&v<=SKILL_MAX?Math.floor(v):1})});if(data.shardPools&&typeof data.shardPools==='object'){SKILL_KEYS.forEach(k=>{shardPools()[k]=Math.max(0,Math.floor(+data.shardPools[k])||0)})}else if(data.skillShards!=null){const _sn=Math.max(0,Math.floor(+data.skillShards)||0),_sb=Math.floor(_sn/SKILL_KEYS.length);let _sr=_sn-_sb*SKILL_KEYS.length;SKILL_KEYS.forEach(function(k,i){shardPools()[k]=_sb+(i<_sr?1:0)})}syncShardMirror();if(data.chosenTank&&byT(data.chosenTank))chosenTank=data.chosenTank;if(data.loginData&&typeof data.loginData==='object'&&!Array.isArray(data.loginData)){var ld=data.loginData;loginData.streak=Math.max(0,Math.min(36500,Math.floor(+ld.streak)||0));loginData.lastClaimDay=loginValidDayKey(ld.lastClaimDay)?ld.lastClaimDay:null;loginData.loginDays={};if(ld.loginDays&&typeof ld.loginDays==='object'&&!Array.isArray(ld.loginDays))Object.keys(ld.loginDays).forEach(function(k){if(loginValidDayKey(k)&&ld.loginDays[k])loginData.loginDays[k]=1});loginData.milestonesClaimed={};if(ld.milestonesClaimed&&typeof ld.milestonesClaimed==='object'&&!Array.isArray(ld.milestonesClaimed))LOYALTY_MILESTONES.forEach(function(m){if(ld.milestonesClaimed[m.days])loginData.milestonesClaimed[m.days]=1});loginData.loginTotal=Math.max(0,Math.min(36500,Math.floor(+ld.loginTotal)||0));loginData.lastClaimWallMs=Number.isFinite(+ld.lastClaimWallMs)?Math.max(0,+ld.lastClaimWallMs):0;loginData.monoBaseMs=Number.isFinite(+ld.monoBaseMs)?Math.max(0,+ld.monoBaseMs):Date.now();loginData.lastClaimMonoMs=Number.isFinite(+ld.lastClaimMonoMs)?Math.max(0,+ld.lastClaimMonoMs):0;loginData.claimedCycleDay=Math.max(0,Math.min(LOGIN_CYCLE,Math.floor(+ld.claimedCycleDay)||0));loginData.streakFreezes=Math.max(0,Math.min(2,Math.floor(+ld.streakFreezes)||0));loginData.streakMilestonesClaimed={};if(ld.streakMilestonesClaimed&&typeof ld.streakMilestonesClaimed==='object'&&!Array.isArray(ld.streakMilestonesClaimed))STREAK_MILESTONES.forEach(function(m){if(ld.streakMilestonesClaimed[m.days])loginData.streakMilestonesClaimed[m.days]=1})}
+window.TanksKingsSave={save:function(){return JSON.parse(JSON.stringify({wave:state.wave,bestWave:state.bestWave,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,skillShards:state.skillShards,shardPools:state.shardPools,prestigeEmblems:state.prestigeEmblems,lastWaveBeatenWithoutDying:state.lastWaveBeatenWithoutDying,tankDamage:tankDamage,gearRanks:state.gearRanks,gearStars:state.gearStars,tankProgress:tankProgress,chosenTank:chosenTank,equipped:state.equipped,inventory:state.inventory,customization:customization,serviceRecord:serviceRecord,skills:skillLevels,loginData:loginData,season:season,weeklyEvent:weeklyEvent,codex:codex,guild:guild,idle:(typeof idleSaveSnapshot==='function'?idleSaveSnapshot():null)}))},load:function(data){if(!data)return;['wave','bestWave','scrap','gems','valorMedals','royalSeals','skillShards','prestigeEmblems','lastWaveBeatenWithoutDying'].forEach(function(k){if(data[k]===undefined)return;var n=Number(data[k]);if(Number.isFinite(n))state[k]=Math.max(0,n)});if(data.equipped&&typeof data.equipped==='object'&&!Array.isArray(data.equipped)){slots.forEach(function(slot){var item=data.equipped[slot];state.equipped[slot]=(item&&typeof item==='object'&&!Array.isArray(item))?Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0}):null})}if(Array.isArray(data.inventory)){state.inventory=data.inventory.filter(function(item){return item&&typeof item==='object'&&!Array.isArray(item)&&slots.indexOf(item.slot)>=0}).map(function(item){return Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0})})};if(data.tankDamage&&typeof data.tankDamage==='object'){try{Object.keys(data.tankDamage).forEach(function(id){tankDamage[id]=data.tankDamage[id]===true});saveTankDamage();updateDamageBadge()}catch(e){}}if(data.gearRanks)slots.forEach(s=>{if(data.gearRanks[s]!==undefined)state.gearRanks[s]=Math.max(1,Math.min(30,+data.gearRanks[s]||1))});if(data.gearStars)slots.forEach(s=>{if(data.gearStars[s]!==undefined)state.gearStars[s]=Math.max(0,Math.min(5,+data.gearStars[s]||0))});savePrestige();if(data.tankProgress&&typeof data.tankProgress==='object'&&!Array.isArray(data.tankProgress))tanks.forEach(function(t){var p=data.tankProgress[t.id];if(!p||typeof p!=='object'||Array.isArray(p))return;var stage=EVOLUTION_STAGES[p.stage]?p.stage:'squire',cap=EVOLUTION_STAGES[stage].cap;tankProgress[t.id]={stage:stage,level:Math.max(1,Math.min(cap,Math.floor(+p.level)||1))}});if(data.customization&&typeof data.customization==='object'&&!Array.isArray(data.customization))tanks.forEach(function(t){var c=data.customization[t.id];if(!c||typeof c!=='object'||Array.isArray(c))return;var clean={plume:'none',banner:'none',paint:'none',trim:'gold'};CUSTOM_CATS.forEach(function(cat){if(cat.opts.some(function(o){return o.id===c[cat.id]}))clean[cat.id]=c[cat.id]});customization[t.id]=clean});if(data.serviceRecord&&typeof data.serviceRecord==='object'&&!Array.isArray(data.serviceRecord))tanks.forEach(function(t){var r=data.serviceRecord[t.id];if(r&&typeof r==='object'&&!Array.isArray(r))serviceRecord[t.id]={kills:Math.max(0,Math.floor(+r.kills)||0),bosses:Math.max(0,Math.floor(+r.bosses)||0)}});if(data.skills)tanks.forEach(t=>{if(data.skills[t.id])SKILL_KEYS.forEach(k=>{const v=+data.skills[t.id][k];skillsFor(t.id)[k]=v>=1&&v<=SKILL_MAX?Math.floor(v):1})});if(data.shardPools&&typeof data.shardPools==='object'){SKILL_KEYS.forEach(k=>{shardPools()[k]=Math.max(0,Math.floor(+data.shardPools[k])||0)})}else if(data.skillShards!=null){const _sn=Math.max(0,Math.floor(+data.skillShards)||0),_sb=Math.floor(_sn/SKILL_KEYS.length);let _sr=_sn-_sb*SKILL_KEYS.length;SKILL_KEYS.forEach(function(k,i){shardPools()[k]=_sb+(i<_sr?1:0)})}syncShardMirror();if(data.chosenTank&&byT(data.chosenTank))chosenTank=data.chosenTank;if(data.loginData&&typeof data.loginData==='object'&&!Array.isArray(data.loginData)){var ld=data.loginData;loginData.streak=Math.max(0,Math.min(36500,Math.floor(+ld.streak)||0));loginData.lastClaimDay=loginValidDayKey(ld.lastClaimDay)?ld.lastClaimDay:null;loginData.loginDays={};if(ld.loginDays&&typeof ld.loginDays==='object'&&!Array.isArray(ld.loginDays))Object.keys(ld.loginDays).forEach(function(k){if(loginValidDayKey(k)&&ld.loginDays[k])loginData.loginDays[k]=1});loginData.milestonesClaimed={};if(ld.milestonesClaimed&&typeof ld.milestonesClaimed==='object'&&!Array.isArray(ld.milestonesClaimed))LOYALTY_MILESTONES.forEach(function(m){if(ld.milestonesClaimed[m.days])loginData.milestonesClaimed[m.days]=1});loginData.loginTotal=Math.max(0,Math.min(36500,Math.floor(+ld.loginTotal)||0));loginData.lastClaimWallMs=Number.isFinite(+ld.lastClaimWallMs)?Math.max(0,+ld.lastClaimWallMs):0;loginData.monoBaseMs=Number.isFinite(+ld.monoBaseMs)?Math.max(0,+ld.monoBaseMs):Date.now();loginData.lastClaimMonoMs=Number.isFinite(+ld.lastClaimMonoMs)?Math.max(0,+ld.lastClaimMonoMs):0;loginData.claimedCycleDay=Math.max(0,Math.min(LOGIN_CYCLE,Math.floor(+ld.claimedCycleDay)||0));loginData.streakFreezes=Math.max(0,Math.min(2,Math.floor(+ld.streakFreezes)||0));loginData.streakMilestonesClaimed={};if(ld.streakMilestonesClaimed&&typeof ld.streakMilestonesClaimed==='object'&&!Array.isArray(ld.streakMilestonesClaimed))STREAK_MILESTONES.forEach(function(m){if(ld.streakMilestonesClaimed[m.days])loginData.streakMilestonesClaimed[m.days]=1})}
 if(data.season&&typeof data.season==='object'&&!Array.isArray(data.season)){var sn=data.season;
  season.id=Math.max(1,Math.floor(+sn.id)||1);
  season.startDay=Number.isFinite(+sn.startDay)?Math.max(0,Math.floor(+sn.startDay)):null;
@@ -5406,7 +5415,9 @@ if(data.weeklyEvent&&typeof data.weeklyEvent==='object'&&!Array.isArray(data.wee
  if(we.claimed&&typeof we.claimed==='object')Object.keys(we.claimed).forEach(function(k){if(we.claimed[k])weeklyEvent.claimed[k]=1})}
 if(data.codex&&typeof data.codex==='object'&&!Array.isArray(data.codex)){var cx=data.codex;
  codex.rewardsClaimed={};
- if(cx.rewardsClaimed&&typeof cx.rewardsClaimed==='object')Object.keys(cx.rewardsClaimed).forEach(function(k){if(cx.rewardsClaimed[k])codex.rewardsClaimed[k]=1})}}try{if(data.idle&&typeof idleRestoreRecord==='function')idleRestoreRecord(data.idle)}catch(e){}state.level=progressFor(chosenTank).level}};
+ if(cx.rewardsClaimed&&typeof cx.rewardsClaimed==='object')Object.keys(cx.rewardsClaimed).forEach(function(k){if(cx.rewardsClaimed[k])codex.rewardsClaimed[k]=1})}}if(data.guild&&typeof data.guild==='object'&&!Array.isArray(data.guild)){guild=guildSanitizeInto(data.guild)}
+ else{try{var _gm=localStorage.getItem('tk_guild_v1');if(_gm){var _gp2=JSON.parse(_gm);if(_gp2&&typeof _gp2==='object'&&!Array.isArray(_gp2))guild=guildSanitizeInto(_gp2)}}catch(e){}}
+ try{if(data.idle&&typeof idleRestoreRecord==='function')idleRestoreRecord(data.idle)}catch(e){}state.level=progressFor(chosenTank).level}};
 /* ================= Full progression persistence (ONE versioned record) =================
  * The whole run — tank levels, evolution stages, every currency, equipment,
  * gear forge ranks + prestige stars, per-class skill shards and skill levels,
@@ -6257,7 +6268,7 @@ state.shake=Math.max(state.shake,8);retriggerArt('playerRig','hit',420);burst(.2
 if(state.abFx.staticFieldT>0&&state.enemy&&amount>0){var zapMult=(ABILITIES[chosenTank].def.zapMult||0);if(zapMult>0)damageEnemy(totalAtk()*zapMult,false,'ability')}
 if(abyssalHeal>0)state.hp=Math.min(state.maxHp,state.hp+abyssalHeal);
 if(state.hp<=0&&state.abFx.phoenixArmed&&!state.phoenixUsed){state.phoenixUsed=true;state.abFx.phoenixArmed=false;state.hp=Math.round(state.maxHp*.30);if(state.enemy)damageEnemy(totalAtk()*2.0,true,'ability');number(.23,.43,'PHOENIX!','#ffb13c','ult');burst(.24,.56,'#ff9b45',40,'star');updateHUD();updateAbilityUI();return}
-if(state.hp<=0){if(state.mode==='tower'){towerDefeat();return}if(state.mode==='dungeon'){dungeonDefeat();return}if(state.mode==='glory'){gloryDefeat();return}campaignDefeat();return}updateHUD()}
+if(state.hp<=0){if(state.mode==='tower'){towerDefeat();return}if(state.mode==='dungeon'){dungeonDefeat();return}if(state.mode==='glory'){gloryDefeat();return}if(state.mode==='guild'){guildDefeat();return}campaignDefeat();return}updateHUD()}
 /* ================= Idle farming (offline progress) =================
  * While the player is away (app closed / backgrounded), their tank patrols
  * the last wave it beat WITHOUT DYING (state.lastWaveBeatenWithoutDying),
@@ -6504,7 +6515,7 @@ $('campRetryBtn').onclick=campRetryWave;
 $('campRetreatBtn').onclick=campRetreat;
 $('campRepairBtn').onclick=function(){if(payForRepair())showToast('Hull repaired — full strength restored!');refreshCampDefeatButtons()};
 $('repairGarageBtn').onclick=function(){if(payForRepair())showToast('Hull repaired — ready for war!');updateGarageRepairBtn()};
-function killEnemy(){let e=state.enemy,sealGain=0,medalGain=0;if(state.tutorialMode){tutorialBattleVictory(e);return}if(state.mode==='tower'){towerFloorClear(e);return}if(state.mode==='dungeon'){dungeonOnKill(e);return}if(state.mode==='glory'){gloryOnEnemyKilled(e);return}if(e&&e.boss){state.hitStop=.11;state.shake=Math.max(state.shake,25);sealGain=boostEvoGrant(1);try{if(typeof eventMod==="function")sealGain+=eventMod("bossSeal")}catch(_e){}state.royalSeals+=sealGain;grantCampaignSkinAt(state.wave);const stage=$('battleStage');stage.classList.remove('cinematic');void stage.offsetWidth;stage.classList.add('cinematic');setTimeout(()=>stage.classList.remove('cinematic'),850)}else{state.hitStop=Math.max(state.hitStop,.055);state.shake=Math.max(state.shake,13)}let reward=Math.round(((e.boss?60:10)+state.wave*2.5)*ENEMY_TYPE_STATS[e.type].scrapMult);try{if(typeof eventMod==="function"&&eventMod("scrap")===2)reward*=2}catch(_e){}state.scrap+=reward;const svc=serviceFor(chosenTank);svc.kills++;if(e.boss)svc.bosses++;try{if(typeof seasonBump==='function'){seasonBump('kills',1);if(e.boss)seasonBump('bosses',1)}}catch(_se){}try{if(typeof eventBump==='function'&&e.boss)eventBump('bosses',1)}catch(_e){}state.gems+=e.boss?3:0;if(e.boss){state.lastShardClass=bossShardClass(state.wave);grantShards(state.lastShardClass,3)}state.killsInWave++;state.ult=Math.min(100,state.ult+(e.boss?28:14));sfx('kill');burst(e.x,.55,e.boss?'#fff0a5':'#ff9a5d',e.boss?96:54,e.boss?'bossdeath':'death');spawnDebris(e.x,.55,e.boss?1.5:1);state.scorches.push({x:e.x,y:.72,life:e.boss?14:10,size:e.boss?62:42});if(state.scorches.length>9)state.scorches.shift();number(Math.max(.56,e.x-.14),.2,'+'+reward+' Scrap','#ffdb55','reward');$('enemySprite').classList.add('defeat');if(Math.random()<(e.boss?.95:.28))dropItem(e.boss);state.enemy=null;state.burn=0;state.poison=0;state.spawnClock=.8;updateHUD();if(!state.playerDead&&state.killsInWave>=state.waveTarget){const clearedWave=state.wave,earnedValor=clearedWave%5===0;if(earnedValor){medalGain=boostEvoGrant(1);try{if(typeof eventMod==="function"&&eventMod("valor")===2)medalGain*=2}catch(_e){}state.valorMedals+=medalGain;try{if(typeof eventBump==="function")eventBump("valor",medalGain)}catch(_e){}}if((state.deathsThisWave|0)===0)state.lastWaveBeatenWithoutDying=Math.max(state.lastWaveBeatenWithoutDying|0,clearedWave);state.deathsThisWave=0;state.wave++;try{if(typeof seasonBump==='function')seasonBump('waves',1)}catch(_se){}try{if(typeof eventBump==='function')eventBump('waves',1)}catch(_e){}(function(){var ob=state.bestWave;state.bestWave=Math.max(ob,state.wave);leaderBestChanged('campaign',ob,state.bestWave)})();state.killsInWave=0;state.reviveCount=0;state.retriedThisWave=0;state.waveTarget=waveTargetFor(state.wave);state.scorches=[];state.particles=[];state.projectiles.length=0;if(window.TKFX&&window.TKFX.clear)window.TKFX.clear();let rewardNote=(earnedValor?' • +'+medalGain+' Valor Medal'+(medalGain>1?'s':''):'')+((e.boss&&sealGain)?' • +'+sealGain+' Royal Seal'+(sealGain>1?'s':''):'')+(e.boss?' • +3 '+SHARD_CLASS_NAMES[state.lastShardClass||'parry']+' Shards':'');showToast((clearedWave%10===0?'BOSS WAVE — Royal challenger!':'Wave '+clearedWave+' cleared!')+rewardNote);if(!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+state.maxHp*.10);sfx('coin');updateHUD()}}
+function killEnemy(){let e=state.enemy,sealGain=0,medalGain=0;if(state.tutorialMode){tutorialBattleVictory(e);return}if(state.mode==='tower'){towerFloorClear(e);return}if(state.mode==='dungeon'){dungeonOnKill(e);return}if(state.mode==='glory'){gloryOnEnemyKilled(e);return}if(state.mode==='guild'){guildOnBossKilled(e);return}if(e&&e.boss){state.hitStop=.11;state.shake=Math.max(state.shake,25);sealGain=boostEvoGrant(1);try{if(typeof eventMod==="function")sealGain+=eventMod("bossSeal")}catch(_e){}state.royalSeals+=sealGain;grantCampaignSkinAt(state.wave);const stage=$('battleStage');stage.classList.remove('cinematic');void stage.offsetWidth;stage.classList.add('cinematic');setTimeout(()=>stage.classList.remove('cinematic'),850)}else{state.hitStop=Math.max(state.hitStop,.055);state.shake=Math.max(state.shake,13)}let reward=Math.round(((e.boss?60:10)+state.wave*2.5)*ENEMY_TYPE_STATS[e.type].scrapMult);try{if(typeof eventMod==="function"&&eventMod("scrap")===2)reward*=2}catch(_e){}state.scrap+=reward;const svc=serviceFor(chosenTank);svc.kills++;if(e.boss)svc.bosses++;try{if(typeof seasonBump==='function'){seasonBump('kills',1);if(e.boss)seasonBump('bosses',1)}}catch(_se){}try{if(typeof eventBump==='function'&&e.boss)eventBump('bosses',1)}catch(_e){}state.gems+=e.boss?3:0;if(e.boss){state.lastShardClass=bossShardClass(state.wave);grantShards(state.lastShardClass,3)}state.killsInWave++;state.ult=Math.min(100,state.ult+(e.boss?28:14));sfx('kill');burst(e.x,.55,e.boss?'#fff0a5':'#ff9a5d',e.boss?96:54,e.boss?'bossdeath':'death');spawnDebris(e.x,.55,e.boss?1.5:1);state.scorches.push({x:e.x,y:.72,life:e.boss?14:10,size:e.boss?62:42});if(state.scorches.length>9)state.scorches.shift();number(Math.max(.56,e.x-.14),.2,'+'+reward+' Scrap','#ffdb55','reward');$('enemySprite').classList.add('defeat');if(Math.random()<(e.boss?.95:.28))dropItem(e.boss);state.enemy=null;state.burn=0;state.poison=0;state.spawnClock=.8;updateHUD();if(!state.playerDead&&state.killsInWave>=state.waveTarget){const clearedWave=state.wave,earnedValor=clearedWave%5===0;if(earnedValor){medalGain=boostEvoGrant(1);try{if(typeof eventMod==="function"&&eventMod("valor")===2)medalGain*=2}catch(_e){}state.valorMedals+=medalGain;try{if(typeof eventBump==="function")eventBump("valor",medalGain)}catch(_e){}}if((state.deathsThisWave|0)===0)state.lastWaveBeatenWithoutDying=Math.max(state.lastWaveBeatenWithoutDying|0,clearedWave);state.deathsThisWave=0;state.wave++;try{if(typeof seasonBump==='function')seasonBump('waves',1)}catch(_se){}try{if(typeof eventBump==='function')eventBump('waves',1)}catch(_e){}(function(){var ob=state.bestWave;state.bestWave=Math.max(ob,state.wave);leaderBestChanged('campaign',ob,state.bestWave)})();state.killsInWave=0;state.reviveCount=0;state.retriedThisWave=0;state.waveTarget=waveTargetFor(state.wave);state.scorches=[];state.particles=[];state.projectiles.length=0;if(window.TKFX&&window.TKFX.clear)window.TKFX.clear();let rewardNote=(earnedValor?' • +'+medalGain+' Valor Medal'+(medalGain>1?'s':''):'')+((e.boss&&sealGain)?' • +'+sealGain+' Royal Seal'+(sealGain>1?'s':''):'')+(e.boss?' • +3 '+SHARD_CLASS_NAMES[state.lastShardClass||'parry']+' Shards':'');showToast((clearedWave%10===0?'BOSS WAVE — Royal challenger!':'Wave '+clearedWave+' cleared!')+rewardNote);if(!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+state.maxHp*.10);sfx('coin');updateHUD()}}
 const slots=['Hull','Cannon','Treads','Engine','Plating','Core'];const abilities={Hull:'Reinforced: +maximum HP',Cannon:'Lucky shot: chance for a bonus shell',Treads:'Nimble: chance to dodge',Engine:'Overdrive: faster attacks',Plating:'Mirror polish: reflects damage',Core:'Royal charge: faster ULT gain'};
 /* === Upgrade-cost hardening + gear prestige system (2026-09-30) ===
    Player-side economy only: no enemy/difficulty/income numbers change here. */
@@ -6915,7 +6926,7 @@ function renderRepairBtn(){
 $('repairBtn').onclick=battleRepair;
 function showToast(msg){let t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.remove('show'),1500)}
 function updateHUD(){try{progressSaveSoon()}catch(e){} /* every HUD-visible mutation schedules the unified auto-save */
-syncBattlePlayerMaxHp();let e=state.enemy,rank=stageFor(chosenTank),playerPct=state.maxHp?Math.max(0,state.hp/state.maxHp*100):0;if(!e)ensurePlayerBattleVisual();if(state.mode==='tower'){setT('waveNum','Floor '+state.floor);setT('bossFlag',state.floor%10===0?'⚡ GOD-BOSS':'ASCEND');he('battleStage').classList.add('tower-active')}else if(state.mode==='dungeon'){setT('waveNum','DUNGEON OF STEEL');setT('bossFlag',(state.enemy&&state.enemy.boss?'♛ STEEL BOSS':'FOE '+Math.min((state.dungeonKills||0)+1,DUNGEON_TARGET)+' / '+DUNGEON_TARGET)+' • DEF x2'+(dungeonAdvantage()?' • ADV x2':''));he('battleStage').classList.remove('tower-active')}else if(state.mode==='glory'){setT('waveNum','ARENA');setT('bossFlag','1v1 DUEL'+(state.gloryOpp?' · '+state.gloryOpp.name:''));he('battleStage').classList.remove('tower-active')}else{setT('waveNum','Wave '+state.wave);setT('bossFlag',state.wave%10===0?'♛ BOSS BATTLE':'ENEMY '+Math.min(state.killsInWave+1,state.waveTarget)+' / '+state.waveTarget);he('battleStage').classList.remove('tower-active')};setT('scrapVal',Math.floor(state.scrap));setT('valorVal',state.valorMedals);setT('sealVal',state.royalSeals);setT('gemVal',state.gems);setT('levelLine',rank.name+' • Lv. '+state.level+' • '+byK(byT(chosenTank).k).name);setT('lootBadge',state.inventory.length);setW('ultFill',state.ult+'%');setPV('ultBtn','--charge',state.ult+'%');setPV('ultBtn','--chargeN',state.ult);he('ultBtn').classList.toggle('ready',state.ult>=100);
+syncBattlePlayerMaxHp();let e=state.enemy,rank=stageFor(chosenTank),playerPct=state.maxHp?Math.max(0,state.hp/state.maxHp*100):0;if(!e)ensurePlayerBattleVisual();if(state.mode==='tower'){setT('waveNum','Floor '+state.floor);setT('bossFlag',state.floor%10===0?'⚡ GOD-BOSS':'ASCEND');he('battleStage').classList.add('tower-active')}else if(state.mode==='dungeon'){setT('waveNum','DUNGEON OF STEEL');setT('bossFlag',(state.enemy&&state.enemy.boss?'♛ STEEL BOSS':'FOE '+Math.min((state.dungeonKills||0)+1,DUNGEON_TARGET)+' / '+DUNGEON_TARGET)+' • DEF x2'+(dungeonAdvantage()?' • ADV x2':''));he('battleStage').classList.remove('tower-active')}else if(state.mode==='glory'){setT('waveNum','ARENA');setT('bossFlag','1v1 DUEL'+(state.gloryOpp?' · '+state.gloryOpp.name:''));he('battleStage').classList.remove('tower-active')}else if(state.mode==='guild'){setT('waveNum','GUILD BOSS');setT('bossFlag','⚜ '+(typeof guildBossDef==='function'?guildBossDef().name:'War God'))}else{setT('waveNum','Wave '+state.wave);setT('bossFlag',state.wave%10===0?'♛ BOSS BATTLE':'ENEMY '+Math.min(state.killsInWave+1,state.waveTarget)+' / '+state.waveTarget);he('battleStage').classList.remove('tower-active')};setT('scrapVal',Math.floor(state.scrap));setT('valorVal',state.valorMedals);setT('sealVal',state.royalSeals);setT('gemVal',state.gems);setT('levelLine',rank.name+' • Lv. '+state.level+' • '+byK(byT(chosenTank).k).name);setT('lootBadge',state.inventory.length);setW('ultFill',state.ult+'%');setPV('ultBtn','--charge',state.ult+'%');setPV('ultBtn','--chargeN',state.ult);he('ultBtn').classList.toggle('ready',state.ult>=100);
 const _isVg=byT(chosenTank).role==='Vanguard',_isArt=byT(chosenTank).role!=='Vanguard',_mBtn=he('meleeBtn'),_msBtn=he('missileBtn'),_mOffAb=ABILITIES[chosenTank].off,_mOffUnlocked=abUnlocked('off',chosenTank),_mCd=_isVg?Math.max(0,state.meleeCd||0):Math.max(0,state.abCd.off||0),_mMax=_isVg?chargeCdMax():Math.max(1,_mOffAb.cooldown||1),_mLocked=!_isVg&&!_mOffUnlocked,_mReady=!_mLocked&&_mCd<=0&&!!state.enemy&&!state.playerDead&&state.running;
 _mBtn.classList.toggle('hidden-melee',!_isVg);
 if(_msBtn){_msBtn.classList.toggle('hidden-missile',!_isArt);
@@ -6934,7 +6945,7 @@ _shBtn.classList.toggle('cooling',_pCd>0);
 _shBtn.classList.toggle('locked',false);
 setPV('parryBtn','--cdN',Math.max(0,Math.min(100,(parryCdMax()-_pCd)/parryCdMax()*100)));
 setA('parryBtn','aria-label',_pCd>0?'Parry cooling '+Math.ceil(_pCd)+'s':'Parry ready');setA('ultBtn','aria-label',state.ult>=100?'Ultimate skill ready — '+byT(chosenTank).ult:'Ultimate skill '+Math.round(state.ult)+'% charged');if(e&&e.hp>0){let p=Math.max(0,Math.min(100,e.hp/e.maxHp*100));syncMeter('hpFill','enemyHpGhost',p,'enemy');setA('enemyVitals','aria-valuenow',String(Math.round(p)));var gi=(e.god&&e.godId&&typeof TOWER_GODS!=='undefined'&&TOWER_GODS[e.godId])?e.godId:null;setPV('enemyVitals','--god',gi?TOWER_GODS[gi].color:'#fff');setH('hpText',(gi?'<span class="god-plate">⚡ '+TOWER_GODS[gi].name+'</span> • ':e.boss?'BOSS • ':'')+Math.max(0,Math.ceil(e.hp))+' / '+Math.ceil(e.maxHp));}else{syncMeter('hpFill','enemyHpGhost',0,'enemy');setA('enemyVitals','aria-valuenow','0');remPV('enemyVitals','--god');setT('hpText','Next rival incoming…')}syncMeter('playerHpFill','playerHpGhost',playerPct,'player');setA('playerVitals','aria-valuenow',String(Math.round(playerPct)));setT('playerHpText',Math.max(0,Math.ceil(state.hp))+' / '+Math.ceil(state.maxHp)+' HP');setT('playerHudName',byT(chosenTank).name);const shieldText=he('playerShieldText'),shieldPct=state.maxShield?Math.max(0,Math.min(100,state.shield/state.maxShield*100)):0;setTF('playerShieldFill','scaleX('+(shieldPct/100)+')');shieldText.hidden=state.maxShield<=0;setT('playerShieldText','ARMOR '+Math.ceil(state.shield)+' / '+state.maxShield);he('playerVitals').classList.toggle('low',playerPct<=25);he('criticalVignette').classList.toggle('on',playerPct<=25);if(meterVisual.playerMax!==null&&meterVisual.playerMax!==state.maxHp)pulseMaxHp();meterVisual.playerMax=state.maxHp;setT('dpsText','Power '+totalAtk()+' • '+Math.max(0,Math.ceil(state.hp))+' HP');renderRepairBtn();if(typeof towerSave!=='undefined'){var _asc=!!towerSave.autoAscend,_el=he('autoAscendBattle');if(_el&&_el.checked!==_asc){_el.checked=_asc;if(typeof syncAutoChips==='function')syncAutoChips()}}he('autoAscChip').hidden=state.mode!=='tower';if(typeof syncAutoDefChipVisibility==='function')syncAutoDefChipVisibility();if(typeof updateShieldDome==='function')updateShieldDome()}
-function tick(dt){const wallDt=dt;if(state.hitStop>0){state.hitStop=Math.max(0,state.hitStop-dt);return}if(state.cineSlow>0){state.cineSlow=Math.max(0,state.cineSlow-dt);dt*=.25}dt*=state.speed;let t=byT(chosenTank),k=t.k;if(state.enemy){state.spawnMissingFor=0;state.spawnAttempted=false;state.shotClock+=dt;let rate=t.rate*(state.equipped.Engine?.rarity==='Legendary'?.8:1)*(state.chillT>0?1.5:1);if(state.shotClock>=rate&&!state.playerDead){if(!(autoChargeOn()&&tryMeleeRam()))firePlayer()}state.meleeCd=Math.max(0,(state.meleeCd||0)-dt);state.missileCd=Math.max(0,(state.missileCd||0)-dt);if(state.enemy.freeze>0)state.enemy.freeze=Math.max(0,state.enemy.freeze-dt);if(!state.playerDead){try{enemyFireStep(dt)}catch(e){state.enemyShotClock=0;if(state.enemy)state.enemy.fireControlHold=0}}if(!state.playerDead&&state.enemy.burn>0){state.enemy.burn-=dt;state.burn=(state.burn||0)+dt;if(state.burn>.45){state.burn=0;let burnDmg=totalAtk()*.16;state.runDmg=(state.runDmg||0)+burnDmg;state.enemy.hp-=burnDmg;number(state.enemy.x,.37,Math.round(burnDmg),'#ff9b45',state.enemy.hp<=0?'kill':'status');if(state.enemy.hp<=0)killEnemy()}}if(state.enemy&&!state.playerDead&&state.enemy.poison>0){state.enemy.poison-=dt;state.poison=(state.poison||0)+dt;if(state.poison>.65){state.poison=0;let poisonDmg=totalAtk()*.12;state.runDmg=(state.runDmg||0)+poisonDmg;state.enemy.hp-=poisonDmg;number(state.enemy.x,.35,Math.round(poisonDmg),'#76dd72',state.enemy.hp<=0?'kill':'status');if(state.enemy.hp<=0)killEnemy()}}}else{state.spawnClock-=dt;state.meleeCd=Math.max(0,(state.meleeCd||0)-dt);state.missileCd=Math.max(0,(state.missileCd||0)-dt);if(state.screen==='battle'&&state.spawnClock<=0&&!state.playerDead&&state.mode!=='glory'){state.spawnMissingFor=(state.spawnMissingFor||0)+wallDt;if(!state.spawnAttempted){state.spawnAttempted=true;state.burn=0;state.poison=0;if(state.mode==='tower'){__tkLog('spawn:tick_attempt',{retry:false});try{spawnTowerEnemy()}catch(e){__tkLog('error:tick_spawn',{retry:false,error:e&&e.stack?String(e.stack):String(e)});console.error('[Tanks & Kings] spawnTowerEnemy failed in tick:',e)}}else spawnEnemy()}else if(state.spawnMissingFor>3){console.warn('[Tanks & Kings] Enemy spawn watchdog forced a retry after 3 seconds.');state.spawnMissingFor=0;state.burn=0;state.poison=0;if(state.mode==='tower'){__tkLog('spawn:tick_attempt',{retry:true,missingFor:state.spawnMissingFor});try{spawnTowerEnemy()}catch(e){__tkLog('error:tick_spawn',{retry:true,error:e&&e.stack?String(e.stack):String(e)});console.error('[Tanks & Kings] spawnTowerEnemy retry failed:',e)}}else spawnEnemy()}}else{state.spawnMissingFor=0;state.spawnAttempted=false}}if(k==='bloom'&&!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+dt*.6);if(k==='iron'&&!state.playerDead){state.hp=Math.min(state.maxHp,state.hp+dt*.35);state.shieldCooldown=Math.max(0,state.shieldCooldown-dt);if(state.shieldCooldown<=0)state.shield=Math.min(state.maxShield,state.shield+state.maxShield*.055*dt)}state.invincible=Math.max(0,state.invincible-dt);abilityTick(dt);state.repairCd=Math.max(0,(state.repairCd||0)-dt);if(state.enemy&&state.enemy.god)towerBossSigTick(dt);if(towerStatusTick(dt))return;state.playerRecoil=Math.max(0,(state.playerRecoil||0)-dt*6);for(let i=state.projectiles.length-1;i>=0;i--){let p=state.projectiles[i];if(!p)continue;if(p.ultOrb){p.x+=p.v*dt;p.spin=(p.spin||0)+dt*2.4;if(state.enemy&&p.x>=state.enemy.x-.06){let ultTarget=state.enemy,ultImpactX=ultTarget.x;if(p.ultDmg>0)damageEnemy(p.ultDmg,true,'ult');if(state.enemy===ultTarget){if(p.ultBurn>0)ultTarget.burn=Math.max(ultTarget.burn||0,p.ultBurn);if(p.ultPoison>0)ultTarget.poison=Math.max(ultTarget.poison||0,p.ultPoison);if(p.ultFreeze>0)ultTarget.freeze=Math.max(ultTarget.freeze||0,p.ultFreeze)}burst(ultImpactX-.03,.55,'#c9a2ff',26,'impact');burst(ultImpactX-.03,.55,'#ffd76a',18,'impact');burst(ultImpactX-.03,.68,'#8a5cff',12,'impact');state.projectiles.splice(i,1)}else if(p.x>1.1)state.projectiles.splice(i,1);continue}if(p.missile){p.x+=p.v*dt;let mp=Math.max(0,Math.min(1,(p.x-p.x0)/Math.max(.05,p.x1-p.x0)));p.y=p.yBase-Math.sin(mp*Math.PI)*p.arcH;p.trailAcc=(p.trailAcc||0)+dt;if(p.trailAcc>=.06){p.trailAcc=0;burst(p.x,p.y,'rgba(208,213,222,.55)',2,'smoke');burst(p.x,p.y,p.impactColor,1,'spark')}if(state.enemy&&p.x>=state.enemy.x-.05){state.hitStop=Math.max(state.hitStop,.10);state.shake=Math.max(state.shake,15);state.cineSlow=Math.max(state.cineSlow,.28);spawnMeleeFlash();burst(state.enemy.x-.03,.55,p.impactColor,40,'impact');burst(state.enemy.x-.03,.68,'#8a7a5a',14,'impact');spawnMeleeShockwave();spawnDebris(state.enemy.x-.03,.58,.8);try{sfx('kill')}catch(e){}try{sfx('impact')}catch(e){}try{if(navigator&&navigator.vibrate)navigator.vibrate([35,25,45])}catch(e){}damageEnemy(p.dmg,false,'missile');if(p.burn&&state.enemy)state.enemy.burn=Math.max(state.enemy.burn||0,p.burn);state.projectiles.splice(i,1)}else if(p.x>1.08)state.projectiles.splice(i,1);continue}p.x+=p.v*dt;if(p.enemy&&state.abFx.ironCurtainT>0){burst(p.x,.57,'#7ddcff',8,'impact');state.projectiles.splice(i,1);continue}if(!p.enemy&&state.enemy&&p.x>=state.enemy.x-.05){let dmg=(p.dmg!=null?p.dmg:totalAtk()),pcrit=!!p.perfect;if(state.equipped.Cannon&&Math.random()<.15){dmg*=1.65;pcrit=true}if(state.abFx.mistCrit){dmg*=(ABILITIES[chosenTank].def.critMult||2);state.abFx.mistCrit=false;pcrit=true}try{sfx('impact')}catch(e){}damageEnemy(dmg,pcrit);if(state.enemy&&p.stun)state.enemy.stun=Math.max(state.enemy.stun||0,p.stun);state.projectiles.splice(i,1)}else if(p.enemy&&p.x<=.27){let dodge=state.equipped.Treads?Math.min(.22,state.equipped.Treads.power/130):0;if(state.abFx.staticFieldT>0)dodge=Math.max(dodge,.60);if(state.abFx.phaseBlinkT>0||state.abFx.mistT>0)dodge=1;if(Math.random()<dodge){number(.25,.4,'DODGE','#a7efff','dodge')}else{try{sfx('impactTaken')}catch(e){}damagePlayer(Math.round((p.dmg!=null?p.dmg:enemyHitDamage(state.wave,state.enemy?state.enemy.type:'grunt'))*(p.dmgMult||1)))}state.projectiles.splice(i,1)}else if(p.x<-.1||p.x>1.1)state.projectiles.splice(i,1)}for(let i=state.particles.length-1;i>=0;i--){const p=state.particles[i];p.life-=dt;if(p.life<=0){state.particles.splice(i,1);continue}if(p.drag!=null){const dr=Math.pow(p.drag,dt*60);p.vx*=dr;p.vy*=dr}p.vy+=(p.gravity!=null?p.gravity:.45)*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.vr)p.rot=(p.rot||0)+p.vr*dt;if(p.grow)p.size+=p.grow*dt*Math.max(.25,p.life/(p.maxLife||1));if(p.bounce&&p.groundY!=null&&p.y>=p.groundY&&p.vy>0){p.y=p.groundY;p.vy*=-p.bounce;p.vx*=.72;if(p.vr)p.vr*=(p.spinDecay!=null?p.spinDecay:.6);if(Math.abs(p.vy)<.06){p.vy=0;if(p.vr)p.vr*=.9}}const plr=Math.max(0,Math.min(1,p.life/(p.maxLife||1)));p.alpha=plr<.55?plr/.55:Math.min(1,(1-plr)*14)}for(let i=state.scorches.length-1;i>=0;i--){state.scorches[i].life-=dt;if(state.scorches[i].life<=0)state.scorches.splice(i,1)}state.shake=Math.max(0,state.shake-dt*26);if(state.ult>=100&&$('autoUlt').checked&&!state.playerDead)useUlt();hudClock+=dt;if(hudClock>=.1){hudClock=0;updateHUD();updateAbilityUI()}}
+function tick(dt){const wallDt=dt;if(state.hitStop>0){state.hitStop=Math.max(0,state.hitStop-dt);return}if(state.cineSlow>0){state.cineSlow=Math.max(0,state.cineSlow-dt);dt*=.25}dt*=state.speed;let t=byT(chosenTank),k=t.k;if(state.enemy){state.spawnMissingFor=0;state.spawnAttempted=false;state.shotClock+=dt;let rate=t.rate*(state.equipped.Engine?.rarity==='Legendary'?.8:1)*(state.chillT>0?1.5:1);if(state.shotClock>=rate&&!state.playerDead){if(!(autoChargeOn()&&tryMeleeRam()))firePlayer()}state.meleeCd=Math.max(0,(state.meleeCd||0)-dt);state.missileCd=Math.max(0,(state.missileCd||0)-dt);if(state.enemy.freeze>0)state.enemy.freeze=Math.max(0,state.enemy.freeze-dt);if(!state.playerDead){try{enemyFireStep(dt)}catch(e){state.enemyShotClock=0;if(state.enemy)state.enemy.fireControlHold=0}}if(!state.playerDead&&state.enemy.burn>0){state.enemy.burn-=dt;state.burn=(state.burn||0)+dt;if(state.burn>.45){state.burn=0;let burnDmg=totalAtk()*.16;state.runDmg=(state.runDmg||0)+burnDmg;state.enemy.hp-=burnDmg;number(state.enemy.x,.37,Math.round(burnDmg),'#ff9b45',state.enemy.hp<=0?'kill':'status');if(state.enemy.hp<=0)killEnemy()}}if(state.enemy&&!state.playerDead&&state.enemy.poison>0){state.enemy.poison-=dt;state.poison=(state.poison||0)+dt;if(state.poison>.65){state.poison=0;let poisonDmg=totalAtk()*.12;state.runDmg=(state.runDmg||0)+poisonDmg;state.enemy.hp-=poisonDmg;number(state.enemy.x,.35,Math.round(poisonDmg),'#76dd72',state.enemy.hp<=0?'kill':'status');if(state.enemy.hp<=0)killEnemy()}}}else{state.spawnClock-=dt;state.meleeCd=Math.max(0,(state.meleeCd||0)-dt);state.missileCd=Math.max(0,(state.missileCd||0)-dt);if(state.screen==='battle'&&state.spawnClock<=0&&!state.playerDead&&state.mode!=='glory'&&state.mode!=='guild'){state.spawnMissingFor=(state.spawnMissingFor||0)+wallDt;if(!state.spawnAttempted){state.spawnAttempted=true;state.burn=0;state.poison=0;if(state.mode==='tower'){__tkLog('spawn:tick_attempt',{retry:false});try{spawnTowerEnemy()}catch(e){__tkLog('error:tick_spawn',{retry:false,error:e&&e.stack?String(e.stack):String(e)});console.error('[Tanks & Kings] spawnTowerEnemy failed in tick:',e)}}else spawnEnemy()}else if(state.spawnMissingFor>3){console.warn('[Tanks & Kings] Enemy spawn watchdog forced a retry after 3 seconds.');state.spawnMissingFor=0;state.burn=0;state.poison=0;if(state.mode==='tower'){__tkLog('spawn:tick_attempt',{retry:true,missingFor:state.spawnMissingFor});try{spawnTowerEnemy()}catch(e){__tkLog('error:tick_spawn',{retry:true,error:e&&e.stack?String(e.stack):String(e)});console.error('[Tanks & Kings] spawnTowerEnemy retry failed:',e)}}else spawnEnemy()}}else{state.spawnMissingFor=0;state.spawnAttempted=false}}if(k==='bloom'&&!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+dt*.6);if(k==='iron'&&!state.playerDead){state.hp=Math.min(state.maxHp,state.hp+dt*.35);state.shieldCooldown=Math.max(0,state.shieldCooldown-dt);if(state.shieldCooldown<=0)state.shield=Math.min(state.maxShield,state.shield+state.maxShield*.055*dt)}state.invincible=Math.max(0,state.invincible-dt);abilityTick(dt);state.repairCd=Math.max(0,(state.repairCd||0)-dt);if(state.enemy&&state.enemy.god)towerBossSigTick(dt);if(towerStatusTick(dt))return;state.playerRecoil=Math.max(0,(state.playerRecoil||0)-dt*6);for(let i=state.projectiles.length-1;i>=0;i--){let p=state.projectiles[i];if(!p)continue;if(p.ultOrb){p.x+=p.v*dt;p.spin=(p.spin||0)+dt*2.4;if(state.enemy&&p.x>=state.enemy.x-.06){let ultTarget=state.enemy,ultImpactX=ultTarget.x;if(p.ultDmg>0)damageEnemy(p.ultDmg,true,'ult');if(state.enemy===ultTarget){if(p.ultBurn>0)ultTarget.burn=Math.max(ultTarget.burn||0,p.ultBurn);if(p.ultPoison>0)ultTarget.poison=Math.max(ultTarget.poison||0,p.ultPoison);if(p.ultFreeze>0)ultTarget.freeze=Math.max(ultTarget.freeze||0,p.ultFreeze)}burst(ultImpactX-.03,.55,'#c9a2ff',26,'impact');burst(ultImpactX-.03,.55,'#ffd76a',18,'impact');burst(ultImpactX-.03,.68,'#8a5cff',12,'impact');state.projectiles.splice(i,1)}else if(p.x>1.1)state.projectiles.splice(i,1);continue}if(p.missile){p.x+=p.v*dt;let mp=Math.max(0,Math.min(1,(p.x-p.x0)/Math.max(.05,p.x1-p.x0)));p.y=p.yBase-Math.sin(mp*Math.PI)*p.arcH;p.trailAcc=(p.trailAcc||0)+dt;if(p.trailAcc>=.06){p.trailAcc=0;burst(p.x,p.y,'rgba(208,213,222,.55)',2,'smoke');burst(p.x,p.y,p.impactColor,1,'spark')}if(state.enemy&&p.x>=state.enemy.x-.05){state.hitStop=Math.max(state.hitStop,.10);state.shake=Math.max(state.shake,15);state.cineSlow=Math.max(state.cineSlow,.28);spawnMeleeFlash();burst(state.enemy.x-.03,.55,p.impactColor,40,'impact');burst(state.enemy.x-.03,.68,'#8a7a5a',14,'impact');spawnMeleeShockwave();spawnDebris(state.enemy.x-.03,.58,.8);try{sfx('kill')}catch(e){}try{sfx('impact')}catch(e){}try{if(navigator&&navigator.vibrate)navigator.vibrate([35,25,45])}catch(e){}damageEnemy(p.dmg,false,'missile');if(p.burn&&state.enemy)state.enemy.burn=Math.max(state.enemy.burn||0,p.burn);state.projectiles.splice(i,1)}else if(p.x>1.08)state.projectiles.splice(i,1);continue}p.x+=p.v*dt;if(p.enemy&&state.abFx.ironCurtainT>0){burst(p.x,.57,'#7ddcff',8,'impact');state.projectiles.splice(i,1);continue}if(!p.enemy&&state.enemy&&p.x>=state.enemy.x-.05){let dmg=(p.dmg!=null?p.dmg:totalAtk()),pcrit=!!p.perfect;if(state.equipped.Cannon&&Math.random()<.15){dmg*=1.65;pcrit=true}if(state.abFx.mistCrit){dmg*=(ABILITIES[chosenTank].def.critMult||2);state.abFx.mistCrit=false;pcrit=true}try{sfx('impact')}catch(e){}damageEnemy(dmg,pcrit);if(state.enemy&&p.stun)state.enemy.stun=Math.max(state.enemy.stun||0,p.stun);state.projectiles.splice(i,1)}else if(p.enemy&&p.x<=.27){let dodge=state.equipped.Treads?Math.min(.22,state.equipped.Treads.power/130):0;if(state.abFx.staticFieldT>0)dodge=Math.max(dodge,.60);if(state.abFx.phaseBlinkT>0||state.abFx.mistT>0)dodge=1;if(Math.random()<dodge){number(.25,.4,'DODGE','#a7efff','dodge')}else{try{sfx('impactTaken')}catch(e){}damagePlayer(Math.round((p.dmg!=null?p.dmg:enemyHitDamage(state.wave,state.enemy?state.enemy.type:'grunt'))*(p.dmgMult||1)))}state.projectiles.splice(i,1)}else if(p.x<-.1||p.x>1.1)state.projectiles.splice(i,1)}for(let i=state.particles.length-1;i>=0;i--){const p=state.particles[i];p.life-=dt;if(p.life<=0){state.particles.splice(i,1);continue}if(p.drag!=null){const dr=Math.pow(p.drag,dt*60);p.vx*=dr;p.vy*=dr}p.vy+=(p.gravity!=null?p.gravity:.45)*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.vr)p.rot=(p.rot||0)+p.vr*dt;if(p.grow)p.size+=p.grow*dt*Math.max(.25,p.life/(p.maxLife||1));if(p.bounce&&p.groundY!=null&&p.y>=p.groundY&&p.vy>0){p.y=p.groundY;p.vy*=-p.bounce;p.vx*=.72;if(p.vr)p.vr*=(p.spinDecay!=null?p.spinDecay:.6);if(Math.abs(p.vy)<.06){p.vy=0;if(p.vr)p.vr*=.9}}const plr=Math.max(0,Math.min(1,p.life/(p.maxLife||1)));p.alpha=plr<.55?plr/.55:Math.min(1,(1-plr)*14)}for(let i=state.scorches.length-1;i>=0;i--){state.scorches[i].life-=dt;if(state.scorches[i].life<=0)state.scorches.splice(i,1)}state.shake=Math.max(0,state.shake-dt*26);if(state.ult>=100&&$('autoUlt').checked&&!state.playerDead)useUlt();hudClock+=dt;if(hudClock>=.1){hudClock=0;updateHUD();updateAbilityUI()}}
 let battleCanvasEl=null,battleCtx=null,enemySpriteEl=null;
 /* Perf (2026-10-01): pre-baked paint assets for drawBattle. Scorch sprites, smoke alpha
    strings, and tracer gradients are immutable, so they are built once and reused per
@@ -7172,7 +7183,7 @@ $('autoEquip').onclick=()=>{slots.forEach(slot=>{let candidates=state.inventory.
 $('autoForge').onclick=()=>{autoForgeGears()};
 $('pauseBtn').onclick=()=>{if(!state.running||state.screen!=='battle'||state.playerDead||$('pauseOverlay').classList.contains('open'))return;try{$('pauseWaveLine').textContent='Wave '+state.wave+' · '+byT(chosenTank).name+' · '+byK(chosenK).name}catch(e){}state.paused=true;$('pauseOverlay').classList.add('open')};
 $('resumeBtn').onclick=()=>{state.paused=false;$('pauseOverlay').classList.remove('open');state.last=performance.now()};
-$('pauseGarageBtn').onclick=()=>{state.paused=false;state.running=false;$('pauseOverlay').classList.remove('open');setScreen('select');renderSelect();loginPopupIfDue()};
+$('pauseGarageBtn').onclick=()=>{state.paused=false;state.running=false;$('pauseOverlay').classList.remove('open');if(state.mode==='guild'){guildEndAttempt('retreat');return}setScreen('select');renderSelect();loginPopupIfDue()};
 
 
 
@@ -7728,7 +7739,7 @@ function seasonRollover(){
  season.daily={day:null,prog:{},done:{}};season.weekly={week:null,prog:{},done:{}};
  try{progressSaveSoon()}catch(e){}
  try{seasonShowEndModal(oldId,unclaimed)}catch(e){}
- try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}try{if(typeof renderEventBanner==='function')renderEventBanner()}catch(e){}
+ try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}try{if(typeof renderEventBanner==='function')renderEventBanner()}catch(e){}try{if(typeof guildWireEntry==='function')guildWireEntry();if(typeof guildEnsure==='function')guildEnsure()}catch(e){}
  return unclaimed;
 }
 function seasonShowEndModal(oldId,unclaimed){
@@ -8002,6 +8013,273 @@ function renderSeasonLadder(){
   b.onclick=function(){var p=b.getAttribute('data-sclaim').split(':');seasonClaim(+p[0],p[1])};
  });
  try{var cur=host.querySelector('.tier-row.current');if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'center'})}catch(e){}
+}
+/* ================= GUILDS — PHASE 1 (local-first, no server) =================
+   Async co-op "expedition party": the guild record lives on this device and
+   members sync by exchanging invite codes (base64url snapshot + checksum,
+   per-member max-merge, newer week wins). Weekly shared god-boss at 1.2M HP,
+   1 attempt per member per day, rollover rewards claimable in the hall.
+   Chat, real-time shared HP, search and wars are phase 2 (server) by design. */
+var GUILD_BOSS_HP=1200000,GUILD_MAX_MEMBERS=30,GUILD_BOSS_IDS=['solarion','tempestra','tidefather','crag','pyra','frost','thorn','umbra','gale','pontiff'];
+var guild={inGuild:false,id:'',name:'',myId:'',myName:'Commander',members:[],weekKey:null,bossId:'',contributions:{},lastAttemptDay:-1,pendingRewards:[],lastResult:null,createdDay:0};
+var pendingGuildImport=null;
+function guildWeekKey(){return Math.floor(dayIndex()/7)}
+function guildBossForWeek(wk){return GUILD_BOSS_IDS[Math.abs(wk)%GUILD_BOSS_IDS.length]}
+function guildBossDef(){for(var i=0;i<GODSKINS.length;i++)if(GODSKINS[i].bossId===guild.bossId)return {name:GODSKINS[i].bossName,sprite:GODSKINS[i].sprite};var t=TOWER_GODS[guild.bossId];return {name:t?t.name:'War God',sprite:''}}
+function guildTotalDamage(){var s=0;for(var k in guild.contributions)s+=Math.max(0,guild.contributions[k]|0);return s}
+function guildBossHpLeft(){return Math.max(0,GUILD_BOSS_HP-guildTotalDamage())}
+function guildBossKilled(){return guild.inGuild&&guildTotalDamage()>=GUILD_BOSS_HP}
+function guildMyMember(){for(var i=0;i<guild.members.length;i++)if(guild.members[i].id===guild.myId)return guild.members[i];return null}
+function guildEnsureIdentity(){
+ if(!guild.myId){try{guild.myId='m'+Math.random().toString(36).slice(2,10)+Date.now().toString(36)}catch(e){guild.myId='m'+Date.now()}}
+ if(typeof guild.myName!=='string'||!guild.myName)guild.myName='Commander';
+}
+function guildSave(){
+ try{localStorage.setItem('tk_guild_v1',JSON.stringify(guild))}catch(e){}
+ try{progressSaveSoon()}catch(e){}
+}
+function guildCleanMember(m){
+ if(!m||typeof m!=='object')return null;
+ var id=String(m.id||'').slice(0,40);if(!id)return null;
+ var name=String(m.name||'Commander').replace(/[<>]/g,'').slice(0,24)||'Commander';
+ return {id:id,name:name};
+}
+function guildSanitizeInto(src){
+ var g={inGuild:false,id:'',name:'',myId:(typeof guild.myId==='string'?guild.myId:''),myName:'Commander',members:[],weekKey:null,bossId:'',contributions:{},lastAttemptDay:-1,pendingRewards:[],lastResult:null,createdDay:0};
+ if(!src||typeof src!=='object'||Array.isArray(src))return g;
+ g.inGuild=src.inGuild===true;
+ g.id=String(src.id||'').slice(0,40);
+ g.name=String(src.name||'').replace(/[<>]/g,'').slice(0,30);
+ if(typeof src.myId==='string'&&src.myId)g.myId=src.myId.slice(0,40);
+ if(typeof src.myName==='string'&&src.myName)g.myName=src.myName.replace(/[<>]/g,'').slice(0,24)||'Commander';
+ if(Array.isArray(src.members)){var seen={};src.members.forEach(function(m){var cm=guildCleanMember(m);if(cm&&!seen[cm.id]){seen[cm.id]=1;if(g.members.length<GUILD_MAX_MEMBERS)g.members.push(cm)}})}
+ g.weekKey=Number.isFinite(+src.weekKey)?Math.floor(+src.weekKey):null;
+ g.bossId=GUILD_BOSS_IDS.indexOf(src.bossId)>=0?src.bossId:'';
+ if(src.contributions&&typeof src.contributions==='object'&&!Array.isArray(src.contributions)){Object.keys(src.contributions).forEach(function(k){var v=Math.max(0,Math.min(GUILD_BOSS_HP,Math.floor(+src.contributions[k])||0));if(v>0)g.contributions[String(k).slice(0,40)]=v})}
+ g.lastAttemptDay=Number.isFinite(+src.lastAttemptDay)?Math.floor(+src.lastAttemptDay):-1;
+ if(Array.isArray(src.pendingRewards)){src.pendingRewards.slice(0,8).forEach(function(r){if(r&&typeof r==='object'&&!Array.isArray(r))g.pendingRewards.push({scrap:Math.max(0,Math.min(1000000,Math.floor(+r.scrap)||0)),gems:Math.max(0,Math.min(100000,Math.floor(+r.gems)||0)),seals:Math.max(0,Math.min(1000,Math.floor(+r.seals)||0)),emblems:Math.max(0,Math.min(100,Math.floor(+r.emblems)||0)),note:String(r.note||'Guild rewards').slice(0,80)})})}
+ if(src.lastResult&&typeof src.lastResult==='object'&&!Array.isArray(src.lastResult))g.lastResult={reason:String(src.lastResult.reason||'').slice(0,12),dmg:Math.max(0,Math.min(GUILD_BOSS_HP,Math.floor(+src.lastResult.dmg)||0)),day:Number.isFinite(+src.lastResult.day)?Math.floor(+src.lastResult.day):-1};
+ g.createdDay=Number.isFinite(+src.createdDay)?Math.floor(+src.createdDay):0;
+ if(!g.inGuild){g.id='';g.name='';g.members=[];g.contributions={};g.weekKey=null;g.bossId='';g.lastAttemptDay=-1}
+ return g;
+}
+function guildSettleWeek(targetWeek){
+ /* Bank the stored week's rewards as claimable, then open targetWeek fresh. */
+ if(guild.inGuild&&guild.weekKey!=null&&guild.weekKey<targetWeek){
+  var myDmg=Math.max(0,guild.contributions[guild.myId]|0);
+  var rw={scrap:0,gems:0,seals:0,emblems:0,note:'Week '+(guild.weekKey+1)+' guild rewards'};
+  if(myDmg>0){
+   rw.scrap+=500;
+   var ranked=guild.members.map(function(m){return {id:m.id,d:Math.max(0,guild.contributions[m.id]|0)}}).filter(function(r){return r.d>0}).sort(function(a,b){return b.d-a.d});
+   for(var i=0;i<Math.min(3,ranked.length);i++){if(ranked[i].id===guild.myId)rw.gems+=[150,100,50][i]}
+   if(guildTotalDamage()>=GUILD_BOSS_HP){rw.seals+=3;rw.emblems+=1}
+  }
+  if(rw.scrap||rw.gems||rw.seals||rw.emblems)guild.pendingRewards.push(rw);
+ }
+ guild.weekKey=targetWeek;guild.bossId=guildBossForWeek(targetWeek);guild.contributions={};
+}
+function guildEnsure(){
+ guildEnsureIdentity();
+ if(!guild.inGuild)return;
+ var wk=guildWeekKey(),changed=false;
+ if(guild.weekKey==null){guild.weekKey=wk;guild.bossId=guildBossForWeek(wk);guild.contributions={};changed=true}
+ else if(guild.weekKey<wk){guildSettleWeek(wk);changed=true}
+ if(!guild.bossId){guild.bossId=guildBossForWeek(guild.weekKey);changed=true}
+ var me=guildMyMember();
+ if(!me){guild.members.push({id:guild.myId,name:guild.myName});if(guild.members.length>GUILD_MAX_MEMBERS)guild.members.length=GUILD_MAX_MEMBERS;changed=true}
+ else if(me.name!==guild.myName){me.name=guild.myName}
+ if(changed)guildSave();
+}
+function guildCreate(name){
+ guildEnsureIdentity();
+ name=String(name||'').replace(/[<>]/g,'').trim().slice(0,30);
+ if(!name){showToast('Name your guild first, Commander.');return}
+ guild.inGuild=true;guild.id='g'+Math.random().toString(36).slice(2,9)+Date.now().toString(36);
+ guild.name=name;guild.members=[{id:guild.myId,name:guild.myName}];
+ guild.weekKey=null;guild.bossId='';guild.contributions={};guild.lastAttemptDay=-1;guild.createdDay=dayIndex();pendingGuildImport=null;
+ guildEnsure();guildSave();renderGuildScreen();showToast('Guild founded — share your invite code!');
+}
+function guildLeave(){
+ guild.inGuild=false;guild.id='';guild.name='';guild.members=[];guild.contributions={};guild.weekKey=null;guild.bossId='';guild.lastAttemptDay=-1;pendingGuildImport=null;
+ guildSave();renderGuildScreen();showToast('You left the guild.');
+}
+function guildChecksum(s){var h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return (h>>>0).toString(36)}
+function guildExportCode(){
+ guildEnsure();
+ var payload={v:1,gid:guild.id,name:guild.name,week:guild.weekKey,boss:guild.bossId,contrib:guild.contributions,members:guild.members,ts:Date.now()};
+ var json=JSON.stringify(payload);
+ var b64=btoa(unescape(encodeURIComponent(json))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+ return b64+'.'+guildChecksum(json);
+}
+function guildDecodeCode(code){
+ try{
+  code=String(code||'').trim();var dot=code.lastIndexOf('.');if(dot<1)return null;
+  var sum=code.slice(dot+1),b64=code.slice(0,dot).replace(/-/g,'+').replace(/_/g,'/');
+  while(b64.length%4)b64+='=';
+  var json=decodeURIComponent(escape(atob(b64)));
+  if(guildChecksum(json)!==sum)return null;
+  var p=JSON.parse(json);
+  if(!p||typeof p!=='object'||p.v!==1||typeof p.gid!=='string'||!p.gid)return null;
+  return p;
+ }catch(e){return null}
+}
+function guildImportCode(code){
+ var p=guildDecodeCode(code);
+ if(!p){showToast('That invite code is invalid or corrupted.');return}
+ guildEnsureIdentity();
+ var snap=guildSanitizeInto({inGuild:true,id:p.gid,name:p.name,myId:guild.myId,myName:guild.myName,members:p.members,weekKey:p.week,contributions:p.contrib,lastAttemptDay:-1,pendingRewards:guild.pendingRewards,lastResult:guild.lastResult,createdDay:guild.createdDay});
+ snap.bossId=GUILD_BOSS_IDS.indexOf(p.boss)>=0?p.boss:guildBossForWeek(snap.weekKey==null?guildWeekKey():snap.weekKey);
+ if(guild.inGuild&&guild.id!==snap.id){
+  if(!pendingGuildImport||pendingGuildImport.gid!==snap.id){pendingGuildImport={gid:snap.id};showToast('Different guild — tap SYNC again to leave "'+guild.name+'" and join "'+snap.name+'".');return}
+  pendingGuildImport=null;guild.inGuild=false;guild.weekKey=null;guild.contributions={};guild.members=[];
+ }
+ if(!guild.inGuild){
+  guild.inGuild=true;guild.id=snap.id;guild.name=snap.name;guild.members=snap.members;guild.weekKey=snap.weekKey;guild.bossId=snap.bossId;guild.contributions=snap.contributions;
+ }else{
+  var byId={};guild.members.forEach(function(m){byId[m.id]=m});
+  snap.members.forEach(function(m){if(!byId[m.id]){byId[m.id]=m;guild.members.push(m)}else{byId[m.id].name=m.name}});
+  if(guild.members.length>GUILD_MAX_MEMBERS)guild.members.length=GUILD_MAX_MEMBERS;
+  if(snap.name)guild.name=snap.name;
+  var sameWeek=snap.weekKey===guild.weekKey;
+  if(snap.weekKey!=null&&guild.weekKey!=null&&snap.weekKey>guild.weekKey){guildSettleWeek(snap.weekKey);sameWeek=true}
+  if(sameWeek){
+   Object.keys(snap.contributions).forEach(function(k){guild.contributions[k]=Math.max(guild.contributions[k]|0,snap.contributions[k]|0)});
+   if(snap.bossId)guild.bossId=snap.bossId;
+  }
+ }
+ pendingGuildImport=null;
+ guildEnsure();guildSave();renderGuildScreen();showToast('Guild record synced — welcome, Commander.');
+}
+function guildClaimRewards(){
+ if(!guild.pendingRewards.length)return;
+ if(typeof loginFrozen==='function'&&loginFrozen()){showToast('Rewards are frozen while the clock is in question.');return}
+ var tot={scrap:0,gems:0,seals:0,emblems:0};
+ guild.pendingRewards.forEach(function(r){tot.scrap+=r.scrap;tot.gems+=r.gems;tot.seals+=r.seals;tot.emblems+=r.emblems});
+ guild.pendingRewards=[];
+ if(tot.scrap)addCur('scrap',tot.scrap);
+ if(tot.gems)addCur('gems',tot.gems);
+ if(tot.seals)addCur('royalSeals',tot.seals);
+ if(tot.emblems)addCur('emblems',tot.emblems);
+ try{sfx('coin')}catch(e){}
+ guildSave();renderGuildScreen();showToast('Guild rewards claimed!');
+}
+function guildEsc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function guildWireEntry(){
+ var gb=document.getElementById('guildBtn');
+ if(gb&&!gb._wired){gb._wired=true;gb.onclick=function(){try{sfx('coin')}catch(e){}setScreen('guild');renderGuildScreen()}}
+}
+function renderGuildScreen(){
+ guildEnsure();
+ var host=$('guildBody');if(!host)return;
+ var bb=$('guildBackBtn');
+ if(bb&&!bb._wired){bb._wired=true;bb.onclick=function(){try{sfx('coin')}catch(e){}setScreen('mode');try{renderModeSelect()}catch(_e){}}}
+ var h='';
+ if(guild.pendingRewards.length){
+  var tot={scrap:0,gems:0,seals:0,emblems:0};
+  guild.pendingRewards.forEach(function(r){tot.scrap+=r.scrap;tot.gems+=r.gems;tot.seals+=r.seals;tot.emblems+=r.emblems});
+  var parts=[];if(tot.scrap)parts.push(fmtN(tot.scrap)+' scrap');if(tot.gems)parts.push(fmtN(tot.gems)+' gems');if(tot.seals)parts.push(tot.seals+' seals');if(tot.emblems)parts.push(tot.emblems+' emblems');
+  h+='<div class="season-banner"><div class="sb-copy"><b>Guild rewards waiting</b><small>'+parts.join(' · ')+'</small></div><button class="btn gold" id="guildClaimBtn">CLAIM</button></div>';
+ }
+ if(!guild.inGuild){
+  h+='<div class="screen-sub">Found a guild with fellow commanders, or join one with an invite code. Together you hunt a god-boss every week — every point of damage is shared, and so is the glory.</div>'
+   +'<div class="store-sec-title">Found a Guild</div>'
+   +'<div class="mission-row"><input id="guildNameInput" class="guild-input" maxlength="30" placeholder="Guild name"><button class="btn gold" id="guildCreateBtn">FOUND</button></div>'
+   +'<div class="store-sec-title">Join with an Invite Code</div>'
+   +'<div class="mission-row"><input id="guildJoinInput" class="guild-input" placeholder="Paste invite code"><button class="btn" id="guildJoinBtn">JOIN</button></div>'
+   +'<div class="mission-row"><span>Your name</span><input id="guildMyNameInput" class="guild-input" maxlength="24" value="'+guildEsc(guild.myName)+'"><button class="btn" id="guildNameSaveBtn">SAVE</button></div>';
+  host.innerHTML=h;guildWireHall();return;
+ }
+ var boss=guildBossDef(),left=guildBossHpLeft(),total=guildTotalDamage(),pct=Math.min(100,Math.round(total/GUILD_BOSS_HP*100));
+ var daysLeft=Math.max(0,(guild.weekKey+1)*7-dayIndex());
+ var killed=guildBossKilled(),attemptUsed=guild.lastAttemptDay===dayIndex();
+ if(guild.lastResult&&guild.lastResult.day===dayIndex()){
+  var lr=guild.lastResult;
+  h+='<div class="season-banner"><div class="sb-copy"><b>'+(lr.reason==='kill'?'The guild boss has fallen!':lr.reason==='defeat'?'Your tank fell — but every hit counts.':'You withdrew from the guild hunt.')+'</b><small>Your attempt dealt '+fmtN(lr.dmg)+' damage.</small></div></div>';
+ }
+ h+='<div class="screen-title" style="margin-top:4px">⚜ '+guildEsc(guild.name)+'</div>'
+  +'<div class="season-banner"><div class="sb-art">👑</div><div class="sb-copy"><b>'+guildEsc(boss.name)+' — Weekly Guild Boss</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+fmtN(left)+' / '+fmtN(GUILD_BOSS_HP)+' HP left · '+daysLeft+' day'+(daysLeft===1?'':'s')+' left this week</small></div>'+(killed?'<span class="sb-badge">SLAIN</span>':'')+'</div>'
+  +'<button class="btn gold" id="guildFightBtn"'+(killed||attemptUsed?' disabled':'')+'>'+(killed?'BOSS SLAIN — NEW BOSS NEXT WEEK':attemptUsed?'ATTEMPT USED — RETURN TOMORROW':'⚔ FIGHT THE GUILD BOSS — 1 ATTEMPT TODAY')+'</button>'
+  +'<div class="store-sec-title">Contribution Rankings</div>';
+ var ranked=guild.members.map(function(m){return {id:m.id,name:m.name,d:Math.max(0,guild.contributions[m.id]|0)}}).sort(function(a,b){return b.d-a.d});
+ if(!ranked.length)h+='<div class="mission-row"><span>No members yet.</span></div>';
+ ranked.forEach(function(r,i){h+='<div class="mission-row"><span>'+(i+1)+'. '+guildEsc(r.name)+(r.id===guild.myId?' (You)':'')+'</span><span class="progress">'+fmtN(r.d)+' dmg</span></div>'});
+ h+='<div class="store-sec-title">Members ('+guild.members.length+'/'+GUILD_MAX_MEMBERS+')</div>';
+ guild.members.forEach(function(m){h+='<div class="mission-row"><span>'+guildEsc(m.name)+(m.id===guild.myId?' (You)':'')+'</span></div>'});
+ h+='<div class="store-sec-title">Invite Code — share it so guildmates can sync</div>'
+  +'<div class="mission-row"><input id="guildCodeOut" class="guild-input" readonly value="'+guildExportCode()+'"><button class="btn" id="guildCopyBtn">COPY</button></div>'
+  +'<div class="mission-row"><input id="guildJoinInput" class="guild-input" placeholder="Paste a guildmate code to sync"><button class="btn" id="guildJoinBtn">SYNC</button></div>'
+  +'<div class="mission-row"><span>Your name</span><input id="guildMyNameInput" class="guild-input" maxlength="24" value="'+guildEsc(guild.myName)+'"><button class="btn" id="guildNameSaveBtn">SAVE</button></div>'
+  +'<button class="btn" id="guildLeaveBtn">LEAVE GUILD</button>';
+ host.innerHTML=h;guildWireHall();
+}
+function guildWireHall(){
+ var q=function(id){return document.getElementById(id)};
+ var c=q('guildClaimBtn');if(c)c.onclick=function(){guildClaimRewards()};
+ var cr=q('guildCreateBtn');if(cr)cr.onclick=function(){var inp=q('guildNameInput');guildCreate(inp?inp.value:'')};
+ var j=q('guildJoinBtn');if(j)j.onclick=function(){var inp=q('guildJoinInput');guildImportCode(inp?inp.value:'')};
+ var ns=q('guildNameSaveBtn');if(ns)ns.onclick=function(){var inp=q('guildMyNameInput');var v=inp?inp.value.replace(/[<>]/g,'').trim().slice(0,24):'';if(v){guild.myName=v;var me=guildMyMember();if(me)me.name=v;guildSave();renderGuildScreen();showToast('Name saved.')}};
+ var f=q('guildFightBtn');if(f)f.onclick=function(){try{sfx('coin')}catch(e){}startGuildBattle()};
+ var cp=q('guildCopyBtn');if(cp)cp.onclick=function(){var out=q('guildCodeOut');if(!out)return;var done=function(){showToast('Invite code copied.')};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(out.value).then(done,function(){out.select();try{document.execCommand('copy');done()}catch(e){showToast('Copy the code manually.')}})}else{out.select();try{document.execCommand('copy');done()}catch(e){showToast('Copy the code manually.')}}};
+ var lv=q('guildLeaveBtn');if(lv)lv.onclick=function(){if(lv.dataset.arm){guildLeave()}else{lv.dataset.arm='1';lv.textContent='TAP AGAIN TO CONFIRM LEAVING';setTimeout(function(){if(lv.isConnected){delete lv.dataset.arm;lv.textContent='LEAVE GUILD'}},3000)}};
+}
+function guildAttemptUsedToday(){return guild.lastAttemptDay===dayIndex()}
+function startGuildBattle(){
+ guildEnsure();
+ if(!guild.inGuild)return;
+ if(guildBossKilled()){showToast('The guild boss has already fallen this week.');return}
+ if(guildAttemptUsedToday()){showToast('You have used today’s guild attempt.');return}
+ guild.lastAttemptDay=dayIndex();guildSave(); /* the attempt is consumed at entry — no retreat farming */
+ var boss=guildBossDef(),t=byT(chosenTank),k=byK(t.k),prog=progressFor(chosenTank);
+ state.level=prog.level;state.wave=1;state.mode='guild';state.ult=kingdomSetCount()>=6?50:0;state.runDmg=0;state.runScrapStart=state.scrap;
+ state.reviveCount=0;state.retriedThisWave=0;state.playerDead=false;state.paused=false;state.deathsThisWave=0;state.killsInWave=0;state.waveTarget=1;
+ state.maxHp=playerMaxHp();state.hp=state.maxHp;state.maxShield=shieldCapacity();state.shield=state.maxShield;state.shieldCooldown=0;
+ state.running=true;state.enemy=null;state.projectiles.length=0;state.particles=[];state.chillT=0;state.sunburnT=0;state.thornT=0;state.frostHitCd=0;state.repairCd=0;state.meleeCd=0;
+ state.invincible=0;state.hitStop=0;state.cineSlow=0;state.shake=0;state.scorches=[];state.shotClock=0;state.playerRecoil=0;state.spawnClock=0;state.spawnMissingFor=0;state.spawnAttempted=false;
+ state.guildCommitted=false;
+ resetDamageNumbers();resetMeters();setScreen('battle');
+ $('battleName').textContent=t.name+'  vs  '+boss.name;
+ setT('playerHudName',t.name);$('ultName').textContent=t.ult;var ultIcon=$('ultIcon');if(ultIcon){ultIcon.src='assets/ult-icon-knight-256.png?v='+__ASSET_V;ultIcon.alt='Ultimate'};
+ $('battleStage').style.setProperty('--battleTint',k.colors[0]);
+ $('battleStage').querySelector('.world-bg').dataset.kingdom=k.id;
+ $('playerRig').classList.remove('defeat','hit');hideCampDefeat();
+ applyEvolutionVisual();refreshBattleCustomLayers();updateDamageBadge();updateHUD();restoreAutoChips();
+ spawnGuildEnemy();resetAbilitiesForBattle();armLoop();sfx('coin');
+}
+function spawnGuildEnemy(){
+ var boss=guildBossDef(),left=guildBossHpLeft();
+ var edmg=Math.min(Math.max(1,Math.round(totalAtk()*0.8)),Math.max(1,Math.round(state.maxHp*.12)));
+ state.enemy={type:'heavy',kingdom:byT(chosenTank).k,hp:left,maxHp:left,x:.82,hit:0,boss:true,guildBoss:true,burn:0,poison:0,freeze:0,dmg:edmg};
+ state.enemyShotClock=1.2;
+ try{setBattleBackground(BATTLE_BG_DEFAULT)}catch(e){}
+ var img=$('enemySprite');__tkSetImg(img,boss.sprite,boss.name+' — guild boss');
+ img.dataset.kingdom='';img.classList.remove('defeat','hit');img.classList.add('boss');
+ img.style.removeProperty('scale');
+ updateHUD();
+}
+function guildOnBossKilled(e){
+ if(!e)return;
+ state.hitStop=Math.max(state.hitStop,.11);state.shake=Math.max(state.shake,25);sfx('kill');
+ burst(e.x,.55,'#fff0a5',96,'bossdeath');spawnDebris(e.x,.55,1.5);
+ state.scorches.push({x:e.x,y:.72,life:14,size:62});if(state.scorches.length>9)state.scorches.shift();
+ $('enemySprite').classList.add('defeat');state.enemy=null;updateHUD();
+ setTimeout(function(){if(state.mode!=='guild'||state.screen!=='battle'||state.playerDead)return;guildEndAttempt('kill')},900);
+}
+function guildDefeat(){
+ if(state.playerDead)return;
+ state.playerDead=true;state.running=false;
+ try{$('playerRig').classList.add('defeat')}catch(e){}
+ state.cineSlow=1.15;state.hitStop=Math.max(state.hitStop,.09);state.shake=Math.max(state.shake,22);
+ state.projectiles.length=0;burst(.16,.48,'#ffd76a',80,'bossdeath');sfx('kill');updateHUD();
+ setTimeout(function(){if(state.mode!=='guild'||state.screen!=='battle')return;guildEndAttempt('defeat')},1200);
+}
+function guildEndAttempt(reason){
+ if(state.guildCommitted)return;state.guildCommitted=true;
+ var dmg=Math.min(guildBossHpLeft(),Math.max(0,Math.round(state.runDmg||0)));
+ if(dmg>0)guild.contributions[guild.myId]=Math.min(GUILD_BOSS_HP,(guild.contributions[guild.myId]|0)+dmg);
+ guild.lastResult={reason:reason,dmg:dmg,day:dayIndex()};
+ state.mode='campaign';state.running=false;state.paused=false;
+ try{$('pauseOverlay').classList.remove('open')}catch(e){}
+ guildSave();setScreen('guild');renderGuildScreen();
 }
 function seasonPremiumProduct(){
  return {key:'season_premium',kind:'season',title:'Season Pass — Premium',
@@ -9593,6 +9871,7 @@ function saveTower(){progressSaveSoon()} /* unified record only */
 /* ---------- entry: mode select ---------- */
 function renderModeSelect(){
  if(typeof renderDungeonCard==='function')renderDungeonCard();
+ try{if(typeof guildWireEntry==='function')guildWireEntry();if(typeof guildEnsure==='function')guildEnsure()}catch(e){}
  try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}try{if(typeof renderEventBanner==='function')renderEventBanner()}catch(e){}
  var modeProg=progressFor(chosenTank),modeTier=Math.max(1,STAGE_ORDER.indexOf(modeProg.stage)+1);
  $('modeGoldVal').textContent=fmtN(state.scrap);$('modeGemVal').textContent=fmtN(state.gems);$('modeTierVal').textContent='Tier '+modeTier;
