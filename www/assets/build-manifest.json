@@ -1,6 +1,6 @@
 {
-  "build": "b73fb777ac",
-  "html": "c4a1aa1bfc",
+  "build": "7441738123",
+  "html": "a3452bc7e2",
   "assetCount": 231,
   "assets": [
     {
@@ -185,8 +185,8 @@
     },
     {
       "file": "assets/evo-ascendant-ironhold-artillery.png",
-      "bytes": 1765740,
-      "md5": "a493aaf586778f08c87b72471d84856f"
+      "bytes": 1319575,
+      "md5": "08e08dac6b7755bed17287ba0b8fb06f"
     },
     {
       "file": "assets/evo-ascendant-ironhold-vanguard.png",
