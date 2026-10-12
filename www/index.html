@@ -5100,7 +5100,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b3cfe56d9d';
-const __HTML_V='1adf042bd9';
+const __HTML_V='56da867597';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -9071,6 +9071,16 @@ function bossSlayerProduct(){return{key:'boss_slayer',kind:'chest',title:'Boss-S
 function starterProduct(){return{key:'starter',kind:'starter',title:'New Monarch Starter Pack',sub:'Gems · Scrap · Rare chest',priceUsd:2.99,art:artGift(),contents:['500 Gems','1,500 Scrap','1× Rare chest'],tag:'ONE-TIME',tagKind:'gold',ownedState:STORE.starterClaimed?'claimed':'',grant:function(pending){addCur('gems',500);addCur('scrap',1500);pending.chests.push({tier:'Rare',slot:null});STORE.starterClaimed=true}}}
 function bestValueGemCard(){const g=GEM_LADDER[2];return gemProduct(g,2)}
 function dailyDealProduct(){const tier=dailyDealTier();const claimedToday=STORE.dailyDealClaimDate===dayIndex();return{key:'dailydeal',kind:'chest',title:tier+' Chest',sub:'Daily deal · '+dataCountdown('dd'),priceGems:dailyDealPrice(),art:artChest(CHEST_COLOR[tier]),contents:['1× '+tier+' chest'],odds:oddsHTMLAuto(tier),tag:'-30% DAILY',tagKind:'mint',cardClass:'rarity-'+tier.toLowerCase(),ownedState:claimedToday?'claimed':undefined,disabled:claimedToday,disabledReason:claimedToday?'CLAIMED':undefined,grant:function(pending){pending.chests.push({tier:tier,slot:null});STORE.dailyDealClaimDate=dayIndex()}}}
+function storeSeasonPassHTML(){
+ /* The Season Pass section of the Shop — same live state as the mode-screen
+    banner; tapping it opens the full Season Pass screen. */
+ try{seasonEnsure()}catch(e){}
+ var t=seasonTier(),pct=Math.min(100,Math.round(season.xp/SEASON_XP_TOTAL*100));
+ var daysLeft=Math.max(0,(season.endDay==null?SEASON_DAYS:season.endDay)-dayIndex());
+ var claimable=seasonClaimableCount();
+ var badge=claimable?'<span class="sb-badge">'+claimable+' CLAIM</span>':(season.premium?'<span class="sb-badge">PREMIUM ✓</span>':'<span class="sb-badge">$9.99</span>');
+ return '<div class="store-sec-title">Season Pass</div><div class="season-banner" data-shop-season role="button" tabindex="0" aria-label="Open the Season Pass"><div class="sb-art">🎵</div><div class="sb-copy"><b>Season '+season.id+' Pass — Tier '+t+'/'+SEASON_TIERS+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+daysLeft+' days left · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP · 30 tiers of free + premium rewards</small></div>'+badge+'</div>';
+}
 function storeFeaturedHTML(){let sec='',i=0;
  if(tutorialAt(4))sec+=tutorialRewardCardHTML();
  if(!STORE.starterClaimed)sec+=productCard(starterProduct(),i++);
@@ -9079,7 +9089,7 @@ function storeFeaturedHTML(){let sec='',i=0;
  if(bossNearCached)sec+=productCard(bossSlayerProduct(),i++);
  sec+=productCard(dailyDealProduct(),i++);
  const eb=evolutionBundleProduct();if(eb)sec+=productCard(eb,i++);
- return '<div class="store-sec-title">Featured Deals</div><div class="store-grid featured-grid">'+sec+'</div>'}
+ return storeSeasonPassHTML()+'<div class="store-sec-title">Featured Deals</div><div class="store-grid featured-grid">'+sec+'</div>'}
 /* --- gems --- */
 function gemProduct(g,idx){const total=g.base+g.bonus;const doubled=!STORE.firstPurchaseEver;return{key:'gem_'+idx,kind:'gem',title:fmtN(total)+' Gems',sub:g.bonus?('Base '+fmtN(g.base)+' + bonus <b style="color:#8fe6b0">'+fmtN(g.bonus)+'</b>'):'',priceUsd:g.usd,art:artGems(g.tier==='small'?2:g.tier==='mid'?3:g.tier==='large'?4:5),contents:['◈ '+fmtN(total)+' Gems'],tag:g.tag,tagKind:'gold',bonusLine:doubled?('FIRST PURCHASE EVER: <b>2× &rarr; '+fmtN(total*2)+'</b>'):'',grant:function(){const t=g.base+g.bonus;if(!STORE.firstPurchaseEver){addCur('gems',t*2);STORE.firstPurchaseEver=true;this._lastGranted=t*2}else{addCur('gems',t);this._lastGranted=t}},usdRate:g.usd}}
 function storeGemsHTML(){const note=STORE.firstPurchaseEver?'':'<div class="store-flash" style="margin:12px 0"><span class="flash-badge">2×</span><div class="flash-copy"><b>First gem purchase ever grants DOUBLE gems.</b><small>One time only · choose wisely, monarch</small></div></div>';let grid=GEM_LADDER.map(function(g,i){return productCard(gemProduct(g,i),i)}).join('');return note+'<div class="store-sec-title">Gem Packs — bigger packs, better rates</div><div class="store-grid">'+grid+'</div>'}
@@ -9141,6 +9151,7 @@ function findProduct(key){
  return null}
 function wireStoreButtons(host){
  var tutorialReward=host.querySelector('[data-tutorial-reward]');if(tutorialReward)tutorialReward.onclick=function(){tutorialClaimReward()};
+ var seasonCard=host.querySelector('[data-shop-season]');if(seasonCard){var openSeasonFromShop=function(){try{sfx('coin')}catch(e){}storeReturnTo='mode';setScreen('season');renderSeasonScreen()};seasonCard.onclick=openSeasonFromShop;seasonCard.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openSeasonFromShop()}}}
  host.querySelectorAll('[data-buy]').forEach(function(b){b.onclick=function(){const p=findProduct(b.dataset.buy);if(p){sfx('coin');openBuy(p)}}});
  host.querySelectorAll('[data-equip]').forEach(function(b){b.onclick=function(){sfx('coin');equipSkinSet(b.dataset.equip);renderStore()}});
  host.querySelectorAll('[data-godskin-wear]').forEach(function(b){b.onclick=function(){sfx('coin');wearGodskin(b.dataset.godskinWear);renderStore()}})}
