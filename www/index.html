@@ -4534,6 +4534,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
 .season-banner .sb-bar{height:8px;border-radius:4px;background:#232d3a;margin:6px 0;overflow:hidden}
 .season-banner .sb-fill{height:100%;background:linear-gradient(90deg,#e8bd58,#f0d68a);border-radius:4px;transition:width .4s}
 .season-banner .sb-copy small{color:#b9c9d6;font-size:12px;font-weight:700}
+.streak-pill{display:none;align-items:center;gap:6px;padding:6px 12px;border:1px solid #d2ae58;border-radius:20px;background:linear-gradient(180deg,#2c343a,#10161b);color:#ffe9a8;font:800 14px "Baloo 2",sans-serif;cursor:pointer}.streak-pill.show{display:inline-flex}.streak-pill .frz{color:#9fd8ff;font-size:12px}
 .season-banner .sb-badge{background:#c0392b;color:#fff;font-weight:800;font-size:12px;padding:5px 11px;border-radius:20px;white-space:nowrap;animation:sbPulse 1.6s infinite}
 @keyframes sbPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .season-upsell{max-width:660px;margin:0 auto 14px;width:calc(100% - 24px);padding:14px 16px;border:1px solid #d2ae58;border-radius:12px;background:linear-gradient(180deg,#3a3220,#1a1408);display:flex;align-items:center;gap:12px;box-shadow:0 0 22px rgba(210,174,88,.18)}
@@ -4599,12 +4600,13 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   <div class="deploy-wrap"><button id="charGarageBtn" class="char-entry">Character</button><button id="skillsGarageBtn" class="char-entry">Skills</button><button id="storeGarageBtn" class="char-entry">Shop<span class="store-badge" hidden></span></button><button id="leaderGarageBtn" class="char-entry">Ranks</button><button id="loginBtn" class="char-entry login-btn">Daily<span id="loginDot" class="login-dot" hidden></span></button><button id="repairGarageBtn" class="repair-btn" hidden></button><button id="deployBtn" class="primary">Continue with <span id="deployName"></span></button></div>
 </section>
 <section id="modeScreen" class="screen menu-screen">
-  <nav class="menu-topbar" aria-label="Royal menu"><div class="menu-tabs"><button class="menu-nav-btn" data-menu="shop">SHOP</button><button class="menu-nav-btn" data-menu="customize">CUSTOMIZE</button></div><button class="menu-options-btn" aria-label="Options"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></nav>
+  <nav class="menu-topbar" aria-label="Royal menu"><div class="menu-tabs"><button class="menu-nav-btn" data-menu="shop">SHOP</button><button class="menu-nav-btn" data-menu="customize">CUSTOMIZE</button></div><button id="streakPill" class="streak-pill" aria-label="Login streak"></button><button class="menu-options-btn" aria-label="Options"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></nav>
   <button id="modeBackBtn" class="char-back compact-back">‹ Champion</button>
   <div class="mode-side-motif mode-side-left" aria-hidden="true"><svg viewBox="0 0 100 110"><path class="motif-crown" d="M25 28 20 9l17 12L50 3l13 18L80 9l-5 19zM24 33h52"/><path d="M18 92 77 39M23 38l59 54M12 95l13-2-10-10M88 95l-13-2 10-10"/><path class="motif-laurel" d="M12 70c-6-19 1-34 12-44M88 70c6-19-1-34-12-44"/></svg></div>
   <div class="mode-side-motif mode-side-right" aria-hidden="true"><svg viewBox="0 0 100 110"><path class="motif-crown" d="M25 28 20 9l17 12L50 3l13 18L80 9l-5 19zM24 33h52"/><path d="M18 92 77 39M23 38l59 54M12 95l13-2-10-10M88 95l-13-2 10-10"/><path class="motif-laurel" d="M12 70c-6-19 1-34 12-44M88 70c6-19-1-34-12-44"/></svg></div>
   <div class="mode-head"><h1>Tanks &amp; Kings</h1><span class="mode-kicker">Game Mode Selection</span><p>Choose your battlefield. Glory awaits.</p></div>
   <div id="seasonBanner" class="season-banner" role="button" tabindex="0" aria-label="Season Pass"></div>
+<div id="eventBanner" class="season-banner" role="button" tabindex="0" aria-label="Weekly Event"></div>
   <div class="mode-cards">
     <article class="mode-card campaign-card" id="campaignCard" role="button" tabindex="0" aria-label="Royal Campaign — Wave Battles">
       <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-campaign-clean.png" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -4642,6 +4644,10 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   <div class="season-missions"><h3>Daily Missions</h3><div id="seasonDaily"></div><h3>Weekly Missions</h3><div id="seasonWeekly"></div></div>
   <div class="season-ladder-head"><h3>Reward Tiers</h3><span id="seasonTierLabel"></span></div>
   <div id="seasonLadder" class="season-ladder"></div>
+</section>
+<section id="eventScreen" class="screen menu-screen">
+  <div class="top-actions"><button class="char-back" onclick="setScreen('mode')">‹ Modes</button></div>
+  <div id="eventScreenBody"></div>
 </section>
 <div id="dungeonReward" class="dungeon-overlay" hidden><div class="dungeon-reward-card" role="alertdialog" aria-modal="true" aria-labelledby="dungeonRewardTitle"><span class="glory-result-kicker">Dungeon of Steel — Cleared</span><h2 id="dungeonRewardTitle">Steel Claimed!</h2><p id="dungeonRewardSub"></p><div id="dungeonRewardRows" class="dungeon-reward-rows"></div><button id="dungeonClaimBtn" class="primary">Claim Rewards</button></div></div>
 <section id="gloryScreen" class="screen">
@@ -5062,7 +5068,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='2a13b38295';
-const __HTML_V='7f981a54de';
+const __HTML_V='a3db9d4cad';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5347,7 +5353,7 @@ function pulseMaxHp(){const hud=$('playerVitals');hud.classList.remove('max-bump
 const DAMAGE_NUMBER_CAP=16,damageNumberPool=[];let damageNumberSerial=0;
 (function initDamageNumberPool(){const layer=$('damageLayer');for(let i=0;i<DAMAGE_NUMBER_CAP;i++){const el=document.createElement('div');el.className='damage-number';el.innerHTML='<span class="damage-label"></span><span class="damage-copy"></span>';el.dataset.active='0';el.dataset.seq='0';el.addEventListener('animationend',()=>{el.dataset.active='0';el.classList.remove('active')});layer.appendChild(el);damageNumberPool.push(el)}})();
 function resetDamageNumbers(){damageNumberPool.forEach(el=>{el.dataset.active='0';el.className='damage-number'})}
-window.TanksKingsSave={save:function(){return JSON.parse(JSON.stringify({wave:state.wave,bestWave:state.bestWave,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,skillShards:state.skillShards,shardPools:state.shardPools,prestigeEmblems:state.prestigeEmblems,lastWaveBeatenWithoutDying:state.lastWaveBeatenWithoutDying,tankDamage:tankDamage,gearRanks:state.gearRanks,gearStars:state.gearStars,tankProgress:tankProgress,chosenTank:chosenTank,equipped:state.equipped,inventory:state.inventory,customization:customization,serviceRecord:serviceRecord,skills:skillLevels,loginData:loginData,season:season,idle:(typeof idleSaveSnapshot==='function'?idleSaveSnapshot():null)}))},load:function(data){if(!data)return;['wave','bestWave','scrap','gems','valorMedals','royalSeals','skillShards','prestigeEmblems','lastWaveBeatenWithoutDying'].forEach(function(k){if(data[k]===undefined)return;var n=Number(data[k]);if(Number.isFinite(n))state[k]=Math.max(0,n)});if(data.equipped&&typeof data.equipped==='object'&&!Array.isArray(data.equipped)){slots.forEach(function(slot){var item=data.equipped[slot];state.equipped[slot]=(item&&typeof item==='object'&&!Array.isArray(item))?Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0}):null})}if(Array.isArray(data.inventory)){state.inventory=data.inventory.filter(function(item){return item&&typeof item==='object'&&!Array.isArray(item)&&slots.indexOf(item.slot)>=0}).map(function(item){return Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0})})};if(data.tankDamage&&typeof data.tankDamage==='object'){try{Object.keys(data.tankDamage).forEach(function(id){tankDamage[id]=data.tankDamage[id]===true});saveTankDamage();updateDamageBadge()}catch(e){}}if(data.gearRanks)slots.forEach(s=>{if(data.gearRanks[s]!==undefined)state.gearRanks[s]=Math.max(1,Math.min(30,+data.gearRanks[s]||1))});if(data.gearStars)slots.forEach(s=>{if(data.gearStars[s]!==undefined)state.gearStars[s]=Math.max(0,Math.min(5,+data.gearStars[s]||0))});savePrestige();if(data.tankProgress&&typeof data.tankProgress==='object'&&!Array.isArray(data.tankProgress))tanks.forEach(function(t){var p=data.tankProgress[t.id];if(!p||typeof p!=='object'||Array.isArray(p))return;var stage=EVOLUTION_STAGES[p.stage]?p.stage:'squire',cap=EVOLUTION_STAGES[stage].cap;tankProgress[t.id]={stage:stage,level:Math.max(1,Math.min(cap,Math.floor(+p.level)||1))}});if(data.customization&&typeof data.customization==='object'&&!Array.isArray(data.customization))tanks.forEach(function(t){var c=data.customization[t.id];if(!c||typeof c!=='object'||Array.isArray(c))return;var clean={plume:'none',banner:'none',paint:'none',trim:'gold'};CUSTOM_CATS.forEach(function(cat){if(cat.opts.some(function(o){return o.id===c[cat.id]}))clean[cat.id]=c[cat.id]});customization[t.id]=clean});if(data.serviceRecord&&typeof data.serviceRecord==='object'&&!Array.isArray(data.serviceRecord))tanks.forEach(function(t){var r=data.serviceRecord[t.id];if(r&&typeof r==='object'&&!Array.isArray(r))serviceRecord[t.id]={kills:Math.max(0,Math.floor(+r.kills)||0),bosses:Math.max(0,Math.floor(+r.bosses)||0)}});if(data.skills)tanks.forEach(t=>{if(data.skills[t.id])SKILL_KEYS.forEach(k=>{const v=+data.skills[t.id][k];skillsFor(t.id)[k]=v>=1&&v<=SKILL_MAX?Math.floor(v):1})});if(data.shardPools&&typeof data.shardPools==='object'){SKILL_KEYS.forEach(k=>{shardPools()[k]=Math.max(0,Math.floor(+data.shardPools[k])||0)})}else if(data.skillShards!=null){const _sn=Math.max(0,Math.floor(+data.skillShards)||0),_sb=Math.floor(_sn/SKILL_KEYS.length);let _sr=_sn-_sb*SKILL_KEYS.length;SKILL_KEYS.forEach(function(k,i){shardPools()[k]=_sb+(i<_sr?1:0)})}syncShardMirror();if(data.chosenTank&&byT(data.chosenTank))chosenTank=data.chosenTank;if(data.loginData&&typeof data.loginData==='object'&&!Array.isArray(data.loginData)){var ld=data.loginData;loginData.streak=Math.max(0,Math.min(36500,Math.floor(+ld.streak)||0));loginData.lastClaimDay=loginValidDayKey(ld.lastClaimDay)?ld.lastClaimDay:null;loginData.loginDays={};if(ld.loginDays&&typeof ld.loginDays==='object'&&!Array.isArray(ld.loginDays))Object.keys(ld.loginDays).forEach(function(k){if(loginValidDayKey(k)&&ld.loginDays[k])loginData.loginDays[k]=1});loginData.milestonesClaimed={};if(ld.milestonesClaimed&&typeof ld.milestonesClaimed==='object'&&!Array.isArray(ld.milestonesClaimed))LOYALTY_MILESTONES.forEach(function(m){if(ld.milestonesClaimed[m.days])loginData.milestonesClaimed[m.days]=1});loginData.loginTotal=Math.max(0,Math.min(36500,Math.floor(+ld.loginTotal)||0));loginData.lastClaimWallMs=Number.isFinite(+ld.lastClaimWallMs)?Math.max(0,+ld.lastClaimWallMs):0;loginData.monoBaseMs=Number.isFinite(+ld.monoBaseMs)?Math.max(0,+ld.monoBaseMs):Date.now();loginData.lastClaimMonoMs=Number.isFinite(+ld.lastClaimMonoMs)?Math.max(0,+ld.lastClaimMonoMs):0;loginData.claimedCycleDay=Math.max(0,Math.min(LOGIN_CYCLE,Math.floor(+ld.claimedCycleDay)||0))}
+window.TanksKingsSave={save:function(){return JSON.parse(JSON.stringify({wave:state.wave,bestWave:state.bestWave,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,skillShards:state.skillShards,shardPools:state.shardPools,prestigeEmblems:state.prestigeEmblems,lastWaveBeatenWithoutDying:state.lastWaveBeatenWithoutDying,tankDamage:tankDamage,gearRanks:state.gearRanks,gearStars:state.gearStars,tankProgress:tankProgress,chosenTank:chosenTank,equipped:state.equipped,inventory:state.inventory,customization:customization,serviceRecord:serviceRecord,skills:skillLevels,loginData:loginData,season:season,weeklyEvent:weeklyEvent,idle:(typeof idleSaveSnapshot==='function'?idleSaveSnapshot():null)}))},load:function(data){if(!data)return;['wave','bestWave','scrap','gems','valorMedals','royalSeals','skillShards','prestigeEmblems','lastWaveBeatenWithoutDying'].forEach(function(k){if(data[k]===undefined)return;var n=Number(data[k]);if(Number.isFinite(n))state[k]=Math.max(0,n)});if(data.equipped&&typeof data.equipped==='object'&&!Array.isArray(data.equipped)){slots.forEach(function(slot){var item=data.equipped[slot];state.equipped[slot]=(item&&typeof item==='object'&&!Array.isArray(item))?Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0}):null})}if(Array.isArray(data.inventory)){state.inventory=data.inventory.filter(function(item){return item&&typeof item==='object'&&!Array.isArray(item)&&slots.indexOf(item.slot)>=0}).map(function(item){return Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0})})};if(data.tankDamage&&typeof data.tankDamage==='object'){try{Object.keys(data.tankDamage).forEach(function(id){tankDamage[id]=data.tankDamage[id]===true});saveTankDamage();updateDamageBadge()}catch(e){}}if(data.gearRanks)slots.forEach(s=>{if(data.gearRanks[s]!==undefined)state.gearRanks[s]=Math.max(1,Math.min(30,+data.gearRanks[s]||1))});if(data.gearStars)slots.forEach(s=>{if(data.gearStars[s]!==undefined)state.gearStars[s]=Math.max(0,Math.min(5,+data.gearStars[s]||0))});savePrestige();if(data.tankProgress&&typeof data.tankProgress==='object'&&!Array.isArray(data.tankProgress))tanks.forEach(function(t){var p=data.tankProgress[t.id];if(!p||typeof p!=='object'||Array.isArray(p))return;var stage=EVOLUTION_STAGES[p.stage]?p.stage:'squire',cap=EVOLUTION_STAGES[stage].cap;tankProgress[t.id]={stage:stage,level:Math.max(1,Math.min(cap,Math.floor(+p.level)||1))}});if(data.customization&&typeof data.customization==='object'&&!Array.isArray(data.customization))tanks.forEach(function(t){var c=data.customization[t.id];if(!c||typeof c!=='object'||Array.isArray(c))return;var clean={plume:'none',banner:'none',paint:'none',trim:'gold'};CUSTOM_CATS.forEach(function(cat){if(cat.opts.some(function(o){return o.id===c[cat.id]}))clean[cat.id]=c[cat.id]});customization[t.id]=clean});if(data.serviceRecord&&typeof data.serviceRecord==='object'&&!Array.isArray(data.serviceRecord))tanks.forEach(function(t){var r=data.serviceRecord[t.id];if(r&&typeof r==='object'&&!Array.isArray(r))serviceRecord[t.id]={kills:Math.max(0,Math.floor(+r.kills)||0),bosses:Math.max(0,Math.floor(+r.bosses)||0)}});if(data.skills)tanks.forEach(t=>{if(data.skills[t.id])SKILL_KEYS.forEach(k=>{const v=+data.skills[t.id][k];skillsFor(t.id)[k]=v>=1&&v<=SKILL_MAX?Math.floor(v):1})});if(data.shardPools&&typeof data.shardPools==='object'){SKILL_KEYS.forEach(k=>{shardPools()[k]=Math.max(0,Math.floor(+data.shardPools[k])||0)})}else if(data.skillShards!=null){const _sn=Math.max(0,Math.floor(+data.skillShards)||0),_sb=Math.floor(_sn/SKILL_KEYS.length);let _sr=_sn-_sb*SKILL_KEYS.length;SKILL_KEYS.forEach(function(k,i){shardPools()[k]=_sb+(i<_sr?1:0)})}syncShardMirror();if(data.chosenTank&&byT(data.chosenTank))chosenTank=data.chosenTank;if(data.loginData&&typeof data.loginData==='object'&&!Array.isArray(data.loginData)){var ld=data.loginData;loginData.streak=Math.max(0,Math.min(36500,Math.floor(+ld.streak)||0));loginData.lastClaimDay=loginValidDayKey(ld.lastClaimDay)?ld.lastClaimDay:null;loginData.loginDays={};if(ld.loginDays&&typeof ld.loginDays==='object'&&!Array.isArray(ld.loginDays))Object.keys(ld.loginDays).forEach(function(k){if(loginValidDayKey(k)&&ld.loginDays[k])loginData.loginDays[k]=1});loginData.milestonesClaimed={};if(ld.milestonesClaimed&&typeof ld.milestonesClaimed==='object'&&!Array.isArray(ld.milestonesClaimed))LOYALTY_MILESTONES.forEach(function(m){if(ld.milestonesClaimed[m.days])loginData.milestonesClaimed[m.days]=1});loginData.loginTotal=Math.max(0,Math.min(36500,Math.floor(+ld.loginTotal)||0));loginData.lastClaimWallMs=Number.isFinite(+ld.lastClaimWallMs)?Math.max(0,+ld.lastClaimWallMs):0;loginData.monoBaseMs=Number.isFinite(+ld.monoBaseMs)?Math.max(0,+ld.monoBaseMs):Date.now();loginData.lastClaimMonoMs=Number.isFinite(+ld.lastClaimMonoMs)?Math.max(0,+ld.lastClaimMonoMs):0;loginData.claimedCycleDay=Math.max(0,Math.min(LOGIN_CYCLE,Math.floor(+ld.claimedCycleDay)||0));loginData.streakFreezes=Math.max(0,Math.min(2,Math.floor(+ld.streakFreezes)||0));loginData.streakMilestonesClaimed={};if(ld.streakMilestonesClaimed&&typeof ld.streakMilestonesClaimed==='object'&&!Array.isArray(ld.streakMilestonesClaimed))STREAK_MILESTONES.forEach(function(m){if(ld.streakMilestonesClaimed[m.days])loginData.streakMilestonesClaimed[m.days]=1})}
 if(data.season&&typeof data.season==='object'&&!Array.isArray(data.season)){var sn=data.season;
  season.id=Math.max(1,Math.floor(+sn.id)||1);
  season.startDay=Number.isFinite(+sn.startDay)?Math.max(0,Math.floor(+sn.startDay)):null;
@@ -5360,7 +5366,12 @@ if(data.season&&typeof data.season==='object'&&!Array.isArray(data.season)){var 
  season.premiumReceipt=(sn.premiumReceipt&&typeof sn.premiumReceipt==='object'&&!Array.isArray(sn.premiumReceipt))?sn.premiumReceipt:null;
  season.daily={day:null,prog:{},done:{}};season.weekly={week:null,prog:{},done:{}};
  if(sn.daily&&typeof sn.daily==='object'&&!Array.isArray(sn.daily)){if(Number.isFinite(+sn.daily.day))season.daily.day=Math.floor(+sn.daily.day);if(sn.daily.prog&&typeof sn.daily.prog==='object')Object.keys(sn.daily.prog).forEach(function(k){season.daily.prog[k]=Math.max(0,Math.floor(+sn.daily.prog[k])||0)});if(sn.daily.done&&typeof sn.daily.done==='object')Object.keys(sn.daily.done).forEach(function(k){if(sn.daily.done[k])season.daily.done[k]=1})}
- if(sn.weekly&&typeof sn.weekly==='object'&&!Array.isArray(sn.weekly)){if(Number.isFinite(+sn.weekly.week))season.weekly.week=Math.floor(+sn.weekly.week);if(sn.weekly.prog&&typeof sn.weekly.prog==='object')Object.keys(sn.weekly.prog).forEach(function(k){season.weekly.prog[k]=Math.max(0,Math.floor(+sn.weekly.prog[k])||0)});if(sn.weekly.done&&typeof sn.weekly.done==='object')Object.keys(sn.weekly.done).forEach(function(k){if(sn.weekly.done[k])season.weekly.done[k]=1})}}try{if(data.idle&&typeof idleRestoreRecord==='function')idleRestoreRecord(data.idle)}catch(e){}state.level=progressFor(chosenTank).level}};
+ if(sn.weekly&&typeof sn.weekly==='object'&&!Array.isArray(sn.weekly)){if(Number.isFinite(+sn.weekly.week))season.weekly.week=Math.floor(+sn.weekly.week);if(sn.weekly.prog&&typeof sn.weekly.prog==='object')Object.keys(sn.weekly.prog).forEach(function(k){season.weekly.prog[k]=Math.max(0,Math.floor(+sn.weekly.prog[k])||0)});if(sn.weekly.done&&typeof sn.weekly.done==='object')Object.keys(sn.weekly.done).forEach(function(k){if(sn.weekly.done[k])season.weekly.done[k]=1})}
+if(data.weeklyEvent&&typeof data.weeklyEvent==='object'&&!Array.isArray(data.weeklyEvent)){var we=data.weeklyEvent;
+ weeklyEvent.weekKey=Number.isFinite(+we.weekKey)?Math.floor(+we.weekKey):null;
+ weeklyEvent.progress={};weeklyEvent.claimed={};
+ if(we.progress&&typeof we.progress==='object')Object.keys(we.progress).forEach(function(k){weeklyEvent.progress[k]=Math.max(0,Math.floor(+we.progress[k])||0)});
+ if(we.claimed&&typeof we.claimed==='object')Object.keys(we.claimed).forEach(function(k){if(we.claimed[k])weeklyEvent.claimed[k]=1})}}try{if(data.idle&&typeof idleRestoreRecord==='function')idleRestoreRecord(data.idle)}catch(e){}state.level=progressFor(chosenTank).level}};
 /* ================= Full progression persistence (ONE versioned record) =================
  * The whole run — tank levels, evolution stages, every currency, equipment,
  * gear forge ranks + prestige stars, per-class skill shards and skill levels,
@@ -5392,7 +5403,7 @@ function progressLoad(){
  if(__progressPreloadPending){__progressPreloadPending=false;progressSave()}
  return loaded;
 }
-function setScreen(name){try{if(typeof seasonEnsure==='function')seasonEnsure()}catch(e){}document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));var _scr=$(name+'Screen');if(!_scr){console.warn('[Tanks & Kings] setScreen: unknown screen "'+name+'"');return}_scr.classList.add('active');state.screen=name;if(window.__tkPendingReload&&name!=='battle'){window.__tkPendingReload=false;try{location.reload()}catch(e){}return}if(typeof syncMenuTopbars==='function')syncMenuTopbars();try{var _toTop=function(){if(!_scr)return;_scr.scrollTop=0;_scr.querySelectorAll('.screen-scroll,.mode-cards,.glory-wrap,.leader-wrap,.char-wrap').forEach(function(el){el.scrollTop=0});if(document.documentElement)document.documentElement.scrollTop=0;if(document.body)document.body.scrollTop=0;window.scrollTo(0,0)};_toTop();requestAnimationFrame(_toTop);setTimeout(_toTop,60)}catch(e){}if(typeof playBgm==='function')playBgm(name==='battle'?'battle':'title');const veil=$('motionVeil');veil.classList.remove('play');void veil.offsetWidth;veil.classList.add('play');clearTimeout(setScreen.veilTimer);setScreen.veilTimer=setTimeout(()=>veil.classList.remove('play'),620)}
+function setScreen(name){try{if(typeof seasonEnsure==='function')seasonEnsure()}catch(e){}try{if(typeof eventEnsure==='function')eventEnsure()}catch(e){}document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));var _scr=$(name+'Screen');if(!_scr){console.warn('[Tanks & Kings] setScreen: unknown screen "'+name+'"');return}_scr.classList.add('active');state.screen=name;if(window.__tkPendingReload&&name!=='battle'){window.__tkPendingReload=false;try{location.reload()}catch(e){}return}if(typeof syncMenuTopbars==='function')syncMenuTopbars();try{var _toTop=function(){if(!_scr)return;_scr.scrollTop=0;_scr.querySelectorAll('.screen-scroll,.mode-cards,.glory-wrap,.leader-wrap,.char-wrap').forEach(function(el){el.scrollTop=0});if(document.documentElement)document.documentElement.scrollTop=0;if(document.body)document.body.scrollTop=0;window.scrollTo(0,0)};_toTop();requestAnimationFrame(_toTop);setTimeout(_toTop,60)}catch(e){}if(typeof playBgm==='function')playBgm(name==='battle'?'battle':'title');const veil=$('motionVeil');veil.classList.remove('play');void veil.offsetWidth;veil.classList.add('play');clearTimeout(setScreen.veilTimer);setScreen.veilTimer=setTimeout(()=>veil.classList.remove('play'),620)}
 function preloadUltimateAudio(){
  if(ultimateFetchStarted)return;ultimateFetchStarted=true;
  Object.keys(assetManifest.ultimateAudio).forEach(kingdom=>{const files=assetManifest.ultimateAudio[kingdom];ultimateRawPromises[kingdom]=fetch(String(files.mp3).split('?')[0]+'?v='+__ASSET_V,{cache:'force-cache'}).then(response=>{if(!response.ok)throw new Error('MP3 unavailable');return response.arrayBuffer()})});
@@ -6458,7 +6469,7 @@ $('campRetryBtn').onclick=campRetryWave;
 $('campRetreatBtn').onclick=campRetreat;
 $('campRepairBtn').onclick=function(){if(payForRepair())showToast('Hull repaired — full strength restored!');refreshCampDefeatButtons()};
 $('repairGarageBtn').onclick=function(){if(payForRepair())showToast('Hull repaired — ready for war!');updateGarageRepairBtn()};
-function killEnemy(){let e=state.enemy,sealGain=0,medalGain=0;if(state.tutorialMode){tutorialBattleVictory(e);return}if(state.mode==='tower'){towerFloorClear(e);return}if(state.mode==='dungeon'){dungeonOnKill(e);return}if(state.mode==='glory'){gloryOnEnemyKilled(e);return}if(e&&e.boss){state.hitStop=.11;state.shake=Math.max(state.shake,25);sealGain=boostEvoGrant(1);state.royalSeals+=sealGain;grantCampaignSkinAt(state.wave);const stage=$('battleStage');stage.classList.remove('cinematic');void stage.offsetWidth;stage.classList.add('cinematic');setTimeout(()=>stage.classList.remove('cinematic'),850)}else{state.hitStop=Math.max(state.hitStop,.055);state.shake=Math.max(state.shake,13)}let reward=Math.round(((e.boss?60:10)+state.wave*2.5)*ENEMY_TYPE_STATS[e.type].scrapMult);state.scrap+=reward;const svc=serviceFor(chosenTank);svc.kills++;if(e.boss)svc.bosses++;try{if(typeof seasonBump==='function'){seasonBump('kills',1);if(e.boss)seasonBump('bosses',1)}}catch(_se){}state.gems+=e.boss?3:0;if(e.boss){state.lastShardClass=bossShardClass(state.wave);grantShards(state.lastShardClass,3)}state.killsInWave++;state.ult=Math.min(100,state.ult+(e.boss?28:14));sfx('kill');burst(e.x,.55,e.boss?'#fff0a5':'#ff9a5d',e.boss?96:54,e.boss?'bossdeath':'death');spawnDebris(e.x,.55,e.boss?1.5:1);state.scorches.push({x:e.x,y:.72,life:e.boss?14:10,size:e.boss?62:42});if(state.scorches.length>9)state.scorches.shift();number(Math.max(.56,e.x-.14),.2,'+'+reward+' Scrap','#ffdb55','reward');$('enemySprite').classList.add('defeat');if(Math.random()<(e.boss?.95:.28))dropItem(e.boss);state.enemy=null;state.burn=0;state.poison=0;state.spawnClock=.8;updateHUD();if(!state.playerDead&&state.killsInWave>=state.waveTarget){const clearedWave=state.wave,earnedValor=clearedWave%5===0;if(earnedValor){medalGain=boostEvoGrant(1);state.valorMedals+=medalGain}if((state.deathsThisWave|0)===0)state.lastWaveBeatenWithoutDying=Math.max(state.lastWaveBeatenWithoutDying|0,clearedWave);state.deathsThisWave=0;state.wave++;try{if(typeof seasonBump==='function')seasonBump('waves',1)}catch(_se){}(function(){var ob=state.bestWave;state.bestWave=Math.max(ob,state.wave);leaderBestChanged('campaign',ob,state.bestWave)})();state.killsInWave=0;state.reviveCount=0;state.retriedThisWave=0;state.waveTarget=waveTargetFor(state.wave);state.scorches=[];state.particles=[];state.projectiles.length=0;if(window.TKFX&&window.TKFX.clear)window.TKFX.clear();let rewardNote=(earnedValor?' • +'+medalGain+' Valor Medal'+(medalGain>1?'s':''):'')+((e.boss&&sealGain)?' • +'+sealGain+' Royal Seal'+(sealGain>1?'s':''):'')+(e.boss?' • +3 '+SHARD_CLASS_NAMES[state.lastShardClass||'parry']+' Shards':'');showToast((clearedWave%10===0?'BOSS WAVE — Royal challenger!':'Wave '+clearedWave+' cleared!')+rewardNote);if(!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+state.maxHp*.10);sfx('coin');updateHUD()}}
+function killEnemy(){let e=state.enemy,sealGain=0,medalGain=0;if(state.tutorialMode){tutorialBattleVictory(e);return}if(state.mode==='tower'){towerFloorClear(e);return}if(state.mode==='dungeon'){dungeonOnKill(e);return}if(state.mode==='glory'){gloryOnEnemyKilled(e);return}if(e&&e.boss){state.hitStop=.11;state.shake=Math.max(state.shake,25);sealGain=boostEvoGrant(1);try{if(typeof eventMod==="function")sealGain+=eventMod("bossSeal")}catch(_e){}state.royalSeals+=sealGain;grantCampaignSkinAt(state.wave);const stage=$('battleStage');stage.classList.remove('cinematic');void stage.offsetWidth;stage.classList.add('cinematic');setTimeout(()=>stage.classList.remove('cinematic'),850)}else{state.hitStop=Math.max(state.hitStop,.055);state.shake=Math.max(state.shake,13)}let reward=Math.round(((e.boss?60:10)+state.wave*2.5)*ENEMY_TYPE_STATS[e.type].scrapMult);try{if(typeof eventMod==="function"&&eventMod("scrap")===2)reward*=2}catch(_e){}state.scrap+=reward;const svc=serviceFor(chosenTank);svc.kills++;if(e.boss)svc.bosses++;try{if(typeof seasonBump==='function'){seasonBump('kills',1);if(e.boss)seasonBump('bosses',1)}}catch(_se){}try{if(typeof eventBump==='function'&&e.boss)eventBump('bosses',1)}catch(_e){}state.gems+=e.boss?3:0;if(e.boss){state.lastShardClass=bossShardClass(state.wave);grantShards(state.lastShardClass,3)}state.killsInWave++;state.ult=Math.min(100,state.ult+(e.boss?28:14));sfx('kill');burst(e.x,.55,e.boss?'#fff0a5':'#ff9a5d',e.boss?96:54,e.boss?'bossdeath':'death');spawnDebris(e.x,.55,e.boss?1.5:1);state.scorches.push({x:e.x,y:.72,life:e.boss?14:10,size:e.boss?62:42});if(state.scorches.length>9)state.scorches.shift();number(Math.max(.56,e.x-.14),.2,'+'+reward+' Scrap','#ffdb55','reward');$('enemySprite').classList.add('defeat');if(Math.random()<(e.boss?.95:.28))dropItem(e.boss);state.enemy=null;state.burn=0;state.poison=0;state.spawnClock=.8;updateHUD();if(!state.playerDead&&state.killsInWave>=state.waveTarget){const clearedWave=state.wave,earnedValor=clearedWave%5===0;if(earnedValor){medalGain=boostEvoGrant(1);try{if(typeof eventMod==="function"&&eventMod("valor")===2)medalGain*=2}catch(_e){}state.valorMedals+=medalGain;try{if(typeof eventBump==="function")eventBump("valor",medalGain)}catch(_e){}}if((state.deathsThisWave|0)===0)state.lastWaveBeatenWithoutDying=Math.max(state.lastWaveBeatenWithoutDying|0,clearedWave);state.deathsThisWave=0;state.wave++;try{if(typeof seasonBump==='function')seasonBump('waves',1)}catch(_se){}try{if(typeof eventBump==='function')eventBump('waves',1)}catch(_e){}(function(){var ob=state.bestWave;state.bestWave=Math.max(ob,state.wave);leaderBestChanged('campaign',ob,state.bestWave)})();state.killsInWave=0;state.reviveCount=0;state.retriedThisWave=0;state.waveTarget=waveTargetFor(state.wave);state.scorches=[];state.particles=[];state.projectiles.length=0;if(window.TKFX&&window.TKFX.clear)window.TKFX.clear();let rewardNote=(earnedValor?' • +'+medalGain+' Valor Medal'+(medalGain>1?'s':''):'')+((e.boss&&sealGain)?' • +'+sealGain+' Royal Seal'+(sealGain>1?'s':''):'')+(e.boss?' • +3 '+SHARD_CLASS_NAMES[state.lastShardClass||'parry']+' Shards':'');showToast((clearedWave%10===0?'BOSS WAVE — Royal challenger!':'Wave '+clearedWave+' cleared!')+rewardNote);if(!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+state.maxHp*.10);sfx('coin');updateHUD()}}
 const slots=['Hull','Cannon','Treads','Engine','Plating','Core'];const abilities={Hull:'Reinforced: +maximum HP',Cannon:'Lucky shot: chance for a bonus shell',Treads:'Nimble: chance to dodge',Engine:'Overdrive: faster attacks',Plating:'Mirror polish: reflects damage',Core:'Royal charge: faster ULT gain'};
 /* === Upgrade-cost hardening + gear prestige system (2026-09-30) ===
    Player-side economy only: no enemy/difficulty/income numbers change here. */
@@ -6508,7 +6519,7 @@ function prestigeSetUltBonus(){const b=prestigeSetBonus();return b?b.tier.set:0}
 /* Emblems persist in two store-keeping buckets (login grants vs Shop purchases); spend both. */
 function prestigeEmblemTotal(){return (state.prestigeEmblems||0)+(typeof STORE!=='undefined'?(STORE.emblems||0):0)}
 function spendPrestigeEmblem(){let need=1;const fromState=Math.min(state.prestigeEmblems||0,need);state.prestigeEmblems=(state.prestigeEmblems||0)-fromState;need-=fromState;if(need>0&&typeof STORE!=='undefined'){STORE.emblems=Math.max(0,(STORE.emblems||0)-need);if(typeof storeSave==='function')storeSave()}if(typeof renderStoreWallet==='function')renderStoreWallet()}
-function rankUpSlot(slot){const r=gearRankOf(slot);if(r>=GEAR_RANK_MAX)return;const c=gearRankCost(r);if(state.scrap<c)return;state.scrap-=c;state.gearRanks[slot]=r+1;savePrestige();sfx('coin');const old=state.maxHp;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-old)));showToast(slot+' forged to Rank '+(r+1));renderSlots();updateHUD()}
+function rankUpSlot(slot){const r=gearRankOf(slot);if(r>=GEAR_RANK_MAX)return;var c=gearRankCost(r);try{if(typeof eventMod==="function"){var _fd=eventMod("forgeDiscount");if(_fd>0)c=Math.round(c*(1-_fd))}}catch(_e){}if(state.scrap<c)return;state.scrap-=c;try{if(typeof eventBump==="function")eventBump("forges",1)}catch(_e){}state.gearRanks[slot]=r+1;savePrestige();sfx('coin');const old=state.maxHp;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.min(state.maxHp,state.hp+Math.max(0,state.maxHp-old)));showToast(slot+' forged to Rank '+(r+1));renderSlots();updateHUD()}
 /* AUTO-FORGE: spend scrap to forge all six gear slots as far as it goes, always
  * upgrading the lowest-ranked slot first so all slots rise evenly. */
 function autoForgePlan(){
@@ -7415,6 +7426,15 @@ function openCharacter(from){
 }
 function syncMenuTopbars(){
  document.querySelectorAll('.menu-nav-btn').forEach(function(btn){var on=(state.screen==='store'&&btn.dataset.menu==='shop')||(state.screen==='character'&&characterTab==='custom'&&btn.dataset.menu==='customize');btn.classList.toggle('active',on);btn.setAttribute('aria-current',on?'page':'false')});
+ try{renderStreakPill()}catch(e){}
+}
+function renderStreakPill(){
+ var pill=document.getElementById('streakPill');if(!pill)return;
+ try{loginEvaluate()}catch(e){}
+ var st=(typeof loginView!=='undefined'&&loginView.streak)||0,frz=loginData.streakFreezes||0;
+ if(st>1){pill.classList.add('show');pill.innerHTML='\uD83D\uDD25 '+st+(frz>0?' <span class="frz">('+frz+'\u2744)</span>':'');}
+ else pill.classList.remove('show');
+ pill.onclick=function(){try{sfx('coin')}catch(e){}try{loginPopupIfDue(true)}catch(_e){}};
 }
 function openMenuDestination(target){
  closeOptions();
@@ -7465,10 +7485,125 @@ const LOGIN_META={
  loginSet:{name:"Sovereign's Regalia"}
 };
 const LOGIN_RARITY_MULT={Common:1,Rare:1.6,Epic:2.5,Legendary:4};
-const loginData={streak:0,claimedCycleDay:0,lastClaimDay:null,loginDays:{},milestonesClaimed:{},loginTotal:0,lastClaimWallMs:0,monoBaseMs:0,lastClaimMonoMs:0}; /* lastClaimWallMs: real Date.now() at last claim; anchors forward-travel detection (#18) */
+const loginData={streak:0,claimedCycleDay:0,lastClaimDay:null,loginDays:{},milestonesClaimed:{},loginTotal:0,lastClaimWallMs:0,monoBaseMs:0,lastClaimMonoMs:0,streakFreezes:0,streakMilestonesClaimed:{}}; /* lastClaimWallMs: real Date.now() at last claim; anchors forward-travel detection (#18) */
 /* ---- Season Pass (retention) ---- */
 const season={id:1,startDay:null,endDay:null,xp:0,freeClaimed:{},premiumClaimed:{},premium:false,premiumReceipt:null,daily:{day:null,prog:{},done:{}},weekly:{week:null,prog:{},done:{}}};
 const SEASON_DAYS=30,SEASON_TIERS=30,SEASON_XP_PER_TIER=100,SEASON_XP_TOTAL=SEASON_TIERS*SEASON_XP_PER_TIER;
+/* ---- Weekly Events (retention) ---- */
+const WEEKLY_EVENTS=[
+ {key:'scrap_surge',name:'Scrap Surge',icon:'\u2699\uFE0F',desc:'2\u00D7 scrap from battles',goal:30,unit:'waves',reward:{gems:150}},
+ {key:'tower_treasures',name:'Tower Treasures',icon:'\uD83D\uDDFC',desc:'2\u00D7 tower gems',goal:25,unit:'floors',reward:{gems:200,seals:5}},
+ {key:'boss_rush',name:'Kingdom Boss Rush',icon:'\uD83D\uDC51',desc:'+1 seal per boss',goal:20,unit:'bosses',reward:{seals:10,chest:'Epic'}},
+ {key:'forge_frenzy',name:'Forge Frenzy',icon:'\uD83D\uDD28',desc:'\u221225% forge cost',goal:10,unit:'forges',reward:{gems:100,shards:10}},
+ {key:'valor_hunt',name:'Valor Hunt',icon:'\uD83C\uDFC5',desc:'2\u00D7 valor medals',goal:10,unit:'valor',reward:{emblems:1,gems:100}}
+];
+const weeklyEvent={weekKey:null,progress:{},claimed:{}};
+function eventWeekKey(){return Math.floor(dayIndex()/7)}
+function eventCurrent(){return WEEKLY_EVENTS[eventWeekKey()%WEEKLY_EVENTS.length]}
+function eventEnsure(){
+ var wk=eventWeekKey();
+ if(weeklyEvent.weekKey===wk)return;
+ /* rollover: auto-grant unclaimed completion rewards */
+ try{
+  if(weeklyEvent.weekKey!==null){
+   var prev=WEEKLY_EVENTS[weeklyEvent.weekKey%WEEKLY_EVENTS.length];
+   if(prev&&!weeklyEvent.claimed[prev.key]&&(weeklyEvent.progress[prev.key]||0)>=prev.goal){
+    eventGrantReward(prev);weeklyEvent.claimed[prev.key]=1;
+   }
+  }
+ }catch(e){}
+ weeklyEvent.weekKey=wk;weeklyEvent.progress={};weeklyEvent.claimed={};
+ try{progressSaveSoon()}catch(e){}
+ try{if(typeof toast==='function')toast(eventCurrent().icon+' New event: '+eventCurrent().name+' — '+eventCurrent().desc)}catch(e){}
+}
+function eventMod(key){
+ try{eventEnsure()}catch(e){}
+ var ev=eventCurrent();
+ if(key==='scrap'&&ev.key==='scrap_surge')return 2;
+ if(key==='towerGems'&&ev.key==='tower_treasures')return 2;
+ if(key==='bossSeal'&&ev.key==='boss_rush')return 1;
+ if(key==='forgeDiscount'&&ev.key==='forge_frenzy')return 0.25;
+ if(key==='valor'&&ev.key==='valor_hunt')return 2;
+ return key==='forgeDiscount'?0:1;
+}
+function eventBump(kind,n){
+ try{
+  if(loginFrozen())return;
+  eventEnsure();
+  var ev=eventCurrent(),k=ev.key;
+  if(weeklyEvent.claimed[k])return;
+  var map={waves:'scrap_surge',floors:'tower_treasures',bosses:'boss_rush',forges:'forge_frenzy',valor:'valor_hunt'};
+  if(map[kind]!==k)return;
+  weeklyEvent.progress[k]=(weeklyEvent.progress[k]||0)+(n||1);
+  if(weeklyEvent.progress[k]>=ev.goal&&typeof toast==='function')toast(ev.icon+' Event goal complete! Claim your reward.');
+  try{renderEventBanner()}catch(e){}
+  progressSaveSoon();
+ }catch(e){}
+}
+function eventEndsInMs(){
+ var now=new Date(),end=new Date(now);
+ end.setDate(end.getDate()+(7-((Math.floor(now.getTime()/86400000)+4)%7+7)%7));
+ end.setHours(0,0,0,0);if(end<=now)end.setDate(end.getDate()+7);
+ return Math.max(0,end-now);
+}
+function eventGrantReward(ev){
+ try{
+  var r=ev.reward;
+  if(r.gems)addCur('gems',r.gems);
+  if(r.seals)addCur('royalSeals',r.seals);
+  if(r.shards)addCur('shards',r.shards);
+  if(r.emblems)addCur('emblems',r.emblems);
+  if(r.chest)grantChest(r.chest);
+  if(typeof toast==='function')toast(ev.icon+' Event reward claimed!');
+ }catch(e){}
+}
+function eventClaim(){
+ try{
+  eventEnsure();
+  var ev=eventCurrent();
+  if(weeklyEvent.claimed[ev.key])return;
+  if((weeklyEvent.progress[ev.key]||0)<ev.goal)return;
+  eventGrantReward(ev);weeklyEvent.claimed[ev.key]=1;
+  progressSaveSoon();
+  try{renderEventBanner();renderEventScreen()}catch(e){}
+ }catch(e){}
+}
+/* ---- Streaks (extends login bonus) ---- */
+const STREAK_MILESTONES=[
+ {days:7,reward:{gems:100,chest:'Rare'}},
+ {days:14,reward:{seals:5,chest:'Epic'}},
+ {days:30,reward:{emblems:1,chest:'Epic',gems:200}},
+ {days:60,reward:{emblems:3,chest:'Legendary'}},
+ {days:100,reward:{emblems:5,chest:'Legendary',gems:500}}
+];
+function streakMilestoneReady(){
+ try{
+  var st=loginData.streak||0,out=[];
+  for(var i=0;i<STREAK_MILESTONES.length;i++){
+   var m=STREAK_MILESTONES[i];
+   if(st>=m.days&&!loginData.streakMilestonesClaimed[m.days])out.push(m);
+  }
+  return out;
+ }catch(e){return[]}
+}
+function claimStreakMilestone(days){
+ try{
+  var m=null;
+  for(var i=0;i<STREAK_MILESTONES.length;i++)if(STREAK_MILESTONES[i].days===days)m=STREAK_MILESTONES[i];
+  if(!m||(loginData.streak||0)<m.days||loginData.streakMilestonesClaimed[days])return;
+  loginData.streakMilestonesClaimed[days]=1;
+  /* earn +1 freeze per milestone, cap 2 held */
+  loginData.streakFreezes=Math.min(2,(loginData.streakFreezes||0)+1);
+  var r=m.reward;
+  if(r.gems)addCur('gems',r.gems);
+  if(r.seals)addCur('royalSeals',r.seals);
+  if(r.emblems)addCur('emblems',r.emblems);
+  if(r.chest)grantChest(r.chest);
+  if(typeof toast==='function')toast('\uD83D\uDD25 '+m.days+'-day streak! +1 streak freeze.');
+  progressSaveSoon();
+  try{renderLoginPopup();updateHUD()}catch(e){}
+ }catch(e){}
+}
 function seasonWeekKey(){return season.startDay==null?0:Math.floor((dayIndex()-season.startDay)/7)}
 function seasonEnsure(){
  if(season.startDay==null||season.endDay==null){ /* first boot after feature ships: anchor a fresh season */
@@ -7487,7 +7622,7 @@ function seasonRollover(){
  season.daily={day:null,prog:{},done:{}};season.weekly={week:null,prog:{},done:{}};
  try{progressSaveSoon()}catch(e){}
  try{seasonShowEndModal(oldId,unclaimed)}catch(e){}
- try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
+ try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}try{if(typeof renderEventBanner==='function')renderEventBanner()}catch(e){}
  return unclaimed;
 }
 function seasonShowEndModal(oldId,unclaimed){
@@ -7592,7 +7727,7 @@ function seasonClaim(tier,track){
  try{burst(.5,.4,'#ffd98a',24,'star')}catch(e){}
  try{if(typeof progressSaveSoon==='function')progressSaveSoon()}catch(e){}
  try{if(typeof renderSeasonScreen==='function')renderSeasonScreen()}catch(e){}
- try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
+ try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}try{if(typeof renderEventBanner==='function')renderEventBanner()}catch(e){}
  return true;
 }
 function seasonClaimableCount(){
@@ -7612,6 +7747,32 @@ function renderSeasonBanner(){
  host.innerHTML='<div class="sb-art">\uD83C\uDFB5</div><div class="sb-copy"><b>Season '+season.id+' Pass — Tier '+t+'/'+SEASON_TIERS+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+daysLeft+' days left · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP</small></div>'+(claimable?'<span class="sb-badge">'+claimable+' CLAIM</span>':'');
  host.onclick=function(){try{sfx('coin')}catch(e){}setScreen('season');renderSeasonScreen()};
  host.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();host.onclick()}};
+}
+function renderEventBanner(){
+ var host=$('eventBanner');if(!host)return;
+ try{eventEnsure()}catch(e){}
+ var ev=eventCurrent(),prog=Math.min(ev.goal,weeklyEvent.progress[ev.key]||0),pct=Math.round(prog/ev.goal*100);
+ var done=prog>=ev.goal,claimed=!!weeklyEvent.claimed[ev.key];
+ host.innerHTML='<div class="sb-art">'+ev.icon+'</div><div class="sb-copy"><b>'+ev.name+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+ev.desc+' · '+prog+'/'+ev.goal+' '+ev.unit+' · <span data-cd="event">Ends in --</span></small></div>'+(done&&!claimed?'<span class="sb-badge">CLAIM</span>':'');
+ host.onclick=function(){try{sfx('coin')}catch(e){}setScreen('event');renderEventScreen()};
+ host.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();host.onclick()}};
+}
+function renderEventScreen(){
+ var host=$('eventScreenBody');if(!host)return;
+ try{eventEnsure()}catch(e){}
+ var ev=eventCurrent(),prog=Math.min(ev.goal,weeklyEvent.progress[ev.key]||0),pct=Math.round(prog/ev.goal*100);
+ var done=prog>=ev.goal,claimed=!!weeklyEvent.claimed[ev.key];
+ var rw=ev.reward,rwTxt=[];
+ if(rw.gems)rwTxt.push(rw.gems+' gems');
+ if(rw.seals)rwTxt.push(rw.seals+' seals');
+ if(rw.shards)rwTxt.push(rw.shards+' shards');
+ if(rw.emblems)rwTxt.push(rw.emblems+' emblems');
+ if(rw.chest)rwTxt.push(rw.chest+' chest');
+ host.innerHTML='<div class="screen-inner"><div class="screen-title">'+ev.icon+' '+ev.name+'</div>'
+  +'<div class="season-banner"><div class="sb-copy"><b>'+ev.desc+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>Goal: '+ev.goal+' '+ev.unit+' ('+prog+'/'+ev.goal+') · <span data-cd="event">Ends in --</span></small></div></div>'
+  +'<div class="mission-row"><span>Reward: '+rwTxt.join(', ')+'</span>'+(done&&!claimed?'<button class="btn gold" onclick="eventClaim()">CLAIM</button>':(claimed?'<span class="claimed">CLAIMED</span>':'<span class="progress">'+prog+'/'+ev.goal+'</span>'))+'</div>'
+  +'<div class="screen-sub">New event every 7 days. Unclaimed rewards auto-grant at rollover.</div>'
+  +'<button class="btn" onclick="setScreen(\'mode\')">BACK</button></div>';
 }
 function seasonMissionRow(m,prog,done){
  prog=Math.min(prog,m.n);
@@ -7686,7 +7847,7 @@ function seasonBump(kind,n){
  if(gained>0){
   season.xp=Math.min(SEASON_XP_TOTAL,season.xp+gained);
   try{showToast('+'+gained+' Season XP')}catch(e){}
-  try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
+  try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}try{if(typeof renderEventBanner==='function')renderEventBanner()}catch(e){}
  }
  try{if(typeof progressSaveSoon==='function')progressSaveSoon()}catch(e){}
 }
@@ -7744,7 +7905,14 @@ function loginEvaluate(){ /* never claims; computes today's standing */
   return v;
  }
  let nextStreak=1;
- if(diff===1)nextStreak=(loginData.streak||0)+1; /* a miss restarts the cycle */
+ if(diff===1)nextStreak=(loginData.streak||0)+1;
+ else if(diff>1&&(loginData.streakFreezes||0)>0&&!v.clockOdd){
+  /* streak freeze: consume one, preserve the streak instead of resetting */
+  loginData.streakFreezes--;
+  nextStreak=Math.max(1,loginData.streak||1);
+  try{if(typeof toast==='function')toast('\uD83D\uDD25 Streak freeze used! Streak preserved.')}catch(e){}
+  try{progressSaveSoon()}catch(e){}
+ } /* a miss without freeze restarts the cycle */
  v.streak=nextStreak;v.cycleDay=((nextStreak-1)%LOGIN_CYCLE)+1;
  v.claimed=false;v.ready=true;
  return v;
@@ -8088,6 +8256,9 @@ function renderLoginPopup(){
  const streakChip=v.streak>1?'<span class="l-streak">'+loginIcon('flame')+' '+v.streak+'-DAY STREAK</span>':'';
  const mileBanners=loginReadyMilestones().map((m,i)=>
   '<div class="l-mile-mini"><div><div class="k">LOYALTY MILESTONE</div><div class="n">'+m.name+' — '+m.days+' days</div></div><button class="mile-claim-btn" data-lmile="'+m.days+'">CLAIM</button></div>').join('');
+ const streakBanners=streakMilestoneReady().map((m)=>
+  '<div class="l-mile-mini"><div><div class="k">STREAK MILESTONE</div><div class="n">'+m.days+'-day streak</div></div><button class="mile-claim-btn" data-streakmile="'+m.days+'">CLAIM</button></div>').join('');
+ const freezeInfo=(loginData.streakFreezes||0)>0?'<div class="l-freeze">\uD83D\uDD25 '+loginData.streakFreezes+' streak freeze'+(loginData.streakFreezes>1?'s':'')+' held</div>':'';
  const rewardHtml=rewards.map((r,i)=>{
   const m=LOGIN_META[r.id]||{name:r.id};
   const sub=r.id.indexOf('chest')===0?'Opens into real equipment, Forged at your wave level':'Goes straight to your war chest';
@@ -8100,7 +8271,7 @@ function renderLoginPopup(){
  +'<div style="margin:6px 0 0"><span class="l-daychip">DAY '+day+' OF 7</span>'+streakChip+'</div>'
  +(claimed?'<div class="claim-seal">'+loginIcon('check')+'</div>':'<div class="l-rule"><i></i></div>')
  +'<div class="login-rewards">'+rewardHtml+'</div>'
- +(mileBanners?'<div class="l-miles">'+mileBanners+'</div>':'')
+ +(mileBanners?'<div class="l-miles">'+mileBanners+'</div>':'')+(streakBanners?'<div class="l-miles">'+streakBanners+'</div>':'')+freezeInfo
  +(claimed
    ?'<p class="lcal-note">Delivered straight to your war chest.<br>Come back tomorrow to keep your streak burning.</p><div class="l-foot"><button class="l-link gold" id="loginViewCal">View Calendar</button><button class="l-link" id="loginClose">Close</button></div>'
    :'<button id="loginClaimBtn" class="claim-btn'+(jackpot?' jackpot-accent':'')+'">'+(jackpot?'CLAIM THE JACKPOT':'CLAIM REWARDS')+'</button><div class="l-teaser">'+loginIcon('gift','sm')+'<div class="l-teaser-copy"><div class="l-teaser-k">COME BACK TOMORROW FOR</div><div class="l-teaser-n">Day '+nextDay+' · '+nextRewards.map(loginRewardLine).join(' · ')+'</div></div></div><div class="l-foot"><button class="l-link gold" id="loginViewCal">View Calendar</button><button class="l-link" id="loginLater">Later</button></div>');
@@ -8109,6 +8280,7 @@ function renderLoginPopup(){
  const later=$('loginLater');if(later)later.onclick=()=>{sfx('coin');try{sessionStorage.setItem('tk_login_dismissed','1')}catch(e){};window._tkLoginDismissed=true;closeLoginSheet()};
  const closer=$('loginClose');if(closer)closer.onclick=()=>{sfx('coin');closeLoginSheet()};
  $('loginBody').querySelectorAll('[data-lmile]').forEach(btn=>{btn.onclick=(e)=>claimMilestoneFromPopup(+btn.dataset.lmile,btn)});
+ $('loginBody').querySelectorAll('[data-streakmile]').forEach(btn=>{btn.onclick=(e)=>{try{sfx('coin')}catch(_e){}claimStreakMilestone(+btn.dataset.streakmile)}});
  const claimBtn=$('loginClaimBtn');
  if(claimBtn)claimBtn.onclick=doLoginClaim;
  $('loginSheet').classList.add('open');
@@ -8859,7 +9031,7 @@ function storeConfetti(big){const host=document.createElement('div');host.classN
 function fmtCd(ms){ms=Math.max(0,ms);const s=Math.floor(ms/1000);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),ss=s%60;return (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(ss<10?'0':'')+ss}
 /* ltoShownKey: last offer key rendered by renderLTO; storeTick re-renders on rollover */
 let ltoShownKey=null;
-function storeTick(){try{document.querySelectorAll('[data-cd="dd"]').forEach(function(el){const now=new Date(),end=new Date(now);end.setHours(24,0,0,0);if(end<=now)end.setDate(end.getDate()+1);el.textContent='Ends in '+fmtCd(end-now)});document.querySelectorAll('[data-cd="lto"]').forEach(function(el){const win=86400000,el2=Math.max(0,Date.now()-STORE.ltoAnchor)%win;el.textContent='Ends in '+fmtCd(win-el2)});document.querySelectorAll('[data-cd="flash"]').forEach(function(el){if(!flashActive()){clearFlash();return}el.textContent='Ends in '+fmtCd(STORE.flash.expires-Date.now())});document.querySelectorAll('[data-cd="season"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(seasonEndsInMs())}catch(_e){}});const ltoNow=ltoCurrent();if(ltoShownKey===null)ltoShownKey=ltoNow.key;else if(ltoNow.key!==ltoShownKey){ltoShownKey=ltoNow.key;renderLTO();storeSave()}}catch(e){}}
+function storeTick(){try{document.querySelectorAll('[data-cd="dd"]').forEach(function(el){const now=new Date(),end=new Date(now);end.setHours(24,0,0,0);if(end<=now)end.setDate(end.getDate()+1);el.textContent='Ends in '+fmtCd(end-now)});document.querySelectorAll('[data-cd="lto"]').forEach(function(el){const win=86400000,el2=Math.max(0,Date.now()-STORE.ltoAnchor)%win;el.textContent='Ends in '+fmtCd(win-el2)});document.querySelectorAll('[data-cd="flash"]').forEach(function(el){if(!flashActive()){clearFlash();return}el.textContent='Ends in '+fmtCd(STORE.flash.expires-Date.now())});document.querySelectorAll('[data-cd="season"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(seasonEndsInMs())}catch(_e){}});document.querySelectorAll('[data-cd="event"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(eventEndsInMs())}catch(_e){}});const ltoNow=ltoCurrent();if(ltoShownKey===null)ltoShownKey=ltoNow.key;else if(ltoNow.key!==ltoShownKey){ltoShownKey=ltoNow.key;renderLTO();storeSave()}}catch(e){}}
 /* ============================================================================
  * STORE NAVIGATION + WIRING
  * ========================================================================== */
@@ -9218,7 +9390,7 @@ function saveTower(){progressSaveSoon()} /* unified record only */
 /* ---------- entry: mode select ---------- */
 function renderModeSelect(){
  if(typeof renderDungeonCard==='function')renderDungeonCard();
- try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
+ try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}try{if(typeof renderEventBanner==='function')renderEventBanner()}catch(e){}
  var modeProg=progressFor(chosenTank),modeTier=Math.max(1,STAGE_ORDER.indexOf(modeProg.stage)+1);
  $('modeGoldVal').textContent=fmtN(state.scrap);$('modeGemVal').textContent=fmtN(state.gems);$('modeTierVal').textContent='Tier '+modeTier;
  $('campaignBest').textContent=state.bestWave>1?'Best — Wave '+state.bestWave:'Unconquered';
@@ -9612,7 +9784,7 @@ function towerFloorClear(e){
    scrap*=2;bonusScrap=100+50*tier;bonusGems=5+5*tier;valorGain=boostEvoGrant(2);state.valorMedals+=valorGain;
   }
  }
- state.scrap+=scrap+bonusScrap;state.gems+=gems+bonusGems;
+ try{if(typeof eventMod==="function"&&eventMod("towerGems")===2){gems*=2;bonusGems*=2}}catch(_e){}state.scrap+=scrap+bonusScrap;state.gems+=gems+bonusGems;try{if(typeof eventBump==="function")eventBump("floors",1)}catch(_e){}
  if(god)grantShards(bossShardClass(f),3); /* war-gods drop class shards for Skill Mastery */
  var milestone=null,m=TOWER_MILESTONES[f];
  if(m&&!towerSave.badges[f]){
