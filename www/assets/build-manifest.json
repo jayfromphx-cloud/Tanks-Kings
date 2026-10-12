@@ -1,6 +1,6 @@
 {
-  "build": "696dd17260",
-  "html": "90c3223b96",
+  "build": "b3cfe56d9d",
+  "html": "9127f43e54",
   "assetCount": 231,
   "assets": [
     {
@@ -165,8 +165,8 @@
     },
     {
       "file": "assets/evo-ascendant-bloom-artillery.png",
-      "bytes": 2759694,
-      "md5": "b31fbc905dfa73b14da208b3cd37cd30"
+      "bytes": 1621265,
+      "md5": "db71efd8480d37aa0eb068ba678eb927"
     },
     {
       "file": "assets/evo-ascendant-bloomvale-vanguard.png",
