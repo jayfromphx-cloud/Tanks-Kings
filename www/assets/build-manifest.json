@@ -1,6 +1,6 @@
 {
-  "build": "2a13b38295",
-  "html": "4c25dcb390",
+  "build": "bfd33242d4",
+  "html": "36ca8a587b",
   "assetCount": 231,
   "assets": [
     {
@@ -205,8 +205,8 @@
     },
     {
       "file": "assets/evo-ascendant-voltspire-artillery.png",
-      "bytes": 3147463,
-      "md5": "7f405a5069b4d9a3397c55a5844fccac"
+      "bytes": 1727952,
+      "md5": "941a56cca4ffaf761ad0b70cc47affbc"
     },
     {
       "file": "assets/evo-ascendant-voltspire-vanguard.png",
