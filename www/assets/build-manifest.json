@@ -1,7 +1,7 @@
 {
-  "build": "fd31f115ec",
-  "html": "61dffc1d4d",
-  "assetCount": 226,
+  "build": "bfec5409b4",
+  "html": "f287796fa9",
+  "assetCount": 227,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -177,6 +177,11 @@
       "file": "assets/evo-ascendant-ironhold-artillery.png",
       "bytes": 1765740,
       "md5": "a493aaf586778f08c87b72471d84856f"
+    },
+    {
+      "file": "assets/evo-ascendant-ironhold-vanguard.png",
+      "bytes": 1592619,
+      "md5": "2ed14b76998dd703009433fbbcf1f188"
     },
     {
       "file": "assets/evo-ascendant-tidereign-artillery.png",
@@ -1134,18 +1139,5 @@
       "md5": "e0e5b6afe5c5501f24587976aa441844"
     }
   ],
-  "audio": {
-    "bgm-honorable-march.mp3": "3ffcf96537e15b93f23fc131a2d35e86",
-    "bgm-war-pulse.mp3": "525c5801cc55661bec89ee90c0543e3e",
-    "enemy-tank.mp3": "0670d800778c490f9e2e74cf71a96a28",
-    "impact.mp3": "32654ef8ca651484ed3deea05193839b",
-    "missile.mp3": "1364bc66c02184b042163380d19cd848",
-    "parry.mp3": "f514ccad0296b875d713eeea1631ab22",
-    "projectile.mp3": "41a39d122a48719caf60a0fc999e1460",
-    "ult-bloomvale.mp3": "f7124672610fc11d0310827a1400cc3a",
-    "ult-ember.mp3": "f7124672610fc11d0310827a1400cc3a",
-    "ult-ironhold.mp3": "f7124672610fc11d0310827a1400cc3a",
-    "ult-tidereign.mp3": "f7124672610fc11d0310827a1400cc3a",
-    "ult-voltspire.mp3": "f7124672610fc11d0310827a1400cc3a"
-  }
+  "audio": {}
 }
