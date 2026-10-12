@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tanks &amp; Kings</string>
+    <string name="title_activity_main">Tanks &amp; Kings</string>
+    <string name="package_name">com.tanksandkings.app</string>
+    <string name="custom_url_scheme">com.tanksandkings.app</string>
+</resources>
