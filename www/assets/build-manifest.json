@@ -1,7 +1,7 @@
 {
-  "build": "4a7f2d8047",
-  "html": "c5c05bdbf1",
-  "assetCount": 230,
+  "build": "2a13b38295",
+  "html": "7f981a54de",
+  "assetCount": 231,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -197,6 +197,11 @@
       "file": "assets/evo-ascendant-tidereign-artillery.png",
       "bytes": 1711148,
       "md5": "b0427623b145590e9d62dd380e287c19"
+    },
+    {
+      "file": "assets/evo-ascendant-tidereign-vanguard.png",
+      "bytes": 1665063,
+      "md5": "a1cec74dcfb4d3d27083fb10187264d1"
     },
     {
       "file": "assets/evo-ascendant-voltspire-artillery.png",
