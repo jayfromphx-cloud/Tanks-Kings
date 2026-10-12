@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Capacitor / native build outputs
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+ios/App/build/
+ios/App/Pods/
+www/build/
+
+# Secrets — NEVER commit these
+*.keystore
+*.jks
+*.p8
+*.pem
+*.mobileprovision
+*.provisionprofile
+env.sh
+.env
+.env.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
