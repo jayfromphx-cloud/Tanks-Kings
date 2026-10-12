@@ -1,6 +1,6 @@
 {
-  "build": "7441738123",
-  "html": "a3452bc7e2",
+  "build": "696dd17260",
+  "html": "90c3223b96",
   "assetCount": 231,
   "assets": [
     {
@@ -175,8 +175,8 @@
     },
     {
       "file": "assets/evo-ascendant-ember-artillery.png",
-      "bytes": 2696499,
-      "md5": "c222cb4bc7cd32239f2c0a24a10ebeb1"
+      "bytes": 1799029,
+      "md5": "e1b83d323c9c29ed62ab5d7d6a8ee037"
     },
     {
       "file": "assets/evo-ascendant-ember-vanguard.png",
