@@ -4526,6 +4526,45 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   #upgradeSheet .evolve-btn{min-height:44px!important;font-size:15px!important;margin-top:2px!important}
 }
 </style>
+<style id="seasonPassStyles">
+.season-banner{display:flex;align-items:center;gap:12px;margin:0 auto 14px;max-width:660px;padding:12px 16px;border:1px solid #d2ae58;border-radius:12px;background:linear-gradient(180deg,#2c343a,#10161b);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.5);text-align:left;width:calc(100% - 24px)}
+.season-banner .sb-art{font-size:30px;line-height:1}
+.season-banner .sb-copy{flex:1;min-width:0}
+.season-banner .sb-copy b{display:block;color:#ffe9a8;font:800 16px "Baloo 2",sans-serif}
+.season-banner .sb-bar{height:8px;border-radius:4px;background:#232d3a;margin:6px 0;overflow:hidden}
+.season-banner .sb-fill{height:100%;background:linear-gradient(90deg,#e8bd58,#f0d68a);border-radius:4px;transition:width .4s}
+.season-banner .sb-copy small{color:#b9c9d6;font-size:12px;font-weight:700}
+.season-banner .sb-badge{background:#c0392b;color:#fff;font-weight:800;font-size:12px;padding:5px 11px;border-radius:20px;white-space:nowrap;animation:sbPulse 1.6s infinite}
+@keyframes sbPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.season-upsell{max-width:660px;margin:0 auto 14px;width:calc(100% - 24px);padding:14px 16px;border:1px solid #d2ae58;border-radius:12px;background:linear-gradient(180deg,#3a3220,#1a1408);display:flex;align-items:center;gap:12px;box-shadow:0 0 22px rgba(210,174,88,.18)}
+.season-upsell .su-copy{flex:1;text-align:left}
+.season-upsell .su-copy b{display:block;color:#ffe9a8;font:800 17px "Baloo 2",sans-serif}
+.season-upsell .su-copy small{color:#d8c491;font-size:12px;font-weight:700}
+.season-owned{max-width:660px;margin:0 auto 14px;width:calc(100% - 24px);padding:12px;text-align:center;border:1px solid #5a7a5a;border-radius:12px;color:#8fe6b0;font-weight:800;background:rgba(20,40,20,.4)}
+.season-missions{max-width:660px;margin:0 auto;width:calc(100% - 24px)}
+.season-missions h3{color:#ffe9a8;font:800 16px "Baloo 2",sans-serif;margin:14px 0 8px;text-align:left}
+.mission-row{display:flex;align-items:center;gap:10px;padding:9px 12px;margin-bottom:6px;border:1px solid #6b5a2e;border-radius:8px;background:rgba(20,25,31,.6)}
+.mission-row.done{opacity:.55}
+.mission-row .m-label{flex:1;color:#e8dec2;font-size:13px;font-weight:700;text-align:left}
+.mission-row .m-prog{color:#b9c9d6;font-size:12px;font-weight:700;white-space:nowrap}
+.mission-row .m-xp{color:#8fe6b0;font-size:12px;font-weight:800;white-space:nowrap}
+.season-ladder-head{display:flex;align-items:baseline;justify-content:space-between;max-width:660px;margin:6px auto 0;width:calc(100% - 24px)}
+.season-ladder-head h3{color:#ffe9a8;font:800 16px "Baloo 2",sans-serif}
+.season-ladder-head span{color:#b9c9d6;font-size:12px;font-weight:700}
+.season-ladder{max-width:660px;margin:0 auto;padding:0 0 48px;width:calc(100% - 24px)}
+.tier-row{display:grid;grid-template-columns:40px 1fr 1fr;gap:8px;margin-bottom:8px;padding:8px;border:1px solid #6b5a2e;border-radius:10px;background:linear-gradient(180deg,#232b33,#12181e)}
+.tier-row.current{border-color:#d2ae58;box-shadow:0 0 14px rgba(210,174,88,.25)}
+.tier-num{display:flex;align-items:center;justify-content:center;font:800 18px "Baloo 2",sans-serif;color:#ffe9a8}
+.tier-cell{background:rgba(0,0,0,.25);border-radius:8px;padding:8px;text-align:left;min-width:0}
+.tier-cell small{display:block;color:#9db4c6;font-size:10px;font-weight:800;letter-spacing:.08em;margin-bottom:4px}
+.tier-cell .rw{color:#e8dec2;font-size:12px;font-weight:700;line-height:1.55}
+.tier-cell button{margin-top:6px;width:100%;padding:8px;border-radius:8px;border:1px solid #d2ae58;background:linear-gradient(#3a4550,#161d24);color:#ffe9a8;font-weight:800;font-size:12px;cursor:pointer}
+.tier-cell button:disabled{opacity:.45;cursor:default}
+.tier-cell button.claimed{border-color:#5a7a5a;color:#8fe6b0;opacity:1}
+.tier-cell.prem-lock{opacity:.8}
+.season-modal-rows{max-height:40vh;overflow-y:auto;margin:12px 0;text-align:left}
+.season-modal-rows .smr{display:flex;justify-content:space-between;padding:6px 4px;border-bottom:1px solid #3a4550;color:#e8dec2;font-size:13px;font-weight:700}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -4565,6 +4604,7 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
   <div class="mode-side-motif mode-side-left" aria-hidden="true"><svg viewBox="0 0 100 110"><path class="motif-crown" d="M25 28 20 9l17 12L50 3l13 18L80 9l-5 19zM24 33h52"/><path d="M18 92 77 39M23 38l59 54M12 95l13-2-10-10M88 95l-13-2 10-10"/><path class="motif-laurel" d="M12 70c-6-19 1-34 12-44M88 70c6-19-1-34-12-44"/></svg></div>
   <div class="mode-side-motif mode-side-right" aria-hidden="true"><svg viewBox="0 0 100 110"><path class="motif-crown" d="M25 28 20 9l17 12L50 3l13 18L80 9l-5 19zM24 33h52"/><path d="M18 92 77 39M23 38l59 54M12 95l13-2-10-10M88 95l-13-2 10-10"/><path class="motif-laurel" d="M12 70c-6-19 1-34 12-44M88 70c6-19-1-34-12-44"/></svg></div>
   <div class="mode-head"><h1>Tanks &amp; Kings</h1><span class="mode-kicker">Game Mode Selection</span><p>Choose your battlefield. Glory awaits.</p></div>
+  <div id="seasonBanner" class="season-banner" role="button" tabindex="0" aria-label="Season Pass"></div>
   <div class="mode-cards">
     <article class="mode-card campaign-card" id="campaignCard" role="button" tabindex="0" aria-label="Royal Campaign — Wave Battles">
       <span class="mode-corner-icon" aria-hidden="true"><img src="assets/mode-icon-campaign-clean.webp" alt=""></span><span class="mode-filigree" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -4594,6 +4634,14 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
     <article class="mode-card dungeon-card" id="dungeonCard" role="button" tabindex="0" aria-live="polite" aria-label="Dungeon of Steel — Daily dungeon"></article>
   </div>
   <div id="modeResourceBar" class="mode-resource-bar" aria-label="Royal resources"><span><i class="mode-res-coin" aria-hidden="true"></i><b id="modeGoldVal">0</b><small>Gold</small></span><span><i class="mode-res-gem" aria-hidden="true"></i><b id="modeGemVal">0</b><small>Gems</small></span><span><i class="mode-res-medal" aria-hidden="true"></i><b id="modeTierVal">Tier 1</b><small>Rank</small></span></div>
+</section>
+<section id="seasonScreen" class="screen menu-screen">
+  <div class="top-actions"><button id="seasonBackBtn" class="char-back">‹ Modes</button></div>
+  <div class="mode-head"><h1>Season Pass</h1><span class="mode-kicker" id="seasonKicker">Season 1</span><p id="seasonCountdown"></p></div>
+  <div id="seasonUpsell"></div>
+  <div class="season-missions"><h3>Daily Missions</h3><div id="seasonDaily"></div><h3>Weekly Missions</h3><div id="seasonWeekly"></div></div>
+  <div class="season-ladder-head"><h3>Reward Tiers</h3><span id="seasonTierLabel"></span></div>
+  <div id="seasonLadder" class="season-ladder"></div>
 </section>
 <div id="dungeonReward" class="dungeon-overlay" hidden><div class="dungeon-reward-card" role="alertdialog" aria-modal="true" aria-labelledby="dungeonRewardTitle"><span class="glory-result-kicker">Dungeon of Steel — Cleared</span><h2 id="dungeonRewardTitle">Steel Claimed!</h2><p id="dungeonRewardSub"></p><div id="dungeonRewardRows" class="dungeon-reward-rows"></div><button id="dungeonClaimBtn" class="primary">Claim Rewards</button></div></div>
 <section id="gloryScreen" class="screen">
@@ -5299,7 +5347,20 @@ function pulseMaxHp(){const hud=$('playerVitals');hud.classList.remove('max-bump
 const DAMAGE_NUMBER_CAP=16,damageNumberPool=[];let damageNumberSerial=0;
 (function initDamageNumberPool(){const layer=$('damageLayer');for(let i=0;i<DAMAGE_NUMBER_CAP;i++){const el=document.createElement('div');el.className='damage-number';el.innerHTML='<span class="damage-label"></span><span class="damage-copy"></span>';el.dataset.active='0';el.dataset.seq='0';el.addEventListener('animationend',()=>{el.dataset.active='0';el.classList.remove('active')});layer.appendChild(el);damageNumberPool.push(el)}})();
 function resetDamageNumbers(){damageNumberPool.forEach(el=>{el.dataset.active='0';el.className='damage-number'})}
-window.TanksKingsSave={save:function(){return JSON.parse(JSON.stringify({wave:state.wave,bestWave:state.bestWave,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,skillShards:state.skillShards,shardPools:state.shardPools,prestigeEmblems:state.prestigeEmblems,lastWaveBeatenWithoutDying:state.lastWaveBeatenWithoutDying,tankDamage:tankDamage,gearRanks:state.gearRanks,gearStars:state.gearStars,tankProgress:tankProgress,chosenTank:chosenTank,equipped:state.equipped,inventory:state.inventory,customization:customization,serviceRecord:serviceRecord,skills:skillLevels,loginData:loginData,idle:(typeof idleSaveSnapshot==='function'?idleSaveSnapshot():null)}))},load:function(data){if(!data)return;['wave','bestWave','scrap','gems','valorMedals','royalSeals','skillShards','prestigeEmblems','lastWaveBeatenWithoutDying'].forEach(function(k){if(data[k]===undefined)return;var n=Number(data[k]);if(Number.isFinite(n))state[k]=Math.max(0,n)});if(data.equipped&&typeof data.equipped==='object'&&!Array.isArray(data.equipped)){slots.forEach(function(slot){var item=data.equipped[slot];state.equipped[slot]=(item&&typeof item==='object'&&!Array.isArray(item))?Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0}):null})}if(Array.isArray(data.inventory)){state.inventory=data.inventory.filter(function(item){return item&&typeof item==='object'&&!Array.isArray(item)&&slots.indexOf(item.slot)>=0}).map(function(item){return Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0})})};if(data.tankDamage&&typeof data.tankDamage==='object'){try{Object.keys(data.tankDamage).forEach(function(id){tankDamage[id]=data.tankDamage[id]===true});saveTankDamage();updateDamageBadge()}catch(e){}}if(data.gearRanks)slots.forEach(s=>{if(data.gearRanks[s]!==undefined)state.gearRanks[s]=Math.max(1,Math.min(30,+data.gearRanks[s]||1))});if(data.gearStars)slots.forEach(s=>{if(data.gearStars[s]!==undefined)state.gearStars[s]=Math.max(0,Math.min(5,+data.gearStars[s]||0))});savePrestige();if(data.tankProgress&&typeof data.tankProgress==='object'&&!Array.isArray(data.tankProgress))tanks.forEach(function(t){var p=data.tankProgress[t.id];if(!p||typeof p!=='object'||Array.isArray(p))return;var stage=EVOLUTION_STAGES[p.stage]?p.stage:'squire',cap=EVOLUTION_STAGES[stage].cap;tankProgress[t.id]={stage:stage,level:Math.max(1,Math.min(cap,Math.floor(+p.level)||1))}});if(data.customization&&typeof data.customization==='object'&&!Array.isArray(data.customization))tanks.forEach(function(t){var c=data.customization[t.id];if(!c||typeof c!=='object'||Array.isArray(c))return;var clean={plume:'none',banner:'none',paint:'none',trim:'gold'};CUSTOM_CATS.forEach(function(cat){if(cat.opts.some(function(o){return o.id===c[cat.id]}))clean[cat.id]=c[cat.id]});customization[t.id]=clean});if(data.serviceRecord&&typeof data.serviceRecord==='object'&&!Array.isArray(data.serviceRecord))tanks.forEach(function(t){var r=data.serviceRecord[t.id];if(r&&typeof r==='object'&&!Array.isArray(r))serviceRecord[t.id]={kills:Math.max(0,Math.floor(+r.kills)||0),bosses:Math.max(0,Math.floor(+r.bosses)||0)}});if(data.skills)tanks.forEach(t=>{if(data.skills[t.id])SKILL_KEYS.forEach(k=>{const v=+data.skills[t.id][k];skillsFor(t.id)[k]=v>=1&&v<=SKILL_MAX?Math.floor(v):1})});if(data.shardPools&&typeof data.shardPools==='object'){SKILL_KEYS.forEach(k=>{shardPools()[k]=Math.max(0,Math.floor(+data.shardPools[k])||0)})}else if(data.skillShards!=null){const _sn=Math.max(0,Math.floor(+data.skillShards)||0),_sb=Math.floor(_sn/SKILL_KEYS.length);let _sr=_sn-_sb*SKILL_KEYS.length;SKILL_KEYS.forEach(function(k,i){shardPools()[k]=_sb+(i<_sr?1:0)})}syncShardMirror();if(data.chosenTank&&byT(data.chosenTank))chosenTank=data.chosenTank;if(data.loginData&&typeof data.loginData==='object'&&!Array.isArray(data.loginData)){var ld=data.loginData;loginData.streak=Math.max(0,Math.min(36500,Math.floor(+ld.streak)||0));loginData.lastClaimDay=loginValidDayKey(ld.lastClaimDay)?ld.lastClaimDay:null;loginData.loginDays={};if(ld.loginDays&&typeof ld.loginDays==='object'&&!Array.isArray(ld.loginDays))Object.keys(ld.loginDays).forEach(function(k){if(loginValidDayKey(k)&&ld.loginDays[k])loginData.loginDays[k]=1});loginData.milestonesClaimed={};if(ld.milestonesClaimed&&typeof ld.milestonesClaimed==='object'&&!Array.isArray(ld.milestonesClaimed))LOYALTY_MILESTONES.forEach(function(m){if(ld.milestonesClaimed[m.days])loginData.milestonesClaimed[m.days]=1});loginData.loginTotal=Math.max(0,Math.min(36500,Math.floor(+ld.loginTotal)||0));loginData.lastClaimWallMs=Number.isFinite(+ld.lastClaimWallMs)?Math.max(0,+ld.lastClaimWallMs):0;loginData.monoBaseMs=Number.isFinite(+ld.monoBaseMs)?Math.max(0,+ld.monoBaseMs):Date.now();loginData.lastClaimMonoMs=Number.isFinite(+ld.lastClaimMonoMs)?Math.max(0,+ld.lastClaimMonoMs):0;loginData.claimedCycleDay=Math.max(0,Math.min(LOGIN_CYCLE,Math.floor(+ld.claimedCycleDay)||0))}try{if(data.idle&&typeof idleRestoreRecord==='function')idleRestoreRecord(data.idle)}catch(e){}state.level=progressFor(chosenTank).level}};
+window.TanksKingsSave={save:function(){return JSON.parse(JSON.stringify({wave:state.wave,bestWave:state.bestWave,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,skillShards:state.skillShards,shardPools:state.shardPools,prestigeEmblems:state.prestigeEmblems,lastWaveBeatenWithoutDying:state.lastWaveBeatenWithoutDying,tankDamage:tankDamage,gearRanks:state.gearRanks,gearStars:state.gearStars,tankProgress:tankProgress,chosenTank:chosenTank,equipped:state.equipped,inventory:state.inventory,customization:customization,serviceRecord:serviceRecord,skills:skillLevels,loginData:loginData,season:season,idle:(typeof idleSaveSnapshot==='function'?idleSaveSnapshot():null)}))},load:function(data){if(!data)return;['wave','bestWave','scrap','gems','valorMedals','royalSeals','skillShards','prestigeEmblems','lastWaveBeatenWithoutDying'].forEach(function(k){if(data[k]===undefined)return;var n=Number(data[k]);if(Number.isFinite(n))state[k]=Math.max(0,n)});if(data.equipped&&typeof data.equipped==='object'&&!Array.isArray(data.equipped)){slots.forEach(function(slot){var item=data.equipped[slot];state.equipped[slot]=(item&&typeof item==='object'&&!Array.isArray(item))?Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0}):null})}if(Array.isArray(data.inventory)){state.inventory=data.inventory.filter(function(item){return item&&typeof item==='object'&&!Array.isArray(item)&&slots.indexOf(item.slot)>=0}).map(function(item){return Object.assign({},item,{power:Number.isFinite(+item.power)?Math.max(0,+item.power):0})})};if(data.tankDamage&&typeof data.tankDamage==='object'){try{Object.keys(data.tankDamage).forEach(function(id){tankDamage[id]=data.tankDamage[id]===true});saveTankDamage();updateDamageBadge()}catch(e){}}if(data.gearRanks)slots.forEach(s=>{if(data.gearRanks[s]!==undefined)state.gearRanks[s]=Math.max(1,Math.min(30,+data.gearRanks[s]||1))});if(data.gearStars)slots.forEach(s=>{if(data.gearStars[s]!==undefined)state.gearStars[s]=Math.max(0,Math.min(5,+data.gearStars[s]||0))});savePrestige();if(data.tankProgress&&typeof data.tankProgress==='object'&&!Array.isArray(data.tankProgress))tanks.forEach(function(t){var p=data.tankProgress[t.id];if(!p||typeof p!=='object'||Array.isArray(p))return;var stage=EVOLUTION_STAGES[p.stage]?p.stage:'squire',cap=EVOLUTION_STAGES[stage].cap;tankProgress[t.id]={stage:stage,level:Math.max(1,Math.min(cap,Math.floor(+p.level)||1))}});if(data.customization&&typeof data.customization==='object'&&!Array.isArray(data.customization))tanks.forEach(function(t){var c=data.customization[t.id];if(!c||typeof c!=='object'||Array.isArray(c))return;var clean={plume:'none',banner:'none',paint:'none',trim:'gold'};CUSTOM_CATS.forEach(function(cat){if(cat.opts.some(function(o){return o.id===c[cat.id]}))clean[cat.id]=c[cat.id]});customization[t.id]=clean});if(data.serviceRecord&&typeof data.serviceRecord==='object'&&!Array.isArray(data.serviceRecord))tanks.forEach(function(t){var r=data.serviceRecord[t.id];if(r&&typeof r==='object'&&!Array.isArray(r))serviceRecord[t.id]={kills:Math.max(0,Math.floor(+r.kills)||0),bosses:Math.max(0,Math.floor(+r.bosses)||0)}});if(data.skills)tanks.forEach(t=>{if(data.skills[t.id])SKILL_KEYS.forEach(k=>{const v=+data.skills[t.id][k];skillsFor(t.id)[k]=v>=1&&v<=SKILL_MAX?Math.floor(v):1})});if(data.shardPools&&typeof data.shardPools==='object'){SKILL_KEYS.forEach(k=>{shardPools()[k]=Math.max(0,Math.floor(+data.shardPools[k])||0)})}else if(data.skillShards!=null){const _sn=Math.max(0,Math.floor(+data.skillShards)||0),_sb=Math.floor(_sn/SKILL_KEYS.length);let _sr=_sn-_sb*SKILL_KEYS.length;SKILL_KEYS.forEach(function(k,i){shardPools()[k]=_sb+(i<_sr?1:0)})}syncShardMirror();if(data.chosenTank&&byT(data.chosenTank))chosenTank=data.chosenTank;if(data.loginData&&typeof data.loginData==='object'&&!Array.isArray(data.loginData)){var ld=data.loginData;loginData.streak=Math.max(0,Math.min(36500,Math.floor(+ld.streak)||0));loginData.lastClaimDay=loginValidDayKey(ld.lastClaimDay)?ld.lastClaimDay:null;loginData.loginDays={};if(ld.loginDays&&typeof ld.loginDays==='object'&&!Array.isArray(ld.loginDays))Object.keys(ld.loginDays).forEach(function(k){if(loginValidDayKey(k)&&ld.loginDays[k])loginData.loginDays[k]=1});loginData.milestonesClaimed={};if(ld.milestonesClaimed&&typeof ld.milestonesClaimed==='object'&&!Array.isArray(ld.milestonesClaimed))LOYALTY_MILESTONES.forEach(function(m){if(ld.milestonesClaimed[m.days])loginData.milestonesClaimed[m.days]=1});loginData.loginTotal=Math.max(0,Math.min(36500,Math.floor(+ld.loginTotal)||0));loginData.lastClaimWallMs=Number.isFinite(+ld.lastClaimWallMs)?Math.max(0,+ld.lastClaimWallMs):0;loginData.monoBaseMs=Number.isFinite(+ld.monoBaseMs)?Math.max(0,+ld.monoBaseMs):Date.now();loginData.lastClaimMonoMs=Number.isFinite(+ld.lastClaimMonoMs)?Math.max(0,+ld.lastClaimMonoMs):0;loginData.claimedCycleDay=Math.max(0,Math.min(LOGIN_CYCLE,Math.floor(+ld.claimedCycleDay)||0))}
+if(data.season&&typeof data.season==='object'&&!Array.isArray(data.season)){var sn=data.season;
+ season.id=Math.max(1,Math.floor(+sn.id)||1);
+ season.startDay=Number.isFinite(+sn.startDay)?Math.max(0,Math.floor(+sn.startDay)):null;
+ season.endDay=Number.isFinite(+sn.endDay)?Math.max(0,Math.floor(+sn.endDay)):null;
+ season.xp=Math.max(0,Math.min(3000,Math.floor(+sn.xp)||0));
+ season.freeClaimed={};season.premiumClaimed={};
+ if(sn.freeClaimed&&typeof sn.freeClaimed==='object'&&!Array.isArray(sn.freeClaimed))Object.keys(sn.freeClaimed).forEach(function(k){if(sn.freeClaimed[k])season.freeClaimed[k]=1});
+ if(sn.premiumClaimed&&typeof sn.premiumClaimed==='object'&&!Array.isArray(sn.premiumClaimed))Object.keys(sn.premiumClaimed).forEach(function(k){if(sn.premiumClaimed[k])season.premiumClaimed[k]=1});
+ season.premium=sn.premium===true;
+ season.premiumReceipt=(sn.premiumReceipt&&typeof sn.premiumReceipt==='object'&&!Array.isArray(sn.premiumReceipt))?sn.premiumReceipt:null;
+ season.daily={day:null,prog:{},done:{}};season.weekly={week:null,prog:{},done:{}};
+ if(sn.daily&&typeof sn.daily==='object'&&!Array.isArray(sn.daily)){if(Number.isFinite(+sn.daily.day))season.daily.day=Math.floor(+sn.daily.day);if(sn.daily.prog&&typeof sn.daily.prog==='object')Object.keys(sn.daily.prog).forEach(function(k){season.daily.prog[k]=Math.max(0,Math.floor(+sn.daily.prog[k])||0)});if(sn.daily.done&&typeof sn.daily.done==='object')Object.keys(sn.daily.done).forEach(function(k){if(sn.daily.done[k])season.daily.done[k]=1})}
+ if(sn.weekly&&typeof sn.weekly==='object'&&!Array.isArray(sn.weekly)){if(Number.isFinite(+sn.weekly.week))season.weekly.week=Math.floor(+sn.weekly.week);if(sn.weekly.prog&&typeof sn.weekly.prog==='object')Object.keys(sn.weekly.prog).forEach(function(k){season.weekly.prog[k]=Math.max(0,Math.floor(+sn.weekly.prog[k])||0)});if(sn.weekly.done&&typeof sn.weekly.done==='object')Object.keys(sn.weekly.done).forEach(function(k){if(sn.weekly.done[k])season.weekly.done[k]=1})}}try{if(data.idle&&typeof idleRestoreRecord==='function')idleRestoreRecord(data.idle)}catch(e){}state.level=progressFor(chosenTank).level}};
 /* ================= Full progression persistence (ONE versioned record) =================
  * The whole run — tank levels, evolution stages, every currency, equipment,
  * gear forge ranks + prestige stars, per-class skill shards and skill levels,
@@ -5331,7 +5392,7 @@ function progressLoad(){
  if(__progressPreloadPending){__progressPreloadPending=false;progressSave()}
  return loaded;
 }
-function setScreen(name){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));var _scr=$(name+'Screen');if(!_scr){console.warn('[Tanks & Kings] setScreen: unknown screen "'+name+'"');return}_scr.classList.add('active');state.screen=name;if(window.__tkPendingReload&&name!=='battle'){window.__tkPendingReload=false;try{location.reload()}catch(e){}return}if(typeof syncMenuTopbars==='function')syncMenuTopbars();try{var _toTop=function(){if(!_scr)return;_scr.scrollTop=0;_scr.querySelectorAll('.screen-scroll,.mode-cards,.glory-wrap,.leader-wrap,.char-wrap').forEach(function(el){el.scrollTop=0});if(document.documentElement)document.documentElement.scrollTop=0;if(document.body)document.body.scrollTop=0;window.scrollTo(0,0)};_toTop();requestAnimationFrame(_toTop);setTimeout(_toTop,60)}catch(e){}if(typeof playBgm==='function')playBgm(name==='battle'?'battle':'title');const veil=$('motionVeil');veil.classList.remove('play');void veil.offsetWidth;veil.classList.add('play');clearTimeout(setScreen.veilTimer);setScreen.veilTimer=setTimeout(()=>veil.classList.remove('play'),620)}
+function setScreen(name){try{if(typeof seasonEnsure==='function')seasonEnsure()}catch(e){}document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));var _scr=$(name+'Screen');if(!_scr){console.warn('[Tanks & Kings] setScreen: unknown screen "'+name+'"');return}_scr.classList.add('active');state.screen=name;if(window.__tkPendingReload&&name!=='battle'){window.__tkPendingReload=false;try{location.reload()}catch(e){}return}if(typeof syncMenuTopbars==='function')syncMenuTopbars();try{var _toTop=function(){if(!_scr)return;_scr.scrollTop=0;_scr.querySelectorAll('.screen-scroll,.mode-cards,.glory-wrap,.leader-wrap,.char-wrap').forEach(function(el){el.scrollTop=0});if(document.documentElement)document.documentElement.scrollTop=0;if(document.body)document.body.scrollTop=0;window.scrollTo(0,0)};_toTop();requestAnimationFrame(_toTop);setTimeout(_toTop,60)}catch(e){}if(typeof playBgm==='function')playBgm(name==='battle'?'battle':'title');const veil=$('motionVeil');veil.classList.remove('play');void veil.offsetWidth;veil.classList.add('play');clearTimeout(setScreen.veilTimer);setScreen.veilTimer=setTimeout(()=>veil.classList.remove('play'),620)}
 function preloadUltimateAudio(){
  if(ultimateFetchStarted)return;ultimateFetchStarted=true;
  Object.keys(assetManifest.ultimateAudio).forEach(kingdom=>{const files=assetManifest.ultimateAudio[kingdom];ultimateRawPromises[kingdom]=fetch(String(files.mp3).split('?')[0]+'?v='+__ASSET_V,{cache:'force-cache'}).then(response=>{if(!response.ok)throw new Error('MP3 unavailable');return response.arrayBuffer()})});
@@ -6397,7 +6458,7 @@ $('campRetryBtn').onclick=campRetryWave;
 $('campRetreatBtn').onclick=campRetreat;
 $('campRepairBtn').onclick=function(){if(payForRepair())showToast('Hull repaired — full strength restored!');refreshCampDefeatButtons()};
 $('repairGarageBtn').onclick=function(){if(payForRepair())showToast('Hull repaired — ready for war!');updateGarageRepairBtn()};
-function killEnemy(){let e=state.enemy,sealGain=0,medalGain=0;if(state.tutorialMode){tutorialBattleVictory(e);return}if(state.mode==='tower'){towerFloorClear(e);return}if(state.mode==='dungeon'){dungeonOnKill(e);return}if(state.mode==='glory'){gloryOnEnemyKilled(e);return}if(e&&e.boss){state.hitStop=.11;state.shake=Math.max(state.shake,25);sealGain=boostEvoGrant(1);state.royalSeals+=sealGain;grantCampaignSkinAt(state.wave);const stage=$('battleStage');stage.classList.remove('cinematic');void stage.offsetWidth;stage.classList.add('cinematic');setTimeout(()=>stage.classList.remove('cinematic'),850)}else{state.hitStop=Math.max(state.hitStop,.055);state.shake=Math.max(state.shake,13)}let reward=Math.round(((e.boss?60:10)+state.wave*2.5)*ENEMY_TYPE_STATS[e.type].scrapMult);state.scrap+=reward;const svc=serviceFor(chosenTank);svc.kills++;if(e.boss)svc.bosses++;state.gems+=e.boss?3:0;if(e.boss){state.lastShardClass=bossShardClass(state.wave);grantShards(state.lastShardClass,3)}state.killsInWave++;state.ult=Math.min(100,state.ult+(e.boss?28:14));sfx('kill');burst(e.x,.55,e.boss?'#fff0a5':'#ff9a5d',e.boss?96:54,e.boss?'bossdeath':'death');spawnDebris(e.x,.55,e.boss?1.5:1);state.scorches.push({x:e.x,y:.72,life:e.boss?14:10,size:e.boss?62:42});if(state.scorches.length>9)state.scorches.shift();number(Math.max(.56,e.x-.14),.2,'+'+reward+' Scrap','#ffdb55','reward');$('enemySprite').classList.add('defeat');if(Math.random()<(e.boss?.95:.28))dropItem(e.boss);state.enemy=null;state.burn=0;state.poison=0;state.spawnClock=.8;updateHUD();if(!state.playerDead&&state.killsInWave>=state.waveTarget){const clearedWave=state.wave,earnedValor=clearedWave%5===0;if(earnedValor){medalGain=boostEvoGrant(1);state.valorMedals+=medalGain}if((state.deathsThisWave|0)===0)state.lastWaveBeatenWithoutDying=Math.max(state.lastWaveBeatenWithoutDying|0,clearedWave);state.deathsThisWave=0;state.wave++;(function(){var ob=state.bestWave;state.bestWave=Math.max(ob,state.wave);leaderBestChanged('campaign',ob,state.bestWave)})();state.killsInWave=0;state.reviveCount=0;state.retriedThisWave=0;state.waveTarget=waveTargetFor(state.wave);state.scorches=[];state.particles=[];state.projectiles.length=0;if(window.TKFX&&window.TKFX.clear)window.TKFX.clear();let rewardNote=(earnedValor?' • +'+medalGain+' Valor Medal'+(medalGain>1?'s':''):'')+((e.boss&&sealGain)?' • +'+sealGain+' Royal Seal'+(sealGain>1?'s':''):'')+(e.boss?' • +3 '+SHARD_CLASS_NAMES[state.lastShardClass||'parry']+' Shards':'');showToast((clearedWave%10===0?'BOSS WAVE — Royal challenger!':'Wave '+clearedWave+' cleared!')+rewardNote);if(!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+state.maxHp*.10);sfx('coin');updateHUD()}}
+function killEnemy(){let e=state.enemy,sealGain=0,medalGain=0;if(state.tutorialMode){tutorialBattleVictory(e);return}if(state.mode==='tower'){towerFloorClear(e);return}if(state.mode==='dungeon'){dungeonOnKill(e);return}if(state.mode==='glory'){gloryOnEnemyKilled(e);return}if(e&&e.boss){state.hitStop=.11;state.shake=Math.max(state.shake,25);sealGain=boostEvoGrant(1);state.royalSeals+=sealGain;grantCampaignSkinAt(state.wave);const stage=$('battleStage');stage.classList.remove('cinematic');void stage.offsetWidth;stage.classList.add('cinematic');setTimeout(()=>stage.classList.remove('cinematic'),850)}else{state.hitStop=Math.max(state.hitStop,.055);state.shake=Math.max(state.shake,13)}let reward=Math.round(((e.boss?60:10)+state.wave*2.5)*ENEMY_TYPE_STATS[e.type].scrapMult);state.scrap+=reward;const svc=serviceFor(chosenTank);svc.kills++;if(e.boss)svc.bosses++;try{if(typeof seasonBump==='function'){seasonBump('kills',1);if(e.boss)seasonBump('bosses',1)}}catch(_se){}state.gems+=e.boss?3:0;if(e.boss){state.lastShardClass=bossShardClass(state.wave);grantShards(state.lastShardClass,3)}state.killsInWave++;state.ult=Math.min(100,state.ult+(e.boss?28:14));sfx('kill');burst(e.x,.55,e.boss?'#fff0a5':'#ff9a5d',e.boss?96:54,e.boss?'bossdeath':'death');spawnDebris(e.x,.55,e.boss?1.5:1);state.scorches.push({x:e.x,y:.72,life:e.boss?14:10,size:e.boss?62:42});if(state.scorches.length>9)state.scorches.shift();number(Math.max(.56,e.x-.14),.2,'+'+reward+' Scrap','#ffdb55','reward');$('enemySprite').classList.add('defeat');if(Math.random()<(e.boss?.95:.28))dropItem(e.boss);state.enemy=null;state.burn=0;state.poison=0;state.spawnClock=.8;updateHUD();if(!state.playerDead&&state.killsInWave>=state.waveTarget){const clearedWave=state.wave,earnedValor=clearedWave%5===0;if(earnedValor){medalGain=boostEvoGrant(1);state.valorMedals+=medalGain}if((state.deathsThisWave|0)===0)state.lastWaveBeatenWithoutDying=Math.max(state.lastWaveBeatenWithoutDying|0,clearedWave);state.deathsThisWave=0;state.wave++;try{if(typeof seasonBump==='function')seasonBump('waves',1)}catch(_se){}(function(){var ob=state.bestWave;state.bestWave=Math.max(ob,state.wave);leaderBestChanged('campaign',ob,state.bestWave)})();state.killsInWave=0;state.reviveCount=0;state.retriedThisWave=0;state.waveTarget=waveTargetFor(state.wave);state.scorches=[];state.particles=[];state.projectiles.length=0;if(window.TKFX&&window.TKFX.clear)window.TKFX.clear();let rewardNote=(earnedValor?' • +'+medalGain+' Valor Medal'+(medalGain>1?'s':''):'')+((e.boss&&sealGain)?' • +'+sealGain+' Royal Seal'+(sealGain>1?'s':''):'')+(e.boss?' • +3 '+SHARD_CLASS_NAMES[state.lastShardClass||'parry']+' Shards':'');showToast((clearedWave%10===0?'BOSS WAVE — Royal challenger!':'Wave '+clearedWave+' cleared!')+rewardNote);if(!state.playerDead)state.hp=Math.min(state.maxHp,state.hp+state.maxHp*.10);sfx('coin');updateHUD()}}
 const slots=['Hull','Cannon','Treads','Engine','Plating','Core'];const abilities={Hull:'Reinforced: +maximum HP',Cannon:'Lucky shot: chance for a bonus shell',Treads:'Nimble: chance to dodge',Engine:'Overdrive: faster attacks',Plating:'Mirror polish: reflects damage',Core:'Royal charge: faster ULT gain'};
 /* === Upgrade-cost hardening + gear prestige system (2026-09-30) ===
    Player-side economy only: no enemy/difficulty/income numbers change here. */
@@ -6727,6 +6788,7 @@ function _ultPhase2(){var _keepCasting=false;try{
 if(state.paused||document.hidden){_keepCasting=true;setTimeout(_ultPhase2,100);return}
 if(state.playerDead||!state.enemy||!state.running||state.screen!=='battle'){try{he('playerRig').classList.remove('ult-anticipate');$('battleStage').classList.remove('ult-vignette')}catch(e){}return}
 if(state.ult<100){try{he('playerRig').classList.remove('ult-anticipate');$('battleStage').classList.remove('ult-vignette')}catch(e){}return}
+try{if(typeof seasonBump==='function')seasonBump('ults',1)}catch(_se){}
 /* AAA Phase 2 — Execution: blinding flash, 3 staggered expanding shockwave rings (double-spawned), cinematic zoom punch, shake 20 + hit-stop, big star burst (56 / 90 Paladin). */
 spawnUltFlash();
 const _umz=muzzlePoint(true),_ux=_umz?_umz.x:.28,_uy=_umz?_umz.y:.52;
@@ -7293,7 +7355,7 @@ function refreshCustomPreview(){
 /* ---------- Skins of the Gods section (sprite-swap equipping) ---------- */
 function godskinCustomCard(g){
  const card=document.createElement('button');card.className='opt-card godskin-card';card.dataset.gcat='godskin';card.dataset.opt=g.id;
- const locked=!isGodskinUnlocked(g.id),owned=godskinOwned(g.id),eq=equippedGodskin(chosenTank),worn=eq&&eq.id===g.id;
+ const locked=g.season?!godskinOwned(g.id):!isGodskinUnlocked(g.id),owned=godskinOwned(g.id),eq=equippedGodskin(chosenTank),worn=eq&&eq.id===g.id;
  card.innerHTML='<div class="opt-tile godskin-tile"><img class="godskin-img'+(locked?' gs-silhouette':'')+'" src="'+g.sprite+'" alt="'+(locked?'Locked godskin — defeat a war-god to reveal it':g.name)+'"></div>'
   +'<span class="opt-name">'+g.name+'</span>'
   +'<span class="opt-bonus">'+godskinBonusLine()+'</span>'
@@ -7314,7 +7376,7 @@ function renderGodskinSection(host){
  const sec=document.createElement('section');sec.className='custom-cat godskin-cat';
  sec.innerHTML='<div class="custom-cat-head"><span class="custom-cat-glyph">⚡</span><div><h3>Skins of the Gods</h3><p>Wear the very hide of a fallen war-god. Sprite-swap: replaces your tank entirely and quiets the ornaments while worn.</p></div></div>';
  const grid=document.createElement('div');grid.className='opt-grid godskin-grid';
- GODSKINS.forEach(function(g){grid.appendChild(godskinCustomCard(g))});
+ GODSKINS.filter(function(g){return !g.season||godskinOwned(g.id)}).forEach(function(g){grid.appendChild(godskinCustomCard(g))});
  sec.appendChild(grid);host.insertBefore(sec,host.firstChild);
 }
 function renderCustomize(){
@@ -7404,6 +7466,230 @@ const LOGIN_META={
 };
 const LOGIN_RARITY_MULT={Common:1,Rare:1.6,Epic:2.5,Legendary:4};
 const loginData={streak:0,claimedCycleDay:0,lastClaimDay:null,loginDays:{},milestonesClaimed:{},loginTotal:0,lastClaimWallMs:0,monoBaseMs:0,lastClaimMonoMs:0}; /* lastClaimWallMs: real Date.now() at last claim; anchors forward-travel detection (#18) */
+/* ---- Season Pass (retention) ---- */
+const season={id:1,startDay:null,endDay:null,xp:0,freeClaimed:{},premiumClaimed:{},premium:false,premiumReceipt:null,daily:{day:null,prog:{},done:{}},weekly:{week:null,prog:{},done:{}}};
+const SEASON_DAYS=30,SEASON_TIERS=30,SEASON_XP_PER_TIER=100,SEASON_XP_TOTAL=SEASON_TIERS*SEASON_XP_PER_TIER;
+function seasonWeekKey(){return season.startDay==null?0:Math.floor((dayIndex()-season.startDay)/7)}
+function seasonEnsure(){
+ if(season.startDay==null||season.endDay==null){ /* first boot after feature ships: anchor a fresh season */
+  season.id=Math.max(1,season.id||1);season.startDay=dayIndex();season.endDay=season.startDay+SEASON_DAYS;
+  season.xp=0;season.freeClaimed={};season.premiumClaimed={};season.premium=false;season.premiumReceipt=null;
+  season.daily={day:null,prog:{},done:{}};season.weekly={week:null,prog:{},done:{}};
+  try{progressSaveSoon()}catch(e){}
+  return;
+ }
+ if(dayIndex()>=season.endDay){seasonRollover()}
+}
+function seasonRollover(){
+ var unclaimed=seasonUnclaimedCount(),oldId=season.id||1;
+ season.id=oldId+1;season.startDay=dayIndex();season.endDay=season.startDay+SEASON_DAYS;
+ season.xp=0;season.freeClaimed={};season.premiumClaimed={};season.premium=false;season.premiumReceipt=null;
+ season.daily={day:null,prog:{},done:{}};season.weekly={week:null,prog:{},done:{}};
+ try{progressSaveSoon()}catch(e){}
+ try{seasonShowEndModal(oldId,unclaimed)}catch(e){}
+ try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
+ return unclaimed;
+}
+function seasonShowEndModal(oldId,unclaimed){
+ var host=$('seasonEndOverlay');
+ if(!host){
+  host=document.createElement('div');
+  host.id='seasonEndOverlay';host.className='dungeon-overlay';host.hidden=true;
+  host.innerHTML='<div class="dungeon-reward-card" role="alertdialog" aria-modal="true"><span class="glory-result-kicker">Season '+oldId+' — Complete</span><h2>A New Season Dawns</h2><p id="seasonEndSub"></p><button id="seasonEndBtn" class="primary">Begin Season '+season.id+'</button></div>';
+  document.body.appendChild(host);
+  var btn=$('seasonEndBtn');
+  if(btn)btn.onclick=function(){host.hidden=true;try{sfx('coin')}catch(e){}setScreen('season');renderSeasonScreen()};
+ }
+ var sub=$('seasonEndSub');
+ if(sub)sub.textContent=unclaimed?unclaimed+' unclaimed reward'+(unclaimed>1?'s':'')+' expired — claim faster next season!':'All rewards claimed. Glorious, monarch!';
+ var btn2=$('seasonEndBtn');
+ if(btn2)btn2.textContent='Begin Season '+season.id;
+ host.hidden=false;
+}
+function seasonEndsInMs(){if(season.endDay==null)return 0;var t=new Date();t.setHours(24,0,0,0);var daysLeft=season.endDay-dayIndex();return Math.max(0,(daysLeft-1)*86400000+(t.getTime()-Date.now()))}
+function seasonTier(){return Math.min(SEASON_TIERS,Math.floor(season.xp/SEASON_XP_PER_TIER))}
+function seasonUnclaimedCount(){var t=seasonTier(),n=0;for(var i=1;i<=t;i++){if(!season.freeClaimed[i])n++;if(season.premium&&!season.premiumClaimed[i])n++}return n}
+const SEASON_DAILY=[
+ {id:'waves',n:10,xp:20,label:'Win 10 campaign waves'},
+ {id:'kills',n:50,xp:20,label:'Defeat 50 enemies'},
+ {id:'bosses',n:1,xp:20,label:'Defeat 1 boss'},
+ {id:'ults',n:3,xp:20,label:'Cast ULT 3 times'},
+ {id:'chests',n:1,xp:20,label:'Open 1 chest'}
+];
+const SEASON_WEEKLY=[
+ {id:'waves',n:100,xp:60,label:'Win 100 campaign waves'},
+ {id:'bosses',n:10,xp:60,label:'Defeat 10 bosses'},
+ {id:'kills',n:500,xp:60,label:'Defeat 500 enemies'}
+];
+/* Season reward table: tiers 1..30. Item = [type, amount|tier|godskinId].
+   Types route through grantLoginReward (scrap/gems/valor/seals/shards/emblem/chest*)
+   except 'godskin' which routes through grantGodskin. */
+const SEASON_REWARDS=[
+ {free:[['scrap',500]],premium:[['gems',50]]},
+ {free:[['gems',25]],premium:[['scrap',1500]]},
+ {free:[['chest','Common']],premium:[['valor',5]]},
+ {free:[['scrap',1000]],premium:[['gems',75]]},
+ {free:[['shards',20]],premium:[['chest','Rare']]},
+ {free:[['gems',50]],premium:[['scrap',3000]]},
+ {free:[['seals',3]],premium:[['gems',100]]},
+ {free:[['chest','Rare']],premium:[['valor',8]]},
+ {free:[['scrap',2000]],premium:[['shards',30]]},
+ {free:[['gems',100],['chest','Rare']],premium:[['chest','Epic']]},
+ {free:[['seals',5]],premium:[['gems',150]]},
+ {free:[['scrap',3000]],premium:[['valor',12],['seals',10]]},
+ {free:[['shards',40]],premium:[['scrap',5000]]},
+ {free:[['gems',75]],premium:[['gems',50],['chest','Rare']]},
+ {free:[['chest','Epic'],['valor',10]],premium:[['emblem',1]]},
+ {free:[['scrap',5000]],premium:[['gems',200]]},
+ {free:[['seals',8]],premium:[['shards',60]]},
+ {free:[['gems',100]],premium:[['chest','Epic']]},
+ {free:[['scrap',7000]],premium:[['valor',15],['gems',100]]},
+ {free:[['emblem',1],['chest','Rare']],premium:[['emblem',2],['chest','Epic']]},
+ {free:[['scrap',10000]],premium:[['gems',300]]},
+ {free:[['seals',12]],premium:[['shards',80]]},
+ {free:[['gems',150]],premium:[['scrap',12000]]},
+ {free:[['chest','Epic']],premium:[['emblem',3]]},
+ {free:[['scrap',15000],['gems',100]],premium:[['gems',400],['chest','Epic']]},
+ {free:[['seals',15]],premium:[['shards',100]]},
+ {free:[['gems',200]],premium:[['emblem',5]]},
+ {free:[['scrap',20000]],premium:[['chest','Legendary']]},
+ {free:[['emblem',2],['chest','Epic']],premium:[['gems',600],['emblem',3]]},
+ {free:[['chest','Legendary'],['gems',300]],premium:[['godskin','season1'],['chest','Legendary'],['emblem',5]]}
+];
+function seasonRewardLabel(it){
+ var t=it[0],v=it[1];
+ if(t==='scrap')return fmtN(v)+' Scrap';
+ if(t==='gems')return fmtN(v)+' Gems';
+ if(t==='valor')return fmtN(v)+' Valor';
+ if(t==='seals')return fmtN(v)+' Seals';
+ if(t==='shards')return fmtN(v)+' Shards';
+ if(t==='emblem')return fmtN(v)+' Emblem'+(v>1?'s':'');
+ if(t==='chest')return v+' Chest';
+ if(t==='godskin'){var g=GODSKIN_MAP[v];return g?g.name:'Godskin'}
+ return t;
+}
+function seasonGrantItem(it){
+ var t=it[0],v=it[1];
+ if(t==='godskin'){return grantGodskin(v)}
+ if(t==='chest'){grantLoginReward({id:'chest'+v,amt:1});return true}
+ grantLoginReward({id:t,amt:v});return true;
+}
+function seasonCanClaim(tier,track){
+ if(typeof loginFrozen==='function'){try{if(loginFrozen())return false}catch(e){}}
+ tier=Math.floor(+tier)||0;if(tier<1||tier>SEASON_TIERS)return false;
+ if(tier>seasonTier())return false;
+ if(track==='premium'&&!season.premium)return false;
+ var claimed=track==='premium'?season.premiumClaimed:season.freeClaimed;
+ return !claimed[tier];
+}
+function seasonClaim(tier,track){
+ if(!seasonCanClaim(tier,track)){try{showToast('Not available yet')}catch(e){}return false}
+ var items=(SEASON_REWARDS[tier-1]&&SEASON_REWARDS[tier-1][track])||[];
+ try{items.forEach(function(it){seasonGrantItem(it)})}
+ catch(e){try{showToast('Claim failed — try again')}catch(_e){}return false}
+ (track==='premium'?season.premiumClaimed:season.freeClaimed)[tier]=1;
+ try{showToast('Season Tier '+tier+' claimed!')}catch(e){}
+ try{burst(.5,.4,'#ffd98a',24,'star')}catch(e){}
+ try{if(typeof progressSaveSoon==='function')progressSaveSoon()}catch(e){}
+ try{if(typeof renderSeasonScreen==='function')renderSeasonScreen()}catch(e){}
+ try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
+ return true;
+}
+function seasonClaimableCount(){
+ var t=seasonTier(),n=0;
+ for(var i=1;i<=t;i++){
+  if(!season.freeClaimed[i])n++;
+  if(season.premium&&!season.premiumClaimed[i])n++;
+ }
+ return n;
+}
+function renderSeasonBanner(){
+ var host=$('seasonBanner');if(!host)return;
+ try{seasonEnsure()}catch(e){}
+ var t=seasonTier(),pct=Math.min(100,Math.round(season.xp/SEASON_XP_TOTAL*100));
+ var daysLeft=Math.max(0,(season.endDay==null?SEASON_DAYS:season.endDay)-dayIndex());
+ var claimable=seasonClaimableCount();
+ host.innerHTML='<div class="sb-art">\uD83C\uDFB5</div><div class="sb-copy"><b>Season '+season.id+' Pass — Tier '+t+'/'+SEASON_TIERS+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+daysLeft+' days left · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP</small></div>'+(claimable?'<span class="sb-badge">'+claimable+' CLAIM</span>':'');
+ host.onclick=function(){try{sfx('coin')}catch(e){}setScreen('season');renderSeasonScreen()};
+ host.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();host.onclick()}};
+}
+function seasonMissionRow(m,prog,done){
+ prog=Math.min(prog,m.n);
+ return '<div class="mission-row'+(done?' done':'')+'"><span class="m-label">'+(done?'\u2713 ':'')+m.label+'</span><span class="m-prog">'+prog+'/'+m.n+'</span><span class="m-xp">+'+m.xp+' XP</span></div>';
+}
+function renderSeasonMissions(){
+ var dh=$('seasonDaily'),wh=$('seasonWeekly');
+ if(dh)dh.innerHTML=SEASON_DAILY.map(function(m){return seasonMissionRow(m,season.daily.prog[m.id]||0,!!season.daily.done[m.id])}).join('');
+ if(wh)wh.innerHTML=SEASON_WEEKLY.map(function(m){return seasonMissionRow(m,season.weekly.prog[m.id]||0,!!season.weekly.done[m.id])}).join('');
+}
+function renderSeasonUpsell(){
+ var host=$('seasonUpsell');if(!host)return;
+ if(season.premium){host.innerHTML='<div class="season-owned">\u2713 PREMIUM PASS ACTIVE</div>';return}
+ host.innerHTML='<div class="season-upsell"><div class="su-copy"><b>Season Pass — Premium</b><small>All 30 premium tiers · exclusive season godskin · retroactive claims</small></div><button id="seasonBuyBtn" class="primary">UNLOCK · $9.99</button></div>';
+ var b=$('seasonBuyBtn');
+ if(b)b.onclick=function(){openBuy(seasonPremiumProduct())};
+}
+function renderSeasonLadder(){
+ var host=$('seasonLadder');if(!host)return;
+ var earned=seasonTier(),h='';
+ for(var t=1;t<=SEASON_TIERS;t++){
+  var rw=SEASON_REWARDS[t-1];
+  var fClaimed=!!season.freeClaimed[t],pClaimed=!!season.premiumClaimed[t];
+  var fCan=!fClaimed&&t<=earned,fLocked=!fClaimed&&!fCan;
+  var pCan=!pClaimed&&t<=earned&&season.premium,pLocked=!pClaimed&&!pCan;
+  h+='<div class="tier-row'+(t===earned?' current':'')+'"><div class="tier-num">'+t+'</div>'
+   +'<div class="tier-cell"><small>FREE</small><div class="rw">'+rw.free.map(seasonRewardLabel).join('<br>')+'</div>'
+   +(fClaimed?'<button class="claimed" disabled>\u2713 CLAIMED</button>':fCan?'<button data-sclaim="'+t+':free">CLAIM</button>':'<button disabled>\uD83D\uDD12</button>')+'</div>'
+   +'<div class="tier-cell'+(season.premium?'':' prem-lock')+'"><small>PREMIUM</small><div class="rw">'+rw.premium.map(seasonRewardLabel).join('<br>')+'</div>'
+   +(pClaimed?'<button class="claimed" disabled>\u2713 CLAIMED</button>':pCan?'<button data-sclaim="'+t+':premium">CLAIM</button>':'<button disabled>'+(!season.premium?'\uD83D\uDD12 PREMIUM':'\uD83D\uDD12')+'</button>')+'</div>'
+   +'</div>';
+ }
+ host.innerHTML=h;
+ host.querySelectorAll('[data-sclaim]').forEach(function(b){
+  b.onclick=function(){var p=b.getAttribute('data-sclaim').split(':');seasonClaim(+p[0],p[1])};
+ });
+ try{var cur=host.querySelector('.tier-row.current');if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'center'})}catch(e){}
+}
+function seasonPremiumProduct(){
+ return {key:'season_premium',kind:'season',title:'Season Pass — Premium',
+  sub:'Season '+season.id+' · 30 days of rewards',
+  priceUsd:9.99,
+  art:'<div style="font-size:46px;line-height:1">\uD83C\uDFB5</div>',
+  contents:['All 30 premium tier rewards','Season-exclusive godskin at Tier '+SEASON_TIERS,'Already-earned tiers claimable instantly'],
+  grant:function(){season.premium=true;season.premiumReceipt={when:Date.now(),price:'$9.99'};try{if(typeof progressSaveSoon==='function')progressSaveSoon()}catch(e){}}};
+}
+function renderSeasonScreen(){
+ try{seasonEnsure()}catch(e){}
+ var k=$('seasonKicker');if(k)k.textContent='Season '+season.id;
+ var cd=$('seasonCountdown');
+ if(cd){var daysLeft=Math.max(0,(season.endDay==null?SEASON_DAYS:season.endDay)-dayIndex());cd.textContent=daysLeft+' day'+(daysLeft===1?'':'s')+' remaining · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP';}
+ var tl=$('seasonTierLabel');if(tl)tl.textContent='Tier '+seasonTier()+' of '+SEASON_TIERS;
+ renderSeasonUpsell();renderSeasonMissions();renderSeasonLadder();
+ var bb=$('seasonBackBtn');
+ if(bb&&!bb._wired){bb._wired=true;bb.onclick=function(){try{sfx('coin')}catch(e){}setScreen('mode');renderModeSelect()}}
+}
+function seasonBump(kind,n){
+ if(typeof loginFrozen==='function'){try{if(loginFrozen())return}catch(e){}}
+ try{seasonEnsure()}catch(e){}
+ n=n||1;
+ var today=dayIndex();
+ if(season.daily.day!==today)season.daily={day:today,prog:{},done:{}};
+ var wk=seasonWeekKey();
+ if(season.weekly.week!==wk)season.weekly={week:wk,prog:{},done:{}};
+ var gained=0;
+ [['daily',SEASON_DAILY],['weekly',SEASON_WEEKLY]].forEach(function(pair){
+  var st=season[pair[0]],defs=pair[1];
+  st.prog[kind]=Math.min(999999,(st.prog[kind]||0)+n);
+  for(var i=0;i<defs.length;i++){var m=defs[i];
+   if(m.id===kind&&!st.done[m.id]&&st.prog[kind]>=m.n){st.done[m.id]=1;gained+=m.xp}}
+ });
+ if(gained>0){
+  season.xp=Math.min(SEASON_XP_TOTAL,season.xp+gained);
+  try{showToast('+'+gained+' Season XP')}catch(e){}
+  try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
+ }
+ try{if(typeof progressSaveSoon==='function')progressSaveSoon()}catch(e){}
+}
 function tkMonoNow(){return (+loginData.monoBaseMs||0)+performance.now()}
 const loginView={ready:false,claimed:false,clockOdd:false,today:'',streak:0,cycleDay:1};
 let __loginDayOffsetMs=0; /* debug only: simulated local-day travel for audits */
@@ -8326,18 +8612,22 @@ const GODSKINS=[
  {id:'godskin_thorn',bossId:'thorn',bossName:'Thorn Sovereign',floor:70,name:'Skin of Thorn Sovereign',sprite:'assets/godskin-thorn.webp'},
  {id:'godskin_umbra',bossId:'umbra',bossName:'Umbra Viceroy',floor:80,name:'Skin of Umbra Viceroy',sprite:'assets/godskin-umbra.webp'},
  {id:'godskin_gale',bossId:'gale',bossName:'Gale Seraph',floor:90,name:'Skin of Gale Seraph',sprite:'assets/tower-boss-gale.webp'},
- {id:'godskin_pontiff',bossId:'pontiff',bossName:'War Pontiff',floor:100,name:'Skin of War Pontiff',sprite:'assets/godskin-pontiff.webp'}
+ {id:'godskin_pontiff',bossId:'pontiff',bossName:'War Pontiff',floor:100,name:'Skin of War Pontiff',sprite:'assets/godskin-pontiff.webp'},
+ /* SEASON PLACEHOLDER: season-exclusive godskin — sprite is an existing godskin webp until final art ships */
+ {id:'season1',bossId:null,bossName:'Season 1',floor:0,name:'Skin of the First Season',sprite:'assets/godskin-season1.webp',season:1}
 ];
 const GODSKIN_MAP={};GODSKINS.forEach(function(g){GODSKIN_MAP[g.id]=g});
 /* defeat gate: persisted in the existing Tower storage (tk_tower_v1.defeatedGods) */
 function isGodskinUnlocked(id){const g=GODSKIN_MAP[id];return !!(g&&towerSave.defeatedGods&&towerSave.defeatedGods[g.bossId])}
 function godskinOwned(id){return STORE.ownedGodskins.indexOf(id)!==-1}
 function grantGodskin(id){if(!godskinOwned(id)&&GODSKIN_MAP[id]){STORE.ownedGodskins.push(id);return true}return false}
+/* season-exclusive godskins (g.season) bypass the Tower defeat gate: owned = wearable */
+function godskinWearable(id){var g=GODSKIN_MAP[id];if(!g||!godskinOwned(id))return false;if(g.season)return true;return isGodskinUnlocked(id)}
 /* per-tank equip state rides on the customization slot ('none' = unworn) */
 function equippedGodskin(tankId){const cfg=customCfg(tankId),id=cfg&&cfg.godskin;return (id&&id!=='none'&&GODSKIN_MAP[id])?GODSKIN_MAP[id]:null}
 function godskinStats(tankId){const g=equippedGodskin(tankId);return g?{atk:GODSKIN_ATK,hp:GODSKIN_HP,ult:GODSKIN_ULT}:{atk:0,hp:0,ult:0}}
 function godskinBonusLine(){return '+'+Math.round(GODSKIN_ATK*100)+'% ATK · +'+Math.round(GODSKIN_HP*100)+'% HP · +'+Math.round(GODSKIN_ULT*100)+'% ULT damage'}
-function wearGodskin(id){const g=GODSKIN_MAP[id];if(!g||!godskinOwned(id))return false;if(!isGodskinUnlocked(id)){showToast('Defeat '+g.bossName+' in the Tower to unlock');return false}customCfg(chosenTank).godskin=id;applyGodskinEquipFx();showToast('You wear the '+g.name+' — the tank IS the god now.');return true}
+function wearGodskin(id){const g=GODSKIN_MAP[id];if(!g||!godskinOwned(id))return false;if(!godskinWearable(id)){showToast(g.season?'Season exclusive — earn it in the Season Pass':'Defeat '+g.bossName+' in the Tower to unlock');return false}customCfg(chosenTank).godskin=id;applyGodskinEquipFx();showToast('You wear the '+g.name+' — the tank IS the god now.');return true}
 function takeOffGodskin(tankId){const tk=tankId||chosenTank;if(!equippedGodskin(tk))return false;customCfg(tk).godskin='none';applyGodskinEquipFx();showToast('Godskin removed.');return true}
 function applyGodskinEquipFx(){applyEvolutionVisual();refreshBattleCustomLayers();if(state.screen==='character'&&characterTab==='custom'){refreshCustomPreview()}else if(state.screen==='character'){renderProgress()}syncSkinHpBoost();sfx('ult')}
 /* absolute sprite override: godskin wins everywhere the player rig is drawn */
@@ -8354,7 +8644,7 @@ const CHEST_PRICE={Common:150,Rare:420,Epic:1150,Legendary:3200},SLOT_CHEST_PRIC
 const CHEST_ODDS={Common:[['Common',65],['Rare',25],['Epic',9],['Legendary',1]],Rare:[['Common',35],['Rare',42],['Epic',20],['Legendary',3]],Epic:[['Rare',40],['Epic',45],['Legendary',15]],Legendary:[['Epic',50],['Legendary',50]]};
 const SLOT_CHEST_ODDS=[['Rare',40],['Epic',45],['Legendary',15]];
 function rollOddsTable(table){let roll=Math.random()*100,acc=0;for(let i=0;i<table.length;i++){acc+=table[i][1];if(roll<acc)return table[i][0]}return table[table.length-1][0]}
-function grantChest(tier,slotOpt){const rarity=rollOddsTable(slotOpt?SLOT_CHEST_ODDS:CHEST_ODDS[tier]);const mult={Common:1.15,Rare:1.9,Epic:3,Legendary:4.6}[rarity];const slot=slotOpt||slots[Math.floor(Math.random()*slots.length)];const king=kingdoms[Math.floor(Math.random()*kingdoms.length)];var wv=Math.max(1,state.mode==='tower'?(state.floor|0):(state.wave|0)); /* tower chests scale with the floor being climbed, not the campaign best wave */const item={id:Date.now()+Math.random()+shopsalt(),slot:slot,rarity:rarity,power:Math.round((4+wv*1.3)*mult),kingdom:king.id,ability:abilities[slot]};state.inventory.push(item);renderItems();return item}
+function grantChest(tier,slotOpt){try{if(typeof seasonBump==='function')seasonBump('chests',1)}catch(_se){}const rarity=rollOddsTable(slotOpt?SLOT_CHEST_ODDS:CHEST_ODDS[tier]);const mult={Common:1.15,Rare:1.9,Epic:3,Legendary:4.6}[rarity];const slot=slotOpt||slots[Math.floor(Math.random()*slots.length)];const king=kingdoms[Math.floor(Math.random()*kingdoms.length)];var wv=Math.max(1,state.mode==='tower'?(state.floor|0):(state.wave|0)); /* tower chests scale with the floor being climbed, not the campaign best wave */const item={id:Date.now()+Math.random()+shopsalt(),slot:slot,rarity:rarity,power:Math.round((4+wv*1.3)*mult),kingdom:king.id,ability:abilities[slot]};state.inventory.push(item);renderItems();return item}
 function shopsalt(){return Math.floor(Math.random()*1e6)/1e6}
 const GEM_LADDER=[
  {usd:0.99,base:60,bonus:20,tier:'small'},
@@ -8465,7 +8755,7 @@ function storeGodskinsHTML(){
  const worn=equippedGodskin(chosenTank);
  let note='';
  if(worn)note='<div class="store-flash" style="margin:12px 0"><span class="flash-badge">⚡</span><div class="flash-copy"><b>Wearing the '+worn.name+'.</b><small>'+godskinBonusLine()+' · tank sprite swapped · ornaments quieted</small></div></div>';
- return note+'<div class="store-sec-title">Skins of the Gods — the hides of fallen war-gods, eyes of a hero</div><div class="godskin-blurb">Each becomes purchasable only after its god falls. All equals — the prestige is the god you beat.</div><div class="store-grid">'+GODSKINS.map(godskinCard).join('')+'</div>';
+ return note+'<div class="store-sec-title">Skins of the Gods — the hides of fallen war-gods, eyes of a hero</div><div class="godskin-blurb">Each becomes purchasable only after its god falls. All equals — the prestige is the god you beat.</div><div class="store-grid">'+GODSKINS.filter(function(g){return !g.season}).map(godskinCard).join('')+'</div>';
 }
 /* --- wiring --- */
 function findProduct(key){
@@ -8554,6 +8844,7 @@ async function doPurchase(p){
  $('buyStage2').innerHTML='<div class="receipt-hero"><div class="receipt-check">✓</div><h3>Purchase complete</h3><div class="receipt-meta"><div class="rm"><span>Product</span><b>'+rc.title+'</b></div><div class="rm"><span>Order</span><span>'+rc.id+'</span></div><div class="rm"><span>Contents</span><span>'+rc.contents+'</span></div><div class="rm"><span>Paid</span><b>'+rc.price+'</b></div><div class="rm"><span>Date</span><span>'+d.toLocaleString()+'</span></div></div><button class="buy-confirm" id="receiptDone">'+(chestItems.length?'Claim your spoils':'Done')+'</button><p class="pay-note">'+(Billing.adapter.id==='demo'?'Demo receipt · charges are never real':'Receipt · '+(rc.provider||''))+'</p></div>';
  $('receiptDone').onclick=function(){$('buySheet').classList.remove('open');renderStore();if(chestItems.length)openReveal(chestItems)};
  renderStore()
+ if(p.kind==='season'){try{if(typeof renderSeasonScreen==='function')renderSeasonScreen()}catch(e){}}
  }finally{purchaseInFlight=false}}
 function showBuyStage(n){[0,1,2].forEach(function(i){$('buyStage'+i).classList.toggle('on',i===n)})}
 function glyphForProduct(p){if(p.kind==='gem')return '♦';if(p.kind==='skin')return '◈';if(p.kind==='godskin')return '⚡';if(p.kind==='chest'||p.kind==='lto')return '📦';if(p.kind==='starter')return '🎁';if(p.kind==='levels')return '⚔';if(p.kind==='evo')return '♛';return '⚙'}
@@ -8568,7 +8859,7 @@ function storeConfetti(big){const host=document.createElement('div');host.classN
 function fmtCd(ms){ms=Math.max(0,ms);const s=Math.floor(ms/1000);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),ss=s%60;return (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(ss<10?'0':'')+ss}
 /* ltoShownKey: last offer key rendered by renderLTO; storeTick re-renders on rollover */
 let ltoShownKey=null;
-function storeTick(){try{document.querySelectorAll('[data-cd="dd"]').forEach(function(el){const now=new Date(),end=new Date(now);end.setHours(24,0,0,0);if(end<=now)end.setDate(end.getDate()+1);el.textContent='Ends in '+fmtCd(end-now)});document.querySelectorAll('[data-cd="lto"]').forEach(function(el){const win=86400000,el2=Math.max(0,Date.now()-STORE.ltoAnchor)%win;el.textContent='Ends in '+fmtCd(win-el2)});document.querySelectorAll('[data-cd="flash"]').forEach(function(el){if(!flashActive()){clearFlash();return}el.textContent='Ends in '+fmtCd(STORE.flash.expires-Date.now())});const ltoNow=ltoCurrent();if(ltoShownKey===null)ltoShownKey=ltoNow.key;else if(ltoNow.key!==ltoShownKey){ltoShownKey=ltoNow.key;renderLTO();storeSave()}}catch(e){}}
+function storeTick(){try{document.querySelectorAll('[data-cd="dd"]').forEach(function(el){const now=new Date(),end=new Date(now);end.setHours(24,0,0,0);if(end<=now)end.setDate(end.getDate()+1);el.textContent='Ends in '+fmtCd(end-now)});document.querySelectorAll('[data-cd="lto"]').forEach(function(el){const win=86400000,el2=Math.max(0,Date.now()-STORE.ltoAnchor)%win;el.textContent='Ends in '+fmtCd(win-el2)});document.querySelectorAll('[data-cd="flash"]').forEach(function(el){if(!flashActive()){clearFlash();return}el.textContent='Ends in '+fmtCd(STORE.flash.expires-Date.now())});document.querySelectorAll('[data-cd="season"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(seasonEndsInMs())}catch(_e){}});const ltoNow=ltoCurrent();if(ltoShownKey===null)ltoShownKey=ltoNow.key;else if(ltoNow.key!==ltoShownKey){ltoShownKey=ltoNow.key;renderLTO();storeSave()}}catch(e){}}
 /* ============================================================================
  * STORE NAVIGATION + WIRING
  * ========================================================================== */
@@ -8628,6 +8919,7 @@ window.TanksKingsSave.load=function(blob){try{if(_tksLoad)_tksLoad(blob)}catch(e
 
 /* ---- full progression: restore before the garage first renders, then keep saving ---- */
 progressLoad();
+try{if(typeof seasonEnsure==='function')seasonEnsure()}catch(e){}
 window.__tkProgressLoaded=true;
 try{
  var __debugGive=new URLSearchParams(window.location.search).get('debug_give');
@@ -8926,6 +9218,7 @@ function saveTower(){progressSaveSoon()} /* unified record only */
 /* ---------- entry: mode select ---------- */
 function renderModeSelect(){
  if(typeof renderDungeonCard==='function')renderDungeonCard();
+ try{if(typeof renderSeasonBanner==='function')renderSeasonBanner()}catch(e){}
  var modeProg=progressFor(chosenTank),modeTier=Math.max(1,STAGE_ORDER.indexOf(modeProg.stage)+1);
  $('modeGoldVal').textContent=fmtN(state.scrap);$('modeGemVal').textContent=fmtN(state.gems);$('modeTierVal').textContent='Tier '+modeTier;
  $('campaignBest').textContent=state.bestWave>1?'Best — Wave '+state.bestWave:'Unconquered';
