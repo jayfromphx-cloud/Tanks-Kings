@@ -5100,7 +5100,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b3cfe56d9d';
-const __HTML_V='3a45cc90c5';
+const __HTML_V='1adf042bd9';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5419,7 +5419,7 @@ if(data.codex&&typeof data.codex==='object'&&!Array.isArray(data.codex)){var cx=
  * Legacy per-system keys are read once as migration sources, never written. */
 const PROGRESS_KEY='tk_progression_v1';
 let __progressReady=false,__progressSaveTimer=0,__progressPreloadPending=false;
-function progressSave(){try{if(!__progressReady){__progressPreloadPending=true;console.warn('[Tanks & Kings] progressSave queued before load');return}const blob=window.TanksKingsSave.save();blob.v=2;blob.savedAt=Date.now();localStorage.setItem(PROGRESS_KEY,JSON.stringify(blob))}catch(e){}}
+function progressSave(){try{if(!__progressReady){__progressPreloadPending=true;console.warn('[Tanks & Kings] progressSave queued before load');return}const blob=window.TanksKingsSave.save();if(window.__tkTutorialBorrow&&blob.tankProgress)blob.tankProgress.bulwark=window.__tkTutorialBorrow;blob.v=2;blob.savedAt=Date.now();localStorage.setItem(PROGRESS_KEY,JSON.stringify(blob))}catch(e){}}
 function progressSaveSoon(){try{clearTimeout(__progressSaveTimer);__progressSaveTimer=setTimeout(progressSave,700)}catch(e){}}
 function progressLoad(){
  __progressReady=true;
@@ -10863,7 +10863,7 @@ leaderSeasonLoad();
  * one tap at a time. No product menu or battle system owns tutorial flow. */
 var TUTORIAL_KEY='tk_tutorial_v1';
 var TUTORIAL_STEPS=[
- {trigger:'boot',highlightTarget:'#meleeBtn',text:'Commander, take this Ironhold Vanguard for a spin! Your cannon fires on its own \u2014 tap CHARGE to slam the enemy!',waitForEvent:'tutorial:victory',maxSeconds:25},
+ {trigger:'boot',highlightTarget:'#meleeBtn',text:'Commander, take this Ironhold Ascendant Vanguard for a spin! Your cannon fires on its own \u2014 tap CHARGE to slam the enemy!',waitForEvent:'tutorial:victory',maxSeconds:25},
  {trigger:'tutorial:victory',highlightTarget:'#factionGrid',text:'Victory! Now choose your kingdom, Commander \u2014 each forges its own style of war.',waitForEvent:'faction-picked',maxSeconds:20},
  {trigger:'faction-picked',highlightTarget:'#tankGrid',text:'Vanguards charge into the fray. Artillery rains death from afar. Choose your fighter.',waitForEvent:'tank-picked',maxSeconds:15},
  {trigger:'tank-picked',highlightTarget:'#campaignCard',text:'The Campaign is your road to glory. The Tower and Arena await the bold.',waitForEvent:'campaign-picked',maxSeconds:15},
@@ -10960,6 +10960,12 @@ function tutorialTimeout(stepIndex){
 }
 function tutorialStartBattle(){
  chosenK='iron';chosenTank='bulwark';state.tutorialMode=true;state.running=false;state.paused=true;
+ /* The tutorial showcases the Ironhold ASCENDANT Vanguard, not the Squire.
+    Borrow the Ascendant form for this scripted battle only: the player's real
+    Bulwark progress is restored on victory/exit, and progressSave persists the
+    real record (never the borrowed form) while the borrow is active. */
+ if(!window.__tkTutorialBorrow){var bp=progressFor('bulwark');window.__tkTutorialBorrow={stage:bp.stage,level:bp.level}}
+ tankProgress.bulwark={stage:'ascendant',level:EVOLUTION_STAGES.ascendant.cap};
  var screen=$('battleScreen');if(screen)screen.classList.add('tutorial-layout-boot');
  /* Activate the portrait battle shell first, then wait for two consecutive
     stable layout frames before committing combat state or starting the loop. */
@@ -10981,8 +10987,11 @@ function tutorialStartBattle(){
  }
  requestAnimationFrame(waitForPortraitLayout);
 }
+function tutorialRestoreBorrowedProgress(){
+ if(window.__tkTutorialBorrow){tankProgress.bulwark=window.__tkTutorialBorrow;window.__tkTutorialBorrow=null}
+}
 function tutorialBattleVictory(enemy){
- if(!tutorialAt(0))return;var e=enemy||state.enemy;
+ if(!tutorialAt(0))return;tutorialRestoreBorrowedProgress();var e=enemy||state.enemy;
  if(e){try{sfx('kill');burst(e.x,.55,'#fff0a5',72,'bossdeath');spawnDebris(e.x,.55,1.2);$('enemySprite').classList.add('defeat')}catch(err){}}
  state.enemy=null;state.projectiles.length=0;state.spawnClock=99;state.running=false;state.paused=true;state.tutorialMode=false;updateHUD();
  /* Keep the battle and always-available Skip control visible behind the short
@@ -11001,7 +11010,7 @@ function tutorialClaimReward(){
  setTimeout(function(){if(tutorialAt(4)){tutorialAdvance('reward-claimed')}},350);
 }
 function tutorialReleaseToFreePlay(){
- tutorialClearTimers();tutorialHideCoach();var splash=$('tutorialVictory');if(splash)splash.classList.remove('show');state.tutorialMode=false;state.running=false;state.paused=false;state.playerDead=false;state.enemy=null;state.projectiles.length=0;
+ tutorialRestoreBorrowedProgress();tutorialClearTimers();tutorialHideCoach();var splash=$('tutorialVictory');if(splash)splash.classList.remove('show');state.tutorialMode=false;state.running=false;state.paused=false;state.playerDead=false;state.enemy=null;state.projectiles.length=0;
  var battleScreen=$('battleScreen');if(battleScreen)battleScreen.classList.remove('tutorial-layout-boot');var factionScreen=$('factionScreen');if(factionScreen)factionScreen.classList.remove('tutorial-faction-focus');
  document.querySelectorAll('.sheet-backdrop.open').forEach(function(x){x.classList.remove('open')});$('pauseOverlay').classList.remove('open');setScreen('mode');renderModeSelect();
 }
