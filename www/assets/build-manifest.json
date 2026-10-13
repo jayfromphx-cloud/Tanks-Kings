@@ -1,7 +1,7 @@
 {
-  "build": "23a79fdcee",
-  "html": "40dbdd6ad3",
-  "assetCount": 220,
+  "build": "27106ef0cd",
+  "html": "95bc56ebf5",
+  "assetCount": 221,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -712,6 +712,11 @@
       "file": "assets/melee-impact-voltspire.png",
       "bytes": 441532,
       "md5": "9398afb6f7b0c9e505925c8b0f11654f"
+    },
+    {
+      "file": "assets/melee-ironhold-lunge.png",
+      "bytes": 549211,
+      "md5": "382eff7aa9e75ab43fae0eb034f8ebe4"
     },
     {
       "file": "assets/missile.bin",
