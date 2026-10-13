@@ -1,6 +1,6 @@
 {
-  "build": "93ad5b61b2",
-  "html": "072ed51b28",
+  "build": "2467647b56",
+  "html": "9bcf9e9f39",
   "assetCount": 228,
   "assets": [
     {
@@ -490,8 +490,8 @@
     },
     {
       "file": "assets/faction-emblem-ironhold.png",
-      "bytes": 210830,
-      "md5": "4b3321e6c290cdcd5fdff0f8ebdf3aa2"
+      "bytes": 499815,
+      "md5": "42bf04e35680f8c1f802eba44cb88f17"
     },
     {
       "file": "assets/faction-emblem-tide.png",
