@@ -4662,6 +4662,29 @@ html.battery-saver .faction-shield{filter:none!important}
 #upgradeSheet .evolve-btn{min-height:42px;margin-top:8px}
 #upgradeSheet .shop-nudge{padding:6px 10px}
 </style>
+<style>
+/* Mode Select: simplified, AAA-clean (2026-10-12). Compact header, slim banners,
+   decluttered cards — no duplicate corner art, no sparkle filigree, no motion. */
+#modeScreen .mode-head{padding:6px 16px 2px!important}
+#modeScreen .mode-head h1{font-size:clamp(21px,6vw,30px)!important;margin:0!important}
+#modeScreen .mode-head p{display:none}
+#modeScreen .mode-kicker{letter-spacing:.28em}
+#modeScreen .season-banner{margin:6px auto!important;padding:8px 12px!important;max-width:560px}
+#modeScreen .sb-art{font-size:21px}
+#modeScreen .sb-copy b{font-size:13.5px}
+#modeScreen .sb-copy small{font-size:10.5px}
+#modeScreen .sb-bar{height:5px;margin:4px 0 3px}
+#modeScreen .mode-corner-icon,#modeScreen .mode-filigree{display:none!important}
+#modeScreen .mode-card p{font-size:11px!important;line-height:1.35!important;margin:2px 0!important}
+#modeScreen .mode-card h3{margin:0!important}
+#modeScreen .mode-best{font-size:10.5px}
+#modeScreen .honor{width:30px;height:30px}
+#modeScreen .tower-rank-link{font-size:10.5px;padding:2px 0}
+#modeScreen *,#modeScreen *:before,#modeScreen *:after{animation:none!important}
+@media (orientation:portrait){
+ #modeScreen .mode-icon{height:clamp(96px,21vh,138px)!important;flex-basis:clamp(96px,21vh,138px)!important}
+}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5176,7 +5199,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b84878f2d5';
-const __HTML_V='55dcf302e8';
+const __HTML_V='4026a61c33';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7926,7 +7949,7 @@ function renderSeasonBanner(){
  var t=seasonTier(),pct=Math.min(100,Math.round(season.xp/SEASON_XP_TOTAL*100));
  var daysLeft=Math.max(0,(season.endDay==null?SEASON_DAYS:season.endDay)-dayIndex());
  var claimable=seasonClaimableCount();
- host.innerHTML='<div class="sb-art">\uD83C\uDFB5</div><div class="sb-copy"><b>Season '+season.id+' Pass — Tier '+t+'/'+SEASON_TIERS+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+daysLeft+' days left · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP</small></div>'+(claimable?'<span class="sb-badge">'+claimable+' CLAIM</span>':'');
+ host.innerHTML='<div class="sb-art">♛</div><div class="sb-copy"><b>Season '+season.id+' Pass — Tier '+t+'/'+SEASON_TIERS+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+daysLeft+' days left · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP</small></div>'+(claimable?'<span class="sb-badge">'+claimable+' CLAIM</span>':'');
  host.onclick=function(){try{sfx('coin')}catch(e){}setScreen('season');renderSeasonScreen()};
  host.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();host.onclick()}};
 }
