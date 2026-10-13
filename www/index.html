@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='9ad3645d99';
-const __HTML_V='80f7e9a4da';
+const __HTML_V='9f4ce4df1d';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -9786,6 +9786,7 @@ const GODSKINS=[
  /* SEASON PLACEHOLDER: season-exclusive godskin — sprite is an existing godskin webp until final art ships */
  {id:'season1',bossId:null,bossName:'Season 1',floor:0,name:'Skin of the First Season',sprite:'assets/godskin-season1.png',season:1}
 ];
+GODSKINS.forEach(function(g){g.sprite=__tkStampAsset(g.sprite)}); /* stamp once at boot: raw <img> renders of godskin art (shop/codex/customize) must carry the build stamp, or browsers serve a stale cached copy when the art changes under the same URL */
 const GODSKIN_MAP={};GODSKINS.forEach(function(g){GODSKIN_MAP[g.id]=g});
 /* defeat gate: persisted in the existing Tower storage (tk_tower_v1.defeatedGods) */
 function isGodskinUnlocked(id){const g=GODSKIN_MAP[id];return !!(g&&towerSave.defeatedGods&&towerSave.defeatedGods[g.bossId])}
