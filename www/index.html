@@ -4945,6 +4945,52 @@ img{pointer-events:none!important}
 #codexScreen .codex-reward{margin-bottom:0}
 }
 </style>
+<style id="modeCompact">
+/* Mode Select compact pass (2026-10-13): everything fits one view */
+#modeScreen .menu-topbar{padding:5px 10px;gap:6px}
+#modeScreen .menu-nav-btn{padding:6px 10px;font-size:11px}
+#modeScreen .menu-options-btn{width:32px;height:32px}
+#modeScreen .char-back{margin:2px 0 0 10px;padding:5px 10px;font-size:11.5px}
+#modeScreen .mode-head{padding:2px 16px 0!important}
+#modeScreen .mode-head h1{font-size:clamp(26px,4.6vw,40px)!important;line-height:1.05;margin:0!important}
+#modeScreen .mode-kicker{font-size:10px;letter-spacing:.26em}
+#modeScreen .mode-head p{display:none}
+#modeScreen .season-banner{align-self:center;width:calc(100% - 24px);max-width:900px;margin:6px auto 0;padding:7px 12px}
+#modeScreen .season-banner .sb-art{font-size:19px}
+#modeScreen .season-banner .sb-art img{width:32px;height:32px}
+#modeScreen .season-banner .sb-copy b{font-size:13px}
+#modeScreen .season-banner .sb-copy small{font-size:10px}
+#modeScreen .season-banner .sb-bar{height:5px;margin:3px 0 2px}
+#modeScreen .mode-cards{align-self:center;width:calc(100% - 24px);max-width:900px;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:8px 0 calc(10px + env(safe-area-inset-bottom))}
+#modeScreen .mode-card{border-width:2px;border-radius:14px;min-width:0;max-width:100%}
+#modeScreen .mode-card .mode-art,#modeScreen .glory-card .mode-art{height:clamp(60px,13vh,104px)}
+#modeScreen .mode-card h2{font-size:clamp(15px,2.6vw,21px);margin:6px 12px 1px}
+#modeScreen .mode-card>p{font-size:10.5px;line-height:1.32;min-height:0;margin:0 12px 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#modeScreen .mode-card .mode-best{font-size:10px;margin:0 12px 6px}
+#modeScreen .mode-card .primary,#modeScreen .mode-card .secondary{margin:0 12px 10px;width:calc(100% - 24px);min-height:38px;font-size:13px;padding:8px 12px}
+#modeScreen .dungeon-banner{margin:0 12px 6px;padding:8px 10px}
+#modeScreen .dungeon-banner .d-el{font-size:16px}
+#modeScreen .dungeon-banner .d-sub{font-size:10.5px;line-height:1.35}
+#modeScreen .dungeon-meta{margin:0 12px 6px;gap:4px}
+#modeScreen .dungeon-chip{font-size:9.5px;padding:3px 7px}
+#modeScreen .dungeon-odds{margin:0 12px 6px;font-size:10.5px;line-height:1.4}
+#modeScreen .dungeon-status{margin:0 12px 6px;font-size:10.5px}
+#modeScreen .dungeon-count{margin:0 12px 8px;font-size:10px}
+#modeScreen .dungeon-elements{margin:0 12px 6px;gap:4px}
+#modeScreen .dungeon-elements span{font-size:10px;padding:3px 7px}
+#modeScreen .dungeon-locked-note{margin:0 12px 8px;font-size:11px;line-height:1.4}
+#modeScreen .honor{width:26px;height:26px}
+#modeScreen .tower-rank-link{font-size:10px;padding:1px 0}
+@media(min-width:900px){
+#modeScreen.active{display:grid;grid-template-columns:1fr 1fr;align-content:start;column-gap:12px;padding-left:max(12px,calc((100vw - 1060px)/2));padding-right:max(12px,calc((100vw - 1060px)/2))}
+#modeScreen>*{grid-column:1/-1}
+#modeScreen .char-back{justify-self:start}
+#modeScreen .season-banner{grid-column:auto;width:100%;max-width:none;margin:6px 0 0;align-self:stretch}
+#modeScreen #eventBanner{grid-column:auto}
+#modeScreen .mode-cards{max-width:1060px;width:100%}
+}
+</style>
+
 
 
 
@@ -5465,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='2467647b56';
-const __HTML_V='0033e10b58';
+const __HTML_V='ca56a3d43e';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
