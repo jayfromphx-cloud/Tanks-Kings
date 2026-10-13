@@ -4723,6 +4723,24 @@ html.battery-saver .faction-shield{filter:none!important}
 input,textarea{-webkit-user-select:text!important;user-select:text!important;-webkit-touch-callout:default!important}
 img{-webkit-user-drag:none!important;user-drag:none!important}
 </style>
+<style>
+/* Character screen iPhone fix (2026-10-12). Three defects: (1) the head title
+   clipped — line-height .94 + overflow hidden + clip-text cuts the serif tops;
+   (2) the page bled off the right edge — the 1fr record grid could not shrink
+   below the evolution row's intrinsic width; (3) the tank's name/faction/rank
+   were printed twice (header + under the portrait). */
+#characterScreen{overflow-x:hidden}
+#characterScreen .char-wrap{box-sizing:border-box;width:100%;max-width:100%}
+#characterScreen .char-head{padding:6px 0 4px!important}
+#characterScreen .char-head-copy h1{font-size:clamp(23px,7vw,30px)!important;line-height:1.12!important;overflow:visible!important;padding-top:2px}
+#characterScreen .record-grid{min-width:0}
+#characterScreen .record-card{min-width:0;box-sizing:border-box}
+#characterScreen .record-name,#characterScreen .record-sub,#characterScreen .record-center{display:none}
+#characterScreen .record-kd{text-align:center;margin-top:10px}
+#characterScreen .evo-path{display:flex;gap:4px}
+#characterScreen .evo-step{flex:1;min-width:0;padding:6px 2px;font-size:9px;line-height:1.3}
+#characterScreen .record-portrait img{max-width:100%}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5237,7 +5255,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b84878f2d5';
-const __HTML_V='483ad59b66';
+const __HTML_V='5c889bea3c';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
