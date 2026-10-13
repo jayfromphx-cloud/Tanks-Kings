@@ -1,7 +1,7 @@
 {
-  "build": "05e312ea70",
-  "html": "4db7a6c3cb",
-  "assetCount": 224,
+  "build": "1c050cce66",
+  "html": "cd31c0285f",
+  "assetCount": 225,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -687,6 +687,11 @@
       "file": "assets/melee-bloomvale-lunge.png",
       "bytes": 615937,
       "md5": "f2935f3fa3791ff3bf6c5c9a12d1b7e0"
+    },
+    {
+      "file": "assets/melee-ember-lunge.png",
+      "bytes": 563537,
+      "md5": "d4e3451149f2adc12047a532cf944b47"
     },
     {
       "file": "assets/melee-icon-fist-256.png",
