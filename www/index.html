@@ -4625,6 +4625,22 @@ html.battery-saver .faction-shield{filter:none!important}
 /* Faction title (2026-10-12): fluid size so SELECT YOUR FACTION fits iPhone widths */
 .menu-content-head h1{font-size:clamp(20px,6vw,32px)!important;letter-spacing:.02em!important}
 </style>
+<style>
+/* Royal Equipment: simplified + instant (2026-10-12). No backdrop blur over the
+   live battle, no entrance animation, no infinite glints/pulses, flat card paint. */
+#itemsSheet{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(2,4,6,.82)}
+#itemsSheet .sheet{background:linear-gradient(170deg,#25394e,#0d1723 72%);box-shadow:0 18px 44px rgba(0,0,0,.65)}
+#itemsSheet *,#itemsSheet *:before,#itemsSheet *:after{animation:none!important;transition:none!important}
+#itemsSheet .slots{gap:7px}
+#itemsSheet .slot{background:linear-gradient(170deg,#202a36,#0e141b);box-shadow:inset 0 1px rgba(255,255,255,.07),0 3px 0 #020406;padding:8px 7px 7px}
+#itemsSheet .slot:hover{transform:none}
+#itemsSheet .slot-icon{box-shadow:0 0 0 2px var(--rarc-lo),inset 0 0 0 2px var(--pt),0 2px 5px rgba(0,0,0,.5)}
+#itemsSheet .slot-ability{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:0}
+#itemsSheet .slot-btn{min-height:34px}
+#itemsSheet .gear-summary{margin:2px 0 8px}
+#itemsSheet .setbox{background:linear-gradient(170deg,#221c10,#131007);box-shadow:none}
+#itemsSheet .loot{content-visibility:auto;contain-intrinsic-size:auto 92px;background:linear-gradient(170deg,#1c242e,#0e1319);box-shadow:0 2px 0 #020406}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5139,7 +5155,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b84878f2d5';
-const __HTML_V='a73be6c048';
+const __HTML_V='970cd0435b';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7153,9 +7169,9 @@ function itemScore(i){return i.power+({Common:0,Rare:5,Epic:13,Legendary:28}[i.r
 function slotStarsHTML(stars){let h='<div class="slot-stars" aria-hidden="true">';for(let k=0;k<PRESTIGE_MAX_STARS;k++)h+='<span class="star'+(k<stars?' lit':'')+'">★</span>';return h+'</div>'}
 function slotHTML(s){const i=state.equipped[s],rank=gearRankOf(s),stars=gearStarsOf(s),tier=stars>0?PRESTIGE_TIERS[stars]:null,maxed=rank>=GEAR_RANK_MAX;let btn;
 if(maxed&&stars>=PRESTIGE_MAX_STARS)btn='<button class="slot-btn maxed" disabled>MYTHIC MAX</button>';
-else if(maxed){const next=PRESTIGE_TIERS[stars+1],sc=PRESTIGE_SCRAP_COST[stars+1],ok=state.scrap>=sc&&prestigeEmblemTotal()>=1;btn='<button class="slot-btn prestige" data-act="prestige" data-slot="'+s+'"'+(ok?'':' disabled')+'>⛨ PRESTIGE → '+next.name.toUpperCase()+'<br><span class="slot-btn-sub">⚙ '+fmtN(sc)+' Scrap + 1 ⛨ Emblem</span></button>'}
-else{const c=gearRankCost(rank);btn='<button class="slot-btn" data-act="rankup" data-slot="'+s+'"'+(state.scrap>=c?'':' disabled')+'>⚙ FORGE RANK '+(rank+1)+'<br><span class="slot-btn-sub">'+fmtN(c)+' Scrap · +'+Math.round(GEAR_RANK_POWER*prestigeMult(stars))+' PWR</span></button>'}
-return '<div class="slot'+(i?' filled':' vacant')+'" id="slot-'+s+'" data-rarity="'+(i?i.rarity:'')+'" data-tier="'+(tier?tier.name.toLowerCase():'')+'"><div class="slot-icon">'+slotIconHTML(s)+'</div><b>'+s+'</b><small>'+(i?'<span class="rar-pill">'+i.rarity+'</span> '+byK(i.kingdom).name+' · +'+i.power:'Empty slot')+'</small><div class="slot-ability">'+(i?i.ability:abilities[s])+'</div>'+slotStarsHTML(stars)+(tier?'<div class="slot-tier">'+tier.name+' Tier</div>':'')+'<div class="slot-rank"><span>Rank '+rank+'/'+GEAR_RANK_MAX+'</span><span class="slot-pwr">+'+Math.round(slotPower(s))+' PWR</span></div><div class="rank-bar"><i style="width:'+Math.round(rank/GEAR_RANK_MAX*100)+'%"></i></div>'+btn+'</div>'}
+else if(maxed){const next=PRESTIGE_TIERS[stars+1],sc=PRESTIGE_SCRAP_COST[stars+1],ok=state.scrap>=sc&&prestigeEmblemTotal()>=1;btn='<button class="slot-btn prestige" data-act="prestige" data-slot="'+s+'"'+(ok?'':' disabled')+'>⛨ PRESTIGE → '+next.name.toUpperCase()+' · ⚙ '+fmtN(sc)+' + 1 ⛨</button>'}
+else{const c=gearRankCost(rank);btn='<button class="slot-btn" data-act="rankup" data-slot="'+s+'"'+(state.scrap>=c?'':' disabled')+'>⚙ FORGE '+(rank+1)+' · '+fmtN(c)+' SCRAP · +'+Math.round(GEAR_RANK_POWER*prestigeMult(stars))+' PWR</button>'}
+return '<div class="slot'+(i?' filled':' vacant')+'" id="slot-'+s+'" data-rarity="'+(i?i.rarity:'')+'" data-tier="'+(tier?tier.name.toLowerCase():'')+'"><div class="slot-icon">'+slotIconHTML(s)+'</div><b>'+s+'</b><small>'+(i?'<span class="rar-pill">'+i.rarity+'</span> '+byK(i.kingdom).name+' · +'+i.power:'Empty slot')+'</small><div class="slot-ability">'+(i?i.ability:abilities[s])+'</div>'+(stars>0?slotStarsHTML(stars):'')+(tier?'<div class="slot-tier">'+tier.name+' Tier</div>':'')+'<div class="slot-rank"><span>Rank '+rank+'/'+GEAR_RANK_MAX+'</span><span class="slot-pwr">+'+Math.round(slotPower(s))+' PWR</span></div><div class="rank-bar"><i style="width:'+Math.round(rank/GEAR_RANK_MAX*100)+'%"></i></div>'+btn+'</div>'}
 function prestigeSetLine(){const counts={};slots.forEach(s=>{const st=gearStarsOf(s);if(st>0)counts[st]=(counts[st]||0)+1});const best=Object.keys(counts).map(Number).sort((a,b)=>b-a)[0];const active=prestigeSetBonus();let inner;if(active){const t=active.tier;inner='<span class="prestige-set-active">✦ FULL '+t.name.toUpperCase()+' SET — +'+Math.round(t.set*100)+'% ULT damage!</span>'}else if(best){const t=PRESTIGE_TIERS[best];inner='Prestige set: <b>'+counts[best]+'/6 '+t.name+'</b> — a full same-tier set unlocks +'+Math.round(t.set*100)+'% ULT damage.'}else{inner='Forge a part to Rank '+GEAR_RANK_MAX+', then prestige it with 1 ⛨ Emblem to earn ★ stars and evolve its tier.'}return '<span class="prestige-setline">'+inner+'</span>'}
 const INVENTORY_PAGE_SIZE=50;
 const SALVAGE_BASE={Common:5,Rare:15,Epic:40,Legendary:100};
