@@ -4715,6 +4715,14 @@ html.battery-saver .faction-shield{filter:none!important}
 #titleScreen .hero-stage{background:radial-gradient(130% 100% at 50% 0%,#241611 0%,#0a0a10 55%,#05090f 100%)!important}
 #titleScreen .hero-stage img{object-fit:contain!important;object-position:center center!important}
 </style>
+<style>
+/* Native-app lockdown (2026-10-12): no text/asset selection, no long-press
+   callout or magnifier, no tap highlight, no image drag — anywhere in the game.
+   Text inputs keep editing + paste (guild name / invite code need them). */
+*{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important;-webkit-tap-highlight-color:transparent!important}
+input,textarea{-webkit-user-select:text!important;user-select:text!important;-webkit-touch-callout:default!important}
+img{-webkit-user-drag:none!important;user-drag:none!important}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5229,7 +5237,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b84878f2d5';
-const __HTML_V='6df3048edb';
+const __HTML_V='483ad59b66';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -11538,6 +11546,11 @@ window.TanksKingsDebug.idleReset=function(){try{idleClearRecord();if($('idleShee
 })();
 
 
+</script>
+<script>
+document.addEventListener('selectstart',function(e){var t=e.target;if(!t||(t.tagName!=='INPUT'&&t.tagName!=='TEXTAREA'))e.preventDefault();},true);
+document.addEventListener('contextmenu',function(e){var t=e.target;if(!t||(t.tagName!=='INPUT'&&t.tagName!=='TEXTAREA'))e.preventDefault();},true);
+document.addEventListener('dragstart',function(e){e.preventDefault();},true);
 </script>
 </body>
 </html>
