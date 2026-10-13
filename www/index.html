@@ -4902,6 +4902,12 @@ img{-webkit-user-drag:none!important;user-drag:none!important}
 #upgradeSheet .evolve-btn{min-height:34px}
 }
 </style>
+<style id="hardLockdown">
+/* Hard lockdown (2026-10-13): no highlight, no zoom, no long-press preview on ANYTHING */
+img{pointer-events:none!important}
+*:not(input):not(textarea)::selection{background:transparent!important;color:inherit!important}
+</style>
+
 
 
 
@@ -5420,7 +5426,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='2467647b56';
-const __HTML_V='464239db88';
+const __HTML_V='fb5bdf7ae5';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
