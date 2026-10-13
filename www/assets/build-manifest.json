@@ -1,7 +1,7 @@
 {
-  "build": "2699d8a118",
-  "html": "548416ba3f",
-  "assetCount": 231,
+  "build": "faa8b3fab9",
+  "html": "b5d180c674",
+  "assetCount": 244,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -594,6 +594,91 @@
       "md5": "32654ef8ca651484ed3deea05193839b"
     },
     {
+      "file": "assets/keyed-projectile-bloom.png",
+      "bytes": 230292,
+      "md5": "65a805b8c948f407bbfcfdebb549aa61"
+    },
+    {
+      "file": "assets/keyed-projectile-ember.png",
+      "bytes": 210803,
+      "md5": "37c35fe1c25cfe742ea7bd966f52b38a"
+    },
+    {
+      "file": "assets/keyed-projectile-gk-bloom.png",
+      "bytes": 410805,
+      "md5": "93f14cebf86d3f165e36981448aa3f9a"
+    },
+    {
+      "file": "assets/keyed-projectile-gk-ember.png",
+      "bytes": 414731,
+      "md5": "d1d3c3bb5f65e60c5c1ff92f95c921d6"
+    },
+    {
+      "file": "assets/keyed-projectile-gk-iron.png",
+      "bytes": 412992,
+      "md5": "0885c3e917e087f2e4eb010a2f87f271"
+    },
+    {
+      "file": "assets/keyed-projectile-gk-tide.png",
+      "bytes": 393372,
+      "md5": "fb0c13669c24438d32334e5438e6f1f7"
+    },
+    {
+      "file": "assets/keyed-projectile-gk-volt.png",
+      "bytes": 442779,
+      "md5": "861d0b42e6b7650e980e7b0267df813d"
+    },
+    {
+      "file": "assets/keyed-projectile-iron.png",
+      "bytes": 220715,
+      "md5": "bed139020589a7837ef71e01872ad619"
+    },
+    {
+      "file": "assets/keyed-projectile-tide.png",
+      "bytes": 205667,
+      "md5": "79313ed7b6259e3607b4538b3c379b74"
+    },
+    {
+      "file": "assets/keyed-projectile-v1.png",
+      "bytes": 304792,
+      "md5": "beba963355b96012575da82e59423771"
+    },
+    {
+      "file": "assets/keyed-projectile-volt.png",
+      "bytes": 154671,
+      "md5": "fdc4dabf508a064fabc6b6142a4f28cc"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-bloom.png",
+      "bytes": 694856,
+      "md5": "6e66c4bff5e8d42757f5305ae6d6ea26"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-cinder.png",
+      "bytes": 575582,
+      "md5": "e2870944136498259b8c327a124a60d7"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-iron.png",
+      "bytes": 763027,
+      "md5": "49c06a20ade99f2b46a2ec7a5c96a079"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-tide.png",
+      "bytes": 585631,
+      "md5": "51b6888951345e2cd945856ae8acd730"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-volt.png",
+      "bytes": 809216,
+      "md5": "002da42b38fdc98924d45d847bb58bb5"
+    },
+    {
+      "file": "assets/keyed-ultimate-arcane.png",
+      "bytes": 792971,
+      "md5": "226b3241ed13af2b4dad5a322da0eecf"
+    },
+    {
       "file": "assets/logo.png",
       "bytes": 607922,
       "md5": "51b1708bd500bf9d057ff9a0b134ec97"
@@ -979,11 +1064,6 @@
       "md5": "4dfb79d0f17c9d75dec58670945266ea"
     },
     {
-      "file": "assets/tower-boss-frost.png",
-      "bytes": 2482821,
-      "md5": "4b5df7557c2a4ee39397398ae7e2da63"
-    },
-    {
       "file": "assets/tower-boss-gale-hd.png",
       "bytes": 3132282,
       "md5": "37efabf49ca00638aab09a72a5a102c5"
@@ -1004,11 +1084,6 @@
       "md5": "77bc82c60a90ba0118d2f1a20ef8ae6a"
     },
     {
-      "file": "assets/tower-boss-pyra.png",
-      "bytes": 2058600,
-      "md5": "aeb93708b550448bd1b85bb4ee16ee22"
-    },
-    {
       "file": "assets/tower-boss-solarion.png",
       "bytes": 1773791,
       "md5": "57a0c43f8af6fbb4520eda0bd4761b98"
@@ -1024,11 +1099,6 @@
       "md5": "5519a4f222bfab5f471d5395e16dace6"
     },
     {
-      "file": "assets/tower-boss-thorn.png",
-      "bytes": 2570608,
-      "md5": "aa40be40b8477fa2aecb498d9e5356d6"
-    },
-    {
       "file": "assets/tower-boss-tidefather.png",
       "bytes": 2061202,
       "md5": "10ad986a57bc9f521e012fb3bf948070"
@@ -1037,11 +1107,6 @@
       "file": "assets/tower-boss-umbra-hd.png",
       "bytes": 2109764,
       "md5": "713ab8e077d481e35b575b0d0660b371"
-    },
-    {
-      "file": "assets/tower-boss-umbra.png",
-      "bytes": 2147863,
-      "md5": "ab02b8eb2eb431435231d4f0f862b9d1"
     },
     {
       "file": "assets/tower-gate-portal.png",
