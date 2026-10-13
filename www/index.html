@@ -4946,50 +4946,47 @@ img{pointer-events:none!important}
 }
 </style>
 <style id="modeCompact">
-/* Mode Select compact pass (2026-10-13): everything fits one view */
-#modeScreen .menu-topbar{padding:5px 10px;gap:6px}
-#modeScreen .menu-nav-btn{padding:6px 10px;font-size:11px}
-#modeScreen .menu-options-btn{width:32px;height:32px}
-#modeScreen .char-back{margin:2px 0 0 10px;padding:5px 10px;font-size:11.5px}
-#modeScreen .mode-head{padding:2px 16px 0!important}
-#modeScreen .mode-head h1{font-size:clamp(26px,4.6vw,40px)!important;line-height:1.05;margin:0!important}
-#modeScreen .mode-kicker{font-size:10px;letter-spacing:.26em}
-#modeScreen .mode-head p{display:none}
+/* Mode Select compact pass v2 (2026-10-13, bug test #4 U-2): v1 lost the
+   cascade to the mockup theme block (every rule !important) and targeted
+   classes that do not exist (.mode-art). v2 uses the real selectors with
+   winning specificity — header, banners and all four mode cards fit one
+   view, no scrolling. Card art/design unchanged, sizes only. */
+#modeScreen .menu-topbar{padding:5px 10px!important;gap:6px!important}
+#modeScreen .menu-nav-btn{padding:6px 10px!important;font-size:11px!important}
+#modeScreen .menu-options-btn{width:32px!important;height:32px!important}
+#modeScreen #modeBackBtn{height:36px!important;min-height:36px!important;margin:4px 14px 0!important}
+#modeScreen .mode-head{padding:0 16px!important}
+#modeScreen .mode-head:after{margin:4px auto 0!important}
+#modeScreen .mode-head h1{font-size:clamp(25px,4.2vw,36px)!important;line-height:1.05!important;margin:0!important}
+#modeScreen .mode-kicker{font-size:9.5px!important;letter-spacing:.26em!important}
+#modeScreen .mode-head p{display:none!important}
 #modeScreen .season-banner{align-self:center;width:calc(100% - 24px);max-width:900px;margin:6px auto 0;padding:7px 12px}
 #modeScreen .season-banner .sb-art{font-size:19px}
 #modeScreen .season-banner .sb-art img{width:32px;height:32px}
 #modeScreen .season-banner .sb-copy b{font-size:13px}
 #modeScreen .season-banner .sb-copy small{font-size:10px}
 #modeScreen .season-banner .sb-bar{height:5px;margin:3px 0 2px}
-#modeScreen .mode-cards{align-self:center;width:calc(100% - 24px);max-width:900px;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:8px 0 calc(10px + env(safe-area-inset-bottom))}
-#modeScreen .mode-card{border-width:2px;border-radius:14px;min-width:0;max-width:100%}
-#modeScreen .mode-card .mode-art,#modeScreen .glory-card .mode-art{height:clamp(60px,13vh,104px)}
-#modeScreen .mode-card h2{font-size:clamp(15px,2.6vw,21px);margin:6px 12px 1px}
-#modeScreen .mode-card>p{font-size:10.5px;line-height:1.32;min-height:0;margin:0 12px 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-#modeScreen .mode-card .mode-best{font-size:10px;margin:0 12px 6px}
-#modeScreen .mode-card .primary,#modeScreen .mode-card .secondary{margin:0 12px 10px;width:calc(100% - 24px);min-height:38px;font-size:13px;padding:8px 12px}
-#modeScreen .dungeon-banner{margin:0 12px 6px;padding:8px 10px}
-#modeScreen .dungeon-banner .d-el{font-size:16px}
-#modeScreen .dungeon-banner .d-sub{font-size:10.5px;line-height:1.35}
-#modeScreen .dungeon-meta{margin:0 12px 6px;gap:4px}
-#modeScreen .dungeon-chip{font-size:9.5px;padding:3px 7px}
-#modeScreen .dungeon-odds{margin:0 12px 6px;font-size:10.5px;line-height:1.4}
-#modeScreen .dungeon-status{margin:0 12px 6px;font-size:10.5px}
-#modeScreen .dungeon-count{margin:0 12px 8px;font-size:10px}
-#modeScreen .dungeon-elements{margin:0 12px 6px;gap:4px}
-#modeScreen .dungeon-elements span{font-size:10px;padding:3px 7px}
-#modeScreen .dungeon-locked-note{margin:0 12px 8px;font-size:11px;line-height:1.4}
-#modeScreen .honor{width:26px;height:26px}
-#modeScreen .tower-rank-link{font-size:10px;padding:1px 0}
+#modeScreen .mode-cards{width:min(1060px,calc(100% - 24px))!important;gap:10px!important;padding:6px 0 8px!important}
+#modeScreen .mode-corner-icon{width:40px!important;height:40px!important}
+#modeScreen .mode-recommended{font-size:9px!important;padding:4px 10px 3px!important}
+#modeScreen .mode-resource-bar{min-height:46px!important;margin-bottom:4px!important}
+@media(min-height:621px){
+#modeScreen .mode-card{height:clamp(196px,27vh,216px)!important;min-height:0!important;max-height:none!important;padding:8px 10px 10px!important}
+#modeScreen .mode-icon{height:clamp(84px,12.5vh,104px)!important;flex:0 0 clamp(84px,12.5vh,104px)!important;width:min(86%,210px)!important}
+#modeScreen .mode-card h2{font-size:clamp(18px,2.6vw,24px)!important}
+#modeScreen .mode-card h3{margin:4px 0 3px!important;font-size:11px!important}
+#modeScreen .mode-card>p{font-size:10.5px!important;line-height:1.3!important;display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;overflow:hidden!important}
+}
 @media(min-width:900px){
-#modeScreen.active{display:grid;grid-template-columns:1fr 1fr;align-content:start;column-gap:12px;padding-left:max(12px,calc((100vw - 1060px)/2));padding-right:max(12px,calc((100vw - 1060px)/2))}
+#modeScreen.active{display:grid!important;grid-template-columns:1fr 1fr;align-content:start;column-gap:12px;padding-left:max(12px,calc((100vw - 1060px)/2));padding-right:max(12px,calc((100vw - 1060px)/2))}
 #modeScreen>*{grid-column:1/-1}
-#modeScreen .char-back{justify-self:start}
-#modeScreen .season-banner{grid-column:auto;width:100%;max-width:none;margin:6px 0 0;align-self:stretch}
-#modeScreen #eventBanner{grid-column:auto}
-#modeScreen .mode-cards{max-width:1060px;width:100%}
+#modeScreen #modeBackBtn{justify-self:start}
+#modeScreen .season-banner{grid-column:auto;width:auto;max-width:none;margin:6px 0 0;align-self:stretch}
+#modeScreen .mode-cards{width:100%!important}
 }
 </style>
+
+
 
 
 
@@ -5337,7 +5334,10 @@ try{
  var __tkLogo=document.querySelector('.title-logo');
  if(__tkLogo){
   var __tkTapCount=0,__tkTapLast=0;
-  __tkLogo.addEventListener('pointerdown',function(){
+  document.addEventListener('pointerdown',function(ev){
+   var __tkTs=document.getElementById('titleScreen');if(!__tkTs||!__tkTs.classList.contains('active'))return;
+   var __tkR=__tkLogo.getBoundingClientRect();if(!__tkR.width)return;
+   if(ev.clientX<__tkR.left||ev.clientX>__tkR.right||ev.clientY<__tkR.top||ev.clientY>__tkR.bottom){__tkTapCount=0;return}
    var __tkNow=Date.now();
    __tkTapCount=(__tkNow-__tkTapLast<=900)?__tkTapCount+1:1;
    __tkTapLast=__tkNow;
@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='9ad3645d99';
-const __HTML_V='42140a2ef4';
+const __HTML_V='80f7e9a4da';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5847,6 +5847,7 @@ function progressLoad(){
   if(raw){
    const d=JSON.parse(raw);
    if(d&&typeof d==='object'&&!Array.isArray(d)){
+    if(d.savedAt)window.__tkSavedAtMine=d.savedAt; /* seed the cross-tab guard so it works from this tab's first save */
     window.TanksKingsSave.load(Object.assign({},d)); /* ONE versioned record restores everything, store included */
     loaded=true;
    }
@@ -6488,7 +6489,7 @@ function tryPerfectParry(){
     if(p.x>0.24&&p.x<0.55){
       const _ps=parrySkill(chosenTank);
       const reflDmg=Math.max(Math.round(totalAtk()*_ps.reflect*_ps.mult),Math.round((p.dmg||enemyHitDamage(state.wave,(state.enemy&&state.enemy.type)||'grunt'))*3));
-      p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=reflDmg;p.color=parryColor;p.perfect=true;p.y=Math.min(.62,Math.max(.48,p.y));
+      p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=reflDmg;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
       if(_ps.stun)p.stun=_ps.stun;
       parried++;
       burst(p.x,.56,'#ffffff',16,'impact');
@@ -6612,7 +6613,7 @@ function tkMeleeArtSwap(on){
 function tryMeleeRam(){
   if(byT(chosenTank).role!=='Vanguard'||!state.enemy||state.playerDead||state.paused||document.hidden||!state.running||state.screen!=='battle')return false;
   if((state.meleeCd||0)>0)return false;
-  state.meleeCd=chargeCdMax();state.shotClock=0;const _ramTarget=state.enemy;
+  state.meleeCd=chargeCdMax();state.shotClock=0;const _ramTarget=state.enemy;state._ramGen=(state._ramGen||0)+1;const _ramGen=state._ramGen;
   const k=byT(chosenTank).k,
     impactColor={iron:'#fff1a6',ember:'#ff6538',volt:'#d8c4ff',bloom:'#c8ef71',tide:'#bff8ff'}[k]||'#fff1a6';
   /* Measure the real gap: hero nose → enemy hull, burying ~22% into the enemy
@@ -6640,7 +6641,7 @@ function tryMeleeRam(){
   /* Phase 3: impact at lunge apex (~700ms) — flash + shockwave + damage */
   function _ramImpact(){
     if(state.paused||document.hidden){state.meleeCd=0;tkMeleeArtSwap(false);try{if(rig)rig.classList.remove('melee-charge');updateAbilityUI()}catch(e){}return}
-    if(!state.running||state.screen!=='battle'||state.playerDead||state.enemy!==_ramTarget)return;
+    if(!state.running||state.screen!=='battle'||state.playerDead||state.enemy!==_ramTarget){state.meleeCd=0;tkMeleeArtSwap(false);try{if(rig)rig.classList.remove('melee-charge');updateAbilityUI()}catch(e){}return;}
     spawnMeleeImpactArt();
     spawnMeleeFlash();
     spawnMeleeShockwave();
@@ -6658,7 +6659,7 @@ function tryMeleeRam(){
   }
   setTimeout(_ramImpact,700);
   /* Phase 4: cleanup — rig home and visible again, charge class off */
-  setTimeout(()=>{tkMeleeArtSwap(false);try{var r2=he('playerRig');if(r2){r2.classList.remove('melee-charge');r2.style.visibility=''}}catch(e){}},1680);
+  setTimeout(()=>{if(state._ramGen!==_ramGen)return;tkMeleeArtSwap(false);try{var r2=he('playerRig');if(r2){r2.classList.remove('melee-charge');r2.style.visibility=''}}catch(e){}},1680);
   return true;
 }
 /* MISSILE — Artillery signature skill: long-range missile strike.
@@ -6732,6 +6733,7 @@ function damagePlayer(amount){if(state.invincible>0||state.playerDead)return;let
 if(state.abFx.cinderAegisT>0)amount*=.5;
 let abyssalHeal=0;
 if(state.abFx.abyssalT>0){const _cp=(ABILITIES[chosenTank]&&ABILITIES[chosenTank].def&&ABILITIES[chosenTank].def.convertPct)||.5;abyssalHeal=amount*_cp;amount*=.5}let absorbed=Math.min(state.shield,amount),hpDamage=Math.max(0,amount-absorbed);state.shield=Math.max(0,state.shield-absorbed);state.shieldCooldown=2.6;state.hp-=hpDamage;
+if(state.hp<=0)state.playerDead=true; /* lethal: mark death BEFORE the reflect calls below, so a reflect kill registers as a mutual kill and the mode kill handlers' playerDead guards engage as designed (bug test #4 M-1) */
 /* God signatures on the player's hull: Solarion burns, Frost chills (swung per-hit), Thorn bleeds. */
 if(hpDamage>0&&state.mode==='tower'&&state.enemy&&state.enemy.god){var eg=state.enemy.godId;
  if(eg==='solarion'){state.sunburnT=4;number(.23,.36,'SUNBURNED','#ffb13c','status')}
@@ -6741,7 +6743,7 @@ state.shake=Math.max(state.shake,8);state.shakeDirX=-1;retriggerArt('playerRig',
 /* Static Field zap: attackers that connect during the field eat a lightning strike (P2-2) */
 if(state.abFx.staticFieldT>0&&state.enemy&&amount>0){var zapMult=(ABILITIES[chosenTank].def.zapMult||0);if(zapMult>0)damageEnemy(totalAtk()*zapMult,false,'ability')}
 if(abyssalHeal>0)state.hp=Math.min(state.maxHp,state.hp+abyssalHeal);
-if(state.hp<=0&&state.abFx.phoenixArmed&&!state.phoenixUsed){state.phoenixUsed=true;state.abFx.phoenixArmed=false;state.hp=Math.round(state.maxHp*.30);if(state.enemy)damageEnemy(totalAtk()*2.0,true,'ability');number(.23,.43,'PHOENIX!','#ffb13c','ult');burst(.24,.56,'#ff9b45',40,'star');updateHUD();updateAbilityUI();return}
+if(state.hp<=0&&state.abFx.phoenixArmed&&!state.phoenixUsed){state.phoenixUsed=true;state.abFx.phoenixArmed=false;state.hp=Math.round(state.maxHp*.30);state.playerDead=false;if(state.enemy)damageEnemy(totalAtk()*2.0,true,'ability');number(.23,.43,'PHOENIX!','#ffb13c','ult');burst(.24,.56,'#ff9b45',40,'star');updateHUD();updateAbilityUI();return}
 if(state.hp<=0){if(state.mode==='tower'){towerDefeat();return}if(state.mode==='dungeon'){dungeonDefeat();return}if(state.mode==='glory'){gloryDefeat();return}if(state.mode==='guild'){guildDefeat();return}campaignDefeat();return}updateHUD()}
 /* ================= Idle farming (offline progress) =================
  * While the player is away (app closed / backgrounded), their tank patrols
@@ -8591,7 +8593,7 @@ function guildEnsure(){
  if(!guild.inGuild)return;
  var wk=guildWeekKey(),changed=false;
  if(guild.weekKey==null){guild.weekKey=wk;guild.bossId=guildBossForWeek(wk);guild.contributions={};changed=true}
- else if(guild.weekKey<wk){guildSettleWeek(wk);changed=true}
+ else if(guild.weekKey<wk&&!(typeof loginFrozen==='function'&&loginFrozen())){guildSettleWeek(wk);changed=true} /* freeze-gated like season rollover: a jumped clock must not manufacture banked weeks */
  if(!guild.bossId){guild.bossId=guildBossForWeek(guild.weekKey);changed=true}
  var me=guildMyMember();
  if(!me){guild.members.push({id:guild.myId,name:guild.myName});if(guild.members.length>GUILD_MAX_MEMBERS)guild.members.length=GUILD_MAX_MEMBERS;changed=true}
@@ -8734,6 +8736,7 @@ function guildAttemptUsedToday(){return guild.lastAttemptDay===dayIndex()}
 function startGuildBattle(){
  guildEnsure();
  if(!guild.inGuild)return;
+ if(typeof loginFrozen==='function'&&loginFrozen()){showToast('Guild battles are frozen while the clock is in question.');return}
  if(guildBossKilled()){showToast('The guild boss has already fallen this week.');return}
  if(guildAttemptUsedToday()){showToast('You have used today’s guild attempt.');return}
  guild.lastAttemptDay=dayIndex();guildSave(); /* the attempt is consumed at entry — no retreat farming */
@@ -8804,7 +8807,7 @@ function seasonPremiumProduct(){
   grant:function(){season.premium=true;season.premiumReceipt={when:Date.now(),price:'$9.99'};try{if(typeof progressSaveSoon==='function')progressSaveSoon()}catch(e){}}};
 }
 function renderSeasonScreen(){
- try{seasonEnsure()}catch(e){}
+ try{seasonEnsure();seasonResetDayWeek()}catch(e){}
  var k=$('seasonKicker');if(k)k.textContent='Season '+season.id;
  var cd=$('seasonCountdown');
  if(cd){var daysLeft=Math.max(0,(season.endDay==null?SEASON_DAYS:season.endDay)-dayIndex());cd.textContent=daysLeft+' day'+(daysLeft===1?'':'s')+' remaining · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP';}
@@ -8813,14 +8816,12 @@ function renderSeasonScreen(){
  var bb=$('seasonBackBtn');
  if(bb&&!bb._wired){bb._wired=true;bb.onclick=function(){try{sfx('coin')}catch(e){}setScreen('mode');renderModeSelect()}}
 }
+function seasonResetDayWeek(){var today=dayIndex();if(season.daily.day!==today)season.daily={day:today,prog:{},done:{}};var wk=seasonWeekKey();if(season.weekly.week!==wk)season.weekly={week:wk,prog:{},done:{}}}
 function seasonBump(kind,n){
  if(typeof loginFrozen==='function'){try{if(loginFrozen())return}catch(e){}}
  try{seasonEnsure()}catch(e){}
  n=n||1;
- var today=dayIndex();
- if(season.daily.day!==today)season.daily={day:today,prog:{},done:{}};
- var wk=seasonWeekKey();
- if(season.weekly.week!==wk)season.weekly={week:wk,prog:{},done:{}};
+ seasonResetDayWeek();
  var gained=0;
  [['daily',SEASON_DAILY],['weekly',SEASON_WEEKLY]].forEach(function(pair){
   var st=season[pair[0]],defs=pair[1];
@@ -11294,7 +11295,7 @@ loadTower();
  */
 var glory={trophies:0,best:0,pendingDuel:false};
 try{var _gp=(window.__tkPendingSave&&window.__tkPendingSave.glory)||null;if(_gp&&typeof _gp==='object'){glory.trophies=Math.max(0,_gp.trophies|0);glory.best=Math.max(0,_gp.best|0);glory.pendingDuel=_gp.pendingDuel===true}else{var _gt=parseInt(localStorage.getItem('tk_glory_trophies')||'0',10);if(!isNaN(_gt))glory.trophies=Math.max(0,_gt);var _gb=parseInt(localStorage.getItem('tk_glory_best')||'0',10);if(!isNaN(_gb))glory.best=Math.max(0,_gb);}}catch(e){}
-try{if(glory.pendingDuel){glory.pendingDuel=false;var _pd=gloryTrophyDelta(false);glory.trophies=Math.max(0,glory.trophies+_pd);glory.best=Math.max(glory.best,glory.trophies);setTimeout(function(){try{glorySave();showToast('Unfinished duel settled as a forfeit — ' + _pd + ' 🏆')}catch(e){}},900)}}catch(e){}
+try{if(glory.pendingDuel){glory.pendingDuel=false;var _pd=gloryTrophyDelta(false);glory.trophies=Math.max(0,glory.trophies+_pd);glory.best=Math.max(glory.best,glory.trophies);setTimeout(function(){try{glorySave();progressSave();showToast('Unfinished duel settled as a forfeit — ' + _pd + ' 🏆')}catch(e){}},900)}}catch(e){}
 function glorySave(){progressSaveSoon()} /* unified record only */
 function gloryRankFor(t){if(t>=3000)return'Champion';if(t>=2000)return'Diamond I';if(t>=1500)return'Diamond III';if(t>=1200)return'Platinum I';if(t>=900)return'Platinum III';if(t>=600)return'Gold I';if(t>=400)return'Gold III';if(t>=200)return'Silver I';if(t>=100)return'Silver III';if(t>=50)return'Bronze I';return'Bronze III';}
 var GLORY_NAMES=['IronDuke','CrimsonVow','SteelTempest','Warhound99','GoldenPhalanx','NightSiege','ThunderHull','EmberKnight','StormcallerX','IronMaiden7','BlitzKrieg21','CannonFodder','Dreadnought','ValkyrieWing','SiegeBreaker','TurretTitan','ArmorAce','BattleBorn','WarMachine88','IronResolve','CrimsonTide','SteelVanguard','ThunderRoad','NightFury12','GoldenGunner','StormBringer','IronClad99','WarEagle','CannonKing','SteelStormX'];
@@ -11389,6 +11390,7 @@ function gloryTrophyDelta(win){
 }
 function gloryOnEnemyKilled(e){
   if(!e)return;
+  if(state.playerDead)return; /* mutual kill: the defeat path owns the outcome */
   state.hitStop=Math.max(state.hitStop,.055);state.shake=Math.max(state.shake,13);
   var reward=Math.round(25*ENEMY_TYPE_STATS[e.type].scrapMult);state.scrap+=reward;
   var svc=serviceFor(chosenTank);svc.kills++;
@@ -11396,8 +11398,8 @@ function gloryOnEnemyKilled(e){
   burst(e.x,.55,'#ff9a5d',54,'death');spawnDebris(e.x,.55,1);
   state.scorches.push({x:e.x,y:.72,life:10,size:42});if(state.scorches.length>9)state.scorches.shift();
   number(Math.max(.56,e.x-.14),.2,'+'+reward+' Scrap','#ffdb55','reward');
-  $('enemySprite').classList.add('defeat');state.enemy=null;updateHUD();
-  if(!state.gloryCommitted){state.gloryCommitted=true;var _gwd=gloryTrophyDelta(true);glory.trophies=Math.max(0,glory.trophies+_gwd);glory.best=Math.max(glory.best,glory.trophies);state.gloryResultDelta=_gwd;glory.pendingDuel=false;try{glorySave()}catch(e){}}
+  $('enemySprite').classList.add('defeat');state.enemy=null;state.projectiles.length=0;updateHUD(); /* clear in-flight rival shells so nothing can kill the player during the victory delay */
+  if(!state.gloryCommitted){state.gloryCommitted=true;var _gwd=gloryTrophyDelta(true);glory.trophies=Math.max(0,glory.trophies+_gwd);glory.best=Math.max(glory.best,glory.trophies);state.gloryResultDelta=_gwd;glory.pendingDuel=false;try{glorySave();progressSave()}catch(e){}}
   try{if(typeof seasonBump==='function')seasonBump('kills',1)}catch(_se){}
   setTimeout(function(){if(state.mode!=='glory'||state.screen!=='battle'||state.playerDead)return;gloryVictory();},900);
 }
@@ -11416,16 +11418,16 @@ function gloryVictory(){
 function gloryForfeit(){
  if(state.gloryCommitted)return;state.gloryCommitted=true;glory.pendingDuel=false;
  var delta=gloryTrophyDelta(false);
- glory.trophies=Math.max(0,glory.trophies+delta);try{glorySave()}catch(e){}
+ glory.trophies=Math.max(0,glory.trophies+delta);try{glorySave();progressSave()}catch(e){}
  try{showToast('Duel forfeited \u2014 '+delta+' \uD83C\uDFC6')}catch(e){}
 }
 function gloryDefeat(){
-  if(state.playerDead)return;
+  if(state.playerDead||state.gloryCommitted)return;
   state.playerDead=true;state.running=false;
   try{$('playerRig').classList.add('defeat')}catch(e){}
   state.cineSlow=1.15;state.hitStop=Math.max(state.hitStop,.09);state.shake=Math.max(state.shake,22);
   state.projectiles.length=0;burst(.16,.48,'#ffd76a',80,'bossdeath');sfx('kill');updateHUD();
-  if(!state.gloryCommitted){state.gloryCommitted=true;var _gdd=gloryTrophyDelta(false);glory.trophies=Math.max(0,glory.trophies+_gdd);state.gloryResultDelta=_gdd;glory.pendingDuel=false;try{glorySave()}catch(e){}}
+  if(!state.gloryCommitted){state.gloryCommitted=true;var _gdd=gloryTrophyDelta(false);glory.trophies=Math.max(0,glory.trophies+_gdd);state.gloryResultDelta=_gdd;glory.pendingDuel=false;try{glorySave();progressSave()}catch(e){}}
   setTimeout(function(){
     if(state.mode!=='glory'||state.screen!=='battle')return;
     var delta=(state.gloryResultDelta!=null?state.gloryResultDelta:0);
@@ -11861,6 +11863,7 @@ function tutorialClaimReward(){
  setTimeout(function(){if(tutorialAt(7)){tutorialAdvance('reward-claimed')}},350);
 }
 function tutorialReleaseToFreePlay(){
+ tutorialLive=false; /* disarm the keydown interceptor — the tutorial battle has been exited */
  tutorialRestoreBorrowedProgress();tutorialClearTimers();tutorialHideCoach();var splash=$('tutorialVictory');if(splash)splash.classList.remove('show');state.tutorialMode=false;state.running=false;state.paused=false;state.playerDead=false;state.enemy=null;state.projectiles.length=0;
  var battleScreen=$('battleScreen');if(battleScreen)battleScreen.classList.remove('tutorial-layout-boot');var factionScreen=$('factionScreen');if(factionScreen)factionScreen.classList.remove('tutorial-faction-focus');
  document.querySelectorAll('.sheet-backdrop.open').forEach(function(x){x.classList.remove('open')});$('pauseOverlay').classList.remove('open');setScreen('mode');renderModeSelect();

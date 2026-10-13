@@ -41,8 +41,11 @@ try {
   function mirrorToPreferences(key, value) {
     if (!Preferences) return;
     try {
-      Preferences.set({ key: key, value: String(value) });
+      // Timestamped wrapper: restore compares write times so a stale
+      // Preferences copy can never overwrite a newer localStorage record.
+      Preferences.set({ key: key, value: JSON.stringify({ v: String(value), ts: Date.now() }) });
     } catch (e) {}
+    try { origSetItem.call(localStorage, key + '__mts', String(Date.now())); } catch (e) {}
   }
 
   async function restoreDurableFlags() {
@@ -52,8 +55,18 @@ try {
       try {
         var res = await Preferences.get({ key: k });
         if (res && res.value !== null && res.value !== undefined) {
-          try { localStorage.setItem(k, res.value); } catch (e) {}
-          console.log('[TK] Restored durable flag ' + k + ' from Preferences');
+          var prefVal = res.value, prefTs = 0;
+          try { var pw = JSON.parse(res.value); if (pw && typeof pw.v === 'string') { prefVal = pw.v; prefTs = pw.ts || 0; } } catch (e) {}
+          var localVal = null, localTs = 0;
+          try { localVal = localStorage.getItem(k); localTs = parseInt(localStorage.getItem(k + '__mts') || '0', 10) || 0; } catch (e) {}
+          // Restore only when local is missing (eviction — the case this
+          // system exists for) or the Preferences copy is provably newer.
+          // Legacy unwrapped Preferences values carry ts 0 and never
+          // overwrite an existing local record.
+          if (localVal === null || prefTs > localTs) {
+            try { localStorage.setItem(k, prefVal); } catch (e) {}
+            console.log('[TK] Restored durable flag ' + k + ' from Preferences');
+          }
         }
       } catch (e) {}
     }
@@ -111,6 +124,14 @@ try {
     } catch (e) { return 0; }
   }
 
+  // Freshness of the local record AS OF BRIDGE LOAD. The bridge runs in
+  // <head> before the game's inline script, so this reads the pre-boot
+  // blob. It must be captured now: game boot saves re-stamp savedAt with
+  // Date.now() within ~700ms (leader/season boot saves), which would
+  // inflate local freshness and make bootRestore reject a genuinely
+  // newer cloud save from another device.
+  var BOOT_LOCAL_TS = 0;
+
   function localTs() {
     // Freshness of the local record = the unified progression blob's savedAt
     // stamp (progressSave writes it on every save). The legacy store key is
@@ -125,6 +146,7 @@ try {
     } catch (e) {}
     return 0;
   }
+  BOOT_LOCAL_TS = localTs();
 
   async function bootRestore() {
     if (!CloudSync) return;
@@ -134,7 +156,7 @@ try {
     } catch (e) {}
     try {
       var res = await CloudSync.pullWithTimestamp({});
-      if (res && res.snapshot && res.timestamp > localTs()) {
+      if (res && res.snapshot && res.timestamp > BOOT_LOCAL_TS) {
         var n = applySnapshot(res.snapshot);
         if (n > 0) {
           // Durable flags outrank the cloud copy (durable > local > cloud)
@@ -155,7 +177,7 @@ try {
   async function pushCloudSave() {
     if (!CloudSync) return;
     try {
-      await CloudSync.pushWithTimestamp({ snapshot: collectSnapshot(), timestamp: Date.now() });
+      await CloudSync.pushWithTimestamp({ snapshot: collectSnapshot(), timestamp: localTs() || Date.now() }); /* content time, not push time: last-save-wins across devices */
     } catch (e) {}
   }
   function schedulePush() {
