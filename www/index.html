@@ -4685,6 +4685,26 @@ html.battery-saver .faction-shield{filter:none!important}
  #modeScreen .mode-icon{height:clamp(96px,21vh,138px)!important;flex-basis:clamp(96px,21vh,138px)!important}
 }
 </style>
+<style>
+/* Retention screens layout + Event polish + BGM race fix (2026-10-12).
+   .screen.active is display:flex (row by default); every screen that never set
+   flex-direction itself (guild/codex/event/season) laid its head and body out
+   side by side, pushing content off the iPhone screen. Column is the design. */
+.screen.active{flex-direction:column}
+#guildScreen,#codexScreen,#eventScreen,#seasonScreen{overflow-y:auto;overflow-x:hidden}
+#eventScreenBody{width:100%}
+#eventScreen .screen-inner{max-width:560px;margin:0 auto;padding:64px 16px 22px;display:flex;flex-direction:column;gap:10px;width:100%;box-sizing:border-box}
+#eventScreen .screen-title{font:700 21px Georgia,"Times New Roman",serif;color:#ffe8a4;text-align:center;letter-spacing:.02em}
+#eventScreen .season-banner{margin:0 auto;width:100%;box-sizing:border-box}
+#eventScreen .mission-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;border:1px solid #a8843c;border-radius:12px;background:linear-gradient(170deg,#221c10,#131007);color:#f3e8cf;font-size:13.5px}
+#eventScreen .mission-row .btn.gold{background:linear-gradient(180deg,#ffe9a8,#e8b93e);color:#23180a;border:1px solid #ffe9a8;border-radius:9px;padding:8px 14px;font:800 12px "Baloo 2",sans-serif;cursor:pointer}
+#eventScreen .mission-row .claimed{color:#8cef8a;font-weight:800;font-size:12px}
+#eventScreen .mission-row .progress{color:#ffe8a4;font-weight:800}
+#eventScreen .screen-sub{font-size:11px;color:#9db2c3;text-align:center;line-height:1.45}
+#codexScreen .codex-tabs{margin-bottom:10px}
+#codexScreen .codex-tab{padding:8px}
+#guildScreen *,#codexScreen *,#eventScreen *,#seasonScreen *{animation:none!important}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5199,7 +5219,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b84878f2d5';
-const __HTML_V='4026a61c33';
+const __HTML_V='edb569b2ef';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5784,14 +5804,19 @@ function initBgmElements(){
   if(bgmStarted)return;bgmStarted=true;
   /* No Audio elements: buffers decode on demand via ensureBgmBuffer. */
 }
-async function ensureBgmBuffer(which){
-  if(bgmBuffers[which])return bgmBuffers[which];
-  if(!audioCtx)throw new Error('no audioCtx');
-  const res=await fetch(BGM_TRACKS[which].file,{cache:'force-cache'});
-  if(!res.ok)throw new Error('BGM fetch '+res.status);
-  const bytes=await res.arrayBuffer();
-  const buf=await audioCtx.decodeAudioData(bytes.slice(0));
-  bgmBuffers[which]=buf;return buf;
+const bgmDecodeInFlight={};
+function ensureBgmBuffer(which){
+  if(bgmBuffers[which])return Promise.resolve(bgmBuffers[which]);
+  if(bgmDecodeInFlight[which])return bgmDecodeInFlight[which];
+  if(!audioCtx)return Promise.reject(new Error('no audioCtx'));
+  bgmDecodeInFlight[which]=(async function(){try{
+    const res=await fetch(BGM_TRACKS[which].file,{cache:'force-cache'});
+    if(!res.ok)throw new Error('BGM fetch '+res.status);
+    const bytes=await res.arrayBuffer();
+    const buf=await audioCtx.decodeAudioData(bytes.slice(0));
+    bgmBuffers[which]=buf;return buf;
+  }finally{delete bgmDecodeInFlight[which];}})();
+  return bgmDecodeInFlight[which];
 }
 function bgmStopTrack(k,fade,now){
   const s=bgmSources[k],g=bgmGains[k];
@@ -5808,7 +5833,8 @@ async function playBgm(which,immediate){
   const token=++bgmPlayToken;
   let buf=null;
   try{buf=await ensureBgmBuffer(which);}catch(e){return;}
-  if(token!==bgmPlayToken||!buf)return;
+  if(!buf)return;
+  if(token!==bgmPlayToken){if(bgmCurrent!==which&&!bgmSources[which]){setTimeout(function(){if(bgmCurrent!==which&&!bgmSources[which]){try{playBgm(which,true)}catch(e){}}},80);}return;}
   if(audioCtx.state!=='running'&&!tkBgSuspended){try{await audioCtx.resume();}catch(e){}}
   if(token!==bgmPlayToken)return;
   const now=audioCtx.currentTime,fade=immediate?0.1:0.9;
@@ -7977,7 +8003,7 @@ function renderEventScreen(){
   +'<div class="season-banner"><div class="sb-copy"><b>'+ev.desc+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>Goal: '+ev.goal+' '+ev.unit+' ('+prog+'/'+ev.goal+') · <span data-cd="event">Ends in --</span></small></div></div>'
   +'<div class="mission-row"><span>Reward: '+rwTxt.join(', ')+'</span>'+(done&&!claimed?'<button class="btn gold" onclick="eventClaim()">CLAIM</button>':(claimed?'<span class="claimed">CLAIMED</span>':'<span class="progress">'+prog+'/'+ev.goal+'</span>'))+'</div>'
   +'<div class="screen-sub">New event every 7 days. Unclaimed rewards auto-grant at rollover.</div>'
-  +'<button class="btn" onclick="setScreen(\'mode\')">BACK</button></div>';
+  +'</div>';
 }
 var codexTab='tanks';
 function renderCodexScreen(){
