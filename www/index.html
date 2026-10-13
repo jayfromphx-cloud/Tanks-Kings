@@ -5271,8 +5271,8 @@ const assetManifest={
    hand-maintained version tags. On boot the page fetches the manifest with
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
-const __BUILD_ID='6ea60a5034';
-const __HTML_V='82a72f04b3';
+const __BUILD_ID='23a79fdcee';
+const __HTML_V='b2eb9ddd83';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5508,7 +5508,7 @@ let chosenK='iron',chosenTank='bulwark',soundOn=true,audioCtx=null,audioMaster=n
 const __tkMobileDevice=(function(){try{var ua=navigator.userAgent||'',touch=navigator.maxTouchPoints||0;return /Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(ua)||(/Macintosh/i.test(ua)&&touch>1)||!!(window.matchMedia&&matchMedia('(pointer:coarse)').matches&&touch>0)}catch(e){return false}})();
 let graphicsHighQuality=!__tkMobileDevice,autoBatterySaverReason='';
 let performanceMode=false;try{performanceMode=localStorage.getItem('tk_perf_mode')==='1'}catch(e){}
-function battleRenderDpr(){if(batterySaver||!graphicsHighQuality)return 1;return __tkMobileDevice?2:Math.min(2,window.devicePixelRatio||1)}
+function battleRenderDpr(){if(batterySaver||!graphicsHighQuality)return 1;var base=__tkMobileDevice?2:Math.min(2,window.devicePixelRatio||1),tl=window.__tkThermalLevel||0;if(tl>=2)return 1;if(tl===1)return Math.min(base,1.5);return base}
 const ENEMY_SFX_GAIN=.8;
 const MASTER_GAIN=1; /* 2026-10-06: set to 1 on Jay's order. */
 /* --- Mix leveling + peak protection (2026-10-06) ---
@@ -5542,7 +5542,7 @@ const __decodedByHash={};
 function __fnvBytes(buf){const v=new Uint8Array(buf);let h1=0x811c9dc5,h2=0x01000193^v.length;for(let i=0;i<v.length;i++){h1=Math.imul(h1^v[i],0x01000193);h2=Math.imul(h2^v[i],0x85ebca6b)}return (h1>>>0).toString(36)+(h2>>>0).toString(36)+'_'+v.length}
 function __decodeShared(bytes){const key=__fnvBytes(bytes);let hit=__decodedByHash[key];if(hit)return hit;hit=audioCtx.decodeAudioData(bytes.slice(0));hit.catch(function(){delete __decodedByHash[key]});__decodedByHash[key]=hit;return hit}
 const state={screen:'title',running:false,wave:1,bestWave:1,killsInWave:0,waveTarget:3,scrap:0,gems:20,valorMedals:0,royalSeals:0,skillShards:0,shardPools:{parry:0,charge:0,missile:0,ult:0},prestigeEmblems:0,gearRanks:{Hull:1,Cannon:1,Treads:1,Engine:1,Plating:1,Core:1},gearStars:{Hull:0,Cannon:0,Treads:0,Engine:0,Plating:0,Core:0},level:1,xp:0,ult:0,speed:1,hp:520,maxHp:520,shield:0,maxShield:0,shieldCooldown:0,enemy:null,projectiles:[],particles:[],scorches:[],inventory:[],equipped:{Hull:null,Cannon:null,Treads:null,Engine:null,Plating:null,Core:null},last:0,shotClock:0,enemyShotClock:0,spawnClock:0,spawnMissingFor:0,spawnAttempted:false,shake:0,invincible:0,slow:0,burn:0,poison:0,paused:false,hitStop:0,cineSlow:0,playerDead:false,runDmg:0,runScrapStart:0,reviveCount:0,deathsThisWave:0,lastWaveBeatenWithoutDying:0,retriedThisWave:0,retriedThisFloor:0,abCd:{def:0,off:0},abFx:{},phoenixUsed:false,tutorialMode:false};
-const battleSize={w:1,h:1};let hudClock=0;const perfSamples=new Float32Array(180);let perfCursor=0,perfCount=0;
+const battleSize={w:1,h:1};let hudClock=0;const perfSamples=new Float32Array(180);let perfCursor=0,perfCount=0;const tickSamples=new Float32Array(120);let tickCursor=0,tickCount=0;
 /* One layout read per element per rendered frame. tick() and drawBattle() share this cache. */
 let __layoutFrameToken=0,__layoutRectToken=-1;const __layoutRects={};
 function beginFrameLayoutCache(){__layoutFrameToken++;__layoutRectToken=-1}
@@ -5616,7 +5616,9 @@ function progressLoad(){
  return loaded;
 }
 function tkTitleArtRelease(name){try{var pic=document.querySelector('#titleScreen picture');if(!pic)return;var img=pic.querySelector('img'),srcEl=pic.querySelector('source');if(name==='title'){if(img&&img.dataset.tkSrc)img.src=img.dataset.tkSrc;if(srcEl&&srcEl.dataset.tkSrcset)srcEl.srcset=srcEl.dataset.tkSrcset}else{if(img&&img.getAttribute('src')){img.dataset.tkSrc=img.getAttribute('src');img.removeAttribute('src')}if(srcEl&&srcEl.getAttribute('srcset')){srcEl.dataset.tkSrcset=srcEl.getAttribute('srcset');srcEl.removeAttribute('srcset')}}}catch(e){}}
-function setScreen(name){try{if(typeof seasonEnsure==='function')seasonEnsure()}catch(e){}try{if(typeof eventEnsure==='function')eventEnsure()}catch(e){}document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));var _scr=$(name+'Screen');if(!_scr){console.warn('[Tanks & Kings] setScreen: unknown screen "'+name+'"');return}_scr.classList.add('active');state.screen=name;try{tkTitleArtRelease(name)}catch(e){}if(window.__tkPendingReload&&name!=='battle'){window.__tkPendingReload=false;try{location.reload()}catch(e){}return}if(typeof syncMenuTopbars==='function')syncMenuTopbars();try{var _toTop=function(){if(!_scr)return;_scr.scrollTop=0;_scr.querySelectorAll('.screen-scroll,.mode-cards,.glory-wrap,.leader-wrap,.char-wrap').forEach(function(el){el.scrollTop=0});if(document.documentElement)document.documentElement.scrollTop=0;if(document.body)document.body.scrollTop=0;window.scrollTo(0,0)};_toTop();requestAnimationFrame(_toTop);setTimeout(_toTop,60)}catch(e){}if(typeof playBgm==='function')playBgm(name==='battle'?'battle':'title');const veil=$('motionVeil');veil.classList.remove('play');void veil.offsetWidth;veil.classList.add('play');clearTimeout(setScreen.veilTimer);setScreen.veilTimer=setTimeout(()=>veil.classList.remove('play'),620)}
+const __TK_EVICT_CONTAINERS={store:['storeContent'],codex:['codexBody','codexRewards'],guild:['guildBody'],event:['eventScreenBody'],season:['seasonLadder','seasonDaily','seasonWeekly','seasonUpsell']};
+function tkScreenArtEvict(name,release){try{var ids=__TK_EVICT_CONTAINERS[name];if(!ids)return;for(var j=0;j<ids.length;j++){var host=document.getElementById(ids[j]);if(!host)continue;var imgs=host.querySelectorAll('img');for(var i=0;i<imgs.length;i++){var im=imgs[i];if(release){if(im.getAttribute('src')){im.dataset.tkEvictSrc=im.getAttribute('src');im.removeAttribute('src')}if(im.getAttribute('srcset')){im.dataset.tkEvictSrcset=im.getAttribute('srcset');im.removeAttribute('srcset')}}else{if(im.dataset.tkEvictSrc){im.src=im.dataset.tkEvictSrc;delete im.dataset.tkEvictSrc}if(im.dataset.tkEvictSrcset){im.srcset=im.dataset.tkEvictSrcset;delete im.dataset.tkEvictSrcset}}}}}catch(e){}}
+function setScreen(name){try{tkScreenArtEvict(state.screen,true);tkScreenArtEvict(name,false)}catch(e){}try{if(typeof seasonEnsure==='function')seasonEnsure()}catch(e){}try{if(typeof eventEnsure==='function')eventEnsure()}catch(e){}document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));var _scr=$(name+'Screen');if(!_scr){console.warn('[Tanks & Kings] setScreen: unknown screen "'+name+'"');return}_scr.classList.add('active');state.screen=name;try{tkTitleArtRelease(name)}catch(e){}if(window.__tkPendingReload&&name!=='battle'){window.__tkPendingReload=false;try{location.reload()}catch(e){}return}if(typeof syncMenuTopbars==='function')syncMenuTopbars();try{var _toTop=function(){if(!_scr)return;_scr.scrollTop=0;_scr.querySelectorAll('.screen-scroll,.mode-cards,.glory-wrap,.leader-wrap,.char-wrap').forEach(function(el){el.scrollTop=0});if(document.documentElement)document.documentElement.scrollTop=0;if(document.body)document.body.scrollTop=0;window.scrollTo(0,0)};_toTop();requestAnimationFrame(_toTop);setTimeout(_toTop,60)}catch(e){}if(typeof playBgm==='function')playBgm(name==='battle'?'battle':'title');const veil=$('motionVeil');veil.classList.remove('play');void veil.offsetWidth;veil.classList.add('play');clearTimeout(setScreen.veilTimer);setScreen.veilTimer=setTimeout(()=>veil.classList.remove('play'),620)}
 function preloadUltimateAudio(){
  if(ultimateFetchStarted)return;ultimateFetchStarted=true;
  Object.keys(assetManifest.ultimateAudio).forEach(kingdom=>{const files=assetManifest.ultimateAudio[kingdom];ultimateRawPromises[kingdom]=fetch(String(files.mp3).split('?')[0]+'?v='+__ASSET_V,{cache:'force-cache'}).then(response=>{if(!response.ok)throw new Error('MP3 unavailable');return response.arrayBuffer()})});
@@ -7173,7 +7175,8 @@ function starSpriteFor(color){var c=__starSprites[color];if(c)return c;var S=128
 let __v1Sprite=null,__ultSprite=null;const __ultFactionSprites={};const __v1FactionSprites={};const __v1GkFactionSprites={};
 /* Projectile sprites are pre-keyed offline (assets/keyed-*.png) — no runtime keying. */
 (function(){
-  function loadKeyed(img,src,assign){let retried=false;img.onload=function(){assign({c:img,w:img.naturalWidth,h:img.naturalHeight})};img.onerror=function(){if(!retried){retried=true;img.src=src+'&retry=1'}else{console.warn('Sprite failed to load:',src)}};img.src=src}
+  function tkPrescaleSprite(img,maxDim){try{var w=img.naturalWidth||0,h=img.naturalHeight||0;if(!w||!h||Math.max(w,h)<=maxDim)return {c:img,w:w,h:h};var s=maxDim/Math.max(w,h),cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(w*s));cv.height=Math.max(1,Math.round(h*s));cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);return {c:cv,w:cv.width,h:cv.height}}catch(e){return {c:img,w:img.naturalWidth||0,h:img.naturalHeight||0}}}
+  function loadKeyed(img,src,assign){let retried=false;img.onload=function(){assign(tkPrescaleSprite(img,512))};img.onerror=function(){if(!retried){retried=true;img.src=src+'&retry=1'}else{console.warn('Sprite failed to load:',src)}};img.src=src}
    function loadSprite(img,src,onload){let retried=false;img.onload=onload;img.onerror=function(){if(!retried){retried=true;img.src=src+'&retry=1'}else{console.warn('Sprite failed to load:',src)}};img.src=src}
   const v1=new Image();loadKeyed(v1,'assets/keyed-projectile-v1.png?v='+__ASSET_V,function(s){__v1Sprite=s});
   const v5=new Image();loadKeyed(v5,'assets/keyed-ultimate-arcane.png?v='+__ASSET_V,function(s){__ultSprite=s});
@@ -7239,8 +7242,8 @@ let dtGlobal=0,__loopGen=0,__batteryDrawFlip=0,__loopHeartbeat=0;
 const BATTLE_LOOP_STALL_MS=3000,THERMAL_FRAME_WINDOW=60,THERMAL_FRAME_LIMIT_MS=20;
 const __thermalFrames=new Float32Array(THERMAL_FRAME_WINDOW);let __thermalFrameCursor=0,__thermalFrameCount=0,__thermalFrameSum=0;
 let __thermalLevel=0,__thermalGoodWindows=0;
-function tkThermalSetLevel(lv){__thermalLevel=lv;if(lv>=2){window.__tkFxSkipMod=4;window.__tkAmbientOff=true}else{window.__tkFxSkipMod=0;window.__tkAmbientOff=false}}
-function trackThermalFrame(frameMs){if(!(frameMs>0&&frameMs<250))return;const old=__thermalFrames[__thermalFrameCursor]||0;__thermalFrameSum-=old;__thermalFrames[__thermalFrameCursor]=frameMs;__thermalFrameSum+=frameMs;__thermalFrameCursor=(__thermalFrameCursor+1)%THERMAL_FRAME_WINDOW;__thermalFrameCount=Math.min(__thermalFrameCount+1,THERMAL_FRAME_WINDOW);if(__thermalFrameCount===THERMAL_FRAME_WINDOW){const avg=__thermalFrameSum/THERMAL_FRAME_WINDOW;__thermalFrameCount=0;__thermalFrameSum=0;__thermalFrames.fill(0);if(avg>THERMAL_FRAME_LIMIT_MS){__thermalGoodWindows=0;if(__thermalLevel===0){tkThermalSetLevel(1);autoEnableBatterySaver('sustained frame load')}else if(__thermalLevel===1&&avg>22)tkThermalSetLevel(2);else if(__thermalLevel===2&&avg>24)tkThermalSetLevel(3)}else if(avg<15){if(++__thermalGoodWindows>=10&&__thermalLevel>1){tkThermalSetLevel(__thermalLevel-1);__thermalGoodWindows=0}}else __thermalGoodWindows=0}}
+function tkThermalSetLevel(lv){var prevDpr=null;try{prevDpr=battleRenderDpr()}catch(e){}__thermalLevel=lv;window.__tkThermalLevel=lv;if(lv>=2){window.__tkFxSkipMod=4;window.__tkAmbientOff=true}else{window.__tkFxSkipMod=0;window.__tkAmbientOff=false}try{if(prevDpr!==null&&battleRenderDpr()!==prevDpr&&(state.screen==='battle'||state.running))refreshBattleCanvases()}catch(e){}}
+function trackThermalFrame(frameMs){if(!(frameMs>0&&frameMs<250))return;const old=__thermalFrames[__thermalFrameCursor]||0;__thermalFrameSum-=old;__thermalFrames[__thermalFrameCursor]=frameMs;__thermalFrameSum+=frameMs;__thermalFrameCursor=(__thermalFrameCursor+1)%THERMAL_FRAME_WINDOW;__thermalFrameCount=Math.min(__thermalFrameCount+1,THERMAL_FRAME_WINDOW);if(__thermalFrameCount===THERMAL_FRAME_WINDOW){const avg=__thermalFrameSum/THERMAL_FRAME_WINDOW;__thermalFrameCount=0;__thermalFrameSum=0;__thermalFrames.fill(0);if(avg>THERMAL_FRAME_LIMIT_MS){__thermalGoodWindows=0;if(__thermalLevel===0){tkThermalSetLevel(1)}else if(__thermalLevel===1&&avg>22){tkThermalSetLevel(2);autoEnableBatterySaver('sustained frame load')}else if(__thermalLevel===2&&avg>24)tkThermalSetLevel(3)}else if(avg<15){if(++__thermalGoodWindows>=10&&__thermalLevel>0){tkThermalSetLevel(__thermalLevel-1);__thermalGoodWindows=0}}else __thermalGoodWindows=0}}
 function scheduleBattleLoop(g){if(g!==__loopGen||!state.running||state.screen!=='battle')return;if(state.paused||document.hidden){__loopHeartbeat=performance.now();setTimeout(function(){if(g!==__loopGen||!state.running||state.screen!=='battle')return;if(state.paused||document.hidden)loop(performance.now(),g);else{state.last=performance.now();requestAnimationFrame(function rafMain(t){loop(t,g)})}},500)}else requestAnimationFrame(function rafMain(t){loop(t,g)})}
 /* Perf (2026-10-01): generation-guarded main loop. Four call sites arm the loop;
    a double arm (double-tapped Deploy, store/shop return while a stale frame is
@@ -7287,6 +7290,7 @@ function loop(now,g){
  const tickStarted=performance.now();
  try{tick(dtGlobal)}catch(e){if(state.mode==='tower'&&typeof __tkLog==='function')__tkLog('error:tick',{error:e&&e.stack?String(e.stack):String(e)});if(window.console&&console.error)console.error('tick crashed:',e)}
  const tickDurationMs=performance.now()-tickStarted;
+ tickSamples[tickCursor]=tickDurationMs;tickCursor=(tickCursor+1)%tickSamples.length;tickCount=Math.min(tickCount+1,tickSamples.length);
  if(tickDurationMs>100&&typeof __tkLog==='function'){var _tsN=Date.now();if(!window.__tkLastTickSlow||_tsN-window.__tkLastTickSlow>5000){window.__tkLastTickSlow=_tsN;__tkLog('error:tick_slow',{durationMs:tickDurationMs});}}
  if(!(batterySaver||performanceMode||__thermalLevel>=3)||(__batteryDrawFlip^=1)){try{drawBattle()}catch(e){if(state.mode==='tower'&&typeof __tkLog==='function')__tkLog('error:draw_battle',{error:e&&e.stack?String(e.stack):String(e)});if(window.console&&console.error)console.error('drawBattle crashed:',e)}}
  __loopHeartbeat=performance.now();
@@ -7374,6 +7378,7 @@ window.TanksKingsDebug.inventoryState=function(){return {total:state.inventory.l
 window.TanksKingsDebug.seedInventoryTest=function(count){count=Math.max(0,Math.min(1000,Math.floor(+count)||0));state.inventory=[];const rar=['Common','Rare','Epic','Legendary'];for(let i=0;i<count;i++){const slot=slots[i%slots.length],king=kingdoms[i%kingdoms.length];state.inventory.push({id:'audit-'+i,slot:slot,rarity:rar[i%rar.length],power:5+i,kingdom:king.id,ability:abilities[slot]})}inventoryPage=0;renderItems();return this.inventoryState()};
 window.TanksKingsDebug.salvageInventoryItem=function(id){salvageItem(id);return this.inventoryState()};window.TanksKingsDebug.scrapUnusedGears=function(){scrapUnusedGears();return this.inventoryState()};
 window.TanksKingsDebug.batterySaverState=function(){return {enabled:batterySaver,manualOverride:batterySaverManualOverride,autoReason:autoBatterySaverReason,mobileDefault:__tkMobileDevice,graphicsQuality:graphicsHighQuality?'high':'low',dpr:battleRenderDpr(),targetFps:batterySaver?30:60,particleCap:batterySaver?80:220,projectileCap:PROJECTILE_CAP}};
+window.TanksKingsDebug.perfReport=function(){function stats(ring,count){if(!count)return {avg:0,p95:0,max:0};var a=[],i,s=0,mx=0;for(i=0;i<count;i++){var v=ring[i];a.push(v);s+=v;if(v>mx)mx=v}a.sort(function(x,y){return x-y});return {avg:+(s/count).toFixed(2),p95:+a[Math.min(a.length-1,Math.floor(a.length*.95))].toFixed(2),max:+mx.toFixed(2)}}var f=stats(perfSamples,perfCount),t=stats(tickSamples,tickCount),imgs=document.images,imgLoaded=0,decodedBytes=0,i;for(i=0;i<imgs.length;i++){var im=imgs[i];if(im.naturalWidth>0){imgLoaded++;decodedBytes+=im.naturalWidth*im.naturalHeight*4}}var bc=$('battleCanvas'),fc=$('fxCanvas');return {frameAvgMs:f.avg,frameP95Ms:f.p95,frameMaxMs:f.max,tickAvgMs:t.avg,tickP95Ms:t.p95,tickMaxMs:t.max,samples:perfCount,thermalLevel:__thermalLevel,dpr:battleRenderDpr(),render30fps:!!(batterySaver||performanceMode||__thermalLevel>=3),performanceMode:performanceMode,batterySaver:batterySaver,domImages:imgs.length,domImagesLoaded:imgLoaded,domDecodedMB:+(decodedBytes/1048576).toFixed(1),battleCanvasPx:bc?bc.width+'x'+bc.height:null,fxCanvasPx:fc?fc.width+'x'+fc.height:null,jsHeapMB:(typeof performance!=='undefined'&&performance.memory)?+(performance.memory.usedJSHeapSize/1048576).toFixed(1):null}};
 window.TanksKingsDebug.projectileArt=function(){return {v1Ready:!!__v1Sprite,ultReady:!!__ultSprite,v1Size:__v1Sprite?__v1Sprite.w+'x'+__v1Sprite.h:null,ultSize:__ultSprite?__ultSprite.w+'x'+__ultSprite.h:null,active:state.projectiles.map(function(p){return p.ultOrb?'ult-orb':(p.missile?'missile':(p.enemy?'enemy':'regular'))})}};
 /* ================= Royal Character: progress + customization ================= */
 /* Customization ornaments are pure SVG/CSS layers composited over the tank art.
@@ -9883,6 +9888,7 @@ function addAAAPart(part){if(aaaParts.length>=220)return;if(!batterySaver||activ
 var impactSpriteImg=new Image(),impactSpriteParts=[];
 impactSpriteImg.decoding='async';
 impactSpriteImg.src='assets/explosion-aaa-v2.png?v='+__ASSET_V;
+var impactSpriteCanvas=null;impactSpriteImg.onload=function(){try{var w=impactSpriteImg.naturalWidth||0,h=impactSpriteImg.naturalHeight||0,m=Math.max(w,h);if(m>768){var s=768/m,cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(w*s));cv.height=Math.max(1,Math.round(h*s));cv.getContext('2d').drawImage(impactSpriteImg,0,0,cv.width,cv.height);impactSpriteCanvas=cv}}catch(e){}};
 function spawnImpactSprite(x,y){
   if(impactSpriteParts.length>=18)impactSpriteParts.shift();
   impactSpriteParts.push({x:x*viewW,y:y*viewH,age:0,duration:.42,rotation:(Math.random()-.5)*.18});
@@ -9894,9 +9900,9 @@ function drawImpactSprites(dt){
     var s=impactSpriteParts[si];s.age+=dt;
     if(s.age>=s.duration){impactSpriteParts.splice(si,1);continue;}
     var st=s.age/s.duration,ease=1-Math.pow(1-Math.min(1,st*1.45),3),size=(54+92*ease)*(viewH/380),alpha=Math.pow(1-st,1.35);
-    if(impactSpriteImg.complete&&impactSpriteImg.naturalWidth){
+    if(impactSpriteCanvas||(impactSpriteImg.complete&&impactSpriteImg.naturalWidth)){
       ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.rotation);ctx.globalAlpha=alpha;
-      ctx.drawImage(impactSpriteImg,-size/2,-size/2,size,size);ctx.restore();
+      ctx.drawImage(impactSpriteCanvas||impactSpriteImg,-size/2,-size/2,size,size);ctx.restore();
     }
   }
   ctx.restore();ctx.globalAlpha=1;
