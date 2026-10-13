@@ -1,7 +1,7 @@
 {
-  "build": "1c050cce66",
-  "html": "cd31c0285f",
-  "assetCount": 225,
+  "build": "bfc0369809",
+  "html": "df85bd34bf",
+  "assetCount": 226,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -877,6 +877,11 @@
       "file": "assets/projectile.bin",
       "bytes": 17613,
       "md5": "41a39d122a48719caf60a0fc999e1460"
+    },
+    {
+      "file": "assets/season-pass-emblem.png",
+      "bytes": 369973,
+      "md5": "7981a660ca8d563ea64d1b5668cea524"
     },
     {
       "file": "assets/shield-bloom.png",
