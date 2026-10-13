@@ -36,7 +36,7 @@ try {
    * pressure. Flags here are mirrored to Preferences the moment the game
    * writes them, and Preferences wins over localStorage on boot.
    * Add future "must never lose" keys to this list. */
-  var DURABLE_KEYS = ['tk_tutorial_completed'];
+  var DURABLE_KEYS = ['tk_tutorial_v1'];
 
   function mirrorToPreferences(key, value) {
     if (!Preferences) return;
@@ -68,8 +68,22 @@ try {
     };
   } catch (e) {}
 
+  // Mirror durable-key deletions too: an explicit wipe/reset must clear the
+  // Preferences copy, or the flag would resurrect on the next boot. (OS
+  // eviction of localStorage does not fire removeItem, so the survival
+  // protection itself is unaffected.)
+  try {
+    var origRemoveItem = Storage.prototype.removeItem;
+    Storage.prototype.removeItem = function (k) {
+      origRemoveItem.apply(this, arguments);
+      if (DURABLE_KEYS.indexOf(k) !== -1 && Preferences) {
+        try { Preferences.remove({ key: k }); } catch (e) {}
+      }
+    };
+  } catch (e) {}
+
   // Restore durable flags before cloud restore (durable > local > cloud)
-  restoreDurableFlags();
+  var durableReady = restoreDurableFlags();
 
   /* ---- Cloud restore (runs immediately, before game boot) ---- */
   var RELOAD_FLAG = 'tk_cloud_restored_v1';
@@ -98,7 +112,13 @@ try {
   }
 
   function localTs() {
-    // Approximate: use the latest timestamp we can find, or 0 for fresh
+    // Freshness of the local record = the unified progression blob's savedAt
+    // stamp (progressSave writes it on every save). The legacy store key is
+    // only a fallback for pre-unification installs.
+    try {
+      var p = localStorage.getItem('tk_progression_v1');
+      if (p) { var pd = JSON.parse(p); if (pd && pd.savedAt) return pd.savedAt; }
+    } catch (e) {}
     try {
       var s = localStorage.getItem('tk_store_v1');
       if (s) { var d = JSON.parse(s); if (d && d.ltoAnchor) return d.ltoAnchor; }
@@ -117,6 +137,8 @@ try {
       if (res && res.snapshot && res.timestamp > localTs()) {
         var n = applySnapshot(res.snapshot);
         if (n > 0) {
+          // Durable flags outrank the cloud copy (durable > local > cloud)
+          await restoreDurableFlags();
           try { sessionStorage.setItem(RELOAD_FLAG, '1'); } catch (e) {}
           console.log('[TK] Restored ' + n + ' keys from iCloud, reloading');
           location.reload();
@@ -125,8 +147,8 @@ try {
     } catch (e) {}
   }
 
-  // Kick off immediately (don't wait for DOMContentLoaded)
-  bootRestore();
+  // Kick off once durable flags are back (don't wait for DOMContentLoaded)
+  durableReady.then(function () { bootRestore(); });
 
   /* ---- Cloud push (debounced, hooks into game's save) ---- */
   var pushTimer = null;
