@@ -4595,6 +4595,28 @@ html,body{width:100%;height:100%;overscroll-behavior:none}
 .season-modal-rows{max-height:40vh;overflow-y:auto;margin:12px 0;text-align:left}
 .season-modal-rows .smr{display:flex;justify-content:space-between;padding:6px 4px;border-bottom:1px solid #3a4550;color:#e8dec2;font-size:13px;font-weight:700}
 </style>
+<style>
+/* THERMAL PASS 2026-10-12 — DOM compositor stack diet. The battle grade is
+   kept; what dies is per-frame blend readbacks, animated filters, blurred
+   animated layers and whole-stage rescaling at native resolution. */
+.battle-stage:not(.cinematic):not(.boss-intro-active){animation:none!important;will-change:auto!important}
+.world-bg{will-change:auto!important}
+.world-bg:before{mix-blend-mode:normal!important;animation:none!important}
+.world-bg:after{animation:none!important}
+.world-tint{mix-blend-mode:normal!important;opacity:.42}
+.environment-grade{mix-blend-mode:normal!important;opacity:.45}
+.battle-stage:before{mix-blend-mode:normal!important}
+.combatant{filter:none!important;will-change:auto!important}
+.combatant.hit{filter:none!important}
+.combatant.enemy.boss{filter:none!important}
+.faction-shield{animation:shieldPulseOpacity 1.6s ease-in-out infinite!important}
+@keyframes shieldPulseOpacity{0%,100%{opacity:.93}50%{opacity:1}}
+.world-bg .env-scene{will-change:auto!important}
+.damage-number{filter:none!important}
+html.battery-saver .world-bg:before,html.battery-saver .world-bg:after{display:none!important}
+html.battery-saver .world-tint,html.battery-saver .environment-grade,html.battery-saver .battle-stage:before{display:none!important}
+html.battery-saver .faction-shield{filter:none!important}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5108,8 +5130,8 @@ const assetManifest={
    hand-maintained version tags. On boot the page fetches the manifest with
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
-const __BUILD_ID='b3cfe56d9d';
-const __HTML_V='e050d6a9b0';
+const __BUILD_ID='2699d8a118';
+const __HTML_V='548416ba3f';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5899,7 +5921,7 @@ var BATTLE_BG_TOWER_DEFAULT='assets/tower-ascent-backdrop.png'; /* non-mapped to
 var BATTLE_BG_KINGDOM={ember:'assets/bg-ember-wastes.jpg',tide:'assets/bg-storm-coast.jpg',volt:'assets/bg-volt-highlands.jpg',bloom:'assets/bg-bloom-vale.jpg'};
 var BATTLE_BG_GOD={pyra:'assets/bg-ember-wastes.jpg',pontiff:'assets/bg-ember-wastes.jpg',tempestra:'assets/bg-volt-highlands.jpg',gale:'assets/bg-volt-highlands.jpg',tidefather:'assets/bg-storm-coast.jpg',thorn:'assets/bg-bloom-vale.jpg',solarion:'assets/bg-bloom-vale.jpg'};
 var battleBgPreloaded=false;
-function preloadBattleBgs(){if(battleBgPreloaded)return;battleBgPreloaded=true;Object.keys(BATTLE_BG_KINGDOM).forEach(function(k){var im=new Image();im.src=BATTLE_BG_KINGDOM[k]+'?v='+__ASSET_V;});}
+function preloadBattleBgs(){if(battleBgPreloaded)return;battleBgPreloaded=true;var want={};try{want[BATTLE_BG_DEFAULT]=1;var kk=byT(chosenTank).k;if(BATTLE_BG_KINGDOM[kk])want[BATTLE_BG_KINGDOM[kk]]=1;}catch(e){want[BATTLE_BG_DEFAULT]=1}Object.keys(want).forEach(function(u){var im=new Image();im.src=u+'?v='+__ASSET_V;});}
 function setBattleBackground(src){preloadBattleBgs();var el=document.querySelector('#battleStage .world-bg .env-scene');if(el){src=__tkResolveArt('battle-bg','battle background',[src],BATTLE_BG_DEFAULT).src;el.style.backgroundImage='url("'+src+'")';}}
 function __tkBattleInitStep(label,fn){try{return fn()}catch(error){console.error('[Tanks & Kings] Battle init step failed: '+label,error);return null}}
 function startBattle(){
@@ -6607,7 +6629,7 @@ function number(x,y,text,color,kind){kind=kind||'to-enemy';let el=damageNumberPo
    sparks are single strokes, dust is one pre-baked radial sprite blitted
    with drawImage. Hard budget: PARTICLE_CAP shared with all bursts. */
 const PARTICLE_CAP=240;
-function activeParticleCap(){var fxCount=batterySaver&&window.TKFX&&window.TKFX.particleCount?window.TKFX.particleCount():0;return batterySaver?Math.max(0,80-fxCount):PARTICLE_CAP}
+function activeParticleCap(){var fxCount=window.TKFX&&window.TKFX.particleCount?window.TKFX.particleCount():0;return batterySaver?Math.max(0,80-fxCount):(window.__tkMobileDevice?Math.max(0,130-fxCount):PARTICLE_CAP)}
 function spawnDebris(x,y,scale){
   scale=Math.max(.35,Math.min(2.2,scale||1));
   try{
@@ -7058,7 +7080,7 @@ else if(p.shape==='heart'){ctx.globalAlpha=pa;var _hs=heartSpriteFor(p.color);ct
 else{ctx.globalAlpha=pa;var _ss=starSpriteFor(p.color);ctx.save();ctx.translate(x,y);ctx.rotate((p.rot||0)+time*2);ctx.drawImage(_ss,-s,-s,s*2,s*2);ctx.restore()}}
 ctx.globalAlpha=1;ctx.restore()}
 let dtGlobal=0,__loopGen=0,__batteryDrawFlip=0,__loopHeartbeat=0;
-const BATTLE_LOOP_STALL_MS=3000,THERMAL_FRAME_WINDOW=60,THERMAL_FRAME_LIMIT_MS=25;
+const BATTLE_LOOP_STALL_MS=3000,THERMAL_FRAME_WINDOW=60,THERMAL_FRAME_LIMIT_MS=20;
 const __thermalFrames=new Float32Array(THERMAL_FRAME_WINDOW);let __thermalFrameCursor=0,__thermalFrameCount=0,__thermalFrameSum=0;
 function trackThermalFrame(frameMs){if(!(frameMs>0&&frameMs<250)||batterySaver)return;const old=__thermalFrames[__thermalFrameCursor]||0;__thermalFrameSum-=old;__thermalFrames[__thermalFrameCursor]=frameMs;__thermalFrameSum+=frameMs;__thermalFrameCursor=(__thermalFrameCursor+1)%THERMAL_FRAME_WINDOW;__thermalFrameCount=Math.min(__thermalFrameCount+1,THERMAL_FRAME_WINDOW);if(__thermalFrameCount===THERMAL_FRAME_WINDOW&&__thermalFrameSum/THERMAL_FRAME_WINDOW>THERMAL_FRAME_LIMIT_MS){autoEnableBatterySaver('sustained frame load');__thermalFrameCount=0;__thermalFrameSum=0;__thermalFrames.fill(0)}}
 function scheduleBattleLoop(g){if(g!==__loopGen||!state.running||state.screen!=='battle')return;if(state.paused||document.hidden){__loopHeartbeat=performance.now();setTimeout(function(){if(g!==__loopGen||!state.running||state.screen!=='battle')return;if(state.paused||document.hidden)loop(performance.now(),g);else{state.last=performance.now();requestAnimationFrame(function rafMain(t){loop(t,g)})}},500)}else requestAnimationFrame(function rafMain(t){loop(t,g)})}
@@ -9531,7 +9553,7 @@ function storeConfetti(big){const host=document.createElement('div');host.classN
 function fmtCd(ms){ms=Math.max(0,ms);const s=Math.floor(ms/1000);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),ss=s%60;return (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(ss<10?'0':'')+ss}
 /* ltoShownKey: last offer key rendered by renderLTO; storeTick re-renders on rollover */
 let ltoShownKey=null;
-function storeTick(){try{document.querySelectorAll('[data-cd="dd"]').forEach(function(el){const now=new Date(),end=new Date(now);end.setHours(24,0,0,0);if(end<=now)end.setDate(end.getDate()+1);el.textContent='Ends in '+fmtCd(end-now)});document.querySelectorAll('[data-cd="lto"]').forEach(function(el){const win=86400000,el2=Math.max(0,Date.now()-STORE.ltoAnchor)%win;el.textContent='Ends in '+fmtCd(win-el2)});document.querySelectorAll('[data-cd="flash"]').forEach(function(el){if(!flashActive()){clearFlash();return}el.textContent='Ends in '+fmtCd(STORE.flash.expires-Date.now())});document.querySelectorAll('[data-cd="season"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(seasonEndsInMs())}catch(_e){}});document.querySelectorAll('[data-cd="event"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(eventEndsInMs())}catch(_e){}});const ltoNow=ltoCurrent();if(ltoShownKey===null)ltoShownKey=ltoNow.key;else if(ltoNow.key!==ltoShownKey){ltoShownKey=ltoNow.key;renderLTO();storeSave()}}catch(e){}}
+function storeTick(){try{if(document.querySelector('[data-cd]')){document.querySelectorAll('[data-cd="dd"]').forEach(function(el){const now=new Date(),end=new Date(now);end.setHours(24,0,0,0);if(end<=now)end.setDate(end.getDate()+1);el.textContent='Ends in '+fmtCd(end-now)});document.querySelectorAll('[data-cd="lto"]').forEach(function(el){const win=86400000,el2=Math.max(0,Date.now()-STORE.ltoAnchor)%win;el.textContent='Ends in '+fmtCd(win-el2)});document.querySelectorAll('[data-cd="flash"]').forEach(function(el){if(!flashActive()){clearFlash();return}el.textContent='Ends in '+fmtCd(STORE.flash.expires-Date.now())});document.querySelectorAll('[data-cd="season"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(seasonEndsInMs())}catch(_e){}});document.querySelectorAll('[data-cd="event"]').forEach(function(el){try{el.textContent='Ends in '+fmtCd(eventEndsInMs())}catch(_e){}});}const ltoNow=ltoCurrent();if(ltoShownKey===null)ltoShownKey=ltoNow.key;else if(ltoNow.key!==ltoShownKey){ltoShownKey=ltoNow.key;renderLTO();storeSave()}}catch(e){}}
 /* ============================================================================
  * STORE NAVIGATION + WIRING
  * ========================================================================== */
@@ -9815,13 +9837,13 @@ var worldScene=stage.querySelector('.env-scene'),battleScreen=document.getElemen
    to re-arm forever on every screen (60 idle wake-ups/sec on title/menu/store) even
    though its canvas is hidden everywhere but battle. A class observer restarts it the
    moment battle shows — ambient particles, blasts, signatures behave exactly as before. */
-var lastChargeSync='',fxArmed=false,fxBatteryFlip=0;function fxScheduleNext(){if(!battleScreen.classList.contains('active')){fxArmed=false;return}if(state.paused||document.hidden){setTimeout(function(){if(!battleScreen.classList.contains('active')){fxArmed=false;return}if(state.paused||document.hidden)frame(performance.now());else{last=performance.now();requestAnimationFrame(frame)}},500)}else requestAnimationFrame(frame)}function fxKick(){if(fxArmed)return;fxArmed=true;last=performance.now();fxScheduleNext()}function frame(now){try{
+var lastChargeSync='',fxArmed=false,fxBatteryFlip=0,fxMobileFlip=0;function fxScheduleNext(){if(!battleScreen.classList.contains('active')){fxArmed=false;return}if(state.paused||document.hidden){setTimeout(function(){if(!battleScreen.classList.contains('active')){fxArmed=false;return}if(state.paused||document.hidden)frame(performance.now());else{last=performance.now();requestAnimationFrame(frame)}},500)}else requestAnimationFrame(frame)}function fxKick(){if(fxArmed)return;fxArmed=true;last=performance.now();fxScheduleNext()}function frame(now){try{
 if(!battleScreen.classList.contains('active')){fxArmed=false;return}
 if(state.paused||document.hidden){last=now;return}
-if(batterySaver&&((fxBatteryFlip^=1)===0))return
+if(batterySaver&&((fxBatteryFlip^=1)===0))return;if(window.__tkMobileDevice&&((fxMobileFlip^=1)===0))return
 var raw=Math.min(.04,(now-last)/1000||0);last=now;var w=viewW,h=viewH;ctx.clearRect(0,0,w,h);
 var speed=state.speed;worldOffset+=raw*30*speed;
-if(now-lastParallaxPaint>33){lastParallaxPaint=now;if(worldScene){var maxPan=w*.06,pan=Math.sin(worldOffset*.006)*maxPan;worldScene.style.transform='translate3d('+pan.toFixed(2)+'px,0,0)'}}
+/* thermal: env-scene parallax pan removed — the hue-filtered background now rasterizes once and caches */
 ambientClock+=raw;var j;
 if(ambientClock>(fxPortrait?.22:.14)&&active<fxParticleCap()-18){ambientClock=0;var p=take();if(p){p.x=Math.random();p.y=.45+Math.random()*.42;p.vx=-.012-Math.random()*.02;p.vy=-.006-Math.random()*.012;p.life=p.max=2.8+Math.random()*2;p.size=1+Math.random()*2.5;p.color=Math.random()>.55?'#ffd18a':'#d7edf0';p.shape='spore'}}
 for(j=0;j<blastPool.length;j++)if(blastPool[j].on)drawBlast(blastPool[j],w,h,raw);
@@ -10145,6 +10167,7 @@ function __tkBlackBoxCopy(value){
  }));
 }
 function __tkBlackBoxSnapshot(){
+  try{if(localStorage.getItem('tk_blackbox_debug')!=='1'){return {mode:state.mode,screen:state.screen,wave:state.wave,paused:!!state.paused,running:!!state.running,playerHp:Math.round(state.playerHp||0),enemyHp:state.enemy?Math.round(state.enemy.hp||0):0,towerFloor:(typeof towerSave!=='undefined'&&towerSave)?towerSave.floor:null,revives:towerRunRevives}}}catch(e){}
  var result=$('towerResult'),slimState=null;
  try{
   /* Projectiles/particles are the bulk of the state tree and rarely diagnostic — summarize, don't serialize. */
@@ -10162,7 +10185,8 @@ function __tkBlackBoxSnapshot(){
   ui:{towerResultExists:!!result,towerResultHidden:result?result.hidden:null,visibility:document.visibilityState,documentHidden:document.hidden}
  });
 }
-function __tkLog(event,detail){
+function __tkLogEnabled(event){if(String(event).indexOf('error:')===0)return true;try{return localStorage.getItem('tk_blackbox_debug')==='1'}catch(e){return false}}
+function __tkLog(event,detail){if(!__tkLogEnabled(event))return;
  if(__tkBlackBoxWriting)return;
  __tkBlackBoxWriting=true;
  try{
