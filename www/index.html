@@ -4705,6 +4705,16 @@ html.battery-saver .faction-shield{filter:none!important}
 #codexScreen .codex-tab{padding:8px}
 #guildScreen *,#codexScreen *,#eventScreen *,#seasonScreen *{animation:none!important}
 </style>
+<style>
+/* Title key art: full frame on iPhone (2026-10-12). The portrait master composes
+   the TANKS & KINGS logo edge-to-edge, and object-fit:cover on iPhone viewports
+   (taller than the art's 900x1600) cropped ~10% more per side — cutting the
+   logo's first/last letters and both tanks. Contain shows the entire approved
+   frame; the stage backdrop is a warm-dark gradient that reads as a vignette
+   extension of the art's storm sky (top) and battlefield (bottom). */
+#titleScreen .hero-stage{background:radial-gradient(130% 100% at 50% 0%,#241611 0%,#0a0a10 55%,#05090f 100%)!important}
+#titleScreen .hero-stage img{object-fit:contain!important;object-position:center center!important}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5219,7 +5229,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='b84878f2d5';
-const __HTML_V='edb569b2ef';
+const __HTML_V='6df3048edb';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
