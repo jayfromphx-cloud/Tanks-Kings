@@ -4782,6 +4782,60 @@ img{-webkit-user-drag:none!important;user-drag:none!important}
 #meleeBtn:active,#missileBtn:active,#parryBtn:active,#ultBtn:active,#chargeBtn:active{transform:scale(.93)}
 @media(prefers-reduced-motion:reduce){.combatant.fire,.combatant.hit,.combatant.hit-crit,.combatant.defeat,.combatant.enter{animation:none!important}}
 </style>
+<style id="royalEquipCompact">
+/* Royal Equipment compact pass (2026-10-13): auto-forge fixed + one-view fit */
+#itemsSheet .sheet{padding:10px 12px calc(10px + env(safe-area-inset-bottom));max-height:min(94svh,var(--app-vh))}
+#itemsSheet .sheet-handle{display:none}
+#itemsSheet .sheet-head{margin-bottom:5px;padding-bottom:5px}
+#itemsSheet .sheet-head h2{font-size:20px}
+#itemsSheet .sheet-sub{font-size:9px;margin-top:1px}
+#itemsSheet .sheet-head .close{width:30px;height:30px;font-size:15px}
+#itemsSheet .equip-topbar{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:0 0 7px}
+#itemsSheet .equip-topbar #autoEquip{width:100%;min-height:36px;padding:4px 6px;font-size:10.5px;letter-spacing:.08em;border-radius:9px;box-shadow:0 3px 0 #6d4512,inset 0 1px rgba(255,255,255,.55),inset 0 -2px rgba(120,70,10,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#itemsSheet .equip-topbar #autoForge{position:relative;width:100%;min-height:36px;padding:4px 6px;border:1px solid #c9973f;border-top-color:#ffe9a8;border-radius:9px;cursor:pointer;font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#2c1c03;background:linear-gradient(180deg,#f7df9e,#dfae4a 48%,#bd8627 82%,#9c6c1e);box-shadow:0 3px 0 #5f3d10,inset 0 1px rgba(255,255,255,.5),inset 0 -2px rgba(120,70,10,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#itemsSheet .equip-topbar #autoForge:active{transform:translateY(2px);box-shadow:0 1px 0 #5f3d10,inset 0 1px rgba(255,255,255,.4)}
+#itemsSheet .equip-topbar #autoForge:disabled{cursor:default;color:#9a8f76;border-color:#4c4433;border-top-color:#6b5f45;background:linear-gradient(180deg,#2b3138,#171c22);box-shadow:0 2px 0 #05070a,inset 0 1px rgba(255,255,255,.06)}
+@media(max-width:420px){#itemsSheet .equip-topbar #autoEquip,#itemsSheet .equip-topbar #autoForge{font-size:9.5px;letter-spacing:.04em}}
+#itemsSheet .gear-summary{gap:6px;margin:0 0 7px}
+#itemsSheet .gs-stat{padding:5px 4px;border-radius:10px}
+#itemsSheet .gs-label{font-size:8px}
+#itemsSheet .gs-value{font-size:15px}
+#itemsSheet .slots{gap:6px}
+#itemsSheet .slot{min-height:0;padding:5px;border-radius:11px}
+#itemsSheet .slot .slot-icon{width:26px;height:26px;border-radius:7px}
+#itemsSheet .slot>b{margin-top:5px;font-size:11px}
+#itemsSheet .slot small{margin-top:1px;font-size:8px;line-height:1.15}
+#itemsSheet .slot-ability{margin-top:1px;font-size:7.5px;line-height:1.15}
+#itemsSheet .slot .slot-stars{margin-top:0;line-height:1}
+#itemsSheet .slot .slot-stars .star{font-size:7px}
+#itemsSheet .slot .slot-tier{margin-top:0;font-size:7.5px}
+#itemsSheet .slot-rank{margin-top:2px;font-size:7.5px}
+#itemsSheet .slot-pwr{font-size:8.5px;padding:0 5px}
+#itemsSheet .slot .rank-bar{height:3px;margin:1px 0 3px}
+#itemsSheet .slot-btn{min-height:25px;padding:3px 2px;font-size:8.5px;line-height:1.2;border-radius:7px}
+#itemsSheet .slot-btn .slot-btn-sub{display:inline;font-size:8px;margin-left:3px}
+#itemsSheet .setbox{margin-top:7px;padding:7px 9px;font-size:10px;line-height:1.35;border-radius:10px}
+#itemsSheet .set-pips{gap:3px}
+#itemsSheet .set-pips i{width:7px;height:7px}
+#itemsSheet .inventory-title{margin:8px 1px 4px}
+#itemsSheet .inventory-title h3{font-size:15px}
+#itemsSheet .inventory-count{font-size:10px}
+#itemsSheet #salvageAll{min-height:30px;padding:5px 9px}
+#itemsSheet #salvageAll strong{font-size:10.5px}
+#itemsSheet #salvageAll span{display:inline;margin-left:5px;font-size:9px}
+#itemsSheet .salvage-note{display:none}
+#itemsSheet .salvage-status{font-size:9px;min-height:0;margin:1px 0 0}
+#itemsSheet .inventory{gap:5px}
+#itemsSheet .loot{padding:5px 7px;grid-template-columns:36px minmax(0,1fr) auto;border-radius:10px}
+#itemsSheet .loot .slot-icon{width:32px;height:32px}
+#itemsSheet .loot b{font-size:11px}
+#itemsSheet .loot small{font-size:9px}
+#itemsSheet .equip{padding:6px 8px;font-size:9px;border-radius:7px}
+#itemsSheet .inventory-pager{margin-top:6px;gap:6px}
+#itemsSheet .inventory-page-btn{min-height:29px;padding:5px 10px;font-size:10px}
+#itemsSheet .inventory-page-info{font-size:10px}
+</style>
+
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5297,7 +5351,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='2467647b56';
-const __HTML_V='9bcf9e9f39';
+const __HTML_V='1723ba1909';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
