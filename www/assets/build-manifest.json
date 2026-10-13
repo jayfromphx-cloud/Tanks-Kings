@@ -1,7 +1,7 @@
 {
-  "build": "b84878f2d5",
-  "html": "cf0e4b477e",
-  "assetCount": 244,
+  "build": "6ea60a5034",
+  "html": "82a72f04b3",
+  "assetCount": 220,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -714,31 +714,6 @@
       "md5": "9398afb6f7b0c9e505925c8b0f11654f"
     },
     {
-      "file": "assets/missile-bloom.png",
-      "bytes": 1843200,
-      "md5": "5c80e689a4f9d8883c7fb786d9441059"
-    },
-    {
-      "file": "assets/missile-ember.png",
-      "bytes": 1408940,
-      "md5": "a7ca365babd66be262eccc3dfc80ebf8"
-    },
-    {
-      "file": "assets/missile-iron.png",
-      "bytes": 1195053,
-      "md5": "4838c6f11ca8fdb2ebfcf6e10846ebc1"
-    },
-    {
-      "file": "assets/missile-tide.png",
-      "bytes": 2285953,
-      "md5": "07e5237782ebffdb6083c308f5621871"
-    },
-    {
-      "file": "assets/missile-volt.png",
-      "bytes": 1384614,
-      "md5": "8e000c91c7920f5b44c382f7cf8d8b1b"
-    },
-    {
       "file": "assets/missile.bin",
       "bytes": 30137,
       "md5": "1364bc66c02184b042163380d19cd848"
@@ -759,19 +734,9 @@
       "md5": "be447d877b0191e2895b16bcee637b87"
     },
     {
-      "file": "assets/mode-icon-dungeon.png",
-      "bytes": 100038,
-      "md5": "cad392597581952a802cf5b371b6a910"
-    },
-    {
       "file": "assets/mode-icon-glory-clean.png",
       "bytes": 50674,
       "md5": "045ee758e0fe9b8551bea7ea097ac1a6"
-    },
-    {
-      "file": "assets/mode-icon-glory.png",
-      "bytes": 80480,
-      "md5": "d010fc3cb325e397af8b9c0e4a615acf"
     },
     {
       "file": "assets/mode-icon-tower-clean.png",
@@ -882,61 +847,6 @@
       "file": "assets/prod2-valor-medal.png",
       "bytes": 258669,
       "md5": "3d89039a48d4cf2d357687e91a1dd293"
-    },
-    {
-      "file": "assets/projectile-bloom.png",
-      "bytes": 232221,
-      "md5": "7ea1ce9349aa061d06150f109b547235"
-    },
-    {
-      "file": "assets/projectile-ember.png",
-      "bytes": 212161,
-      "md5": "7e031136a8d7c58fbd959959616bf4cd"
-    },
-    {
-      "file": "assets/projectile-gk-bloom.png",
-      "bytes": 410805,
-      "md5": "93f14cebf86d3f165e36981448aa3f9a"
-    },
-    {
-      "file": "assets/projectile-gk-ember.png",
-      "bytes": 414731,
-      "md5": "d1d3c3bb5f65e60c5c1ff92f95c921d6"
-    },
-    {
-      "file": "assets/projectile-gk-iron.png",
-      "bytes": 412992,
-      "md5": "0885c3e917e087f2e4eb010a2f87f271"
-    },
-    {
-      "file": "assets/projectile-gk-tide.png",
-      "bytes": 393372,
-      "md5": "fb0c13669c24438d32334e5438e6f1f7"
-    },
-    {
-      "file": "assets/projectile-gk-volt.png",
-      "bytes": 442779,
-      "md5": "861d0b42e6b7650e980e7b0267df813d"
-    },
-    {
-      "file": "assets/projectile-iron.png",
-      "bytes": 222943,
-      "md5": "391887f368e67118bd79762993e4ae22"
-    },
-    {
-      "file": "assets/projectile-tide.png",
-      "bytes": 208391,
-      "md5": "ca6d7b889f5c5c9eb016ed1a4b964dd1"
-    },
-    {
-      "file": "assets/projectile-v1.png",
-      "bytes": 274666,
-      "md5": "a0bac9460dfda204be5b47ab0647c993"
-    },
-    {
-      "file": "assets/projectile-volt.png",
-      "bytes": 156565,
-      "md5": "c8b2b0e2133441fb9a5aa3b49f6f8a9a"
     },
     {
       "file": "assets/projectile.bin",
@@ -1134,31 +1044,6 @@
       "md5": "f7124672610fc11d0310827a1400cc3a"
     },
     {
-      "file": "assets/ult-projectile-bloom.png",
-      "bytes": 705947,
-      "md5": "2147fe92d7c66d9202ba52f50bdf285e"
-    },
-    {
-      "file": "assets/ult-projectile-cinder.png",
-      "bytes": 586663,
-      "md5": "f0430d3bff257da0cffcbbcda94cda8f"
-    },
-    {
-      "file": "assets/ult-projectile-iron.png",
-      "bytes": 765882,
-      "md5": "dfe8176f968968f921f1c4e136c84cdf"
-    },
-    {
-      "file": "assets/ult-projectile-tide.png",
-      "bytes": 600322,
-      "md5": "d24d15295b809c748c3aea699526edc2"
-    },
-    {
-      "file": "assets/ult-projectile-volt.png",
-      "bytes": 822503,
-      "md5": "be2d5fb18fd981af3f3bb28566c064eb"
-    },
-    {
       "file": "assets/ult-tank-bloomvale-artillery.png",
       "bytes": 60282,
       "md5": "fd77233847ef9adf829c0815e2049a92"
@@ -1217,11 +1102,6 @@
       "file": "assets/ult-voltspire.bin",
       "bytes": 161280,
       "md5": "f7124672610fc11d0310827a1400cc3a"
-    },
-    {
-      "file": "assets/ultimate-arcane.png",
-      "bytes": 682204,
-      "md5": "5702cd84acd4353cefa32d6001bef8bc"
     }
   ],
   "audio": []
