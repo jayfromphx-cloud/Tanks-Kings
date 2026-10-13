@@ -4621,6 +4621,10 @@ html.battery-saver .faction-shield{filter:none!important}
 /* Resource pass 2 (2026-10-12): skip rendering off-screen cards in the long lists */
 .store-card,.codex-card,.tier-row{content-visibility:auto;contain-intrinsic-size:auto 160px}
 </style>
+<style>
+/* Faction title (2026-10-12): fluid size so SELECT YOUR FACTION fits iPhone widths */
+.menu-content-head h1{font-size:clamp(20px,6vw,32px)!important;letter-spacing:.02em!important}
+</style>
 </head>
 <body>
 <div id="motionVeil" aria-hidden="true"></div>
@@ -5135,7 +5139,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='faa8b3fab9';
-const __HTML_V='b5d180c674';
+const __HTML_V='275fb11986';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5904,8 +5908,8 @@ window.tanksKingsAudioTest=function(){
 document.addEventListener('pointerdown',function(){if(!bgmStarted)return;if(audioCtx&&audioCtx.state!=='running')audioCtx.resume().catch(function(){});const w=bgmCurrent||'title';if(!bgmSources[w])playBgm(w,true);},true);
 syncVolUI();
 function rounded(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
-function renderFaction(){const host=$('factionGrid');if(!host)return;const factionEmblems={iron:'assets/faction-emblem-ironhold.png',ember:'assets/faction-emblem-ember.png',volt:'assets/faction-emblem-voltspire.png',bloom:'assets/faction-emblem-bloom.png',tide:'assets/faction-emblem-tide.png'},factionLabels={iron:{name:'Ironhold',traits:'Impenetrable • Siege Masters'},ember:{name:'Ember',traits:'Scorched • Flameborne Fury'},volt:{name:'Voltspire',traits:'Charged • Lightning Storm'},bloom:{name:'Bloomvale',traits:"Verdant • Nature's Wardens"},tide:{name:'Tidereign',traits:'Frozen • Tide & Frost'}};host.innerHTML=kingdoms.map(function(k){const art=__tkResolveArt('faction-emblem:'+k.id,'faction emblem',[factionEmblems[k.id]],__TK_DEFAULT_PLAYER_ART).src||'',label=factionLabels[k.id];return `<button class="faction-card faction-${k.id}" data-k="${k.id}" style="--faction-glow:${k.colors[0]}55" aria-label="Choose ${label.name}"><div class="faction-art"><img src="${art}" alt="${label.name} shield emblem"></div><div class="faction-copy"><h2>${label.name}</h2><p>${label.traits}</p></div></button>`}).join('');host.querySelectorAll('.faction-card').forEach(function(card){card.onclick=function(){chosenK=card.dataset.k;chosenTank=tanks.find(function(t){return t.k===chosenK}).id;sfx('coin');setScreen('select');renderSelect();if(tutorialAt(1))tutorialAdvance('faction-picked')}})}
-function renderSelect(){const k=byK(chosenK);const banner=$('kingdomBanner');banner.className='kingdom-banner';banner.innerHTML=`<div class="crest" data-icon="${k.icon}">${k.icon}</div><div><h2>${k.name}</h2><p>${k.mechanic} · ${k.desc}</p></div>`;const tg=$('tankGrid');tg.innerHTML=tanks.filter(t=>t.k===chosenK).map((t,idx)=>{const prog=progressFor(t.id),rank=stageFor(t.id),isDamaged=tankDamage[t.id]===true,visual=evolutionVisualHooks[t.id][prog.stage],art=__tkResolvePlayerArt(t.id,'portrait').src;return `<button class="tank-card ${t.id===chosenTank?'selected':''}${isDamaged?' damaged':''}" style="--stag:${(idx*7/100).toFixed(2)}s" data-t="${t.id}">${isDamaged?'<span class="damage-smoke"><i></i><i></i><i></i></span><span class="damage-sparks"><i></i><i></i><i></i></span><span class="damage-ribbon">DAMAGED · HALF HP</span>':''}<img class="tank-art ${visual.art?'evo-art':''}" src="${art}" alt="${t.name}, ${k.name} ${t.role} tank"><span class="tank-role">${t.role}</span><span class="rank-badge ${prog.stage}">${rank.name} · Lv ${prog.level}</span><h3>${t.name}</h3><p>${t.ultDesc}</p><div class="statrow"><span class="stat">♥ ${isDamaged?Math.max(1,Math.round(totalHp(t.id)*.5)):totalHp(t.id)}</span><span class="stat">⚔ ${totalAtk(t.id)}</span><span class="stat">● ${t.rate.toFixed(1)}s</span></div><div class="ult-chip">ULT • ${t.ult}${prog.stage==='paladin'?' · +50%':prog.stage==='godking'?' · +100%':''}</div></button>`}).join('');tg.querySelectorAll('.tank-card').forEach(function(card){var tank=byT(card.dataset.t),img=card.querySelector('.tank-art');__tkSetImg(img,__tkResolvePlayerArt(tank.id,'portrait'),tank.name+', '+k.name+' '+tank.role+' tank');card.onclick=function(){chosenTank=card.dataset.t;renderSelect();if(tutorialAt(2)){setScreen('mode');renderModeSelect();tutorialAdvance('tank-picked')}}});$('deployName').textContent=byT(chosenTank).name;updateGarageRepairBtn()}
+function renderFaction(){const host=$('factionGrid');if(!host)return;const factionEmblems={iron:'assets/faction-emblem-ironhold.png',ember:'assets/faction-emblem-ember.png',volt:'assets/faction-emblem-voltspire.png',bloom:'assets/faction-emblem-bloom.png',tide:'assets/faction-emblem-tide.png'},factionLabels={iron:{name:'Ironhold',traits:'Impenetrable • Siege Masters'},ember:{name:'Ember',traits:'Scorched • Flameborne Fury'},volt:{name:'Voltspire',traits:'Charged • Lightning Storm'},bloom:{name:'Bloomvale',traits:"Verdant • Nature's Wardens"},tide:{name:'Tidereign',traits:'Frozen • Tide & Frost'}};host.innerHTML=kingdoms.map(function(k){const art=__tkResolveArt('faction-emblem:'+k.id,'faction emblem',[factionEmblems[k.id]],__TK_DEFAULT_PLAYER_ART).src||'',label=factionLabels[k.id];return `<button class="faction-card faction-${k.id}" data-k="${k.id}" style="--faction-glow:${k.colors[0]}55" aria-label="Choose ${label.name}"><div class="faction-art"><img src="${art}" alt="${label.name} shield emblem"></div><div class="faction-copy"><h2>${label.name}</h2><p>${label.traits}</p></div></button>`}).join('');host.querySelectorAll('.faction-card').forEach(function(card){card.onclick=function(){chosenK=card.dataset.k;chosenTank=tanks.find(function(t){return t.k===chosenK}).id;sfx('coin');setScreen('select');renderSelect();if(tutorialAt(4))tutorialAdvance('faction-picked')}})}
+function renderSelect(){const k=byK(chosenK);const banner=$('kingdomBanner');banner.className='kingdom-banner';banner.innerHTML=`<div class="crest" data-icon="${k.icon}">${k.icon}</div><div><h2>${k.name}</h2><p>${k.mechanic} · ${k.desc}</p></div>`;const tg=$('tankGrid');tg.innerHTML=tanks.filter(t=>t.k===chosenK).map((t,idx)=>{const prog=progressFor(t.id),rank=stageFor(t.id),isDamaged=tankDamage[t.id]===true,visual=evolutionVisualHooks[t.id][prog.stage],art=__tkResolvePlayerArt(t.id,'portrait').src;return `<button class="tank-card ${t.id===chosenTank?'selected':''}${isDamaged?' damaged':''}" style="--stag:${(idx*7/100).toFixed(2)}s" data-t="${t.id}">${isDamaged?'<span class="damage-smoke"><i></i><i></i><i></i></span><span class="damage-sparks"><i></i><i></i><i></i></span><span class="damage-ribbon">DAMAGED · HALF HP</span>':''}<img class="tank-art ${visual.art?'evo-art':''}" src="${art}" alt="${t.name}, ${k.name} ${t.role} tank"><span class="tank-role">${t.role}</span><span class="rank-badge ${prog.stage}">${rank.name} · Lv ${prog.level}</span><h3>${t.name}</h3><p>${t.ultDesc}</p><div class="statrow"><span class="stat">♥ ${isDamaged?Math.max(1,Math.round(totalHp(t.id)*.5)):totalHp(t.id)}</span><span class="stat">⚔ ${totalAtk(t.id)}</span><span class="stat">● ${t.rate.toFixed(1)}s</span></div><div class="ult-chip">ULT • ${t.ult}${prog.stage==='paladin'?' · +50%':prog.stage==='godking'?' · +100%':''}</div></button>`}).join('');tg.querySelectorAll('.tank-card').forEach(function(card){var tank=byT(card.dataset.t),img=card.querySelector('.tank-art');__tkSetImg(img,__tkResolvePlayerArt(tank.id,'portrait'),tank.name+', '+k.name+' '+tank.role+' tank');card.onclick=function(){chosenTank=card.dataset.t;renderSelect();if(tutorialAt(5)){setScreen('mode');renderModeSelect();tutorialAdvance('tank-picked')}}});$('deployName').textContent=byT(chosenTank).name;updateGarageRepairBtn()}
 $('startBtn').onclick=()=>{setTimeout(()=>{try{initAudio()}catch(e){}},0);tutorialOnTitleEnter();if(tutorialLive)return;setScreen('faction');renderFaction();loginPopupIfDue();};$('deployBtn').onclick=startBattle;
 function __tkShowEnemySilhouette(img,alt){if(!img)return;img.onerror=null;img.onload=null;img.removeAttribute('src');img.alt='';img.setAttribute('role','img');img.setAttribute('aria-label',alt||'Enemy tank silhouette');img.classList.add('enemy-silhouette');img.style.display='block';img.style.opacity='1';img.style.visibility='visible'}
 function __tkShowTankFallback(img,alt){if(!img)return;img.onerror=null;img.onload=null;img.classList.remove('enemy-silhouette');img.removeAttribute('role');img.removeAttribute('aria-label');img.alt=alt||'Tank';img.src=__TK_INLINE_TANK_FALLBACK;img.style.display='block';img.style.opacity='1';img.style.visibility='visible'}
@@ -5931,6 +5935,10 @@ var BATTLE_BG_KINGDOM={ember:'assets/bg-ember-wastes.jpg',tide:'assets/bg-storm-
 var BATTLE_BG_GOD={pyra:'assets/bg-ember-wastes.jpg',pontiff:'assets/bg-ember-wastes.jpg',tempestra:'assets/bg-volt-highlands.jpg',gale:'assets/bg-volt-highlands.jpg',tidefather:'assets/bg-storm-coast.jpg',thorn:'assets/bg-bloom-vale.jpg',solarion:'assets/bg-bloom-vale.jpg'};
 var battleBgPreloaded=false;
 function preloadBattleBgs(){if(battleBgPreloaded)return;battleBgPreloaded=true;var want={};try{want[BATTLE_BG_DEFAULT]=1;var kk=byT(chosenTank).k;if(BATTLE_BG_KINGDOM[kk])want[BATTLE_BG_KINGDOM[kk]]=1;}catch(e){want[BATTLE_BG_DEFAULT]=1}Object.keys(want).forEach(function(u){var im=new Image();im.src=u+'?v='+__ASSET_V;});}
+const __tkSpriteMeasure={};
+function tkMeasureSprite(img,cb){var src=img.getAttribute('src');if(!src){cb(null);return}if(__tkSpriteMeasure[src]){cb(__tkSpriteMeasure[src]);return}var probe=new Image();probe.onload=function(){try{var w=probe.naturalWidth,h=probe.naturalHeight;if(!w||!h){cb(null);return}var cv=document.createElement('canvas');cv.width=w;cv.height=h;var g=cv.getContext('2d');g.drawImage(probe,0,0);var d=g.getImageData(0,0,w,h).data,top=-1,bottom=-1;for(var y=0;y<h;y++){var row=false;for(var x=0;x<w;x++){if(d[(y*w+x)*4+3]>42){row=true;break}}if(row){if(top<0)top=y;bottom=y}}var m=top<0?null:{ar:w/h,fracH:(bottom-top+1)/h};__tkSpriteMeasure[src]=m;cb(m)}catch(e){cb(null)}};probe.onerror=function(){cb(null)};probe.src=src}
+function tkNormalizeCombatant(img){if(!img)return;var stage=$('battleStage');if(!stage)return;var src=img.getAttribute('src'),boss=img.classList.contains('boss'),stageH=stage.clientHeight||0;if(!src||!stageH)return;if(img._tkNormSrc===src&&img._tkNormBoss===boss&&Math.abs((img._tkNormStageH||0)-stageH)<24)return;tkMeasureSprite(img,function(m){if(!m||img.getAttribute('src')!==src)return;var target=stageH*(boss?0.288:0.24),contentH=target/m.fracH;img.style.height=contentH+'px';img.style.width=(contentH*m.ar)+'px';img._tkNormSrc=src;img._tkNormBoss=boss;img._tkNormStageH=stageH})}
+(function(){function arm(img){if(!img)return;new MutationObserver(function(){tkNormalizeCombatant(img)}).observe(img,{attributes:true,attributeFilter:['src','class']});img.addEventListener('load',function(){tkNormalizeCombatant(img)})}arm(document.getElementById('playerSprite'));arm(document.getElementById('enemySprite'));window.addEventListener('resize',function(){tkNormalizeCombatant(document.getElementById('playerSprite'));tkNormalizeCombatant(document.getElementById('enemySprite'))})})();
 function setBattleBackground(src){preloadBattleBgs();var el=document.querySelector('#battleStage .world-bg .env-scene');if(el){src=__tkResolveArt('battle-bg','battle background',[src],BATTLE_BG_DEFAULT).src;el.style.backgroundImage='url("'+src+'")';}}
 function __tkBattleInitStep(label,fn){try{return fn()}catch(error){console.error('[Tanks & Kings] Battle init step failed: '+label,error);return null}}
 function startBattle(){
@@ -6081,7 +6089,7 @@ function tryPerfectParry(){
     state.hitStop=Math.max(state.hitStop,.14);
     state.shake=Math.max(state.shake,15);
     state.cineSlow=Math.max(state.cineSlow,.35);
-    number(.30,.38,'PARRY!',parryColor,'perfect');
+    if(state.tutorialMode&&tutorialAt(1))tutorialAdvance('tutorial:parry');number(.30,.38,'PARRY!',parryColor,'perfect');
     number(.30,.48,'REFLECTED x'+parried,'#ffe9a8','status');
     sfx('parry');
     try{
@@ -6867,7 +6875,7 @@ function spawnUltFlash(){
     setTimeout(function(){try{fl.classList.remove('on')}catch(e){}},700);
   }catch(e){}
 }
-function useUlt(){if(state.ult<100||!state.enemy||state.ultCasting||state.playerDead||state.paused||document.hidden||!state.running||state.screen!=='battle')return;try{if(navigator&&navigator.vibrate)navigator.vibrate([20,30,20])}catch(e){}const t=byT(chosenTank),rank=stageFor(chosenTank);state.ultCasting=true;
+function useUlt(){if(state.ult<100||!state.enemy||state.ultCasting||state.playerDead||state.paused||document.hidden||!state.running||state.screen!=='battle')return;if(state.tutorialMode&&tutorialAt(2))tutorialAdvance('tutorial:ult');try{if(navigator&&navigator.vibrate)navigator.vibrate([20,30,20])}catch(e){}const t=byT(chosenTank),rank=stageFor(chosenTank);state.ultCasting=true;
 /* AAA Phase 1 — Anticipation (0.45s): hero glows gold and scales up, 16 energy orbs converge inward, vignette closes in. 100% native DOM/CSS/canvas — no video. */
 try{var _rig=he('playerRig');if(_rig){_rig.classList.remove('ult-anticipate');void _rig.offsetWidth;_rig.classList.add('ult-anticipate')}var _st=$('battleStage');if(_st)_st.classList.add('ult-vignette')}catch(e){}
 retriggerArt('ultBtn','anticipate',350);
@@ -6894,8 +6902,8 @@ $('meleeBtn').onclick=function(){
     if(tryMeleeRam()){
       try{sfx('hit')}catch(e){}
       try{if(navigator&&navigator.vibrate)navigator.vibrate(18)}catch(e){}
-      /* Tutorial fix: advance on successful CHARGE (step 0 waits for victory, but user expects charge-tap to progress) */
-      try{if(typeof tutorialAt==='function'&&tutorialAt(0))tutorialBattleVictory(state.enemy);}catch(e){}
+      /* Tutorial: a successful CHARGE completes the charge lesson (step 0); at the finish step (3) a charge closes out the fight. */
+      try{if(typeof tutorialAt==='function'){if(tutorialAt(0))tutorialAdvance('tutorial:charge');else if(tutorialAt(3))tutorialBattleVictory(state.enemy);}}catch(e){}
     } else if((state.meleeCd||0)>0){
       showToast('Charge recharging… '+Math.ceil(state.meleeCd)+'s');
       try{var mb=he('meleeBtn');if(mb){mb.classList.remove('tap-shake');void mb.offsetWidth;mb.classList.add('tap-shake');setTimeout(function(){try{mb.classList.remove('tap-shake')}catch(e){}},360)}}catch(e){}
@@ -7060,7 +7068,7 @@ const ec=enemySpriteEl;if(state.enemy){if(ec._dbv!==1){ec._dbv=1;ec.style.displa
 // opacity with no additive glow or motion trail.
 {const PL=state.projectiles;if(PL.length){ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;for(let pi=0,PN=PL.length;pi<PN;pi++){const p=PL[pi];
 if(p.ultOrb){const _ufs=__ultFactionSprites[byT(chosenTank).k]||__ultSprite;if(_ufs){const US=Math.max(96,Math.min(200,w*.17))*1.1,UH=US*_ufs.h/_ufs.w;ctx.save();ctx.translate(w*p.x,h*p.y);ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.rotate(Math.sin(p.spin||0)*.07);ctx.drawImage(_ufs.c,-US/2,-UH/2,US,UH);ctx.restore()}continue}
-if(__v1Sprite){const _isEnemyShot=!!p.enemy;const _gkOn=!_isEnemyShot&&typeof equippedGodskin==='function'&&equippedGodskin(chosenTank);const _v1fs=_isEnemyShot?__v1Sprite:((_gkOn?__v1GkFactionSprites[byT(chosenTank).k]:null)||__v1FactionSprites[byT(chosenTank).k]||__v1Sprite);const VL=Math.max(78,Math.min(152,w*.125))*1.18*(p.big?1.42:1),VH=VL*_v1fs.h/_v1fs.w,PX=w*p.x,PY=h*p.y;ctx.save();ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.translate(PX,PY);if(p.enemy)ctx.scale(-1,1);ctx.drawImage(_v1fs.c,-VL/2,-VH/2,VL,VH);ctx.restore();continue}
+if(__v1Sprite){const _isEnemyShot=!!p.enemy;const _gkOn=!_isEnemyShot&&typeof equippedGodskin==='function'&&equippedGodskin(chosenTank);const _v1fs=_isEnemyShot?__v1Sprite:((_gkOn?__v1GkFactionSprites[byT(chosenTank).k]:null)||__v1FactionSprites[byT(chosenTank).k]||__v1Sprite);const VL=Math.max(78,Math.min(152,w*.125))*1.18*(p.big?1.42:.5),VH=VL*_v1fs.h/_v1fs.w,PX=w*p.x,PY=h*p.y;ctx.save();ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.translate(PX,PY);if(p.enemy)ctx.scale(-1,1);ctx.drawImage(_v1fs.c,-VL/2,-VH/2,VL,VH);ctx.restore();continue}
 }}}
 for(let qi=0,QN=state.particles.length;qi<QN;qi++){const p=state.particles[qi];const pa=(p.alpha!=null?p.alpha:Math.max(0,Math.min(1,p.life/(p.maxLife||1))));if(pa<=0.01)continue;const x=w*p.x,y=h*p.y,s=p.size;
 if(p.shape==='debris'){ctx.save();ctx.translate(x,y);ctx.rotate(p.rot||0);ctx.globalAlpha=pa;ctx.fillStyle=p.color;ctx.fillRect(-s*.5,-s*.32,s,s*.64);ctx.fillStyle='rgba(255,255,255,.28)';ctx.fillRect(-s*.5,-s*.32,s,s*.2);ctx.fillStyle='rgba(0,0,0,.28)';ctx.fillRect(-s*.5,s*.1,s,s*.22);ctx.restore()}
@@ -9394,7 +9402,7 @@ function storeSeasonPassHTML(){
  return '<div class="store-sec-title">Season Pass</div><div class="season-banner" data-shop-season role="button" tabindex="0" aria-label="Open the Season Pass"><div class="sb-art">🎵</div><div class="sb-copy"><b>Season '+season.id+' Pass — Tier '+t+'/'+SEASON_TIERS+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>'+daysLeft+' days left · '+fmtN(season.xp)+'/'+fmtN(SEASON_XP_TOTAL)+' XP · 30 tiers of free + premium rewards</small></div>'+badge+'</div>';
 }
 function storeFeaturedHTML(){let sec='',i=0;
- if(tutorialAt(4))sec+=tutorialRewardCardHTML();
+ if(tutorialAt(7))sec+=tutorialRewardCardHTML();
  if(!STORE.starterClaimed)sec+=productCard(starterProduct(),i++);
  else sec+=productCard(Object.assign(starterProduct(),{ownedState:'claimed'}),i++);
  sec+=productCard(bestValueGemCard(),i++);
@@ -11190,7 +11198,10 @@ leaderSeasonLoad();
  * one tap at a time. No product menu or battle system owns tutorial flow. */
 var TUTORIAL_KEY='tk_tutorial_v1';
 var TUTORIAL_STEPS=[
- {trigger:'boot',highlightTarget:'#meleeBtn',text:'Commander, take this Ironhold Ascendant Vanguard for a spin! Your cannon fires on its own \u2014 tap CHARGE to slam the enemy!',waitForEvent:'tutorial:victory',maxSeconds:25},
+ {trigger:'boot',highlightTarget:'#meleeBtn',text:'Commander, take this Ironhold Ascendant Vanguard for a spin! Your cannon fires on its own \u2014 tap CHARGE to slam the enemy!',waitForEvent:'tutorial:charge',maxSeconds:25},
+ {trigger:'tutorial:charge',highlightTarget:'#parryBtn',text:'Now the shield, Commander! Enemy shells are inbound \u2014 tap PARRY the moment one closes in to reflect it back at 2.2\u00d7 power!',waitForEvent:'tutorial:parry',maxSeconds:30},
+ {trigger:'tutorial:parry',highlightTarget:'#ultBtn',text:'Your ULTIMATE is fully charged! Tap ULT and unleash the Ascendant\u2019s wrath!',waitForEvent:'tutorial:ult',maxSeconds:25},
+ {trigger:'tutorial:ult',highlightTarget:'#battleStage',text:'Now finish the fight, Commander!',waitForEvent:'tutorial:victory',maxSeconds:20},
  {trigger:'tutorial:victory',highlightTarget:'#factionGrid',text:'Victory! Now choose your kingdom, Commander \u2014 each forges its own style of war.',waitForEvent:'faction-picked',maxSeconds:20},
  {trigger:'faction-picked',highlightTarget:'#tankGrid',text:'Vanguards charge into the fray. Artillery rains death from afar. Choose your fighter.',waitForEvent:'tank-picked',maxSeconds:15},
  {trigger:'tank-picked',highlightTarget:'#campaignCard',text:'The Campaign is your road to glory. The Tower and Arena await the bold.',waitForEvent:'campaign-picked',maxSeconds:15},
@@ -11216,6 +11227,7 @@ function tutorialTrack(kind,detail){
  try{if(window.TanksKingsAnalytics&&typeof window.TanksKingsAnalytics.track==='function')window.TanksKingsAnalytics.track(payload.event,payload)}catch(e){}
 }
 function tutorialAt(step){return !tutorialState.completed&&tutorialState.step===step}
+function tutorialInBattle(){return !tutorialState.completed&&tutorialState.step<=3}
 function tutorialRewardCardHTML(){
  var claimed=tutorialState.rewardClaimed;
  return '<div class="store-card tutorial-free-card rarity-rare"><div class="store-tag gold">COMMANDER GIFT</div><div class="art">'+artGift()+'</div><div class="body"><h4>Free Daily Reward</h4><div class="sub">100 Scrap · 10 Gems</div><button class="store-buy gems" data-tutorial-reward'+(claimed?' disabled>CLAIMED':'>CLAIM FREE')+'</button></div></div>';
@@ -11257,17 +11269,18 @@ function tutorialEnterStep(reason){
  tutorialClearTimers();if(tutorialState.completed)return;
  var step=TUTORIAL_STEPS[tutorialState.step];if(!step){tutorialFinish(false);return}
  tutorialState.enteredAt=Date.now();tutorialState.lastEvent=reason||step.trigger;tutorialSave();tutorialTrack('step_enter',reason||step.trigger);
- var factionScreen=$('factionScreen');if(factionScreen)factionScreen.classList.toggle('tutorial-faction-focus',tutorialState.step===1);
+ var factionScreen=$('factionScreen');if(factionScreen)factionScreen.classList.toggle('tutorial-faction-focus',tutorialState.step===4);
  if(tutorialState.step===0)tutorialStartBattle();
- else if(tutorialState.step===1){state.tutorialMode=false;state.running=false;state.paused=false;setScreen('faction');renderFaction()}
- else if(tutorialState.step===2){state.running=false;state.paused=false;setScreen('select');renderSelect()}
- else if(tutorialState.step===3){state.running=false;state.paused=false;setScreen('mode');renderModeSelect()}
- else if(tutorialState.step===4){storeTab='featured';if(state.screen!=='store')openStore();else renderStore()}
- else if(tutorialState.step===5){storeTab='gems';if(state.screen!=='store')openStore();else renderStore()}
- else if(tutorialState.step===6){storeTab='supplies';if(state.screen!=='store')openStore();else renderStore()}
- else if(tutorialState.step===7){storeTab='godskins';if(state.screen!=='store')openStore();else renderStore()}
- else if(tutorialState.step===8){if(state.screen==='store')closeStore();setScreen('mode');renderModeSelect();try{renderSeasonBanner()}catch(e){}}
- else if(tutorialState.step===9){if(state.screen==='store')closeStore();setScreen('mode');renderModeSelect()}
+  else if(tutorialState.step===2){state.ult=100;try{updateAbilityUI()}catch(e){}}
+ else if(tutorialState.step===4){state.tutorialMode=false;state.running=false;state.paused=false;setScreen('faction');renderFaction()}
+ else if(tutorialState.step===5){state.running=false;state.paused=false;setScreen('select');renderSelect()}
+ else if(tutorialState.step===6){state.running=false;state.paused=false;setScreen('mode');renderModeSelect()}
+ else if(tutorialState.step===7){storeTab='featured';if(state.screen!=='store')openStore();else renderStore()}
+ else if(tutorialState.step===8){storeTab='gems';if(state.screen!=='store')openStore();else renderStore()}
+ else if(tutorialState.step===9){storeTab='supplies';if(state.screen!=='store')openStore();else renderStore()}
+ else if(tutorialState.step===10){storeTab='godskins';if(state.screen!=='store')openStore();else renderStore()}
+ else if(tutorialState.step===11){if(state.screen==='store')closeStore();setScreen('mode');renderModeSelect();try{renderSeasonBanner()}catch(e){}}
+ else if(tutorialState.step===12){if(state.screen==='store')closeStore();setScreen('mode');renderModeSelect()}
  requestAnimationFrame(function(){requestAnimationFrame(tutorialLayout)});
  tutorialTimer=setTimeout(function(){tutorialTimeout(tutorialState.step)},step.maxSeconds*1000);
 }
@@ -11277,12 +11290,13 @@ function tutorialAdvance(eventName){
 }
 function tutorialTimeout(stepIndex){
  if(tutorialState.completed||tutorialState.step!==stepIndex)return;tutorialTrack('step_timeout',TUTORIAL_STEPS[stepIndex].waitForEvent);
- if(stepIndex===0){tutorialBattleVictory(state.enemy);}
- else if(stepIndex===1){var fc=document.querySelector('#factionGrid .faction-card');if(fc)fc.click();else tutorialAdvance('faction-picked')}
- else if(stepIndex===2){var tc=document.querySelector('#tankGrid .tank-card');if(tc)tc.click();else tutorialAdvance('tank-picked')}
- else if(stepIndex===3)tutorialOpenShop();
- else if(stepIndex===4)tutorialClaimReward();
- else if(stepIndex>=5&&stepIndex<=8)tutorialAdvance(TUTORIAL_STEPS[stepIndex].waitForEvent);
+ if(stepIndex===0||stepIndex===1||stepIndex===2){tutorialAdvance(TUTORIAL_STEPS[stepIndex].waitForEvent)}
+ else if(stepIndex===3){tutorialBattleVictory(state.enemy);}
+ else if(stepIndex===4){var fc=document.querySelector('#factionGrid .faction-card');if(fc)fc.click();else tutorialAdvance('faction-picked')}
+ else if(stepIndex===5){var tc=document.querySelector('#tankGrid .tank-card');if(tc)tc.click();else tutorialAdvance('tank-picked')}
+ else if(stepIndex===6)tutorialOpenShop();
+ else if(stepIndex===7)tutorialClaimReward();
+ else if(stepIndex>=8&&stepIndex<=11)tutorialAdvance(TUTORIAL_STEPS[stepIndex].waitForEvent);
  else tutorialFinish(false);
 }
 function tutorialStartBattle(){
@@ -11318,23 +11332,23 @@ function tutorialRestoreBorrowedProgress(){
  if(window.__tkTutorialBorrow){tankProgress.bulwark=window.__tkTutorialBorrow;window.__tkTutorialBorrow=null}
 }
 function tutorialBattleVictory(enemy){
- if(!tutorialAt(0))return;tutorialRestoreBorrowedProgress();var e=enemy||state.enemy;
+ if(!tutorialInBattle())return;tutorialRestoreBorrowedProgress();var e=enemy||state.enemy;
  if(e){try{sfx('kill');burst(e.x,.55,'#fff0a5',72,'bossdeath');spawnDebris(e.x,.55,1.2);$('enemySprite').classList.add('defeat')}catch(err){}}
  state.enemy=null;state.projectiles.length=0;state.spawnClock=99;state.running=false;state.paused=true;state.tutorialMode=false;updateHUD();
  /* Keep the battle and always-available Skip control visible behind the short
     victory banner; the next beat owns clearing/repositioning the coach. */
  var battleScreen=$('battleScreen');if(battleScreen)battleScreen.classList.add('tutorial-layout-boot');
  var splash=$('tutorialVictory');if(splash)splash.classList.add('show');
- setTimeout(function(){if(!tutorialAt(0))return;if(splash)splash.classList.remove('show');if(battleScreen)battleScreen.classList.remove('tutorial-layout-boot');state.paused=false;tutorialAdvance('tutorial:victory')},850);
+ setTimeout(function(){if(!tutorialInBattle())return;if(splash)splash.classList.remove('show');if(battleScreen)battleScreen.classList.remove('tutorial-layout-boot');state.paused=false;if(tutorialState.step<3){tutorialState.step=3;tutorialSave()}tutorialAdvance('tutorial:victory')},850);
 }
 function tutorialOpenShop(){
- if(!tutorialAt(3))return;storeTab='featured';tutorialTrack('action','campaign-picked');openStore();tutorialAdvance('campaign-picked');
+ if(!tutorialAt(6))return;storeTab='featured';tutorialTrack('action','campaign-picked');openStore();tutorialAdvance('campaign-picked');
 }
 function tutorialClaimReward(){
- if(!tutorialAt(4))return;
+ if(!tutorialAt(7))return;
  if(!tutorialState.rewardClaimed){tutorialState.rewardClaimed=true;state.scrap+=100;state.gems+=10;tutorialSave();try{progressSave()}catch(e){}tutorialTrack('reward','100-scrap-10-gems');try{sfx('coin');storeConfetti(0)}catch(e){}}
  tutorialSave();renderStoreWallet();updateHUD();showToast('Daily reward claimed · +100 Scrap · +10 Gems');
- setTimeout(function(){if(tutorialAt(4)){tutorialAdvance('reward-claimed')}},350);
+ setTimeout(function(){if(tutorialAt(7)){tutorialAdvance('reward-claimed')}},350);
 }
 function tutorialReleaseToFreePlay(){
  tutorialRestoreBorrowedProgress();tutorialClearTimers();tutorialHideCoach();var splash=$('tutorialVictory');if(splash)splash.classList.remove('show');state.tutorialMode=false;state.running=false;state.paused=false;state.playerDead=false;state.enemy=null;state.projectiles.length=0;
@@ -11373,18 +11387,18 @@ function tutorialBoot(){
 }
 $('tutorialSkip').onclick=function(){tutorialFinish(true)};
 $('tutorialReadyBtn').onclick=function(){tutorialFinish(false)};
-document.addEventListener('click',function(ev){if(!tutorialAt(3))return;var card=ev.target&&ev.target.closest?ev.target.closest('#campaignCard'):null;if(!card)return;ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();tutorialOpenShop()},true);
+document.addEventListener('click',function(ev){if(!tutorialAt(6))return;var card=ev.target&&ev.target.closest?ev.target.closest('#campaignCard'):null;if(!card)return;ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();tutorialOpenShop()},true);
 /* Shop tour (steps 5-8): tapping the highlighted section advances the tour.
    Capture-phase + stopPropagation so the tab's own handler cannot re-render
    over the beat the advance just entered. */
 document.addEventListener('click',function(ev){
  var tab=ev.target&&ev.target.closest?ev.target.closest('.store-tabs [data-stab]'):null;
  if(tab){
-  var adv=(tutorialAt(5)&&tab.dataset.stab==='gems')?'shop-gems':(tutorialAt(6)&&tab.dataset.stab==='supplies')?'shop-materials':(tutorialAt(7)&&tab.dataset.stab==='godskins')?'shop-skins':null;
+  var adv=(tutorialAt(8)&&tab.dataset.stab==='gems')?'shop-gems':(tutorialAt(9)&&tab.dataset.stab==='supplies')?'shop-materials':(tutorialAt(10)&&tab.dataset.stab==='godskins')?'shop-skins':null;
   if(adv){ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();try{sfx('coin')}catch(e){}tutorialAdvance(adv)}
   return;
  }
- if(tutorialAt(8)){var sb=ev.target&&ev.target.closest?ev.target.closest('#seasonBanner'):null;if(sb){ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();tutorialAdvance('shop-pass')}}
+ if(tutorialAt(11)){var sb=ev.target&&ev.target.closest?ev.target.closest('#seasonBanner'):null;if(sb){ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();tutorialAdvance('shop-pass')}}
 },true);
 window.addEventListener('resize',function(){if(!tutorialState.completed)tutorialLayout()});
 window.addEventListener('orientationchange',function(){if(!tutorialState.completed)setTimeout(tutorialLayout,120)});
