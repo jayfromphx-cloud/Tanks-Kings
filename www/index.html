@@ -4907,6 +4907,45 @@ img{-webkit-user-drag:none!important;user-drag:none!important}
 img{pointer-events:none!important}
 *:not(input):not(textarea)::selection{background:transparent!important;color:inherit!important}
 </style>
+<style id="codexAAA">
+/* Collection Codex: column layout + AAA polish (2026-10-13) */
+#codexScreen.active{flex-direction:column;align-items:stretch}
+#codexScreen .mode-head,#codexScreen .codex-tabs,#codexBody,#codexRewards{width:100%;max-width:1060px;margin-left:auto;margin-right:auto;padding-left:16px;padding-right:16px;box-sizing:border-box}
+#codexScreen .mode-head{text-align:center;padding-top:58px;padding-bottom:2px}
+#codexScreen .mode-head h1{font:700 clamp(26px,4.5vw,38px) Georgia,"Times New Roman",serif;color:#ffe8a4;letter-spacing:.02em;margin:0;line-height:1.1;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+#codexScreen .mode-kicker{display:block;margin-top:5px;color:#c9a350;font-size:11px;font-weight:900;letter-spacing:.3em;text-transform:uppercase}
+#codexScreen .codex-tabs{display:flex;gap:8px;max-width:520px;margin-top:12px;margin-bottom:14px}
+#codexScreen .codex-tab{flex:1;padding:10px;border:1px solid #8a6d2f;border-radius:11px;background:linear-gradient(180deg,#232d38,#12181f);color:#b9c9d6;font:800 13px "Baloo 2",sans-serif;letter-spacing:.1em;cursor:pointer;box-shadow:0 3px 0 #020406}
+#codexScreen .codex-tab.active{background:linear-gradient(180deg,#ffedb3,#f2c452 55%,#cf9a2f);color:#2c1c03;border-color:#ffe9a8}
+#codexScreen .codex-kingdom{max-width:none;margin:0 0 16px}
+#codexScreen .codex-kingdom h3{font-size:17px;margin:0 0 9px;padding-bottom:6px;border-bottom:1px solid transparent;border-image:linear-gradient(90deg,#a8843c,transparent) 1}
+#codexScreen .codex-tanks{gap:10px}
+#codexScreen .codex-card{padding:12px 10px;border-radius:14px;background:linear-gradient(165deg,#26313d,#0e141b);border:1px solid #9b7b3e;box-shadow:inset 0 1px rgba(255,255,255,.08),0 4px 0 #020406}
+#codexScreen .codex-card img{height:96px}
+#codexScreen .codex-card .nm{font-size:15px;margin-top:6px}
+#codexScreen .codex-card .rl{font-size:11.5px;margin-top:2px}
+#codexScreen .codex-pips{margin-top:8px}
+#codexScreen .codex-pip{width:13px;height:13px}
+#codexScreen .codex-skins{max-width:none;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+#codexScreen .codex-skin{padding:10px 8px;border-radius:14px;background:linear-gradient(165deg,#26313d,#0e141b);border:1px solid #9b7b3e;box-shadow:inset 0 1px rgba(255,255,255,.08),0 4px 0 #020406}
+#codexScreen .codex-skin img{height:84px}
+#codexScreen .codex-rewards{max-width:none;margin:4px 0 0}
+#codexScreen .codex-rewards>h3{font:700 19px Georgia,"Times New Roman",serif;color:#ffe8a4;letter-spacing:.02em;margin:0 0 10px}
+#codexScreen .codex-reward{border:1px solid #a8843c;border-radius:12px;background:linear-gradient(170deg,#221c10,#131007);color:#f3e8cf;padding:11px 13px;margin-bottom:8px;gap:10px}
+#codexScreen .codex-reward .t{font-size:13.5px}
+#codexScreen .codex-reward .d{font-size:11.5px;line-height:1.4}
+#codexScreen .codex-reward>span.d{flex:none;align-self:center;font:800 10px "Baloo 2",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#8fa1b3;border:1px solid #46586c;border-radius:99px;padding:3px 9px;white-space:nowrap}
+#codexScreen .mission-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 13px;border:1px solid #a8843c;border-radius:12px;background:linear-gradient(170deg,#221c10,#131007);color:#f3e8cf;font-size:13.5px;margin-bottom:8px}
+#codexScreen .mission-row .progress{color:#ffe8a4;font-weight:800}
+#codexScreen .codex-reward .claimed{flex:none;align-self:center;font-size:10.5px;letter-spacing:.08em;color:#8cef8a;border:1px solid #3d8f6a;border-radius:99px;padding:3px 9px;white-space:nowrap}
+@media(min-width:900px){
+#codexBody{display:grid;grid-template-columns:1fr 1fr;gap:2px 24px;align-items:start}
+#codexScreen .codex-rewards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#codexScreen .codex-rewards>h3,#codexScreen .codex-rewards>.mission-row{grid-column:1/-1}
+#codexScreen .codex-reward{margin-bottom:0}
+}
+</style>
+
 
 
 
@@ -5426,7 +5465,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='2467647b56';
-const __HTML_V='fb5bdf7ae5';
+const __HTML_V='0033e10b58';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
