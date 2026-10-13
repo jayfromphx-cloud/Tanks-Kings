@@ -1,7 +1,7 @@
 {
-  "build": "27106ef0cd",
-  "html": "95bc56ebf5",
-  "assetCount": 221,
+  "build": "05e312ea70",
+  "html": "4db7a6c3cb",
+  "assetCount": 224,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -684,6 +684,11 @@
       "md5": "d70cb83b049978f9e56b6f9998951183"
     },
     {
+      "file": "assets/melee-bloomvale-lunge.png",
+      "bytes": 615937,
+      "md5": "f2935f3fa3791ff3bf6c5c9a12d1b7e0"
+    },
+    {
       "file": "assets/melee-icon-fist-256.png",
       "bytes": 119730,
       "md5": "399aee69536acee0b2c4e39ba00758c0"
@@ -717,6 +722,16 @@
       "file": "assets/melee-ironhold-lunge.png",
       "bytes": 549211,
       "md5": "382eff7aa9e75ab43fae0eb034f8ebe4"
+    },
+    {
+      "file": "assets/melee-tidereign-lunge.png",
+      "bytes": 606453,
+      "md5": "179025d02defb1507a62b9f8b7d70324"
+    },
+    {
+      "file": "assets/melee-voltspire-lunge.png",
+      "bytes": 607516,
+      "md5": "73ff32210168309dffd7b860c68d4b49"
     },
     {
       "file": "assets/missile.bin",
