@@ -4867,6 +4867,42 @@ img{-webkit-user-drag:none!important;user-drag:none!important}
 #skillsSheet .skill-locked{font-size:10px;font-weight:900;letter-spacing:.1em;color:#8fa1b3;text-transform:uppercase;white-space:nowrap}
 #skillsSheet .skill-maxed{font-family:"Baloo 2",sans-serif;font-size:13px;color:#ffd76a;letter-spacing:.06em;white-space:nowrap}
 </style>
+<style id="workshopOneView">
+/* Tank Workshop compact pass (2026-10-13): everything fits one view */
+#upgradeSheet .sheet{padding:10px 12px calc(10px + env(safe-area-inset-bottom));max-height:min(94svh,var(--app-vh))}
+#upgradeSheet .sheet-handle{display:none}
+#upgradeSheet .sheet-head{margin-bottom:5px;padding-bottom:5px}
+#upgradeSheet .sheet-head h2{font-size:20px}
+#upgradeSheet .sheet-head .close{width:30px;height:30px;font-size:15px}
+#upgradeSheet .level-card{flex-direction:column;align-items:stretch;gap:6px;padding:8px 10px;border-radius:13px}
+#upgradeSheet .level-card .mini-label{font-size:9px}
+#upgradeSheet .level-card h3{font-size:19px;margin:1px 0 0}
+#upgradeSheet .rank-badge{font-size:9px;padding:2px 7px}
+#upgradeSheet .level-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#upgradeSheet .level-actions button{min-height:32px;font-size:12px;border-radius:9px}
+#upgradeSheet .shop-nudge{padding:5px 10px;font-size:11px;margin:6px auto 0;border-radius:10px}
+#upgradeSheet .stats-grid{margin-top:6px;gap:5px}
+#upgradeSheet .bigstat{padding:5px 4px;border-radius:10px}
+#upgradeSheet .bigstat b{font-size:16px}
+#upgradeSheet .bigstat span{font-size:8.5px;margin-left:4px}
+#upgradeSheet .evolution-panel{margin-top:6px;padding:8px 10px;border-radius:13px}
+#upgradeSheet .evo-head h3{font-size:16px}
+#upgradeSheet .evo-path{margin:5px 0;gap:3px}
+#upgradeSheet .evo-step{padding:4px 2px;font-size:8.5px;line-height:1.25;border-radius:7px}
+#upgradeSheet .evo-arrow{font-size:10px}
+#upgradeSheet .requirements{margin:5px 0 6px;gap:4px}
+#upgradeSheet .requirement{padding:4px 7px;font-size:9.5px;gap:5px;border-radius:7px}
+#upgradeSheet .req-mark{width:14px;height:14px;font-size:8px}
+#upgradeSheet .evolve-btn{min-height:38px;font-size:14px;border-radius:10px;box-shadow:0 4px 0 #9b5e16}
+#upgradeSheet .max-rank{padding:6px;font-size:12px}
+@media(orientation:landscape) and (max-height:500px){
+#upgradeSheet .evo-step{padding:3px 2px}
+#upgradeSheet .requirement{padding:3px 6px}
+#upgradeSheet .bigstat b{font-size:14px}
+#upgradeSheet .evolve-btn{min-height:34px}
+}
+</style>
+
 
 
 </head>
@@ -5384,7 +5420,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='2467647b56';
-const __HTML_V='fcb0b56e69';
+const __HTML_V='464239db88';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
