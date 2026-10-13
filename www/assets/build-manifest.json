@@ -1,7 +1,7 @@
 {
-  "build": "bfc0369809",
-  "html": "df85bd34bf",
-  "assetCount": 226,
+  "build": "93ad5b61b2",
+  "html": "072ed51b28",
+  "assetCount": 228,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -37,6 +37,11 @@
       "file": "assets/bgm-war-pulse.bin",
       "bytes": 4293697,
       "md5": "525c5801cc55661bec89ee90c0543e3e"
+    },
+    {
+      "file": "assets/boss-projectile.png",
+      "bytes": 104692,
+      "md5": "d1e323744158a44a20b85cafce77b2d5"
     },
     {
       "file": "assets/btn-melee.png",
@@ -132,6 +137,11 @@
       "file": "assets/enemy-heavy-voltspire.png",
       "bytes": 269930,
       "md5": "4d2078e05dd288eedd6c4820855158ca"
+    },
+    {
+      "file": "assets/enemy-projectile.png",
+      "bytes": 50856,
+      "md5": "804f0d5dabbc7ae0ddcb76f2678abbff"
     },
     {
       "file": "assets/enemy-swift-bloomvale.png",
