@@ -1,7 +1,7 @@
 {
-  "build": "1f0844bfa8",
-  "html": "dd175bf7ac",
-  "assetCount": 392,
+  "build": "199db28c40",
+  "html": "b807835807",
+  "assetCount": 412,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -759,9 +759,59 @@
       "md5": "226b3241ed13af2b4dad5a322da0eecf"
     },
     {
+      "file": "assets/leap-landing-bloom.png",
+      "bytes": 206272,
+      "md5": "95c31b398c0e9b4da48555e5b8ab5fdc"
+    },
+    {
+      "file": "assets/leap-landing-ember.png",
+      "bytes": 206290,
+      "md5": "145c117c33af30b7d912592fb0ba078e"
+    },
+    {
+      "file": "assets/leap-landing-iron.png",
+      "bytes": 206325,
+      "md5": "424c89ffa14db464f93f111944b301c5"
+    },
+    {
+      "file": "assets/leap-landing-tide.png",
+      "bytes": 207106,
+      "md5": "9ae18441086a6549c52ef80e470eda98"
+    },
+    {
+      "file": "assets/leap-landing-volt.png",
+      "bytes": 206938,
+      "md5": "27fdbc1bab82f4d98f2c7860ac95978b"
+    },
+    {
       "file": "assets/leap-landing.png",
       "bytes": 205470,
       "md5": "ff175071fa21e9d159028491e247c624"
+    },
+    {
+      "file": "assets/leap-takeoff-bloom.png",
+      "bytes": 349518,
+      "md5": "bbce756b285f8cc47c6a0ca0340b299c"
+    },
+    {
+      "file": "assets/leap-takeoff-ember.png",
+      "bytes": 350601,
+      "md5": "9973a95fb37f3e5a8b27eb91fdc71d28"
+    },
+    {
+      "file": "assets/leap-takeoff-iron.png",
+      "bytes": 350401,
+      "md5": "e7bf52393b05c586c9ab1ab0232a3cad"
+    },
+    {
+      "file": "assets/leap-takeoff-tide.png",
+      "bytes": 351908,
+      "md5": "fd87f59559c082f563a1203fd24ecc7f"
+    },
+    {
+      "file": "assets/leap-takeoff-volt.png",
+      "bytes": 352092,
+      "md5": "71a559b49d559107af5ebb73b96cd43e"
     },
     {
       "file": "assets/leap-takeoff.png",
@@ -1227,6 +1277,56 @@
       "file": "assets/shield-voltspire.png",
       "bytes": 1016779,
       "md5": "74025f2a4ac36c339671f4ddc7a28ace"
+    },
+    {
+      "file": "assets/skill-leap-icon-bloom-artillery-ascendant.png",
+      "bytes": 121252,
+      "md5": "891b3a19c6fa2f1039fe2aaa222d215d"
+    },
+    {
+      "file": "assets/skill-leap-icon-bloom-vanguard-ascendant.png",
+      "bytes": 135449,
+      "md5": "329995fa9cecb6470d613b0d879b59f0"
+    },
+    {
+      "file": "assets/skill-leap-icon-ember-artillery-ascendant.png",
+      "bytes": 117532,
+      "md5": "971eeb0cc9d202071c0e59fe4a0e63c7"
+    },
+    {
+      "file": "assets/skill-leap-icon-ember-vanguard-ascendant.png",
+      "bytes": 106778,
+      "md5": "325b4a7a97e51e3853c73f8a4d46431a"
+    },
+    {
+      "file": "assets/skill-leap-icon-iron-artillery-ascendant.png",
+      "bytes": 124346,
+      "md5": "b129ebda66f250c63e3004ba39e5cb5e"
+    },
+    {
+      "file": "assets/skill-leap-icon-iron-vanguard-ascendant.png",
+      "bytes": 116207,
+      "md5": "dafaf737543cf7503e71dad2344b2a8d"
+    },
+    {
+      "file": "assets/skill-leap-icon-tide-artillery-ascendant.png",
+      "bytes": 121509,
+      "md5": "cb53767d0daa5984c7c795bb5fdb0ecd"
+    },
+    {
+      "file": "assets/skill-leap-icon-tide-vanguard-ascendant.png",
+      "bytes": 102769,
+      "md5": "1f78c93b7bb545fd5032bc1a389ee529"
+    },
+    {
+      "file": "assets/skill-leap-icon-volt-artillery-ascendant.png",
+      "bytes": 125907,
+      "md5": "566c77372d8413cdfedd68aa168f0dc1"
+    },
+    {
+      "file": "assets/skill-leap-icon-volt-vanguard-ascendant.png",
+      "bytes": 91698,
+      "md5": "8733d5a9c01cf54d407253f097e21385"
     },
     {
       "file": "assets/skill-leap-icon.png",
