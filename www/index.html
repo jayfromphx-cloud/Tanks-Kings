@@ -5010,7 +5010,7 @@ img{pointer-events:none!important}
 #seasonScreen .tier-cell .rw{flex:1;min-width:0;font-size:11.5px;line-height:1.3}
 #seasonScreen .tier-cell button{width:auto;margin:0;padding:5px 9px;font-size:11px;white-space:nowrap;border-radius:7px;flex:0 0 auto}
 </style><style id="leapSkill">
-#leapBtn.leap-button{--cd:0%;--cdN:0;position:relative;width:74px;height:74px;border:0;border-radius:50%;padding:0;cursor:pointer;isolation:isolate;color:#eafff5;flex:0 0 auto;
+#leapBtn.leap-button{--cd:0%;--cdN:0;position:relative;width:74px;height:74px;border:0;border-radius:50%;padding:0;cursor:pointer;isolation:isolate;color:#fff4e5;flex:0 0 auto;
 background:radial-gradient(circle at 50% 32%,#ffb347 0%,#ff7300 45%,#c25100 75%,#571f00 100%);
 box-shadow:0 0 0 1px #05070a,0 0 0 2px #8a3c00,0 0 0 3px #ff8c1a,0 0 0 4px #8a3c00,0 0 0 5px #0a0c10,0 9px 20px rgba(0,0,0,.75),0 0 30px rgba(255,115,0,.16),inset 0 1px 3px rgba(255,230,200,.18),inset 0 -4px 9px rgba(0,0,0,.6);
 overflow:visible}
@@ -5068,8 +5068,8 @@ animation:repairSweepSpin 4s linear infinite}
 #repairBtn .repair-arc{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;transform:rotate(-90deg)}
 #repairBtn .repair-arc-fill{stroke-dasharray:calc(var(--cdN,0)*4.3982) 440;filter:drop-shadow(0 0 3px rgba(141,245,168,.95));transition:stroke-dasharray .2s linear}
 #repairBtn .repair-icon{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);width:40px;height:40px;z-index:2;opacity:.92;filter:drop-shadow(0 0 6px rgba(75,227,126,.45))}
-#repairBtn .repair-label{position:absolute;left:0;right:0;top:60%;z-index:2;margin:0;text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;letter-spacing:1.2px;text-indent:0.6px;color:#f0d68a;text-shadow:0 0 8px rgba(240,214,138,.75),0 1px 2px #000,0 -1px 1px rgba(255,255,255,.2)}
-#repairBtn .repair-cost{position:absolute;left:0;right:0;top:73%;z-index:2;margin:0;text-align:center;font-size:9.5px;font-weight:800;line-height:1;color:#9be26b;text-shadow:0 1px 2px #000,0 0 6px rgba(155,226,107,.5)}
+#repairBtn .repair-label{position:absolute;left:0;right:0;top:58%;z-index:2;margin:0;text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;letter-spacing:1.2px;text-indent:0.6px;color:#f0d68a;text-shadow:0 0 8px rgba(240,214,138,.75),0 1px 2px #000,0 -1px 1px rgba(255,255,255,.2)}
+#repairBtn .repair-cost{position:absolute;left:0;right:0;top:74.5%;z-index:2;margin:0;text-align:center;font-size:9.5px;font-weight:800;line-height:1;color:#9be26b;text-shadow:0 1px 2px #000,0 0 6px rgba(155,226,107,.5)}
 #repairBtn .repair-shine{position:absolute;inset:0;border-radius:50%;z-index:5;pointer-events:none;
 background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.14) 48%,rgba(255,255,255,.28) 50%,rgba(255,255,255,.14) 52%,transparent 60%);
 background-size:250% 250%;animation:repairShine 3.5s ease-in-out infinite}
@@ -5144,8 +5144,8 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
 @media(max-width:900px){
 #battleScreen .battle-controls{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;grid-template-rows:none!important;grid-template-columns:none!important}
 #battleScreen .battle-controls .ability-cluster{display:flex!important;flex-wrap:nowrap!important;width:100%!important;justify-content:space-between!important;align-items:center!important;gap:12px!important;padding:0 1px!important;margin:6px 0 2px!important}
-#battleScreen .battle-controls .ability-cluster :is(#leapBtn.leap-button,#repairBtn.repair-button,#parryBtn.parry-button,#meleeBtn.melee-button,#missileBtn.missile-button,#ultBtn.ult-button){width:min(74px,calc((100vw - 60px)/5))!important;height:min(74px,calc((100vw - 60px)/5))!important;flex:0 0 auto!important}
-#battleScreen .battle-controls .ability-cluster:has(#leapBtn.hidden-leap) :is(#repairBtn.repair-button,#parryBtn.parry-button,#meleeBtn.melee-button,#missileBtn.missile-button,#ultBtn.ult-button){width:min(74px,calc((100vw - 48px)/4))!important;height:min(74px,calc((100vw - 48px)/4))!important}
+#battleScreen .battle-controls .ability-cluster :is(#leapBtn.leap-button,#repairBtn.repair-button,#parryBtn.parry-button,#meleeBtn.melee-button,#missileBtn.missile-button,#ultBtn.ult-button){width:min(74px,calc((100vw - 60px)/5))!important;height:min(74px,calc((100vw - 60px)/5))!important;flex:0 0 auto!important;min-width:0!important;min-height:0!important}
+#battleScreen .battle-controls .ability-cluster:has(#leapBtn.hidden-leap) :is(#repairBtn.repair-button,#parryBtn.parry-button,#meleeBtn.melee-button,#missileBtn.missile-button,#ultBtn.ult-button){width:min(74px,calc((100vw - 48px)/4))!important;height:min(74px,calc((100vw - 48px)/4))!important;min-width:0!important;min-height:0!important}
 }
 </style>
 <style id="guildBannerCard">
@@ -6006,7 +6006,7 @@ if(data.codex&&typeof data.codex==='object'&&!Array.isArray(data.codex)){var cx=
 const PROGRESS_KEY='tk_progression_v1';
 let __progressReady=false,__progressSaveTimer=0,__progressPreloadPending=false;
 let __progressDirty=false,__lastProgressSave=0;
-function progressSave(){try{if(!__progressReady){__progressPreloadPending=true;console.warn('[Tanks & Kings] progressSave queued before load');return}if(window.__tkSaveBlocked)return;const blob=window.TanksKingsSave.save();if(window.__tkTutorialBorrow&&blob.tankProgress)blob.tankProgress.bulwark=window.__tkTutorialBorrow;blob.v=2;blob.savedAt=Date.now();try{var __ctRaw=localStorage.getItem(PROGRESS_KEY);if(__ctRaw&&window.__tkSavedAtMine){var __ctSaved=(JSON.parse(__ctRaw)||{}).savedAt||0;if(__ctSaved>window.__tkSavedAtMine){window.__tkSaveBlocked=true;try{showToast('Progress was saved in another tab \u2014 reload this tab to continue. Your newest progress is safe.')}catch(__ctT){}return}}}catch(__ctE){}localStorage.setItem(PROGRESS_KEY,JSON.stringify(blob));window.__tkSavedAtMine=blob.savedAt;__progressDirty=false;__lastProgressSave=Date.now()}catch(e){try{console.warn('[Tanks & Kings] progressSave failed \u2014 save stays dirty and will retry',e)}catch(_e){}}}
+function progressSave(){try{if(!__progressReady){__progressPreloadPending=true;console.warn('[Tanks & Kings] progressSave queued before load');return}if(window.__tkSaveBlocked)return;const blob=window.TanksKingsSave.save();if(window.__tkTutorialBorrow&&blob.tankProgress)blob.tankProgress.bulwark=window.__tkTutorialBorrow;blob.v=2;blob.savedAt=Date.now();try{var __ctRaw=localStorage.getItem(PROGRESS_KEY);if(__ctRaw&&window.__tkSavedAtMine){var __ctSaved=(JSON.parse(__ctRaw)||{}).savedAt||0;if(__ctSaved>window.__tkSavedAtMine){window.__tkSaveBlocked=true;try{showToast('Progress was saved in another tab \u2014 reload this tab to continue. Your newest progress is safe.')}catch(__ctT){}return}}}catch(__ctE){}localStorage.setItem(PROGRESS_KEY,JSON.stringify(blob));window.__tkSavedAtMine=blob.savedAt;try{if(blob.guild)localStorage.removeItem('tk_guild_v1')}catch(e){}try{if(blob.dungeon)localStorage.removeItem('tk_dungeon_v1')}catch(e){}__progressDirty=false;__lastProgressSave=Date.now()}catch(e){try{console.warn('[Tanks & Kings] progressSave failed \u2014 save stays dirty and will retry',e)}catch(_e){}}}
 function progressSaveSoon(){__progressDirty=true;try{clearTimeout(__progressSaveTimer);__progressSaveTimer=setTimeout(progressSave,700)}catch(e){}}
 function progressLoad(){
  __progressReady=true;
@@ -7689,7 +7689,7 @@ function renderRepairBtn(){
  b.classList.toggle('urgent',can&&state.maxHp>0&&state.hp/state.maxHp<=.35);
  setPV('repairBtn','--cdN',Math.max(0,Math.min(100,(REPAIR_CD_SECS-Math.max(0,state.repairCd||0))/REPAIR_CD_SECS*100)));
  setA('repairBtn','aria-label',cd>0?'Repair recharging '+cd+'s':'Repair: restore '+fmtN(r.heal)+' HP for '+fmtN(r.cost)+' scrap');
- b.title='Spend '+fmtN(r.cost)+' ⚙ to restore '+fmtN(r.heal)+' HP ('+Math.round(REPAIR_HEAL_FRAC*100)+'% max) — '+REPAIR_CD_SECS+'s recharge';
+ b.title='Spend '+fmtN(r.cost)+' ⚙ to restore '+fmtN(r.heal)+' HP — '+REPAIR_CD_SECS+'s recharge';
 }
 $('repairBtn').onclick=battleRepair;
 function showToast(msg){let t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.remove('show'),1500)}
@@ -8655,6 +8655,7 @@ function renderSeasonBanner(){
 }
 function renderGuildBanner(){
  var host=$('guildBanner');if(!host)return;
+ if(typeof state!=='undefined'&&state&&state.screen&&state.screen!=='mode')return;
  try{guildEnsure()}catch(e){}
  if(!guild.inGuild){
   host.innerHTML='<div class="sb-art">\u269C\uFE0F</div><div class="sb-copy"><b>GUILD HALL</b><small>Found or join a guild \u2014 raid the weekly god-boss together.</small></div><span class="sb-badge" style="background:#5b4a8a">ENTER</span>';
@@ -8841,7 +8842,6 @@ function guildEnsureIdentity(){
  if(typeof guild.myName!=='string'||!guild.myName)guild.myName='Commander';
 }
 function guildSave(){
- try{localStorage.removeItem('tk_guild_v1')}catch(e){}
  try{progressSaveSoon()}catch(e){}
 }
 function guildCleanMember(m){
@@ -11406,10 +11406,10 @@ var ELEMENT_BEATS={iron:'bloom',bloom:'volt',volt:'tide',tide:'ember',ember:'iro
 var ELEMENT_BEATEN_BY={};Object.keys(ELEMENT_BEATS).forEach(function(k){ELEMENT_BEATEN_BY[ELEMENT_BEATS[k]]=k});
 var dungeonSave={clearDate:null,claimDate:null,pendingDrop:null};
 try{var _pd=(window.__tkPendingSave&&window.__tkPendingSave.dungeon)||null;if(_pd&&typeof _pd==='object'){dungeonSave.clearDate=_pd.clearDate||null;dungeonSave.claimDate=_pd.claimDate||null;dungeonSave.pendingDrop=(_pd.pendingDrop&&typeof _pd.pendingDrop==='object')?_pd.pendingDrop:null;dungeonSave._fromUnified=true;if(window.__tkPendingSave)window.__tkPendingSave.dungeon=null}}catch(e){}
-function dungeonSaveSnapshot(){return {clearDate:dungeonSave.clearDate||null,claimDate:dungeonSave.claimDate||null,pendingDrop:(dungeonSave.pendingDrop&&typeof dungeonSave.pendingDrop==='object')?dungeonSave.pendingDrop:null}}
+function dungeonSaveSnapshot(){if(typeof dungeonSave==='undefined'||!dungeonSave)return null;return {clearDate:dungeonSave.clearDate||null,claimDate:dungeonSave.claimDate||null,pendingDrop:(dungeonSave.pendingDrop&&typeof dungeonSave.pendingDrop==='object')?dungeonSave.pendingDrop:null}}
 var dungeonDebugDow=null; /* audit hook only: simulate a weekday (1..5) or weekend (0/6) */
 function dungeonLoad(){if(dungeonSave._fromUnified)return;try{var d=JSON.parse(localStorage.getItem(DUNGEON_SAVE_KEY)||'null');if(d&&typeof d==='object'){dungeonSave.clearDate=d.clearDate||null;dungeonSave.claimDate=d.claimDate||null;dungeonSave.pendingDrop=(d.pendingDrop&&typeof d.pendingDrop==='object')?d.pendingDrop:null}}catch(e){}}
-function dungeonPersist(){try{progressSaveSoon()}catch(e){}try{localStorage.removeItem(DUNGEON_SAVE_KEY)}catch(e){}}
+function dungeonPersist(){try{progressSaveSoon()}catch(e){}}
 function dungeonDateKey(d){d=d||new Date();var m=String(d.getMonth()+1).padStart(2,'0'),da=String(d.getDate()).padStart(2,'0');return d.getFullYear()+'-'+m+'-'+da}
 function dungeonDow(){if(dungeonDebugDow!=null)return dungeonDebugDow;return new Date().getDay()}
 function dungeonInfo(){
