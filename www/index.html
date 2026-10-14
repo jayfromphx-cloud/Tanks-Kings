@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='9ad3645d99';
-const __HTML_V='5049072585';
+const __HTML_V='028803a6dd';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6482,12 +6482,22 @@ function tryPerfectParry(){
   if(!state.enemy||state.playerDead||state.paused||document.hidden||!state.running||state.screen!=='battle')return;
   const k=byT(chosenTank).k,
     parryColor={iron:'#9adcff',ember:'#ff8a4a',volt:'#c9b3ff',bloom:'#8cef8a',tide:'#7df3ff'}[k]||'#ffe9a8';
-  let parried=0;
+  let parried=0,ultDeflected=0;
   for(let i=state.projectiles.length-1;i>=0;i--){
     const p=state.projectiles[i];
     if(!p.enemy)continue;
-    if(p.bossShot||p.big)continue; /* PARRY RULE 1 (Jay, 2026-10-13): parry deflects REGULAR projectiles only — Ult-class shells (boss/god bossShot, colossal signature big) cannot be parried */
     if(p.x>0.24&&p.x<0.55){
+      if(p.bossShot||p.big){
+        /* PARRY RULES 1+2 (Jay, 2026-10-13): Ult-class shells (boss/god bossShot, colossal signature big) cannot be parried by a normal tank. An ASCENDANT tank's parry deflects one: half the damage is reflected back at the enemy, and the Ascendant tank takes the other half itself. */
+        if(stageFor(chosenTank).key!=='ascendant')continue;
+        const _ultEff=Math.max(1,Math.round((p.dmg!=null?p.dmg:enemyHitDamage(state.wave,(state.enemy&&state.enemy.type)||'grunt'))*(p.dmgMult||1))),_ultBack=Math.floor(_ultEff/2),_ultTaken=_ultEff-_ultBack;
+        p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=_ultBack;p.dmgMult=1;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
+        parried++;ultDeflected++;
+        burst(p.x,.56,'#ffffff',16,'impact');burst(p.x,.56,parryColor,26,'impact');burst(p.x,.56,'#ffe9a8',12,'star');spawnParryRing(p.x);
+        if(_ultTaken>0)damagePlayer(_ultTaken);
+        if(state.playerDead)break;
+        continue;
+      }
       const _ps=parrySkill(chosenTank);
       const reflDmg=Math.max(Math.round(totalAtk()*_ps.reflect*_ps.mult),Math.round((p.dmg||enemyHitDamage(state.wave,(state.enemy&&state.enemy.type)||'grunt'))*3));
       p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=reflDmg;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
@@ -6505,6 +6515,7 @@ function tryPerfectParry(){
     state.cineSlow=Math.max(state.cineSlow,.35);
     if(state.tutorialMode&&tutorialAt(1))tutorialAdvance('tutorial:parry');number(.30,.38,'PARRY!',parryColor,'perfect');
     number(.30,.48,'REFLECTED x'+parried,'#ffe9a8','status');
+    if(ultDeflected>0)number(.30,.58,'ULT DEFLECTED \u2014 HALF TAKEN','#ffb13c','status');
     sfx('parry');
     try{
       const dome=he('shieldDome');
