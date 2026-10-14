@@ -1,6 +1,6 @@
 {
-  "build": "495a96ff32",
-  "html": "7bcc164b4b",
+  "build": "dba0ca83a6",
+  "html": "454f430455",
   "assetCount": 373,
   "assets": [
     {
@@ -665,13 +665,13 @@
     },
     {
       "file": "assets/keyed-ult-projectile-cinder.png",
-      "bytes": 236308,
-      "md5": "95eb903248e083542449aca8a9bbffdd"
+      "bytes": 200677,
+      "md5": "b3ad90a581ef4c700d5452485302b0e7"
     },
     {
       "file": "assets/keyed-ult-projectile-iron.png",
-      "bytes": 256982,
-      "md5": "c8f72cb120491dd3c02c24a34531071a"
+      "bytes": 309865,
+      "md5": "7f47ad4a5d2f0fef11f099a10066ccfa"
     },
     {
       "file": "assets/keyed-ult-projectile-tide.png",
