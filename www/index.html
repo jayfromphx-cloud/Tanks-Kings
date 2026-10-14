@@ -4984,7 +4984,7 @@ img{pointer-events:none!important}
 #modeScreen .season-banner{grid-column:auto;width:auto;max-width:none;margin:6px 0 0;align-self:stretch}
 #modeScreen .mode-cards{width:100%!important}
 }
-</style><style id="parryShockArt">.parry-shockwave-art{position:absolute;z-index:16;pointer-events:none;animation:parryShockArt .5s ease-out forwards}@keyframes parryShockArt{from{transform:scale(.23);opacity:1}to{transform:scale(1);opacity:0}}</style><style id="ultLevitate">/* ULT levitation: menaceIdle (infinite, on .combatant) overrides inline transform, so the rise/descend are !important animations like ult-anticipate. */#playerRig.ult-levitating{animation:ultLevitate .5s cubic-bezier(.3,.7,.3,1) both!important;z-index:16}#playerRig.ult-descending{animation:ultDescend .5s cubic-bezier(.3,.7,.3,1) both!important}@keyframes ultLevitate{from{transform:translateY(0)}to{transform:translateY(var(--ult-rise,-90px))}}@keyframes ultDescend{from{transform:translateY(var(--ult-rise,-90px))}to{transform:translateY(0)}}</style>
+</style><style id="parryShockArt">.parry-shockwave-art{position:absolute;z-index:16;pointer-events:none;animation:parryShockArt .5s ease-out forwards}@keyframes parryShockArt{from{transform:scale(.23);opacity:1}to{transform:scale(1);opacity:0}}</style><style id="ultLevitate">/* ULT levitation: menaceIdle (infinite, on .combatant) overrides inline transform, so the rise/descend are !important animations like ult-anticipate. */#playerRig.ult-levitating{animation:ultLevitate .5s cubic-bezier(.3,.7,.3,1) both!important}#playerRig.ult-descending{animation:ultDescend .5s cubic-bezier(.3,.7,.3,1) both!important}@keyframes ultLevitate{from{transform:translateY(0)}to{transform:translateY(var(--ult-rise,-90px))}}@keyframes ultDescend{from{transform:translateY(var(--ult-rise,-90px))}to{transform:translateY(0)}}</style>
 
 
 
@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='76619a173e';
-const __HTML_V='301591a932';
+const __HTML_V='3210a4f696';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6357,7 +6357,7 @@ function setBattleBackground(src){preloadBattleBgs();var el=document.querySelect
 function __tkBattleInitStep(label,fn){try{return fn()}catch(error){console.error('[Tanks & Kings] Battle init step failed: '+label,error);return null}}
 function startBattle(){
  const t=byT(chosenTank),k=byK(t.k),prog=progressFor(chosenTank);
- state.level=prog.level;state.wave=Math.max(1,state.bestWave|0);state.mode='campaign';state.ult=kingdomSetCount()>=6?50:0;state.runDmg=0;state.runScrapStart=state.scrap;state.reviveCount=0;state.retriedThisWave=0;state.playerDead=false;state.paused=false;state.deathsThisWave=0;state.killsInWave=0;state.waveTarget=waveTargetFor(state.wave);state.maxHp=playerMaxHp();state.hp=state.maxHp;state.maxShield=shieldCapacity();state.shield=state.maxShield;state.shieldCooldown=0;state.running=true;state.enemy=null;state.spawnMissingFor=0;state.spawnAttempted=false;state.projectiles.length=0;state.particles=[];state.chillT=0;state.sunburnT=0;state.thornT=0;state.frostHitCd=0;state.repairCd=0;state.meleeCd=0;state.invincible=0;state.hitStop=0;state.cineSlow=0;state.shake=0;state.scorches=[];state.shotClock=0;state.playerRecoil=0;
+ state.level=prog.level;state.wave=Math.max(1,state.bestWave|0);state.mode='campaign';state.ult=kingdomSetCount()>=6?50:0;state.runDmg=0;state.runScrapStart=state.scrap;state.reviveCount=0;state.retriedThisWave=0;state.playerDead=false;state._defeatSent=false;state.paused=false;state.deathsThisWave=0;state.killsInWave=0;state.waveTarget=waveTargetFor(state.wave);state.maxHp=playerMaxHp();state.hp=state.maxHp;state.maxShield=shieldCapacity();state.shield=state.maxShield;state.shieldCooldown=0;state.running=true;state.enemy=null;state.spawnMissingFor=0;state.spawnAttempted=false;state.projectiles.length=0;state.particles=[];state.chillT=0;state.sunburnT=0;state.thornT=0;state.frostHitCd=0;state.repairCd=0;state.meleeCd=0;state.invincible=0;state.hitStop=0;state.cineSlow=0;state.shake=0;state.scorches=[];state.shotClock=0;state.playerRecoil=0;
  setScreen('battle');
  __tkBattleInitStep('damage reset',resetDamageNumbers);__tkBattleInitStep('meter reset',resetMeters);
  /* Core battle commit: render the player, numeric HP and a live enemy before any
@@ -6653,10 +6653,10 @@ function tkMeleeArtSwap(on){
 const __TK_ULT_POSE_F={iron:'ironhold',ember:'ember',volt:'voltspire',bloom:'bloomvale',tide:'tidereign'};
 function tkUltPoseFile(kind){var t=byT(chosenTank),f=__TK_ULT_POSE_F[t.k]||'ironhold',cls=t.role==='Vanguard'?'vanguard':'artillery',st=stageFor(chosenTank).key,suf=st==='squire'?'':'-'+st;return 'assets/ult-pose-'+f+'-'+cls+suf+(kind==='aimdown'?'-aimdown':'')+'.png'}
 function tkUltPoseSwap(kind){try{var img=$('playerSprite');if(!img)return;if(kind){var f=tkUltPoseFile(kind);if(!__tkHasAsset(f))return;__tkSetImg(img,{src:f},img.alt);if(kind==='raised'){var ad=tkUltPoseFile('aimdown');if(__tkHasAsset(ad)){var pi=new Image();pi.src=__tkStampAsset(ad)}}}else{if(img.dataset.tkMeleeBase)return;var r=__tkResolvePlayerArt(chosenTank,'battle');if(r&&r.src)__tkSetImg(img,{src:r.src},img.alt)}}catch(e){}}
-function tkUltLevitate(on){try{var rig=he('playerRig');if(!rig)return;if(on){var st=$('battleStage'),hh=st?st.getBoundingClientRect().height:0,rise=Math.round((hh||600)*.24);rig.style.setProperty('--ult-rise','-'+rise+'px');rig.classList.remove('ult-descending');rig.classList.remove('ult-levitating');void rig.offsetWidth;rig.classList.add('ult-levitating');rig.style.transform='';rig.style.transition=''}else{if(rig.classList.contains('ult-levitating')){rig.classList.remove('ult-levitating');rig.classList.add('ult-descending');setTimeout(function(){try{if(!rig.classList.contains('ult-levitating')){rig.classList.remove('ult-descending');rig.style.removeProperty('--ult-rise')}}catch(e){}},560)}else{rig.classList.remove('ult-descending');rig.style.removeProperty('--ult-rise')}rig.style.transform='';rig.style.transition=''}}catch(e){}}
+function tkUltLevitate(on){try{var rig=he('playerRig');if(!rig)return;if(on){var st=$('battleStage'),hh=st?st.getBoundingClientRect().height:0,rise=Math.round((hh||600)*.24);rig.style.setProperty('--ult-rise','-'+rise+'px');rig.classList.remove('ult-descending');rig.classList.remove('ult-levitating');void rig.offsetWidth;rig.classList.add('ult-levitating');rig.style.transform='';rig.style.transition=''}else{if(rig.classList.contains('ult-levitating')){rig.classList.remove('ult-levitating');rig.classList.add('ult-descending');setTimeout(function(){try{if(!rig.classList.contains('ult-levitating')){rig.classList.remove('ult-descending');rig.style.removeProperty('--ult-rise')}}catch(e){}},560)}else if(!rig.classList.contains('ult-descending')){rig.style.removeProperty('--ult-rise')}rig.style.transform='';rig.style.transition=''}}catch(e){}}
 function _ultAimFire(seq){
- var tries=0;
- function cleanup(){tkUltPoseSwap(null);tkUltLevitate(false);state.ultCasting=false}
+ var tries=0,fired=false;
+ function cleanup(){if(!fired)state.ult=100;tkUltPoseSwap(null);tkUltLevitate(false);state.ultCasting=false}
  function step(){
   if(seq!==state._ultSeq)return;
   if(state.paused||document.hidden){if(++tries>40){cleanup();return}setTimeout(step,120);return}
@@ -6667,7 +6667,7 @@ function _ultAimFire(seq){
    if(!state.enemy||state.playerDead||!state.running||state.screen!=='battle'){cleanup();return}
    var t=byT(chosenTank),rank=stageFor(chosenTank);
    var _ux=.30,_uy=.32,_x1=Math.max(.4,state.enemy.x-.06);
-   var _orb=pushProjectile({ultOrb:true,diag:true,x:_ux,y:_uy,x0:_ux,y0:_uy,x1:_x1,y1:.56,v:1.8785,enemy:false,spin:0,ultDmg:0,ultBurn:0,ultPoison:0,ultFreeze:0});
+   var _orb=pushProjectile({ultOrb:true,diag:true,x:_ux,y:_uy,x0:_ux,y0:_uy,x1:_x1,y1:.56,v:1.8785,enemy:false,spin:0,ultDmg:0,ultBurn:0,ultPoison:0,ultFreeze:0});fired=true;
    burst(_ux,_uy,'#b78cff',14,'star');
    tkUltLevitate(false);
    setTimeout(function(){if(seq===state._ultSeq)tkUltPoseSwap(null)},550);
@@ -6681,7 +6681,7 @@ function _ultAimFire(seq){
 }
 /*/ULTWIRE-POSE*/
 function tryMeleeRam(){
-  if(byT(chosenTank).role!=='Vanguard'||!state.enemy||state.playerDead||state.paused||document.hidden||!state.running||state.screen!=='battle')return false;
+  if(byT(chosenTank).role!=='Vanguard'||!state.enemy||state.playerDead||state.ultCasting||state.paused||document.hidden||!state.running||state.screen!=='battle')return false;
   if((state.meleeCd||0)>0)return false;
   state.meleeCd=chargeCdMax();state.shotClock=0;const _ramTarget=state.enemy;state._ramGen=(state._ramGen||0)+1;const _ramGen=state._ramGen;
   const k=byT(chosenTank).k,
@@ -6810,7 +6810,7 @@ state.shake=Math.max(state.shake,8);state.shakeDirX=-1;retriggerArt('playerRig',
 /* Static Field zap: attackers that connect during the field eat a lightning strike (P2-2) */
 if(state.abFx.staticFieldT>0&&state.enemy&&amount>0){var zapMult=(ABILITIES[chosenTank].def.zapMult||0);if(zapMult>0)damageEnemy(totalAtk()*zapMult,false,'ability')}
 if(abyssalHeal>0)state.hp=Math.min(state.maxHp,state.hp+abyssalHeal);
-if(state.hp<=0&&state.abFx.phoenixArmed&&!state.phoenixUsed){state.phoenixUsed=true;state.abFx.phoenixArmed=false;state.hp=Math.round(state.maxHp*.30);state.playerDead=false;if(state.enemy)damageEnemy(totalAtk()*2.0,true,'ability');number(.23,.43,'PHOENIX!','#ffb13c','ult');burst(.24,.56,'#ff9b45',40,'star');updateHUD();updateAbilityUI();return}
+if(state.hp<=0&&state.abFx.phoenixArmed&&!state.phoenixUsed){state.phoenixUsed=true;state.abFx.phoenixArmed=false;state.hp=Math.round(state.maxHp*.30);state.playerDead=false;state._defeatSent=false;if(state.enemy)damageEnemy(totalAtk()*2.0,true,'ability');number(.23,.43,'PHOENIX!','#ffb13c','ult');burst(.24,.56,'#ff9b45',40,'star');updateHUD();updateAbilityUI();return}
 if(state.hp<=0){if(state.mode==='tower'){towerDefeat();return}if(state.mode==='dungeon'){dungeonDefeat();return}if(state.mode==='glory'){gloryDefeat();return}if(state.mode==='guild'){guildDefeat();return}campaignDefeat();return}updateHUD()}
 /* ================= Idle farming (offline progress) =================
  * While the player is away (app closed / backgrounded), their tank patrols
@@ -6947,8 +6947,8 @@ function reviveCostFor(){var ladder=[10,25,50,100];return ladder[Math.min(state.
 function boostEvoGrant(n){n=Math.max(0,Math.round(+n||0));var whole=Math.floor(n*.1),frac=n*.1-whole;return n+whole+(Math.random()<frac?1:0)}
 function campaignDefeat(){
  if(state.tutorialMode){tutorialReleaseToFreePlay();return}
- if(state.playerDead||!state.running||state.mode!=='campaign'||state.screen!=='battle')return;
- state.playerDead=true;
+ if(state._defeatSent||!state.running||state.mode!=='campaign'||state.screen!=='battle')return;
+ state.playerDead=true;state._defeatSent=true;
  state.deathsThisWave=(state.deathsThisWave|0)+1;
  markTankDamaged(chosenTank);
  try{$('playerRig').classList.add('defeat')}catch(e){}
@@ -7004,7 +7004,7 @@ function campRevive(){
  if(!state.playerDead||state.gems<cost)return;
  state.gems-=cost;state.reviveCount=(state.reviveCount|0)+1;
  hideCampDefeat();
- state.playerDead=false;state.paused=false;state.cineSlow=0;state.hitStop=0;
+ state.playerDead=false;state._defeatSent=false;state.paused=false;state.cineSlow=0;state.hitStop=0;
  state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.round(state.maxHp*.5)); /* 50% HP; foes untouched; Damaged stays */
  try{$('playerRig').classList.remove('defeat','hit')}catch(e){}
  state.invincible=Math.max(state.invincible||0,1.1);
@@ -7016,7 +7016,7 @@ function campRetryWave(){
  hideCampDefeat();
  state.retriedThisWave=1;
  state.reviveCount=0; /* clean slate: a retry restarts the revive cost ladder, not the next rung */
- state.playerDead=false;state.paused=false;state.cineSlow=0;state.hitStop=0;state.invincible=0;
+ state.playerDead=false;state._defeatSent=false;state.paused=false;state.cineSlow=0;state.hitStop=0;state.invincible=0;
  state.abCd={def:0,off:0};state.abFx={};state.parryCd=0;updateAbilityUI(); /* wave restarts clean: cooldowns + timed effects reset (phoenixUsed stays — once per battle) */
  state.deathsThisWave=0;state.meleeCd=0;state.missileCd=0;state.sunburnT=0;state.thornT=0;state.chillT=0; /* retry = clean wave: no carryover deaths, melee/missile cooldowns, or enemy-applied debuffs */
  state.killsInWave=0;state.waveTarget=waveTargetFor(state.wave);
@@ -7045,7 +7045,7 @@ function campaignNudgeKind(){
 function campRetreat(){
  hideCampDefeat();
  var kind=campaignNudgeKind();
- state.playerDead=false;state.paused=false;state.running=false;
+ state.playerDead=false;state._defeatSent=false;state.paused=false;state.running=false;
  state.enemy=null;state.projectiles.length=0;state.particles=[];
  state.cineSlow=0;state.hitStop=0;
  state.mode='campaign';
@@ -7412,7 +7412,7 @@ $('meleeBtn').onclick=function(){
       try{sfx('hit')}catch(e){}
       try{if(navigator&&navigator.vibrate)navigator.vibrate(18)}catch(e){}
       /* Tutorial: a successful CHARGE completes the charge lesson (step 0); at the finish step (3) a charge closes out the fight. */
-      try{if(typeof tutorialAt==='function'){if(tutorialAt(0))tutorialAdvance('tutorial:charge');else if(tutorialAt(3))tutorialBattleVictory(state.enemy);}}catch(e){}
+      try{if(typeof tutorialAt==='function'&&state.tutorialMode){if(tutorialAt(0))tutorialAdvance('tutorial:charge');else if(tutorialAt(3))tutorialBattleVictory(state.enemy);}}catch(e){}
     } else if((state.meleeCd||0)>0){
       showToast('Charge recharging… '+Math.ceil(state.meleeCd)+'s');
       try{var mb=he('meleeBtn');if(mb){mb.classList.remove('tap-shake');void mb.offsetWidth;mb.classList.add('tap-shake');setTimeout(function(){try{mb.classList.remove('tap-shake')}catch(e){}},360)}}catch(e){}
@@ -8812,7 +8812,7 @@ function startGuildBattle(){
  guild.lastAttemptDay=dayIndex();guildSave(); /* the attempt is consumed at entry — no retreat farming */
  var boss=guildBossDef(),t=byT(chosenTank),k=byK(t.k),prog=progressFor(chosenTank);
  state.level=prog.level;state.wave=1;state.mode='guild';state.ult=kingdomSetCount()>=6?50:0;state.runDmg=0;state.runScrapStart=state.scrap;
- state.reviveCount=0;state.retriedThisWave=0;state.playerDead=false;state.paused=false;state.deathsThisWave=0;state.killsInWave=0;state.waveTarget=1;
+ state.reviveCount=0;state.retriedThisWave=0;state.playerDead=false;state._defeatSent=false;state.paused=false;state.deathsThisWave=0;state.killsInWave=0;state.waveTarget=1;
  state.maxHp=playerMaxHp();state.hp=state.maxHp;state.maxShield=shieldCapacity();state.shield=state.maxShield;state.shieldCooldown=0;
  state.running=true;state.enemy=null;state.projectiles.length=0;state.particles=[];state.chillT=0;state.sunburnT=0;state.thornT=0;state.frostHitCd=0;state.repairCd=0;state.meleeCd=0;
  state.invincible=0;state.hitStop=0;state.cineSlow=0;state.shake=0;state.scorches=[];state.shotClock=0;state.playerRecoil=0;state.spawnClock=0;state.spawnMissingFor=0;state.spawnAttempted=false;
@@ -8848,8 +8848,8 @@ function guildOnBossKilled(e){
  setTimeout(function(){if(state.mode!=='guild'||state.screen!=='battle'||state.playerDead)return;guildEndAttempt('kill')},900);
 }
 function guildDefeat(){
- if(state.playerDead)return;
- state.playerDead=true;state.running=false;
+ if(state._defeatSent)return;
+ state.playerDead=true;state._defeatSent=true;state.running=false;
  try{$('playerRig').classList.add('defeat')}catch(e){}
  state.cineSlow=1.15;state.hitStop=Math.max(state.hitStop,.09);state.shake=Math.max(state.shake,22);
  state.projectiles.length=0;burst(.16,.48,'#ffd76a',80,'bossdeath');sfx('kill');updateHUD();
@@ -10269,7 +10269,7 @@ function spawnImpactSprite(x,y){
   if(impactSpriteParts.length>=18)impactSpriteParts.shift();
   impactSpriteParts.push({x:x*viewW,y:y*viewH,age:0,duration:.42,rotation:(Math.random()-.5)*.18});
 }
-/* Faction explosion sprites (Jay, 2026-10-13): Arc=Voltspire, Frost=Tidereign, Verdant=Bloomvale, Solar=Ironhold. Ember slot = legacy sprite until its regenerated art lands. */
+/* Faction explosion sprites (Jay, 2026-10-13): Arc=Voltspire, Frost=Tidereign, Verdant=Bloomvale, Solar=Ironhold. Ember = its regenerated phoenix-feather burst (4f2a648). */
 var FACTION_EXPLOSION_SPRITES={iron:'assets/explosion-fx-ironhold.png',ember:'assets/explosion-fx-ember.png',volt:'assets/explosion-fx-voltspire.png',bloom:'assets/explosion-fx-bloomvale.png',tide:'assets/explosion-fx-tidereign.png'};
 var __fxExplosionCache={};
 function factionExplosionImg(){
@@ -10587,7 +10587,7 @@ function startTowerBattle(f,transition){
  var t=byT(chosenTank),k=byK(t.k),prog=progressFor(chosenTank);
  towerAutoTimerSeq++; /* kill any straggling auto-ascent countdown */
  state.mode='tower';state.floor=f;state.wave=1;state.killsInWave=0;state.waveTarget=1;
- state.playerDead=false;state.reviveCount=0;state.deathsThisWave=0; /* clean tower entry: no stale death flag (bug #2) */
+ state.playerDead=false;state._defeatSent=false;state.reviveCount=0;state.deathsThisWave=0; /* clean tower entry: no stale death flag (bug #2) */
  state.runDmg=0;state.runScrapStart=state.scrap;state.gloryOpp=null;state.dungeonKills=0; /* no stale run/mode bleed (D-13) */
  state.retriedThisFloor=0; /* ONE free retry per floor attempt — mirrors campaign retriedThisWave */
  state.level=prog.level;state.ult=kingdomSetCount()>=6?50:0;
@@ -11050,9 +11050,9 @@ function towerForceDefeatIfStuck(f,reason){
  }catch(err){__tkLog('error:defeat_recovery',{floor:f,error:err&&err.stack?String(err.stack):String(err),reason:reason});console.error('tower defeat recovery failed:',err);return false}
 }
 function towerDefeat(){
- if(state.playerDead||state.mode!=='tower'||state.screen!=='battle')return; /* re-entry guard (bug #12) */
+ if(state._defeatSent||state.mode!=='tower'||state.screen!=='battle')return; /* re-entry guard (bug #12; latch separated from playerDead in bug test #5 D2) */
  var f=state.floor;
- state.playerDead=true;markTankDamaged(chosenTank);
+ state.playerDead=true;state._defeatSent=true;markTankDamaged(chosenTank);
  state.paused=true;state.projectiles.length=0;state.particles=[];
  $('playerRig').classList.add('defeat');
  sfx('playerHit');
@@ -11133,7 +11133,7 @@ function towerRevive(){
  var cost=towerReviveCost();
  if(state.gems<cost){showToast('Not enough gems — the gods demand '+cost+' ♦');sfx('playerHit');return}
  state.gems-=cost;towerRunRevives++;
- state.playerDead=false; /* required with the bug #12 guard: revive must clear the death flag */
+ state.playerDead=false;state._defeatSent=false; /* required with the bug #12 guard: revive must clear the death flag */
  hideTowerResult();$('pauseOverlay').classList.remove('open');
  try{$('playerRig').classList.remove('defeat','hit')}catch(e){}
  state.paused=false;state.maxHp=playerMaxHp();state.hp=Math.max(1,Math.round(state.maxHp*.5));
@@ -11226,7 +11226,7 @@ function startDungeonBattle(){
  var t=byT(chosenTank),k=byK(t.k),prog=progressFor(chosenTank);
  state.mode='dungeon';state.dungeonKills=0;state.dungeonElement=info.elementId;state.level=prog.level;
  state.wave=info.equivWave;state.killsInWave=0;state.waveTarget=DUNGEON_TARGET;
- state.playerDead=false;state.reviveCount=0;state.deathsThisWave=0;state.retriedThisWave=0;
+ state.playerDead=false;state._defeatSent=false;state.reviveCount=0;state.deathsThisWave=0;state.retriedThisWave=0;
  state.ult=kingdomSetCount()>=6?50:0;state.runDmg=0;state.runScrapStart=state.scrap;
  state.maxHp=playerMaxHp();state.hp=state.maxHp;state.maxShield=shieldCapacity();state.shield=state.maxShield;state.shieldCooldown=0;
  state.running=true;state.paused=false;state.enemy=null;state.projectiles.length=0;state.particles=[];
@@ -11337,12 +11337,12 @@ function dungeonSweep(){
  }
 }
 function dungeonDefeat(){
- if(state.playerDead||state.mode!=='dungeon'||state.screen!=='battle')return;
- state.playerDead=true;markTankDamaged(chosenTank);state.paused=true;state.projectiles.length=0;
+ if(state._defeatSent||state.mode!=='dungeon'||state.screen!=='battle')return;
+ state.playerDead=true;state._defeatSent=true;markTankDamaged(chosenTank);state.paused=true;state.projectiles.length=0;
  $('playerRig').classList.add('defeat');sfx('playerHit');updateHUD();
  setTimeout(function(){
   if(state.mode!=='dungeon')return;
-  state.running=false;state.paused=false;state.mode='campaign';state.playerDead=false;
+  state.running=false;state.paused=false;state.mode='campaign';state.playerDead=false;state._defeatSent=false;
   $('pauseOverlay').classList.remove('open');
   setScreen('mode');renderModeSelect();showToastOnMode('The steel holds — retry free today');
  },1100);
@@ -11448,7 +11448,7 @@ function gloryShowVS(){
 function startGloryBattle(){
   var opp=gloryOpponent,t=byT(chosenTank),k=byK(t.k),prog=progressFor(chosenTank);
   state.level=prog.level;state.wave=0;state.mode='glory';state.gloryCommitted=false;glory.pendingDuel=true;try{progressSave()}catch(e){}state.ult=kingdomSetCount()>=6?50:0;state.runDmg=0;state.runScrapStart=state.scrap;
-  state.reviveCount=0;state.retriedThisWave=0;state.playerDead=false;state.paused=false;
+  state.reviveCount=0;state.retriedThisWave=0;state.playerDead=false;state._defeatSent=false;state.paused=false;
   state.deathsThisWave=0;state.killsInWave=0;state.waveTarget=1;
   state.maxHp=playerMaxHp();state.hp=state.maxHp;state.maxShield=shieldCapacity();state.shield=state.maxShield;
   state.shieldCooldown=0;state.running=true;state.enemy=null;state.projectiles.length=0;state.particles=[];
@@ -11521,8 +11521,8 @@ function gloryForfeit(){
  try{showToast('Duel forfeited \u2014 '+delta+' \uD83C\uDFC6')}catch(e){}
 }
 function gloryDefeat(){
-  if(state.playerDead||state.gloryCommitted)return;
-  state.playerDead=true;state.running=false;
+  if(state._defeatSent||state.gloryCommitted)return;
+  state.playerDead=true;state._defeatSent=true;state.running=false;
   try{$('playerRig').classList.add('defeat')}catch(e){}
   state.cineSlow=1.15;state.hitStop=Math.max(state.hitStop,.09);state.shake=Math.max(state.shake,22);
   state.projectiles.length=0;burst(.16,.48,'#ffd76a',80,'bossdeath');sfx('kill');updateHUD();
