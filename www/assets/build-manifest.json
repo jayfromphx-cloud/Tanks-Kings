@@ -1,6 +1,6 @@
 {
-  "build": "e62e4a52b1",
-  "html": "90de6b1651",
+  "build": "76619a173e",
+  "html": "301591a932",
   "assetCount": 384,
   "assets": [
     {
@@ -1250,8 +1250,8 @@
     },
     {
       "file": "assets/title-key-art-portrait.png",
-      "bytes": 2640238,
-      "md5": "f5377aacf6f8dfe10ec262fe1ff1f88d"
+      "bytes": 1172326,
+      "md5": "46e1d2e4a28c7a9b89b5432ade19ad25"
     },
     {
       "file": "assets/title-key-art.png",
