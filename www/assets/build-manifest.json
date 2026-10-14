@@ -1,7 +1,7 @@
 {
-  "build": "6e36dab6ec",
-  "html": "4cf441ad07",
-  "assetCount": 378,
+  "build": "8fbb389f88",
+  "html": "ec6a9d53c8",
+  "assetCount": 382,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -477,6 +477,26 @@
       "file": "assets/explosion-aaa-v2.png",
       "bytes": 638307,
       "md5": "b8fb3b48a592f6663fbeb561a9f09ba5"
+    },
+    {
+      "file": "assets/explosion-fx-bloomvale.png",
+      "bytes": 610076,
+      "md5": "5e797764f6409eed6da59cca9e6a893e"
+    },
+    {
+      "file": "assets/explosion-fx-ironhold.png",
+      "bytes": 641340,
+      "md5": "05e57f079407fa3b368a2b4d781c3567"
+    },
+    {
+      "file": "assets/explosion-fx-tidereign.png",
+      "bytes": 592423,
+      "md5": "04ae7ebad45fa0570f5147481ad4ced1"
+    },
+    {
+      "file": "assets/explosion-fx-voltspire.png",
+      "bytes": 625720,
+      "md5": "df58091db0eaeed8e2a6c211410aefdd"
     },
     {
       "file": "assets/faction-emblem-bloom.png",
