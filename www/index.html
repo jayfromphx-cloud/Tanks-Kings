@@ -5536,7 +5536,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='a797c19a92';
-const __HTML_V='0d439814a9';
+const __HTML_V='2f2e23bbb9';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6376,7 +6376,7 @@ function tkMeasureSprite(img,cb){var src=img.getAttribute('src');if(!src){cb(nul
    smaller dimension is at least 600 CSS px (every iPad; no iPhone). */
 function tkBattleTablet(){return Math.min(window.innerWidth||0,window.innerHeight||0)>=600}
 function tkSubjectRatio(boss){var base=tkBattleTablet()?0.24:0.18;return boss?base*1.2:base}
-function tkNormalizeCombatant(img){if(!img)return;var stage=$('battleStage');if(!stage)return;var src=img.getAttribute('src'),boss=img.classList.contains('boss'),stageH=stage.clientHeight||0,tab=tkBattleTablet();if(!src||!stageH)return;if(img._tkNormSrc===src&&img._tkNormBoss===boss&&img._tkNormTab===tab&&Math.abs((img._tkNormStageH||0)-stageH)<24)return;tkMeasureSprite(img,function(m){if(!m||img.getAttribute('src')!==src)return;var target=stageH*tkSubjectRatio(boss),contentH=target/m.fracH;img.style.height=contentH+'px';img.style.width=(contentH*m.ar)+'px';img._tkNormSrc=src;img._tkNormBoss=boss;img._tkNormStageH=stageH;img._tkNormTab=tab})}
+function tkNormalizeCombatant(img){if(!img)return;var stage=$('battleStage');if(!stage)return;var src=img.getAttribute('src'),boss=img.classList.contains('boss'),stageH=stage.clientHeight||0,tab=tkBattleTablet(),asc=(img.id==='playerSprite'&&stageFor(chosenTank).key==='ascendant');if(!src||!stageH)return;if(img._tkNormSrc===src&&img._tkNormBoss===boss&&img._tkNormTab===tab&&img._tkNormAsc===asc&&Math.abs((img._tkNormStageH||0)-stageH)<24)return;tkMeasureSprite(img,function(m){if(!m||img.getAttribute('src')!==src)return;var target=stageH*tkSubjectRatio(boss)*(asc?1.25:1),contentH=target/m.fracH;img.style.height=contentH+'px';img.style.width=(contentH*m.ar)+'px';img._tkNormSrc=src;img._tkNormBoss=boss;img._tkNormStageH=stageH;img._tkNormTab=tab;img._tkNormAsc=asc})}
 (function(){function arm(img){if(!img)return;new MutationObserver(function(){tkNormalizeCombatant(img)}).observe(img,{attributes:true,attributeFilter:['src','class']});img.addEventListener('load',function(){tkNormalizeCombatant(img)})}arm(document.getElementById('playerSprite'));arm(document.getElementById('enemySprite'));window.addEventListener('resize',function(){tkNormalizeCombatant(document.getElementById('playerSprite'));tkNormalizeCombatant(document.getElementById('enemySprite'))})})();
 function setBattleBackground(src){preloadBattleBgs();var el=document.querySelector('#battleStage .world-bg .env-scene');if(el){src=__tkResolveArt('battle-bg','battle background',[src],BATTLE_BG_DEFAULT).src;el.style.backgroundImage='url("'+src+'")';}}
 function __tkBattleInitStep(label,fn){try{return fn()}catch(error){console.error('[Tanks & Kings] Battle init step failed: '+label,error);return null}}
