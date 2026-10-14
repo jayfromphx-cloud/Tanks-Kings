@@ -1,6 +1,6 @@
 {
-  "build": "821141362f",
-  "html": "fc88e9072c",
+  "build": "6e36dab6ec",
+  "html": "bcb9cfd38f",
   "assetCount": 378,
   "assets": [
     {
@@ -670,8 +670,8 @@
     },
     {
       "file": "assets/keyed-ult-projectile-cinder-ascendant.png",
-      "bytes": 294453,
-      "md5": "c77c01d5e98a4813ee1efbfa022dda6a"
+      "bytes": 243125,
+      "md5": "8d74222920204aacb3099c1d55b573b8"
     },
     {
       "file": "assets/keyed-ult-projectile-cinder.png",
@@ -680,8 +680,8 @@
     },
     {
       "file": "assets/keyed-ult-projectile-iron-ascendant.png",
-      "bytes": 342310,
-      "md5": "1c417a5b93b2813336f005da8368366c"
+      "bytes": 276211,
+      "md5": "5eeeacda5f31d302dcc7d87777c287aa"
     },
     {
       "file": "assets/keyed-ult-projectile-iron.png",
