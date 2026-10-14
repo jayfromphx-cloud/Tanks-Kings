@@ -1,7 +1,7 @@
 {
-  "build": "bd67dad9a0",
-  "html": "171983528a",
-  "assetCount": 391,
+  "build": "1f0844bfa8",
+  "html": "dd175bf7ac",
+  "assetCount": 392,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -1232,6 +1232,11 @@
       "file": "assets/skill-leap-icon.png",
       "bytes": 118013,
       "md5": "929578338ff685181311d903ab5e6d6c"
+    },
+    {
+      "file": "assets/skill-repair-icon.png",
+      "bytes": 121198,
+      "md5": "edcdecb8f61e54b70e8a415844a1a6d9"
     },
     {
       "file": "assets/tank-bloomvale-artillery.png",
