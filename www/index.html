@@ -4985,6 +4985,31 @@ img{pointer-events:none!important}
 #modeScreen .mode-cards{width:100%!important}
 }
 </style><style id="parryShockArt">.parry-shockwave-art{position:absolute;z-index:16;pointer-events:none;animation:parryShockArt .5s ease-out forwards}@keyframes parryShockArt{from{transform:scale(.23);opacity:1}to{transform:scale(1);opacity:0}}</style><style id="ultLevitate">/* ULT levitation: menaceIdle (infinite, on .combatant) overrides inline transform, so the rise/descend are !important animations like ult-anticipate. */#playerRig.ult-levitating{animation:ultLevitate .5s cubic-bezier(.3,.7,.3,1) both!important}#playerRig.ult-descending{animation:ultDescend .5s cubic-bezier(.3,.7,.3,1) both!important}@keyframes ultLevitate{from{transform:translateY(0)}to{transform:translateY(var(--ult-rise,-90px))}}@keyframes ultDescend{from{transform:translateY(var(--ult-rise,-90px))}to{transform:translateY(0)}}</style>
+<style id="seasonCompact">
+/* Season Pass compact (Jay, 2026-10-14): slim one-line tier rows,
+   stacked upsell, tightened header + missions. */
+#seasonScreen .mode-head{padding:10px 76px 0}
+#seasonScreen .mode-head h1{font-size:clamp(21px,5.2vw,30px);margin:0 0 2px}
+#seasonScreen .mode-head p{font-size:11.5px}
+#seasonScreen .season-upsell{flex-direction:column;align-items:stretch;gap:8px;padding:10px 12px;margin-bottom:10px}
+#seasonScreen .season-upsell .su-copy b{font-size:15px}
+#seasonScreen .season-upsell .su-copy small{font-size:11px;line-height:1.35;display:block}
+#seasonScreen .season-upsell .primary{min-height:44px;padding:9px 16px;font-size:15px;border-radius:12px;box-shadow:0 4px 0 #d9831d,0 8px 14px rgba(90,52,8,.18)}
+#seasonScreen .season-owned{padding:8px;margin-bottom:10px}
+#seasonScreen .season-missions h3{font-size:14px;margin:8px 0 5px}
+#seasonScreen .mission-row{padding:5px 10px;margin-bottom:4px;font-size:12.5px;border-radius:7px}
+#seasonScreen .mission-row .m-label{flex:1;min-width:0}
+#seasonScreen .mission-row .m-xp{font-weight:800}
+#seasonScreen .season-ladder-head{margin-top:2px}
+#seasonScreen .season-ladder-head h3{font-size:14px}
+#seasonScreen .season-ladder{padding-bottom:24px}
+#seasonScreen .tier-row{grid-template-columns:28px 1fr 1fr;gap:6px;padding:5px 6px;margin-bottom:5px;border-radius:8px;contain-intrinsic-size:auto 44px}
+#seasonScreen .tier-num{font-size:15px}
+#seasonScreen .tier-cell{display:flex;align-items:center;gap:6px;padding:5px 7px;border-radius:7px}
+#seasonScreen .tier-cell small{display:inline;margin:0;font-size:9px;flex:0 0 auto}
+#seasonScreen .tier-cell .rw{flex:1;min-width:0;font-size:11.5px;line-height:1.3}
+#seasonScreen .tier-cell button{width:auto;margin:0;padding:5px 9px;font-size:11px;white-space:nowrap;border-radius:7px;flex:0 0 auto}
+</style>
 
 
 
@@ -5511,7 +5536,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='a2e5d6e6c4';
-const __HTML_V='5566830475';
+const __HTML_V='e2c128e9b1';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -8576,9 +8601,9 @@ function renderSeasonLadder(){
   var fCan=!fClaimed&&t<=earned,fLocked=!fClaimed&&!fCan;
   var pCan=!pClaimed&&t<=earned&&season.premium,pLocked=!pClaimed&&!pCan;
   h+='<div class="tier-row'+(t===earned?' current':'')+'"><div class="tier-num">'+t+'</div>'
-   +'<div class="tier-cell"><small>FREE</small><div class="rw">'+rw.free.map(seasonRewardLabel).join('<br>')+'</div>'
+   +'<div class="tier-cell"><small>FREE</small><div class="rw">'+rw.free.map(seasonRewardLabel).join(', ')+'</div>'
    +(fClaimed?'<button class="claimed" disabled>\u2713 CLAIMED</button>':fCan?'<button data-sclaim="'+t+':free">CLAIM</button>':'<button disabled>\uD83D\uDD12</button>')+'</div>'
-   +'<div class="tier-cell'+(season.premium?'':' prem-lock')+'"><small>PREMIUM</small><div class="rw">'+rw.premium.map(seasonRewardLabel).join('<br>')+'</div>'
+   +'<div class="tier-cell'+(season.premium?'':' prem-lock')+'"><small>PREMIUM</small><div class="rw">'+rw.premium.map(seasonRewardLabel).join(', ')+'</div>'
    +(pClaimed?'<button class="claimed" disabled>\u2713 CLAIMED</button>':pCan?'<button data-sclaim="'+t+':premium">CLAIM</button>':'<button disabled>'+(!season.premium?'\uD83D\uDD12 PREMIUM':'\uD83D\uDD12')+'</button>')+'</div>'
    +'</div>';
  }
