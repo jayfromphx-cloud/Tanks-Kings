@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='6e36dab6ec';
-const __HTML_V='17c0b606a9';
+const __HTML_V='5bd96db31e';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6494,7 +6494,7 @@ function tryPerfectParry(){
         const _ultEff=Math.max(1,Math.round((p.dmg!=null?p.dmg:enemyHitDamage(state.wave,(state.enemy&&state.enemy.type)||'grunt'))*(p.dmgMult||1))),_ultBack=Math.floor(_ultEff/2),_ultTaken=_ultEff-_ultBack;
         p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=_ultBack;p.dmgMult=1;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
         parried++;ultDeflected++;
-        burst(p.x,.56,'#ffffff',16,'impact');burst(p.x,.56,parryColor,26,'impact');burst(p.x,.56,'#ffe9a8',12,'star');spawnParryRing(p.x);
+        tkParryFx(p.x,parryColor);
         if(_ultTaken>0)damagePlayer(_ultTaken);
         if(state.playerDead)break;
         continue;
@@ -6504,10 +6504,7 @@ function tryPerfectParry(){
       p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=reflDmg;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
       if(_ps.stun)p.stun=_ps.stun;
       parried++;
-      burst(p.x,.56,'#ffffff',16,'impact');
-      burst(p.x,.56,parryColor,26,'impact');
-      burst(p.x,.56,'#ffe9a8',12,'star');
-      spawnParryRing(p.x);
+      tkParryFx(p.x,parryColor);
     }
   }
   if(parried>0){
@@ -6556,6 +6553,22 @@ function spawnParryRing(x){
     el.style.left='calc('+(x*100)+'% - '+(size/2)+'px)';
     el.style.top='calc(56% - '+(size/2)+'px)';
     stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},600);
+  }catch(e){}
+}
+/* Parry presentation (Jay, 2026-10-13): flash + faction impact art only. */
+function tkParryFx(x,color){
+  burst(x,.56,color,16,'flash');
+  try{
+    const stage=$('battleStage');if(!stage)return;
+    const k=byT(chosenTank).k,src=MELEE_IMPACT_ART[k];if(!src)return;
+    preloadMeleeImpactArt();
+    const _pr=__tkResolveArt('melee-impact:'+k,'melee impact',[src],__TK_DEFAULT_PLAYER_ART),_pc=_pr.chain;let _pi=Math.max(0,_pc.indexOf(_pr.src));
+    const size=238,el=document.createElement('img');
+    el.className='melee-impact-art';el.alt='';el.decoding='async';el.onerror=function(){var _n=_pi+1;if(_n<_pc.length){_pi=_n;el.src=_pc[_n]}else el.onerror=null};el.src=_pr.src;
+    el.style.width=el.style.height=size+'px';
+    el.style.left='calc('+(x*100)+'% - '+(size/2)+'px)';
+    el.style.top='calc(56% - '+(size/2)+'px)';
+    stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},650);
   }catch(e){}
 }
 const MELEE_IMPACT_ART={iron:'assets/melee-impact-ironhold.png',ember:'assets/melee-impact-ember.png',volt:'assets/melee-impact-voltspire.png',bloom:'assets/melee-impact-bloomvale.png',tide:'assets/melee-impact-tidereign.png'};
