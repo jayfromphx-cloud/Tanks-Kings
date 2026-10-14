@@ -1,7 +1,7 @@
 {
-  "build": "a7e2c9aa42",
-  "html": "1b8c0b5e5d",
-  "assetCount": 419,
+  "build": "6b9202a0a2",
+  "html": "04350b2c92",
+  "assetCount": 420,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -1507,6 +1507,11 @@
       "file": "assets/ult-icon-knight-256.png",
       "bytes": 118026,
       "md5": "b169df6782d79446a52ad349a570ae2c"
+    },
+    {
+      "file": "assets/ult-impact.bin",
+      "bytes": 31914,
+      "md5": "d4d68a3d7fbf3c18814fff97e25f9b9d"
     },
     {
       "file": "assets/ult-ironhold.bin",
