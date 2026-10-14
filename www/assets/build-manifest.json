@@ -1,7 +1,7 @@
 {
-  "build": "4c42d62b01",
-  "html": "f55df1296a",
-  "assetCount": 373,
+  "build": "1d5662c6dd",
+  "html": "e7624cb3ad",
+  "assetCount": 378,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -659,29 +659,54 @@
       "md5": "fdc4dabf508a064fabc6b6142a4f28cc"
     },
     {
-      "file": "assets/keyed-ult-projectile-bloom.png",
+      "file": "assets/keyed-ult-projectile-bloom-ascendant.png",
       "bytes": 294901,
       "md5": "faba0e7f7ef7c6ed231deff25f60ef79"
     },
     {
-      "file": "assets/keyed-ult-projectile-cinder.png",
+      "file": "assets/keyed-ult-projectile-bloom.png",
+      "bytes": 694856,
+      "md5": "6e66c4bff5e8d42757f5305ae6d6ea26"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-cinder-ascendant.png",
       "bytes": 232969,
       "md5": "78730e24bc0884daba1cc5e81942f132"
     },
     {
-      "file": "assets/keyed-ult-projectile-iron.png",
+      "file": "assets/keyed-ult-projectile-cinder.png",
+      "bytes": 575582,
+      "md5": "e2870944136498259b8c327a124a60d7"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-iron-ascendant.png",
       "bytes": 263511,
       "md5": "3a62848961ab71d8533a18d7d372a5b8"
     },
     {
-      "file": "assets/keyed-ult-projectile-tide.png",
+      "file": "assets/keyed-ult-projectile-iron.png",
+      "bytes": 763027,
+      "md5": "49c06a20ade99f2b46a2ec7a5c96a079"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-tide-ascendant.png",
       "bytes": 302989,
       "md5": "ad00aa68eedb2d5bb551636cc07d5e4c"
     },
     {
-      "file": "assets/keyed-ult-projectile-volt.png",
+      "file": "assets/keyed-ult-projectile-tide.png",
+      "bytes": 585631,
+      "md5": "51b6888951345e2cd945856ae8acd730"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-volt-ascendant.png",
       "bytes": 303271,
       "md5": "b932badd9cfdebe872514652bc00e946"
+    },
+    {
+      "file": "assets/keyed-ult-projectile-volt.png",
+      "bytes": 809216,
+      "md5": "002da42b38fdc98924d45d847bb58bb5"
     },
     {
       "file": "assets/keyed-ultimate-arcane.png",
