@@ -5137,6 +5137,17 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
 #repairBtn.repair-button{background-image:url("assets/btn-repair.png")!important;background-size:contain!important}
 #repairBtn.repair-button::before,#repairBtn.repair-button::after{display:none!important}
 </style>
+<style id="skillSpacing">
+/* Skill button spacing (Jay, 2026-10-14): medallions get real room —
+   12px gaps minimum, leftover width spread evenly between buttons,
+   and rim shadows (5px past each box) never touch. */
+@media(max-width:900px){
+#battleScreen .battle-controls{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;grid-template-rows:none!important;grid-template-columns:none!important}
+#battleScreen .battle-controls .ability-cluster{display:flex!important;flex-wrap:nowrap!important;width:100%!important;justify-content:space-between!important;align-items:center!important;gap:12px!important;padding:0 1px!important;margin:6px 0 2px!important}
+#battleScreen .battle-controls .ability-cluster :is(#leapBtn.leap-button,#repairBtn.repair-button,#parryBtn.parry-button,#meleeBtn.melee-button,#missileBtn.missile-button,#ultBtn.ult-button){width:min(74px,calc((100vw - 60px)/5))!important;height:min(74px,calc((100vw - 60px)/5))!important;flex:0 0 auto!important}
+#battleScreen .battle-controls .ability-cluster:has(#leapBtn.hidden-leap) :is(#repairBtn.repair-button,#parryBtn.parry-button,#meleeBtn.melee-button,#missileBtn.missile-button,#ultBtn.ult-button){width:min(74px,calc((100vw - 48px)/4))!important;height:min(74px,calc((100vw - 48px)/4))!important}
+}
+</style>
 
 
 
@@ -5663,7 +5674,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='e91e5abf57';
-const __HTML_V='6d47d62650';
+const __HTML_V='f93edc6fed';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
