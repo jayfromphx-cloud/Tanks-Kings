@@ -5614,7 +5614,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='199db28c40';
-const __HTML_V='b807835807';
+const __HTML_V='d7dd4bee71';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -5893,7 +5893,7 @@ function beginFrameLayoutCache(){__layoutFrameToken++;__layoutRectToken=-1}
 function invalidateFrameLayoutCache(){__layoutFrameToken++;__layoutRectToken=-1}
 function frameRect(key,el){if(__layoutRectToken!==__layoutFrameToken){__layoutRectToken=__layoutFrameToken;for(const k in __layoutRects)delete __layoutRects[k]}return __layoutRects[key]||(__layoutRects[key]=el.getBoundingClientRect())}
 const PROJECTILE_CAP=200;
-function pushProjectile(projectile){projectile.px=projectile.x;projectile.py=projectile.y;const overflow=state.projectiles.length-PROJECTILE_CAP+1;if(overflow>0)state.projectiles.splice(0,overflow);state.projectiles.push(projectile);return projectile}
+function pushProjectile(projectile){if(typeof projectile.v==='number')projectile.v=Math.max(-.65,Math.min(.65,projectile.v));projectile.px=projectile.x;projectile.py=projectile.y;const overflow=state.projectiles.length-PROJECTILE_CAP+1;if(overflow>0)state.projectiles.splice(0,overflow);state.projectiles.push(projectile);return projectile}
 const meterVisual={enemy:null,player:null,enemyTimer:0,playerTimer:0,playerMax:null};
 const __meterEls={};function syncMeter(fillId,ghostId,pct,key){pct=Math.max(0,Math.min(100,Number.isFinite(pct)?pct:0));let fill=__meterEls[fillId],ghost=__meterEls[ghostId];if(!fill){fill=$(fillId);__meterEls[fillId]=fill}if(!ghost){ghost=$(ghostId);__meterEls[ghostId]=ghost};if(!fill||!ghost)return;const scale='scaleX('+(pct/100)+')',prior=meterVisual[key];fill.style.transform=scale;if(prior===null||pct>=prior){clearTimeout(meterVisual[key+'Timer']);if(ghost.style.transform!==scale){ghost.style.transition='none';ghost.style.transform=scale;void ghost.offsetWidth;ghost.style.transition=''}}else if(pct<prior){clearTimeout(meterVisual[key+'Timer']);meterVisual[key+'Timer']=setTimeout(()=>{ghost.style.transform=scale},340)}meterVisual[key]=pct}
 function resetMeters(){clearTimeout(meterVisual.enemyTimer);clearTimeout(meterVisual.playerTimer);meterVisual.enemy=meterVisual.player=null;meterVisual.playerMax=null;$('enemyHpGhost').style.transform='scaleX(1)';$('playerHpGhost').style.transform='scaleX(1)'}
@@ -6597,7 +6597,7 @@ function tryPerfectParry(){
         /* PARRY RULES 1+2 (Jay, 2026-10-13): Ult-class shells (boss/god bossShot, colossal signature big) cannot be parried by a normal tank. An ASCENDANT tank's parry deflects one: half the damage is reflected back at the enemy, and the Ascendant tank takes the other half itself. */
         if(stageFor(chosenTank).key!=='ascendant')continue;
         const _ultEff=Math.max(1,Math.round((p.dmg!=null?p.dmg:enemyHitDamage(state.wave,(state.enemy&&state.enemy.type)||'grunt'))*(p.dmgMult||1))),_ultBack=Math.floor(_ultEff/2),_ultTaken=_ultEff-_ultBack;
-        p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=_ultBack;p.dmgMult=1;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
+        p.enemy=false;p.v=Math.min(.65,Math.abs(p.v)*1.5);p.dmg=_ultBack;p.dmgMult=1;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
         parried++;ultDeflected++;
         tkParryFx(p.x,parryColor);
         if(_ultTaken>0)damagePlayer(_ultTaken);
@@ -6606,7 +6606,7 @@ function tryPerfectParry(){
       }
       const _ps=parrySkill(chosenTank);
       const reflDmg=Math.max(Math.round(totalAtk()*_ps.reflect*_ps.mult),Math.round((p.dmg||enemyHitDamage(state.wave,(state.enemy&&state.enemy.type)||'grunt'))*3));
-      p.enemy=false;p.v=Math.abs(p.v)*1.5;p.dmg=reflDmg;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
+      p.enemy=false;p.v=Math.min(.65,Math.abs(p.v)*1.5);p.dmg=reflDmg;p.color=parryColor;p.perfect=true;p.bossShot=false;p.big=false;p.y=Math.min(.62,Math.max(.48,p.y));
       if(_ps.stun)p.stun=_ps.stun;
       parried++;
       tkParryFx(p.x,parryColor);
