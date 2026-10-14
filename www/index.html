@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='6e36dab6ec';
-const __HTML_V='5bd96db31e';
+const __HTML_V='8a9e00d2a3';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6702,15 +6702,11 @@ function tryMeleeRam(){
       charge={fx:(pr.left+pr.width*.5-sr.left)/Math.max(1,sr.width),dx:dx/Math.max(1,sr.width),sw:sr.width};
     }
   }catch(e){}
-  /* Phase 1: anticipation — treads dig in, dust kicks, glow builds */
+  /* Phase 1: anticipation — treads dig in, glow builds (no launch bursts, Jay 2026-10-13) */
   try{if(rig){rig.classList.remove('melee-charge');void rig.offsetWidth;rig.classList.add('melee-charge')}}catch(e){}
   tkMeleeArtSwap(true);
-  burst(.14,.74,'#8a7a5a',14,'impact');burst(.19,.75,'#6b5f49',10,'impact');
-  setTimeout(()=>{if(!state.paused&&!document.hidden&&state.running&&state.enemy===_ramTarget)burst(.15,.74,'#a08a5f',10,'impact')},170);
   try{sfx('meleeCharge')}catch(e){}
-  /* Phase 2: charge — dust trail streams behind the hull as it crosses */
-  setTimeout(()=>{if(!state.paused&&!document.hidden&&state.running&&state.enemy===_ramTarget)burst(charge.fx+charge.dx*.35,.73,'#9b8a68',9,'impact')},330);
-  setTimeout(()=>{if(!state.paused&&!document.hidden&&state.running&&state.enemy===_ramTarget)burst(charge.fx+charge.dx*.65,.73,'#9b8a68',9,'impact')},500);
+  /* Phase 2: charge — the hull crosses (no trail bursts, Jay 2026-10-13) */
   /* Phase 3: impact at lunge apex (~700ms) — flash + shockwave + damage */
   function _ramImpact(){
     if(state.paused||document.hidden){state.meleeCd=0;tkMeleeArtSwap(false);try{if(rig)rig.classList.remove('melee-charge');updateAbilityUI()}catch(e){}return}
