@@ -6603,7 +6603,7 @@ function muzzlePoint(playerSide){
   return {x:(ox+cw*fx-sr.left)/sr.width,y:(oy+ch*fy-sr.top)/sr.height};
  }catch(e){return null}
 }
-function firePlayer(){if(!state.enemy)return;const coreColors={iron:'#fff1a6',ember:'#ff6538',volt:'#d8c4ff',bloom:'#c8ef71',tide:'#bff8ff'},color=coreColors[byT(chosenTank).k]||byK(byT(chosenTank).k).colors[1];const mz=muzzlePoint(true),fb=byT(chosenTank).role==='Vanguard'?{x:.285,y:.55}:{x:.315,y:.50},sx=mz?mz.x:fb.x,sy=mz?mz.y:fb.y;pushProjectile({x:sx,y:sy,v:.7586,enemy:false,color:color});state.shotClock=0;sfx('fire');state.playerRecoil=1;state.shake=Math.max(state.shake,1.8);retriggerArt('playerRig','fire',440);burst(sx,sy,color,18,'muzzle')}
+function firePlayer(){if(!state.enemy)return;const coreColors={iron:'#fff1a6',ember:'#ff6538',volt:'#d8c4ff',bloom:'#c8ef71',tide:'#bff8ff'},color=coreColors[byT(chosenTank).k]||byK(byT(chosenTank).k).colors[1];const mz=muzzlePoint(true),fb=byT(chosenTank).role==='Vanguard'?{x:.285,y:.55}:{x:.315,y:.50},sx=mz?mz.x:fb.x,sy=mz?mz.y:fb.y;pushProjectile({x:sx,y:sy,v:.7586,enemy:false,color:color});state.shotClock=0;sfx('fire');state.playerRecoil=1;state.shake=Math.max(state.shake,1.8);retriggerArt('playerRig','fire',440)}
 /* Vanguard melee ram: rev-up crouch/shake -> fast lunge with dust -> hull-bash impact
    (flash + shockwave ring + hit-stop + shake) -> recoil. Replaces the cannon cycle. */
 /* Melee impact anchor: the enemy tank's measured center (2026-10-14) — the old fixed 55% was the shell flight line, well above the hull. */
@@ -6870,7 +6870,6 @@ function _ultAimFire(seq){
    var t=byT(chosenTank),rank=stageFor(chosenTank);
    var _ux=.30,_uy=.32,_x1=Math.max(.4,state.enemy.x-.06);
    var _orb=pushProjectile({ultOrb:true,ultTarget:state.enemy,diag:true,x:_ux,y:_uy,x0:_ux,y0:_uy,x1:_x1,y1:meleeImpactY(),v:1.8785,enemy:false,spin:0,ultDmg:0,ultBurn:0,ultPoison:0,ultFreeze:0});fired=true;
-   burst(_ux,_uy,'#b78cff',14,'star');
    tkUltLevitate(false);
    setTimeout(function(){if(seq===state._ultSeq)tkUltPoseSwap(null)},550);
    var dmg=totalAtk()*5.5*rank.ultimateMultiplier*(1+prestigeSetUltBonus()+godskinStats(chosenTank).ult)*ultSkillFactor(chosenTank);var _ub=0,_up=0,_uf=0;
@@ -6939,10 +6938,8 @@ function tryMissile(){
   const k=byT(chosenTank).k,
     impactColor={iron:'#ffb347',ember:'#ff6538',volt:'#ffe551',bloom:'#f2a2c8',tide:'#b7f5f2'}[k]||'#ffb347';
   const mz=muzzlePoint(true),lx=mz?mz.x:.27,ly=mz?mz.y:.52;
-  /* Launch: muzzle flare + back-blast smoke; Jay's dedicated Missile
-     recording is the launch voice for Artillery. */
-  burst(lx,ly,'#ffb347',10,'muzzle');
-  burst(lx-.02,ly+.04,'#c9cdd4',16,'smoke');burst(lx-.04,ly+.07,'#6b5f49',10,'impact');
+  /* Launch bursts removed (Jay, 2026-10-14): bursts fire on hits only.
+     Jay's dedicated Missile recording is the launch voice for Artillery. */
   try{sfx('missile')}catch(e){}
   state.playerRecoil=1;retriggerArt('playerRig','fire',440);
   tkMeleeArtSwap(true);setTimeout(function(){tkMeleeArtSwap(false)},1100);
@@ -6967,7 +6964,7 @@ function fireEnemy(){if(!state.enemy||state.playerDead||state.paused||document.h
  p.bossShot=!!(state.enemy.boss||state.enemy.type==='boss'||state.enemy.godId);
  /* Tidefather signature: slow, colossal tidal shells that crush for 1.6x damage. */
  if(state.enemy.godId==='tidefather'){p.v=-.3324;p.big=1;p.color='#6fe0ff';p.y=(emz?emz.y:.56)+Math.random()*.03}
- pushProjectile(p);state.enemyShotClock=0;state.enemy.fireControlHold=0;sfx('enemyFire');retriggerArt('enemySprite','fire',440);burst(emz?emz.x:state.enemy.x-.05,emz?emz.y:.58,'#ff7b6d',10,'muzzle')}
+ pushProjectile(p);state.enemyShotClock=0;state.enemy.fireControlHold=0;sfx('enemyFire');retriggerArt('enemySprite','fire',440)}
 /* Enemy fire is a mode-agnostic combat invariant. Crowd control may delay a
    ready shot, but repeated Tide freezes or chained stuns must never suppress
    every attack forever. The attack clock therefore keeps advancing while the
