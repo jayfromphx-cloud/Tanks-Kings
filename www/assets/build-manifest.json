@@ -1,6 +1,6 @@
 {
-  "build": "d60d13470a",
-  "html": "2ec952aa88",
+  "build": "8c2751553d",
+  "html": "10286933e5",
   "assetCount": 420,
   "assets": [
     {
@@ -1510,8 +1510,8 @@
     },
     {
       "file": "assets/ult-impact.bin",
-      "bytes": 49677,
-      "md5": "cb6c6c969291ce18eb260c822e8126e5"
+      "bytes": 48110,
+      "md5": "c8c17389d25ddbc4604319cd60e24166"
     },
     {
       "file": "assets/ult-ironhold.bin",
