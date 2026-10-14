@@ -5085,7 +5085,7 @@ img{pointer-events:none!important}
    <div id="guildBody"></div>
  </section>
  <section id="eventScreen" class="screen menu-screen">
-  <div class="top-actions"><button class="char-back" onclick="setScreen('mode')">‹ Modes</button></div>
+  <div class="top-actions"><button id="eventBackBtn" class="char-back">‹ Modes</button></div>
   <div id="eventScreenBody"></div>
 </section>
 <div id="dungeonReward" class="dungeon-overlay" hidden><div class="dungeon-reward-card" role="alertdialog" aria-modal="true" aria-labelledby="dungeonRewardTitle"><span class="glory-result-kicker">Dungeon of Steel — Cleared</span><h2 id="dungeonRewardTitle">Steel Claimed!</h2><p id="dungeonRewardSub"></p><div id="dungeonRewardRows" class="dungeon-reward-rows"></div><button id="dungeonClaimBtn" class="primary">Claim Rewards</button></div></div>
@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='a2e5d6e6c4';
-const __HTML_V='dda9e88d09';
+const __HTML_V='5566830475';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -8456,9 +8456,13 @@ function renderEventScreen(){
  if(rw.chest)rwTxt.push(rw.chest+' chest');
  host.innerHTML='<div class="screen-inner"><div class="screen-title">'+ev.icon+' '+ev.name+'</div>'
   +'<div class="season-banner"><div class="sb-copy"><b>'+ev.desc+'</b><div class="sb-bar"><div class="sb-fill" style="width:'+pct+'%"></div></div><small>Goal: '+ev.goal+' '+ev.unit+' ('+prog+'/'+ev.goal+') · <span data-cd="event">Ends in --</span></small></div></div>'
-  +'<div class="mission-row"><span>Reward: '+rwTxt.join(', ')+'</span>'+(done&&!claimed?'<button class="btn gold" onclick="eventClaim()">CLAIM</button>':(claimed?'<span class="claimed">CLAIMED</span>':'<span class="progress">'+prog+'/'+ev.goal+'</span>'))+'</div>'
+  +'<div class="mission-row"><span>Reward: '+rwTxt.join(', ')+'</span>'+(done&&!claimed?'<button class="btn gold" id="eventClaimBtn">CLAIM</button>':(claimed?'<span class="claimed">CLAIMED</span>':'<span class="progress">'+prog+'/'+ev.goal+'</span>'))+'</div>'
   +'<div class="screen-sub">New event every 7 days. Unclaimed rewards auto-grant at rollover.</div>'
   +'</div>';
+ var bb=$('eventBackBtn');
+ if(bb&&!bb._wired){bb._wired=true;bb.onclick=function(){try{sfx('coin')}catch(e){}setScreen('mode');try{renderModeSelect()}catch(_e){}}}
+ var cb=$('eventClaimBtn');
+ if(cb)cb.onclick=function(){eventClaim()};
 }
 var codexTab='tanks';
 function renderCodexScreen(){
