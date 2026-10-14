@@ -1,7 +1,7 @@
 {
-  "build": "a2e5d6e6c4",
-  "html": "e2c128e9b1",
-  "assetCount": 383,
+  "build": "a797c19a92",
+  "html": "0d439814a9",
+  "assetCount": 388,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -677,6 +677,31 @@
       "file": "assets/keyed-projectile-volt.png",
       "bytes": 154671,
       "md5": "fdc4dabf508a064fabc6b6142a4f28cc"
+    },
+    {
+      "file": "assets/keyed-ult-orb-bloom-ascendant.png",
+      "bytes": 287091,
+      "md5": "31362d4d5af432d51b1944d13529fe11"
+    },
+    {
+      "file": "assets/keyed-ult-orb-cinder-ascendant.png",
+      "bytes": 208126,
+      "md5": "c78fc3833080d8671832c9f0f4922d9a"
+    },
+    {
+      "file": "assets/keyed-ult-orb-iron-ascendant.png",
+      "bytes": 335947,
+      "md5": "9de25f9ff6939e8a04eec4b5b646b318"
+    },
+    {
+      "file": "assets/keyed-ult-orb-tide-ascendant.png",
+      "bytes": 188026,
+      "md5": "9a1d170bbc83b598fd576f41bfc082ed"
+    },
+    {
+      "file": "assets/keyed-ult-orb-volt-ascendant.png",
+      "bytes": 308850,
+      "md5": "b948f9828fdf6cea629537da9d40e62d"
     },
     {
       "file": "assets/keyed-ult-projectile-bloom-ascendant.png",
