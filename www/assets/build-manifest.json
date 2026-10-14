@@ -1,7 +1,7 @@
 {
-  "build": "98659a0b38",
-  "html": "c1b36759db",
-  "assetCount": 383,
+  "build": "e62e4a52b1",
+  "html": "b9e0b06770",
+  "assetCount": 384,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -1057,6 +1057,11 @@
       "file": "assets/mode-icon-tower.png",
       "bytes": 64127,
       "md5": "e893273095149a5a22c6f53d7d297f23"
+    },
+    {
+      "file": "assets/parry-shockwave.png",
+      "bytes": 449146,
+      "md5": "f23a0c28964ff7da92299e8f024b3e3e"
     },
     {
       "file": "assets/parry.bin",
