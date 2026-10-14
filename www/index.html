@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='a2e5d6e6c4';
-const __HTML_V='22b18ea302';
+const __HTML_V='4776fc59c5';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7531,11 +7531,11 @@ let __v1Sprite=null,__ultSprite=null;let __enemyProjSprite=null,__bossProjSprite
   const v1=new Image();loadKeyed(v1,'assets/keyed-projectile-v1.png?v='+__ASSET_V,function(s){__v1Sprite=s});
   const ei=new Image();loadKeyed(ei,'assets/enemy-projectile.png?v='+__ASSET_V,function(s){__enemyProjSprite=s});
   const bi=new Image();loadKeyed(bi,'assets/boss-projectile.png?v='+__ASSET_V,function(s){__bossProjSprite=s});
-  const v5=new Image();loadKeyed(v5,'assets/keyed-ultimate-arcane.png?v='+__ASSET_V,function(s){__ultSprite=s});
-  const factionUltFiles={iron:'iron',ember:'cinder',volt:'volt',bloom:'bloom',tide:'tide'};
+  const v5=new Image();loadKeyed(v5,'assets/keyed-ultimate-arcane.png?v='+__ASSET_V,function(s){if(s)s.ax=-.407;__ultSprite=s});
+  const factionUltFiles={iron:'iron',ember:'cinder',volt:'volt',bloom:'bloom',tide:'tide'};const __ultAxisA={iron:.473,ember:.553,volt:.403,bloom:.511,tide:.586},__ultAxisF={iron:-.169,ember:-.035,volt:-.209,bloom:-.091,tide:-.003}; /* baked art axis per sprite (rad, alpha-PCA measured 2026-10-14) */
   Object.keys(factionUltFiles).forEach(function(k){
-    const fi=new Image();loadKeyed(fi,'assets/keyed-ult-projectile-'+factionUltFiles[k]+'.png?v='+__ASSET_V,function(s){__ultFactionSprites[k]=s});
-    const ai=new Image();loadKeyed(ai,'assets/keyed-ult-projectile-'+factionUltFiles[k]+'-ascendant.png?v='+__ASSET_V,function(s){__ultAscSprites[k]=s});
+    const fi=new Image();loadKeyed(fi,'assets/keyed-ult-projectile-'+factionUltFiles[k]+'.png?v='+__ASSET_V,function(s){if(s)s.ax=__ultAxisF[k]||0;__ultFactionSprites[k]=s});
+    const ai=new Image();loadKeyed(ai,'assets/keyed-ult-projectile-'+factionUltFiles[k]+'-ascendant.png?v='+__ASSET_V,function(s){if(s)s.ax=__ultAxisA[k]||0;__ultAscSprites[k]=s});
   });
   const factionV1Files={iron:'iron',ember:'ember',volt:'volt',bloom:'bloom',tide:'tide'};
   Object.keys(factionV1Files).forEach(function(k){
@@ -7581,7 +7581,7 @@ if(!batterySaver&&!performanceMode&&!window.__tkAmbientOff){const DS=dustSpriteF
 // fire), V5 arcane orb for the ultimate — each sprite is blitted once at full
 // opacity with no additive glow or motion trail.
 {const PL=state.projectiles;if(PL.length){ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;for(let pi=0,PN=PL.length;pi<PN;pi++){const p=PL[pi];
-if(p.ultOrb){const _ufs=(stageFor(chosenTank).key==='ascendant'&&__ultAscSprites[byT(chosenTank).k])||__ultFactionSprites[byT(chosenTank).k]||__ultSprite;if(_ufs){const US=Math.max(96,Math.min(200,w*.17))*1.1,UH=US*_ufs.h/_ufs.w;ctx.save();ctx.translate(w*(p.px!=null?p.px+(p.x-p.px)*__interpAlpha:p.x),h*(p.py!=null?p.py+(p.y-p.py)*__interpAlpha:p.y));ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.rotate(p.diag&&p.x1>p.x0?Math.atan2((p.y1-p.y0)*h,(p.x1-p.x0)*w):Math.sin(p.spin||0)*.07);ctx.drawImage(_ufs.c,-US/2,-UH/2,US,UH);ctx.restore()}else{const _oPX=w*(p.px!=null?p.px+(p.x-p.px)*__interpAlpha:p.x),_oPY=h*(p.py!=null?p.py+(p.y-p.py)*__interpAlpha:p.y);ctx.save();ctx.translate(_oPX,_oPY);ctx.globalAlpha=1;ctx.fillStyle='#c9a2ff';ctx.beginPath();ctx.arc(0,0,Math.max(16,w*.028),0,6.2832);ctx.fill();ctx.fillStyle='#ffe9a8';ctx.beginPath();ctx.arc(0,0,Math.max(8,w*.014),0,6.2832);ctx.fill();ctx.restore()}continue}
+if(p.ultOrb){const _ufs=(stageFor(chosenTank).key==='ascendant'&&__ultAscSprites[byT(chosenTank).k])||__ultFactionSprites[byT(chosenTank).k]||__ultSprite;if(_ufs){const US=Math.max(96,Math.min(200,w*.17))*1.1,UH=US*_ufs.h/_ufs.w;ctx.save();ctx.translate(w*(p.px!=null?p.px+(p.x-p.px)*__interpAlpha:p.x),h*(p.py!=null?p.py+(p.y-p.py)*__interpAlpha:p.y));ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.rotate((p.diag&&p.x1>p.x0?Math.atan2((p.y1-p.y0)*h,(p.x1-p.x0)*w):Math.sin(p.spin||0)*.07)+(_ufs.ax||0));ctx.drawImage(_ufs.c,-US/2,-UH/2,US,UH);ctx.restore()}else{const _oPX=w*(p.px!=null?p.px+(p.x-p.px)*__interpAlpha:p.x),_oPY=h*(p.py!=null?p.py+(p.y-p.py)*__interpAlpha:p.y);ctx.save();ctx.translate(_oPX,_oPY);ctx.globalAlpha=1;ctx.fillStyle='#c9a2ff';ctx.beginPath();ctx.arc(0,0,Math.max(16,w*.028),0,6.2832);ctx.fill();ctx.fillStyle='#ffe9a8';ctx.beginPath();ctx.arc(0,0,Math.max(8,w*.014),0,6.2832);ctx.fill();ctx.restore()}continue}
 if(__v1Sprite){const _isEnemyShot=!!p.enemy;const _gkOn=!_isEnemyShot&&typeof equippedGodskin==='function'&&equippedGodskin(chosenTank);const _v1fs=_isEnemyShot?((p.bossShot?__bossProjSprite:__enemyProjSprite)||__v1Sprite):((_gkOn?__v1GkFactionSprites[byT(chosenTank).k]:null)||__v1FactionSprites[byT(chosenTank).k]||__v1Sprite);const VL=Math.max(78,Math.min(152,w*.125))*1.18*1.12*((p.big||p.bossShot)?1.42:.5),VH=VL*_v1fs.h/_v1fs.w,PX=w*(p.px!=null?p.px+(p.x-p.px)*__interpAlpha:p.x),PY=h*(p.py!=null?p.py+(p.y-p.py)*__interpAlpha:p.y);ctx.save();ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.translate(PX,PY);if(p.enemy)ctx.scale(-1,1);ctx.drawImage(_v1fs.c,-VL/2,-VH/2,VL,VH);ctx.restore();continue}else{const _fL=Math.max(40,Math.min(96,w*.08))*(p.big?1.42:.6),_fPX=w*(p.px!=null?p.px+(p.x-p.px)*__interpAlpha:p.x),_fPY=h*(p.py!=null?p.py+(p.y-p.py)*__interpAlpha:p.y);ctx.save();ctx.translate(_fPX,_fPY);if(p.enemy)ctx.scale(-1,1);ctx.globalAlpha=1;ctx.fillStyle=p.enemy?'#ffb27a':'#ffe9a8';ctx.beginPath();ctx.ellipse(0,0,_fL/2,Math.max(3,_fL*.14),0,0,6.2832);ctx.fill();ctx.fillStyle='#fff7dd';ctx.beginPath();ctx.ellipse(_fL*.18,0,_fL*.22,Math.max(2,_fL*.07),0,0,6.2832);ctx.fill();ctx.restore();continue}
 }}}
 for(let qi=0,QN=state.particles.length;qi<QN;qi++){const p=state.particles[qi];const pa=(p.alpha!=null?p.alpha:Math.max(0,Math.min(1,p.life/(p.maxLife||1))));if(pa<=0.01)continue;const x=w*(p.px!=null?p.px+(p.x-p.px)*__interpAlpha:p.x),y=h*(p.py!=null?p.py+(p.y-p.py)*__interpAlpha:p.y),s=p.size;
