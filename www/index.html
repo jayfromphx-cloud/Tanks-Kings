@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='a2e5d6e6c4';
-const __HTML_V='4776fc59c5';
+const __HTML_V='dda9e88d09';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6442,6 +6442,8 @@ function muzzlePoint(playerSide){
 function firePlayer(){if(!state.enemy)return;const coreColors={iron:'#fff1a6',ember:'#ff6538',volt:'#d8c4ff',bloom:'#c8ef71',tide:'#bff8ff'},color=coreColors[byT(chosenTank).k]||byK(byT(chosenTank).k).colors[1];const mz=muzzlePoint(true),fb=byT(chosenTank).role==='Vanguard'?{x:.285,y:.55}:{x:.315,y:.50},sx=mz?mz.x:fb.x,sy=mz?mz.y:fb.y;pushProjectile({x:sx,y:sy,v:.7586,enemy:false,color:color});state.shotClock=0;sfx('fire');state.playerRecoil=1;state.shake=Math.max(state.shake,1.8);retriggerArt('playerRig','fire',440);burst(sx,sy,color,18,'muzzle')}
 /* Vanguard melee ram: rev-up crouch/shake -> fast lunge with dust -> hull-bash impact
    (flash + shockwave ring + hit-stop + shake) -> recoil. Replaces the cannon cycle. */
+/* Melee impact anchor: the enemy tank's measured center (2026-10-14) — the old fixed 55% was the shell flight line, well above the hull. */
+function meleeImpactY(){try{var st=$('battleStage'),e=$('enemySprite');if(st&&e){var sr=st.getBoundingClientRect(),er=e.getBoundingClientRect();if(sr.height>0&&er.height>0)return Math.max(.5,Math.min(.85,(er.top+er.height/2-sr.top)/sr.height))}}catch(_e){}return .68}
 function spawnMeleeShockwave(){
   try{
     const stage=$('battleStage');if(!stage||!state.enemy)return;
@@ -6449,7 +6451,7 @@ function spawnMeleeShockwave(){
     el.className='melee-shockwave';
     el.style.width=el.style.height=size+'px';
     el.style.left='calc('+(state.enemy.x*100)+'% - '+(size/2)+'px)';
-    el.style.top='calc(55% - '+(size/2)+'px)';
+    el.style.top='calc('+(meleeImpactY()*100)+'% - '+(size/2)+'px)';
     stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},520);
   }catch(e){}
 }
@@ -6586,7 +6588,7 @@ function spawnMeleeImpactArt(){
     el.className='melee-impact-art';el.alt='';el.decoding='async';el.onerror=function(){var _n=_mii+1;if(_n<_mic.length){_mii=_n;el.src=_mic[_n]}else el.onerror=null};el.src=_mir.src;
     el.style.width=el.style.height=size+'px';
     el.style.left='calc('+(state.enemy.x*100)+'% - '+(size/2)+'px)';
-    el.style.top='calc(55% - '+(size/2)+'px)';
+    el.style.top='calc('+(meleeImpactY()*100)+'% - '+(size/2)+'px)';
     stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},650);
   }catch(e){}
 }
@@ -6597,7 +6599,7 @@ function spawnMeleeFlash(){
     el.className='melee-flash';
     el.style.width=el.style.height=size+'px';
     el.style.left='calc('+(state.enemy.x*100)+'% - '+(size/2)+'px)';
-    el.style.top='calc(55% - '+(size/2)+'px)';
+    el.style.top='calc('+(meleeImpactY()*100)+'% - '+(size/2)+'px)';
     stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},380);
   }catch(e){}
 }
@@ -6708,15 +6710,16 @@ function tryMeleeRam(){
   function _ramImpact(){
     if(state.paused||document.hidden){state.meleeCd=0;tkMeleeArtSwap(false);try{if(rig)rig.classList.remove('melee-charge');updateAbilityUI()}catch(e){}return}
     if(!state.running||state.screen!=='battle'||state.playerDead||state.enemy!==_ramTarget){state.meleeCd=0;tkMeleeArtSwap(false);try{if(rig)rig.classList.remove('melee-charge');updateAbilityUI()}catch(e){}return;}
+    const _iy=meleeImpactY();
     spawnMeleeImpactArt();
     spawnMeleeFlash();
     spawnMeleeShockwave();
     state.hitStop=Math.max(state.hitStop,.12);state.shake=Math.max(state.shake,16);
     state.cineSlow=Math.max(state.cineSlow,.3);
-    burst(state.enemy.x-.03,.55,'#ffffff',16,'impact');
-    burst(state.enemy.x-.03,.55,impactColor,26,'impact');
-    burst(state.enemy.x-.03,.68,'#8a7a5a',12,'impact');
-    spawnDebris(state.enemy.x-.03,.58,.7);
+    burst(state.enemy.x-.03,_iy,'#ffffff',16,'impact');
+    burst(state.enemy.x-.03,_iy,impactColor,26,'impact');
+    burst(state.enemy.x-.03,Math.min(.8,_iy+.07),'#8a7a5a',12,'impact');
+    spawnDebris(state.enemy.x-.03,_iy,.7);
     try{sfx('impact')}catch(e){}
     const _clvl=skillLvl(chosenTank,'charge'),_cdmg=Math.round(totalAtk()*2.5*skillDmgMult(_clvl));
     damageEnemy(_cdmg,false,'melee');
