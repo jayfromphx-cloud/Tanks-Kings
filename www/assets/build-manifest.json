@@ -1,7 +1,7 @@
 {
-  "build": "76619a173e",
-  "html": "3210a4f696",
-  "assetCount": 384,
+  "build": "a2e5d6e6c4",
+  "html": "8950b78d0f",
+  "assetCount": 383,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -472,11 +472,6 @@
       "file": "assets/evo-paladin-voltspire.png",
       "bytes": 934178,
       "md5": "35a24e88601560260777c9b2327235e6"
-    },
-    {
-      "file": "assets/explosion-aaa-v2.png",
-      "bytes": 638307,
-      "md5": "b8fb3b48a592f6663fbeb561a9f09ba5"
     },
     {
       "file": "assets/explosion-fx-bloomvale.png",
