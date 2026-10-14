@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='98659a0b38';
-const __HTML_V='2bc6da67ff';
+const __HTML_V='c1b36759db';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6555,25 +6555,16 @@ function spawnParryRing(x){
     stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},600);
   }catch(e){}
 }
-/* Parry presentation (Jay, 2026-10-13): melee blast flash + faction impact art only. */
+/* Parry presentation (Jay, 2026-10-13): shockwave only. */
 function tkParryFx(x,color){
   try{
     const stage=$('battleStage');if(!stage)return;
-    const fl=document.createElement('div');
-    fl.className='melee-flash';
-    fl.style.width=fl.style.height='210px';
-    fl.style.left='calc('+(x*100)+'% - 105px)';
-    fl.style.top='calc(56% - 105px)';
-    stage.appendChild(fl);setTimeout(()=>{try{fl.remove()}catch(e){}},380);
-    const k=byT(chosenTank).k,src=MELEE_IMPACT_ART[k];if(!src)return;
-    preloadMeleeImpactArt();
-    const _pr=__tkResolveArt('melee-impact:'+k,'melee impact',[src],__TK_DEFAULT_PLAYER_ART),_pc=_pr.chain;let _pi=Math.max(0,_pc.indexOf(_pr.src));
-    const size=238,el=document.createElement('img');
-    el.className='melee-impact-art';el.alt='';el.decoding='async';el.onerror=function(){var _n=_pi+1;if(_n<_pc.length){_pi=_n;el.src=_pc[_n]}else el.onerror=null};el.src=_pr.src;
+    const size=200,el=document.createElement('div');
+    el.className='melee-shockwave';
     el.style.width=el.style.height=size+'px';
     el.style.left='calc('+(x*100)+'% - '+(size/2)+'px)';
     el.style.top='calc(56% - '+(size/2)+'px)';
-    stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},650);
+    stage.appendChild(el);setTimeout(()=>{try{el.remove()}catch(e){}},520);
   }catch(e){}
 }
 const MELEE_IMPACT_ART={iron:'assets/melee-impact-ironhold.png',ember:'assets/melee-impact-ember.png',volt:'assets/melee-impact-voltspire.png',bloom:'assets/melee-impact-bloomvale.png',tide:'assets/melee-impact-tidereign.png'};
