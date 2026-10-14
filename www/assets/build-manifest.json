@@ -1,7 +1,7 @@
 {
-  "build": "b2c094374d",
-  "html": "28304f1734",
-  "assetCount": 414,
+  "build": "103f083e47",
+  "html": "54b1255d4a",
+  "assetCount": 415,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -1512,6 +1512,11 @@
       "file": "assets/ult-ironhold.bin",
       "bytes": 161280,
       "md5": "f7124672610fc11d0310827a1400cc3a"
+    },
+    {
+      "file": "assets/ult-nova-iron.png",
+      "bytes": 733771,
+      "md5": "6d2728f2fb63c789d2a00f9cabd29039"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-aimdown.png",
