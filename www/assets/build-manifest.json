@@ -1,7 +1,7 @@
 {
-  "build": "773fb22cb8",
-  "html": "0f19f12a11",
-  "assetCount": 412,
+  "build": "06e5d688fd",
+  "html": "b1e16dd15d",
+  "assetCount": 413,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -42,6 +42,11 @@
       "file": "assets/boss-projectile.png",
       "bytes": 104692,
       "md5": "d1e323744158a44a20b85cafce77b2d5"
+    },
+    {
+      "file": "assets/btn-leap.png",
+      "bytes": 139565,
+      "md5": "f6c4c8865b58f0224b10dda464e76761"
     },
     {
       "file": "assets/btn-melee.png",
