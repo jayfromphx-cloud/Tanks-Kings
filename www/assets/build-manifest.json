@@ -1,7 +1,7 @@
 {
-  "build": "8fbb389f88",
-  "html": "ec6a9d53c8",
-  "assetCount": 382,
+  "build": "98659a0b38",
+  "html": "2bc6da67ff",
+  "assetCount": 383,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -482,6 +482,11 @@
       "file": "assets/explosion-fx-bloomvale.png",
       "bytes": 610076,
       "md5": "5e797764f6409eed6da59cca9e6a893e"
+    },
+    {
+      "file": "assets/explosion-fx-ember.png",
+      "bytes": 604552,
+      "md5": "5521f857159f2cd6070b62b2bd0165d3"
     },
     {
       "file": "assets/explosion-fx-ironhold.png",
