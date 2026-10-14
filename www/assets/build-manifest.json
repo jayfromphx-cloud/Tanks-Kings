@@ -1,7 +1,7 @@
 {
-  "build": "103f083e47",
-  "html": "b2b8c6a20a",
-  "assetCount": 415,
+  "build": "a7e2c9aa42",
+  "html": "1b8c0b5e5d",
+  "assetCount": 419,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -1514,9 +1514,29 @@
       "md5": "f7124672610fc11d0310827a1400cc3a"
     },
     {
+      "file": "assets/ult-nova-bloom.png",
+      "bytes": 829938,
+      "md5": "ea2118fd5db7593eb209929c0b1f8664"
+    },
+    {
+      "file": "assets/ult-nova-ember.png",
+      "bytes": 720413,
+      "md5": "d6991e8622fa94a3fb958acab470303c"
+    },
+    {
       "file": "assets/ult-nova-iron.png",
       "bytes": 733771,
       "md5": "6d2728f2fb63c789d2a00f9cabd29039"
+    },
+    {
+      "file": "assets/ult-nova-tide.png",
+      "bytes": 878495,
+      "md5": "d1c46dbddadb14576a38418cbab3abaf"
+    },
+    {
+      "file": "assets/ult-nova-volt.png",
+      "bytes": 706663,
+      "md5": "23faeaa19075bd7bb48c3261c911a26d"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-aimdown.png",
