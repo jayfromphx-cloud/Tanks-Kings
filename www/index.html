@@ -4984,7 +4984,7 @@ img{pointer-events:none!important}
 #modeScreen .season-banner{grid-column:auto;width:auto;max-width:none;margin:6px 0 0;align-self:stretch}
 #modeScreen .mode-cards{width:100%!important}
 }
-</style><style id="parryShockArt">.parry-shockwave-art{position:absolute;z-index:16;pointer-events:none;animation:parryShockArt .5s ease-out forwards}@keyframes parryShockArt{from{transform:scale(.23);opacity:1}to{transform:scale(1);opacity:0}}</style>
+</style><style id="parryShockArt">.parry-shockwave-art{position:absolute;z-index:16;pointer-events:none;animation:parryShockArt .5s ease-out forwards}@keyframes parryShockArt{from{transform:scale(.23);opacity:1}to{transform:scale(1);opacity:0}}</style><style id="ultLevitate">/* ULT levitation: menaceIdle (infinite, on .combatant) overrides inline transform, so the rise/descend are !important animations like ult-anticipate. */#playerRig.ult-levitating{animation:ultLevitate .5s cubic-bezier(.3,.7,.3,1) both!important;z-index:16}#playerRig.ult-descending{animation:ultDescend .5s cubic-bezier(.3,.7,.3,1) both!important}@keyframes ultLevitate{from{transform:translateY(0)}to{transform:translateY(var(--ult-rise,-90px))}}@keyframes ultDescend{from{transform:translateY(var(--ult-rise,-90px))}to{transform:translateY(0)}}</style>
 
 
 
@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='e62e4a52b1';
-const __HTML_V='b9e0b06770';
+const __HTML_V='90de6b1651';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6653,7 +6653,7 @@ function tkMeleeArtSwap(on){
 const __TK_ULT_POSE_F={iron:'ironhold',ember:'ember',volt:'voltspire',bloom:'bloomvale',tide:'tidereign'};
 function tkUltPoseFile(kind){var t=byT(chosenTank),f=__TK_ULT_POSE_F[t.k]||'ironhold',cls=t.role==='Vanguard'?'vanguard':'artillery',st=stageFor(chosenTank).key,suf=st==='squire'?'':'-'+st;return 'assets/ult-pose-'+f+'-'+cls+suf+(kind==='aimdown'?'-aimdown':'')+'.png'}
 function tkUltPoseSwap(kind){try{var img=$('playerSprite');if(!img)return;if(kind){var f=tkUltPoseFile(kind);if(!__tkHasAsset(f))return;__tkSetImg(img,{src:f},img.alt);if(kind==='raised'){var ad=tkUltPoseFile('aimdown');if(__tkHasAsset(ad)){var pi=new Image();pi.src=__tkStampAsset(ad)}}}else{if(img.dataset.tkMeleeBase)return;var r=__tkResolvePlayerArt(chosenTank,'battle');if(r&&r.src)__tkSetImg(img,{src:r.src},img.alt)}}catch(e){}}
-function tkUltLevitate(on){try{var rig=he('playerRig');if(!rig)return;if(on){var st=$('battleStage'),hh=st?st.getBoundingClientRect().height:0,rise=Math.round((hh||600)*.24);rig.style.transition='transform .5s cubic-bezier(.3,.7,.3,1)';rig.style.transform='translateY(-'+rise+'px)'}else{rig.style.transform='';setTimeout(function(){try{rig.style.transition=''}catch(e){}},620)}}catch(e){}}
+function tkUltLevitate(on){try{var rig=he('playerRig');if(!rig)return;if(on){var st=$('battleStage'),hh=st?st.getBoundingClientRect().height:0,rise=Math.round((hh||600)*.24);rig.style.setProperty('--ult-rise','-'+rise+'px');rig.classList.remove('ult-descending');rig.classList.remove('ult-levitating');void rig.offsetWidth;rig.classList.add('ult-levitating');rig.style.transform='';rig.style.transition=''}else{if(rig.classList.contains('ult-levitating')){rig.classList.remove('ult-levitating');rig.classList.add('ult-descending');setTimeout(function(){try{if(!rig.classList.contains('ult-levitating')){rig.classList.remove('ult-descending');rig.style.removeProperty('--ult-rise')}}catch(e){}},560)}else{rig.classList.remove('ult-descending');rig.style.removeProperty('--ult-rise')}rig.style.transform='';rig.style.transition=''}}catch(e){}}
 function _ultAimFire(seq){
  var tries=0;
  function cleanup(){tkUltPoseSwap(null);tkUltLevitate(false);state.ultCasting=false}
