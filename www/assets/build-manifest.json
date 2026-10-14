@@ -1,6 +1,6 @@
 {
-  "build": "199db28c40",
-  "html": "b7b3796c93",
+  "build": "773fb22cb8",
+  "html": "0f19f12a11",
   "assetCount": 412,
   "assets": [
     {
@@ -45,13 +45,13 @@
     },
     {
       "file": "assets/btn-melee.png",
-      "bytes": 125287,
-      "md5": "7eeba8656a48ccff54805e8f7e1d0056"
+      "bytes": 122754,
+      "md5": "b7dd764f832644021bbdef7a0c51bdfd"
     },
     {
       "file": "assets/btn-missile.png",
-      "bytes": 114636,
-      "md5": "8103e4ca8999b1753ba2f1c7b3aa3c80"
+      "bytes": 110495,
+      "md5": "90f0a3e939095b693b00d708145b7c20"
     },
     {
       "file": "assets/btn-parry.png",
