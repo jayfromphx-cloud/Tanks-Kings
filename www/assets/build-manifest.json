@@ -1,7 +1,7 @@
 {
-  "build": "a797c19a92",
-  "html": "eafac7b08c",
-  "assetCount": 388,
+  "build": "bd67dad9a0",
+  "html": "171983528a",
+  "assetCount": 391,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -759,6 +759,16 @@
       "md5": "226b3241ed13af2b4dad5a322da0eecf"
     },
     {
+      "file": "assets/leap-landing.png",
+      "bytes": 205470,
+      "md5": "ff175071fa21e9d159028491e247c624"
+    },
+    {
+      "file": "assets/leap-takeoff.png",
+      "bytes": 348975,
+      "md5": "4a95d4840feb93e26dd31a33e21d7758"
+    },
+    {
       "file": "assets/logo.png",
       "bytes": 530710,
       "md5": "d70cb83b049978f9e56b6f9998951183"
@@ -1217,6 +1227,11 @@
       "file": "assets/shield-voltspire.png",
       "bytes": 1016779,
       "md5": "74025f2a4ac36c339671f4ddc7a28ace"
+    },
+    {
+      "file": "assets/skill-leap-icon.png",
+      "bytes": 118013,
+      "md5": "929578338ff685181311d903ab5e6d6c"
     },
     {
       "file": "assets/tank-bloomvale-artillery.png",
