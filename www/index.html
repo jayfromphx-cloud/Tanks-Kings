@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='9ad3645d99';
-const __HTML_V='9f4ce4df1d';
+const __HTML_V='5049072585';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6486,6 +6486,7 @@ function tryPerfectParry(){
   for(let i=state.projectiles.length-1;i>=0;i--){
     const p=state.projectiles[i];
     if(!p.enemy)continue;
+    if(p.bossShot||p.big)continue; /* PARRY RULE 1 (Jay, 2026-10-13): parry deflects REGULAR projectiles only — Ult-class shells (boss/god bossShot, colossal signature big) cannot be parried */
     if(p.x>0.24&&p.x<0.55){
       const _ps=parrySkill(chosenTank);
       const reflDmg=Math.max(Math.round(totalAtk()*_ps.reflect*_ps.mult),Math.round((p.dmg||enemyHitDamage(state.wave,(state.enemy&&state.enemy.type)||'grunt'))*3));
