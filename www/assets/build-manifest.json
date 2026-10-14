@@ -1,7 +1,7 @@
 {
-  "build": "06e5d688fd",
-  "html": "b1e16dd15d",
-  "assetCount": 413,
+  "build": "e91e5abf57",
+  "html": "d3138c9952",
+  "assetCount": 414,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -62,6 +62,11 @@
       "file": "assets/btn-parry.png",
       "bytes": 115470,
       "md5": "7affd49bb0237655d80178fa61344264"
+    },
+    {
+      "file": "assets/btn-repair.png",
+      "bytes": 125713,
+      "md5": "1cee19118a8d8940c175e06eb4ab4fba"
     },
     {
       "file": "assets/btn-ult.png",
