@@ -5511,7 +5511,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='a2e5d6e6c4';
-const __HTML_V='8950b78d0f';
+const __HTML_V='22b18ea302';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -10285,7 +10285,7 @@ function drawImpactSprites(dt){
   for(var si=impactSpriteParts.length-1;si>=0;si--){
     var s=impactSpriteParts[si];s.age+=dt;
     if(s.age>=s.duration){impactSpriteParts.splice(si,1);continue;}
-    var st=s.age/s.duration,ease=1-Math.pow(1-Math.min(1,st*1.45),3),size=(54+92*ease)*(viewH/380),alpha=Math.pow(1-st,1.35);
+    var st=s.age/s.duration,ease=1-Math.pow(1-Math.min(1,st*1.45),3),size=(54+92*ease)*(Math.min(viewH/380,viewW/520)||1),alpha=Math.pow(1-st,1.35);
     var _im=s.fxImg?(s.fxImg.canvas||((s.fxImg.img.complete&&s.fxImg.img.naturalWidth)?s.fxImg.img:null)):null;
     if(_im){
       ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.rotation);ctx.globalAlpha=alpha;
@@ -10296,7 +10296,7 @@ function drawImpactSprites(dt){
 }
 function aaaRnd(a,b){return a+Math.random()*(b-a)}
 function spawnAAAExplosion(x,y,boss){
-  var u=viewH/380;if(!(u>0))u=1;
+  var u=Math.min(viewH/380,viewW/520);if(!(u>0))u=1; /* aspect-safe (2026-10-14): height-only u inflated ~3.6x in portrait */
   var GX=x*viewW,GY=y*viewH,i,a,sp,bs=batterySaver;
   var fireCols=['255,240,200','255,205,90','255,140,40','230,80,25','150,40,15'];
   /* 1 — white-hot core flash (additive) */
