@@ -5201,39 +5201,8 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
 }
 #battleScreen .battle-controls .control-row .ctrl-group #speedBtn{height:48px!important;min-height:48px!important;max-height:none!important}
 </style>
-<style id="phoneLandscapeModeFit">
-@media (orientation: landscape) and (max-height: 560px) {
-  #modeScreen{position:relative}
-  #modeScreen .mode-head{padding:0 14px 2px;margin:0}
-  #modeScreen .mode-head h1{font-size:22px;line-height:1.1}
-  #modeScreen .mode-head .mode-kicker{font-size:9px}
-  #modeScreen .mode-head p{display:none}
-  #modeBackBtn{position:absolute;top:50px;left:10px;z-index:6;min-height:26px;height:26px;padding:2px 10px;font-size:11px}
-  #modeScreen .season-banner{margin:2px auto 0;padding:4px 10px;min-height:0;gap:8px}
-  #modeScreen .season-banner .sb-art{font-size:17px;line-height:1}
-  #modeScreen .season-banner .sb-art img{width:24px;height:24px}
-  #modeScreen .season-banner .sb-copy b{font-size:12.5px}
-  #modeScreen .season-banner .sb-copy small{display:none}
-  #modeScreen .season-banner .sb-bar{display:none}
-  #modeScreen .season-banner .sb-badge{font-size:9px;padding:2px 7px}
-  #modeScreen .mode-cards{gap:8px;padding:4px 10px 8px}
-  #modeScreen .mode-card{min-height:0;padding:6px 9px}
-  #modeScreen .mode-card .mode-icon{display:none}
-  #modeScreen .mode-card h2{font-size:16px;margin:0}
-  #modeScreen .mode-card h3{font-size:10.5px;margin:0}
-  #modeScreen .mode-card p{font-size:10px;line-height:1.3;margin:0}
-  #modeScreen .mode-card .mode-best{display:none}
-  #modeScreen .mode-card .tower-honors{display:none}
-  #modeScreen .mode-card .mode-recommended{font-size:8.5px;padding:1px 6px}
-  #modeScreen .mode-card .tower-ctas{margin:2px 0 0}
-}
-</style>
-<style id="modeCardDescFit">
-#modeScreen .mode-card p{min-height:28px}
-@media (orientation: portrait) and (max-width: 600px) {
-  #modeScreen .mode-card p{min-height:41px}
-}
-</style>
+
+
 <style id="smallHeightModeTrim">
 @media (orientation: portrait) and (max-height: 740px) {
   #modeScreen .mode-head{padding-top:4px}
@@ -5242,6 +5211,43 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
   #modeScreen .mode-cards{gap:8px;padding-top:4px}
 }
 </style>
+<style id="phoneLandscapeModeFit">
+@media (orientation: landscape) and (max-height: 560px) {
+  #modeScreen{position:relative!important}
+  #modeScreen .mode-head{padding:0 14px 2px!important;margin:0!important}
+  #modeScreen .mode-head h1{font-size:22px!important;line-height:1.1!important}
+  #modeScreen .mode-head .mode-kicker{font-size:9px!important}
+  #modeScreen .mode-head p{display:none!important}
+  #modeBackBtn{position:absolute!important;top:50px;left:10px;z-index:6;min-height:26px!important;height:26px!important;padding:2px 10px!important;font-size:11px!important}
+  #modeScreen .season-banner{margin:2px auto 0!important;padding:4px 10px!important;min-height:0!important;gap:8px!important}
+  #modeScreen .season-banner .sb-art{font-size:17px!important;line-height:1!important}
+  #modeScreen .season-banner .sb-art img{width:24px!important;height:24px!important}
+  #modeScreen .season-banner .sb-copy b{font-size:12.5px!important}
+  #modeScreen .season-banner .sb-copy small{display:none!important}
+  #modeScreen .season-banner .sb-bar{display:none!important}
+  #modeScreen .season-banner .sb-badge{font-size:9px!important;padding:2px 7px!important}
+  #modeScreen .mode-cards{gap:8px!important;padding:4px 10px 8px!important}
+  #modeScreen .mode-card{height:auto!important;min-height:0!important;max-height:none!important;padding:6px 9px!important}
+  #modeScreen .mode-card .mode-icon{display:none!important}
+  #modeScreen .mode-card h2{font-size:16px!important;margin:0!important}
+  #modeScreen .mode-card h3{font-size:10.5px!important;margin:0!important}
+  #modeScreen .mode-card p{font-size:10px!important;line-height:1.3!important;margin:0!important}
+  #modeScreen .mode-card .mode-best{display:none!important}
+  #modeScreen .mode-card .tower-honors{display:none!important}
+  #modeScreen .mode-card .mode-recommended{font-size:8.5px!important;padding:1px 6px!important}
+  #modeScreen .mode-card .tower-ctas{margin:2px 0 0!important}
+}
+</style>
+<style id="modeCardDescFit">
+#modeScreen .mode-card>p{min-height:28px!important}
+@media (orientation: portrait) {
+  #modeScreen .mode-card{height:auto!important;max-height:none!important}
+}
+@media (orientation: portrait) and (max-width: 600px) {
+  #modeScreen .mode-card>p{min-height:41px!important}
+}
+</style>
+
 
 
 
@@ -5775,7 +5781,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='d11600b779';
+const __HTML_V='3fa6a69667';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
