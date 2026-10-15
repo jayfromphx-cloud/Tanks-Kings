@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='63686e3484';
-const __HTML_V='d3959bb1ca';
+const __HTML_V='d56bdabaf6';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -10928,7 +10928,7 @@ function toRoman(n){n=Math.max(1,Math.min(39,n|0));var R=[[10,'X'],[9,'IX'],[5,'
 function godBossHP(f){return towerEnemyHP(f)*7*(1+0.10*towerAscensionTier(f))}
 function godBossDmg(f){return towerEnemyDmg(f)*2.5}
 /* 25%-of-expected-max-HP per-hit clamp, same philosophy as campaign: no one-shots, ever */
-function towerHitDamage(f,type){var raw=Math.round(towerEnemyDmg(f)*ENEMY_TYPE_STATS[type].dmgMult);/* War Pontiff signature: War Drums — up to +40% damage as the battle drags on. */if(state.mode==='tower'&&state.enemy&&state.enemy.godId==='pontiff')raw=Math.round(raw*(1+.08*Math.min(5,state.enemy.warStacks||0)));/* Tidefather signature: 1.6x — applied BEFORE the clamp, same as Pontiff. */if(state.mode==='tower'&&state.enemy&&state.enemy.godId==='tidefather')raw=Math.round(raw*1.6);return Math.min(raw,Math.round(Math.max(1,state.maxHp||playerMaxHp())*.25))}
+function towerHitDamage(f,type){var raw=Math.round(towerEnemyDmg(f)*ENEMY_TYPE_STATS[type].dmgMult);if(state.mode==='tower'&&state.enemy&&state.enemy.god)raw=Math.round(godBossDmg(f));/* War Pontiff signature: War Drums — up to +40% damage as the battle drags on. */if(state.mode==='tower'&&state.enemy&&state.enemy.godId==='pontiff')raw=Math.round(raw*(1+.08*Math.min(5,state.enemy.warStacks||0)));/* Tidefather signature: 1.6x — applied BEFORE the clamp, same as Pontiff. */if(state.mode==='tower'&&state.enemy&&state.enemy.godId==='tidefather')raw=Math.round(raw*1.6);return Math.min(raw,Math.round(Math.max(1,state.maxHp||playerMaxHp())*.25))}
 
 var TOWER_GODS={
  solarion:{name:'SOLARION',title:'God of the Sun',color:'#ffd66f',sig:'Solar Burn — scorches your tank with a burning damage-over-time.'},
