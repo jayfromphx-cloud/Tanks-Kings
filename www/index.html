@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='567e9e7c8d';
+const __HTML_V='84f0f83751';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6814,7 +6814,7 @@ function muzzlePoint(playerSide){
   return {x:(ox+cw*fx-sr.left)/sr.width,y:(oy+ch*fy-sr.top)/sr.height};
  }catch(e){return null}
 }
-function firePlayer(){if(!state.enemy)return;const coreColors={iron:'#fff1a6',ember:'#ff6538',volt:'#d8c4ff',bloom:'#c8ef71',tide:'#bff8ff'},color=coreColors[byT(chosenTank).k]||byK(byT(chosenTank).k).colors[1];const mz=muzzlePoint(true),fb=byT(chosenTank).role==='Vanguard'?{x:.285,y:.55}:{x:.315,y:.50},sx=mz?mz.x:fb.x,sy=mz?mz.y:fb.y;pushProjectile({x:sx,y:sy,v:.65,enemy:false,color:color});state.shotClock=0;sfx('fire');state.playerRecoil=1;state.shake=Math.max(state.shake,1.8);retriggerArt('playerRig','fire',440)}
+function firePlayer(){if(!state.enemy)return;const coreColors={iron:'#fff1a6',ember:'#ff6538',volt:'#d8c4ff',bloom:'#c8ef71',tide:'#bff8ff'},color=coreColors[byT(chosenTank).k]||byK(byT(chosenTank).k).colors[1];const mz=muzzlePoint(true),fb=byT(chosenTank).role==='Vanguard'?{x:.285,y:.55}:{x:.315,y:.50},sx=mz?mz.x:fb.x,sy=mz?mz.y:fb.y;pushProjectile({x:sx,y:sy,v:.6000,enemy:false,color:color});state.shotClock=0;sfx('fire');state.playerRecoil=1;state.shake=Math.max(state.shake,1.8);retriggerArt('playerRig','fire',440)}
 /* Vanguard melee ram: rev-up crouch/shake -> fast lunge with dust -> hull-bash impact
    (flash + shockwave ring + hit-stop + shake) -> recoil. Replaces the cannon cycle. */
 /* Melee impact anchor: the enemy tank's measured center (2026-10-14) — the old fixed 55% was the shell flight line, well above the hull. */
