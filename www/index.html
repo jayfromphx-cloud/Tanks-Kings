@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='4e9158fb96';
+const __HTML_V='98185e9a92';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7172,7 +7172,7 @@ function tryMissile(){
   try{updateHUD();updateAbilityUI()}catch(e){}
   return true;
 }
-function fireEnemy(){if(!state.enemy||state.playerDead||state.paused||document.hidden||!state.running||state.screen!=='battle')return;var emz=muzzlePoint(false);var p={x:emz?emz.x:state.enemy.x-.05,y:emz?emz.y:.57,v:state.tutorialMode?-.24:-.5202,enemy:true,color:'#ff7b6d',dmg:state.tutorialMode?1:(state.enemy.dmg!=null?state.enemy.dmg:enemyHitDamage(state.wave,state.enemy.type))};
+function fireEnemy(){if(!state.enemy||state.playerDead||state.paused||document.hidden||!state.running||state.screen!=='battle')return;var emz=muzzlePoint(false);var p={x:emz?emz.x:state.enemy.x-.05,y:emz?emz.y:.57,v:state.tutorialMode?-.24:-.4750,enemy:true,color:'#ff7b6d',dmg:state.tutorialMode?1:(state.enemy.dmg!=null?state.enemy.dmg:enemyHitDamage(state.wave,state.enemy.type))};
  p.bossShot=!!(state.enemy.boss||state.enemy.type==='boss'||state.enemy.godId);
  /* Tidefather signature: slow, colossal tidal shells that crush for 1.6x damage. */
  if(state.enemy.godId==='tidefather'){p.v=-.3324;p.big=1;p.color='#6fe0ff';p.y=(emz?emz.y:.56)+Math.random()*.03}
