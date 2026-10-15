@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='63686e3484';
-const __HTML_V='2e69eff91e';
+const __HTML_V='1727b62a60';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7131,9 +7131,11 @@ function tryMeleeRam(){
     spawnDebris(state.enemy.x-.03,_iy,.7);
     try{sfx('impact')}catch(e){}
     const _clvl=skillLvl(chosenTank,'charge'),_cdmg=Math.round(totalAtk()*2.5*skillDmgMult(_clvl));
+    const _hpBefore=state.enemy.hp;
     damageEnemy(_cdmg,false,'melee');
+    const _applied=Math.max(0,_hpBefore-(state.enemy?state.enemy.hp:0)); /* lifesteal base = damage actually applied (post-mitigation/evade), matching parry's post-absorb basis */
     if(_clvl>=10&&state.enemy)state.enemy.stun=Math.max(state.enemy.stun||0,1.2);
-    if(_clvl>=5&&!state.playerDead){const _heal=Math.round(_cdmg*.15);if(_heal>0&&state.hp<state.maxHp){state.hp=Math.min(state.maxHp,state.hp+_heal);number(.23,tankFxY(false)-.12,'+'+_heal+' HP','#9be26b','reward')}}
+    if(_clvl>=5&&!state.playerDead){const _heal=Math.round(_applied*.15);if(_heal>0&&state.hp<state.maxHp){state.hp=Math.min(state.maxHp,state.hp+_heal);number(.23,tankFxY(false)-.12,'+'+_heal+' HP','#9be26b','reward')}}
   }
   setTimeout(_ramImpact,700);
   /* Phase 4: cleanup — rig home and visible again, charge class off */
@@ -7430,7 +7432,7 @@ function campRetryWave(){
  state.abCd={def:0,off:0};state.abFx={};state.parryCd=0;updateAbilityUI(); /* wave restarts clean: cooldowns + timed effects reset (phoenixUsed stays — once per battle) */
  state.deathsThisWave=0;state.meleeCd=0;state.missileCd=0;state.repairCd=0;try{tkLeapReset(true)}catch(e){}state.sunburnT=0;state.thornT=0;state.chillT=0; /* retry = clean wave: no carryover deaths, melee/missile cooldowns, or enemy-applied debuffs */
  state.killsInWave=0;state.waveTarget=waveTargetFor(state.wave);
- state.enemy=null;state.projectiles.length=0;state.particles=[];state.spawnClock=.7;
+ state.enemy=null;state.projectiles.length=0;state.particles=[];state.spawnClock=.7;state.spawnAttempted=false;state.spawnMissingFor=0;
  state.maxHp=playerMaxHp();state.hp=state.maxHp; /* full HP — current wave restarts from scratch, free */
  state.maxShield=shieldCapacity();state.shield=state.maxShield;state.shieldCooldown=0;
  state.ult=0;state.enemyShotClock=0;state.shotClock=0;
@@ -9281,6 +9283,7 @@ function spawnGuildEnemy(){
 }
 function guildOnBossKilled(e){
  if(!e)return;
+ if(state.playerDead)return; /* mutual kill: the defeat path owns the outcome - commits as 'defeat' via guildDefeat, like every other mode */
  state.hitStop=Math.max(state.hitStop,.11);state.shake=Math.max(state.shake,25);sfx('kill');
  burst(e.x,tankFxY(true),'#fff0a5',96,'bossdeath');spawnDebris(e.x,tankFxY(true),1.5);
  state.scorches.push({x:e.x,y:.72,life:14,size:62});if(state.scorches.length>9)state.scorches.shift();
