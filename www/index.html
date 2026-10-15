@@ -5256,6 +5256,12 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
   #modeScreen .menu-nav-btn{padding:0 8px!important;font-size:10.5px!important;letter-spacing:.01em!important}
 }
 </style>
+<style id="phoneLandscapeSelectFit">
+@media (orientation: landscape) and (max-height: 560px) {
+  #selectScreen .deploy-wrap{position:static!important}
+}
+</style>
+
 
 
 
@@ -5793,7 +5799,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='f1f2b8ccfb';
+const __HTML_V='54033920a6';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
