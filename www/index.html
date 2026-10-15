@@ -5175,6 +5175,12 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
   #battleScreen .battle-controls #pauseBtn{height:23px!important;min-height:23px!important;padding:0 9px!important;font-size:9px!important}
 }
 </style>
+<style id="ipadLandscapeEnemyBack">
+@media (orientation:landscape) and (min-height:561px){
+  #battleScreen .combatant.enemy{right:-3%!important}
+}
+</style>
+
 
 
 
@@ -5703,7 +5709,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='31744ff859';
+const __HTML_V='600cdaa83e';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
