@@ -5283,6 +5283,16 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
 #characterScreen .char-tab{min-height:36px!important}
 #upgradeSheet .level-actions button{min-height:36px!important}
 </style>
+<style id="noSilentClip">
+.wallet-chip{flex:1 1 auto!important}
+.wallet-chip>span:last-child{overflow:visible!important;text-overflow:clip!important}
+.leader-name{flex:1 1 auto;min-width:90px}
+#itemsSheet .slot-ability{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+</style>
+<style id="sheetZLadder">
+.sheet-backdrop{z-index:45!important}
+</style>
+
 
 
 
@@ -5823,7 +5833,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='acd93ff7d4';
+const __HTML_V='d193605763';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
