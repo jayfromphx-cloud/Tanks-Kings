@@ -5157,7 +5157,7 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
 <style id="landscapeCompactDeck">
 /* ===== Landscape compact deck (Jay, 2026-10-14): bottom UI VERY compact, stage
    takes the freed height; medallions shrink via zoom, panel + auto rows merge. ===== */
-@media (orientation:landscape){
+@media (orientation:landscape) and (max-height:560px){
   #battleScreen .battle-controls{
     display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;
     grid-template-rows:auto auto 23px!important;column-gap:8px!important;row-gap:2px!important;align-items:stretch!important;
@@ -5703,7 +5703,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='867035bfe7';
+const __HTML_V='7f4ec2e738';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6565,7 +6565,7 @@ function tkMeasureSprite(img,cb){var src=img.getAttribute('src');if(!src){cb(nul
    keep the full-size presentation (24% / 28.8%). A display is a tablet when its
    smaller dimension is at least 600 CSS px (every iPad; no iPhone). */
 function tkBattleTablet(){return Math.min(window.innerWidth||0,window.innerHeight||0)>=600}
-function tkSubjectRatio(boss){var base=tkBattleTablet()?0.24:0.18;if((window.innerWidth||0)>(window.innerHeight||0))base*=2.6;return boss?base*1.2:base}
+function tkSubjectRatio(boss){var base=tkBattleTablet()?0.24:0.18;if(!tkBattleTablet()&&(window.innerWidth||0)>(window.innerHeight||0))base*=2.6;return boss?base*1.2:base}
 /* Hit planes (Jay, 2026-10-14 hitbox audit): measured per sprite by
    tkNormalizeCombatant from the live rect + subject bbox — the legacy
    fixed planes (.27 / enemy.x-.05) matched almost no tank's hull. */
