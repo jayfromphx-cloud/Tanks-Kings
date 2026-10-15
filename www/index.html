@@ -5188,6 +5188,12 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
   #battleScreen .battle-controls .ability-cluster{justify-content:flex-end!important;gap:12px!important}
 }
 </style>
+<style id="ipadPortraitSkillsCluster">
+@media (orientation:portrait) and (min-width:601px){
+  #battleScreen .battle-controls .ability-cluster{justify-content:flex-end!important;gap:12px!important}
+}
+</style>
+
 
 
 
@@ -5718,7 +5724,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='31b0f78b11';
+const __HTML_V='a0ee642e6b';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
