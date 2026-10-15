@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='63686e3484';
-const __HTML_V='0f424f8889';
+const __HTML_V='da32160b6a';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -11134,7 +11134,7 @@ function triggerGodBossIntro(godId){
    Fair by design: every gimmick runs on the same clamped damage track as ordinary
    tower shells — they change *how* you fight, never introduce unfair damage. */
 function towerBossSigTick(dt){
- var e=state.enemy;if(!e||e.hp<=0||state.playerDead)return;
+ var e=state.enemy;if(!e||e.hp<=0||state.playerDead)return;  var __controlled=(e.freeze||0)>0||(e.stun||0)>0;  if(__controlled){e.sigControlHold=(Number(e.sigControlHold)||0)+dt;if(e.sigControlHold<ENEMY_FIRE_CONTROL_HOLD_MAX)return;e.freeze=0;e.stun=0;e.sigControlHold=0}else e.sigControlHold=0;
  if(e.burstN>0){e.burstT-=dt;if(e.burstT<=0){fireEnemy();e.burstN--;e.burstT=e.burstGap}}
  e.sigT-=dt;if(e.sigT>0)return;
  var id=e.godId;
