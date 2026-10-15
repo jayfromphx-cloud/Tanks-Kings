@@ -4778,8 +4778,8 @@ img{-webkit-user-drag:none!important;user-drag:none!important}
 @keyframes tkDefeat2{0%{transform:none;opacity:1}26%{transform:translateY(3px) rotate(-3deg) scale(.97);opacity:1}100%{transform:translateY(16px) rotate(-15deg) scale(.5);opacity:0}}
 .combatant.enter{animation:tkEnter .5s cubic-bezier(.16,.8,.26,1)!important}
 @keyframes tkEnter{0%{transform:translateX(56px);opacity:0}55%{opacity:1}82%{transform:translateX(-5px)}100%{transform:translateX(0);opacity:1}}
-#meleeBtn,#missileBtn,#parryBtn,#ultBtn,#chargeBtn{transition:transform .16s cubic-bezier(.2,.8,.3,1.25)}
-#meleeBtn:active,#missileBtn:active,#parryBtn:active,#ultBtn:active,#chargeBtn:active{transform:scale(.93)}
+#meleeBtn,#missileBtn,#parryBtn,#ultBtn{transition:transform .16s cubic-bezier(.2,.8,.3,1.25)}
+#meleeBtn:active,#missileBtn:active,#parryBtn:active,#ultBtn:active{transform:scale(.93)}
 @media(prefers-reduced-motion:reduce){.combatant.fire,.combatant.hit,.combatant.hit-crit,.combatant.defeat,.combatant.enter{animation:none!important}}
 </style>
 <style id="royalEquipCompact">
@@ -5733,7 +5733,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='5f223cc7c7';
+const __HTML_V='f30d02a856';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7502,29 +7502,10 @@ window.spawnDebris=spawnDebris;
 function burst(x,y,color,count,shape){if(batterySaver&&(shape==='smoke'||shape==='dust'))return;if(window.TKFX&&window.TKFX.burst){window.TKFX.burst(x,y,color,count,shape);return}if(batterySaver)count=Math.max(1,Math.ceil(count*.45));var mk=function(c,s,sz,lf){if(state.particles.length>=activeParticleCap())return;state.particles.push({x:x+(Math.random()-.5)*.03,y:y+(Math.random()-.5)*.03,vx:(Math.random()-.5)*.55,vy:-Math.random()*.55-.08,life:lf||(.5+Math.random()*.6),color:c,shape:s,size:sz||(3+Math.random()*7)})},i;if(shape==='death'||shape==='bossdeath'){var b=shape==='bossdeath';for(i=0;i<(batterySaver?(b?4:3):(b?10:7));i++)mk('#fffef0','flash',8+Math.random()*10,.3);var fc=['#fff3c4','#ffd94f','#ff8a24','#e04a1a'];for(i=0;i<(batterySaver?(b?12:8):(b?28:20));i++)mk(fc[i%4],'fire',5+Math.random()*8,.8);for(i=0;i<(batterySaver?(b?12:8):(b?30:20));i++)mk(i%2?'#ffc86e':'#ff7a30','spark',2+Math.random()*3,1);for(i=0;i<(batterySaver?(b?6:4):(b?14:10));i++)mk('#4b3020','debris',4+Math.random()*6,1.2);for(i=0;i<(batterySaver?1:3);i++)mk('#ffc45b','ring',6,0.5);if(!batterySaver)for(i=0;i<(b?16:12);i++)mk('#3a332e','smoke',8+Math.random()*10,1.5)}else{for(i=0;i<Math.min(count,batterySaver?10:24);i++)mk(color,shape)}}
 
 /* ================= Tank Ability System ================= */
-const __abC={done:false};
 function updateAbilityUI(){
-  const tid=chosenTank;
-  if(!__abC.done){__abC.done=true;['def','off'].forEach(function(k){const b=he('abBtn_'+k);__abC[k]=b;if(b){__abC[k+'Cd']=b.querySelector('.ab-cd');__abC[k+'Lk']=b.querySelector('.ab-lock')}});__abC.ad=he('autoDef');__abC.ao=he('autoOff')}
-  ['def','off'].forEach(kind=>{
-    const btn=__abC[kind]; if(!btn)return;
-    const ab=ABILITIES[tid][kind];
-    const unlocked=abUnlocked(kind,tid);
-    const cd=state.abCd[kind]||0;
-    btn.classList.toggle('locked',!unlocked);
-    btn.classList.toggle('cooling',cd>0&&unlocked);
-    btn.classList.toggle('ready',cd<=0&&unlocked);
-    const cdEl=__abC[kind+'Cd'],cdTxt=cd>0?Math.ceil(cd)+'s':'';
-    if(cdEl&&cdEl.__t!==cdTxt){cdEl.__t=cdTxt;cdEl.textContent=cdTxt}
-    const lkEl=__abC[kind+'Lk'],lkTxt=!unlocked?('Lv'+ab.unlockLevel):'';
-    if(lkEl&&lkEl.__t!==lkTxt){lkEl.__t=lkTxt;lkEl.textContent=lkTxt}
-    const al=ab.name+(unlocked?(cd>0?' cooling '+Math.ceil(cd)+'s':' ready'):' unlocks at Lv'+ab.unlockLevel);
-    if(btn.__al!==al){btn.__al=al;btn.setAttribute('aria-label',al)}
-    // Phoenix used state
-    if(tid==='flare'&&kind==='def'&&state.phoenixUsed&&unlocked){
-      btn.classList.add('spent'); btn.classList.remove('ready');
-    }else btn.classList.remove('spent');
-  });
+  // Legacy def/off ability-button elements no longer exist; live ability-button
+  // states are driven by the HUD updater. This stays a deliberate no-op:
+  // call sites across the battle loop still invoke it every HUD tick.
   // Auto toggles: the LIVE checkbox is the single source of truth. It is
   // initialized per-tank by restoreAutoChips() and persisted by its onchange.
   // Do NOT re-force it from the stored pref here: this runs every 100ms, and
@@ -7532,6 +7513,7 @@ function updateAbilityUI(){
   // off, so Charge kept auto-firing against the toggle. Toggle off = the
   // offense skill is manual-only (see autoChargeOn / tick / autoAbilityTick).
 }
+
 function resetAbilitiesForBattle(){
   state.abCd={def:0,off:0}; state.abFx={}; state.phoenixUsed=false; state.parryCd=0; state.missileCd=0; state.ultCasting=false;
   try{tkLeapReset(true)}catch(e){}
@@ -12381,7 +12363,7 @@ document.addEventListener('keydown',function(ev){
  if(!tutorialLive||tutorialState.completed||(ev.key!=='Enter'&&ev.key!==' '))return;
  var step=TUTORIAL_STEPS[tutorialState.step];if(!step)return;var t=ev.target;
  if(t&&t.closest&&t.closest('#tutorialCoach'))return;
- if(t&&(t.id==='meleeBtn'||t.id==='parryBtn'||t.id==='ultBtn'||t.id==='missileBtn'||t.id==='chargeBtn'||t.id==='leapBtn'||t.id==='repairBtn'||t.id==='tutorialSkip'))return;
+ if(t&&(t.id==='meleeBtn'||t.id==='parryBtn'||t.id==='ultBtn'||t.id==='missileBtn'||t.id==='leapBtn'||t.id==='repairBtn'||t.id==='tutorialSkip'))return;
  try{var target=document.querySelector(step.highlightTarget);if(target&&t&&target.contains(t))return}catch(e){}
  ev.preventDefault();ev.stopPropagation();if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();
 },true);
