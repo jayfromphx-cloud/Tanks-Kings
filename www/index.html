@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='63686e3484';
-const __HTML_V='2fb6443ab5';
+const __HTML_V='2e69eff91e';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -11025,7 +11025,8 @@ function towerAbilityCooldownSnapshot(){
   parryCd:Math.max(0,Number(state.parryCd)||0),
   missileCd:Math.max(0,Number(state.missileCd)||0),
   meleeCd:Math.max(0,Number(state.meleeCd)||0),
-  leapCd:Math.max(0,Number(state.leapCd)||0)
+  leapCd:Math.max(0,Number(state.leapCd)||0),
+  ult:Math.max(0,Math.min(100,Number(state.ult)||0))
  };
 }
 function resetTowerAbilities(carriedCooldowns){
@@ -11036,6 +11037,7 @@ function resetTowerAbilities(carriedCooldowns){
  state.missileCd=carriedCooldowns.missileCd;
  state.meleeCd=carriedCooldowns.meleeCd;
  state.leapCd=carriedCooldowns.leapCd||0;
+ if(carriedCooldowns.ult!=null)state.ult=carriedCooldowns.ult;
  updateAbilityUI();
 }
 function startTowerBattle(f,transition){
@@ -11345,6 +11347,7 @@ window.addEventListener('unhandledrejection',function(event){
 function towerFloorClear(e){
  __tkLog('floor_clear:begin',{floor:state.floor,enemyHp:e?e.hp:null,enemyType:e?e.type:null,god:!!(e&&e.god)});
  if(state.playerDead){__tkLog('floor_clear:ignored_player_dead');return} /* mutual kill with the boss: no floor clear, rewards, milestone, or unlock */
+ state.ult=Math.min(100,state.ult+((e&&(e.boss||e.god))?28:14)); /* ULT kill credit - matches campaign/dungeon/glory; tower previously granted none */
  try{if(typeof seasonBump==='function'){seasonBump('kills',1);if(e&&(e.boss||e.god))seasonBump('bosses',1)}}catch(_se){}try{if(typeof eventBump==='function'&&e&&(e.boss||e.god))eventBump('bosses',1)}catch(_e){}
  var f=state.floor,god=!!e.god,godId=e.godId,tier=Math.max(1,towerGodTier(f));
  state.hitStop=.11;state.shake=Math.max(state.shake,god?30:14);
