@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='63686e3484';
-const __HTML_V='ef60a3c33e';
+const __HTML_V='0f424f8889';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7710,7 +7710,7 @@ function applyAbilityEffect(tid,kind){
 function autoAbilityTick(){
   if(state.playerDead||state.paused)return;
   const tid=chosenTank, auto=abilityAutoFor(tid);
-  if(auto.def&&(state.parryCd||0)<=0&&state.enemy&&state.projectiles.some(p=>p.enemy&&p.x>playerHitX()+.03&&p.x<playerHitX()+.35))useParry();
+  if(auto.def&&(state.parryCd||0)<=0&&state.enemy&&state.projectiles.some(p=>p.enemy&&p.x>playerHitX()+.03&&p.x<playerHitX()+.35&&(!(p.bossShot||p.big)||stageFor(chosenTank).key==='ascendant')))useParry();
   if(autoMissileOn()&&(state.missileCd||0)<=0&&state.enemy)tryMissile();
   if(autoChargeOn()&&abUnlocked('off',tid)&&(state.abCd.off||0)<=0&&state.enemy)useAbility('off');
   if(auto.ult&&state.ult>=100&&state.enemy&&!state.ultCasting)useUlt();
