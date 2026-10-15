@@ -5160,7 +5160,7 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
 @media (orientation:landscape) and (max-height:560px){
   #battleScreen .battle-controls{
     display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;
-    grid-template-rows:auto auto 23px!important;column-gap:8px!important;row-gap:2px!important;align-items:stretch!important;
+    grid-template-rows:auto auto 30px!important;column-gap:8px!important;row-gap:2px!important;align-items:stretch!important;
     padding:3px max(8px,env(safe-area-inset-right)) calc(3px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))!important;
     flex:0 0 auto!important;height:auto!important;min-height:0!important;
   }
@@ -5168,11 +5168,11 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
   #battleScreen .battle-controls .player-vitals-head{font-size:9px!important;line-height:1.05!important}
   #battleScreen .battle-controls .player-meter-track{height:8px!important}
   #battleScreen .battle-controls .control-row{grid-row:2!important;grid-column:1/-1!important;min-height:0!important;padding:1px 2px!important;zoom:.58}
-  #battleScreen .battle-controls .panel-row{grid-row:3!important;grid-column:1!important;margin:0!important;gap:4px!important;align-items:center!important;height:23px!important}
-  #battleScreen .battle-controls .panel-btn{height:23px!important;min-height:23px!important;max-height:23px!important;padding:0 10px!important;font-size:9px!important;line-height:1!important;display:flex!important;align-items:center!important;justify-content:center!important}
-  #battleScreen .battle-controls .battle-sub{grid-row:3!important;grid-column:2!important;margin:0!important;padding:0!important;gap:4px!important;align-items:center!important;justify-content:flex-end!important;height:23px!important}
-  #battleScreen .battle-controls .auto-chip{height:23px!important;min-height:23px!important;max-height:23px!important;padding:0 7px!important;font-size:9px!important;line-height:1!important;display:flex!important;align-items:center!important}
-  #battleScreen .battle-controls #pauseBtn{height:23px!important;min-height:23px!important;padding:0 9px!important;font-size:9px!important}
+  #battleScreen .battle-controls .panel-row{grid-row:3!important;grid-column:1!important;margin:0!important;gap:4px!important;align-items:center!important;height:30px!important}
+  #battleScreen .battle-controls .panel-btn{height:30px!important;min-height:30px!important;max-height:30px!important;padding:0 10px!important;font-size:9px!important;line-height:1!important;display:flex!important;align-items:center!important;justify-content:center!important}
+  #battleScreen .battle-controls .battle-sub{grid-row:3!important;grid-column:2!important;margin:0!important;padding:0!important;gap:4px!important;align-items:center!important;justify-content:flex-end!important;height:30px!important}
+  #battleScreen .battle-controls .auto-chip{height:30px!important;min-height:30px!important;max-height:30px!important;padding:0 7px!important;font-size:9px!important;line-height:1!important;display:flex!important;align-items:center!important}
+  #battleScreen .battle-controls #pauseBtn{height:30px!important;min-height:30px!important;padding:0 9px!important;font-size:9px!important}
 }
 </style>
 <style id="ipadLandscapeEnemyBack">
@@ -5193,6 +5193,15 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
   #battleScreen .battle-controls .ability-cluster{justify-content:flex-end!important;gap:12px!important}
 }
 </style>
+<style id="touchTargetLift">
+#battleScreen .panel-row .panel-btn{height:40px!important}
+@media (orientation:portrait), (orientation:landscape) and (min-height:561px){
+#battleScreen .battle-controls .battle-sub .auto-chip{height:46px!important;min-height:46px!important;max-height:none!important}
+#battleScreen .battle-controls .battle-sub #pauseBtn{width:52px!important;height:52px!important;min-height:52px!important;max-height:none!important}
+}
+#battleScreen .battle-controls .control-row .ctrl-group #speedBtn{height:48px!important;min-height:48px!important;max-height:none!important}
+</style>
+
 
 
 
@@ -5724,7 +5733,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='a0ee642e6b';
+const __HTML_V='c79c81b1fc';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
