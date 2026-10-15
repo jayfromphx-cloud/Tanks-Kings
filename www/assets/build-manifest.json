@@ -1,7 +1,7 @@
 {
-  "build": "8c2751553d",
-  "html": "84f0f83751",
-  "assetCount": 420,
+  "build": "63686e3484",
+  "html": "d3959bb1ca",
+  "assetCount": 425,
   "assets": [
     {
       "file": "assets/battle-environment-key-art.png",
@@ -632,6 +632,31 @@
       "file": "assets/impact.bin",
       "bytes": 32436,
       "md5": "32654ef8ca651484ed3deea05193839b"
+    },
+    {
+      "file": "assets/keyed-missile-bloom.png",
+      "bytes": 267360,
+      "md5": "679196a0fc1df69770691e736f8a333f"
+    },
+    {
+      "file": "assets/keyed-missile-ember.png",
+      "bytes": 334459,
+      "md5": "a4eab5edcc6bf07dacd3e50cb5a02629"
+    },
+    {
+      "file": "assets/keyed-missile-iron.png",
+      "bytes": 355598,
+      "md5": "23abf2d27ba18f6f052cc019755c6b91"
+    },
+    {
+      "file": "assets/keyed-missile-tide.png",
+      "bytes": 246001,
+      "md5": "8be89521f5194d0561bf94be1bcf60de"
+    },
+    {
+      "file": "assets/keyed-missile-volt.png",
+      "bytes": 235579,
+      "md5": "ea65472b45d74e8f74ca9d01375c1b2d"
     },
     {
       "file": "assets/keyed-projectile-bloom.png",
