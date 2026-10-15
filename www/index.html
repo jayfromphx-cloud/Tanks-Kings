@@ -5160,18 +5160,18 @@ html.battery-saver #leapBtn .leap-sweep,html.battery-saver #leapBtn .leap-shine,
 @media (orientation:landscape){
   #battleScreen .battle-controls{
     display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;
-    grid-template-rows:auto auto auto!important;column-gap:8px!important;row-gap:2px!important;
+    grid-template-rows:auto auto 23px!important;column-gap:8px!important;row-gap:2px!important;align-items:stretch!important;
     padding:3px max(8px,env(safe-area-inset-right)) calc(3px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))!important;
     flex:0 0 auto!important;height:auto!important;min-height:0!important;
   }
-  #battleScreen .battle-controls .player-vitals{grid-column:1/-1!important;padding:1px 8px 2px!important;margin:0!important}
+  #battleScreen .battle-controls .player-vitals{grid-row:1!important;grid-column:1/-1!important;padding:1px 8px 2px!important;margin:0!important}
   #battleScreen .battle-controls .player-vitals-head{font-size:9px!important;line-height:1.05!important}
   #battleScreen .battle-controls .player-meter-track{height:8px!important}
-  #battleScreen .battle-controls .control-row{grid-column:1/-1!important;min-height:0!important;padding:1px 2px!important;zoom:.58}
-  #battleScreen .battle-controls .panel-row{grid-column:1!important;margin:0!important;gap:4px!important;align-items:stretch!important}
-  #battleScreen .battle-controls .panel-btn{height:23px!important;min-height:23px!important;padding:0 10px!important;font-size:9px!important}
-  #battleScreen .battle-controls .battle-sub{grid-column:2!important;margin:0!important;padding:0!important;gap:4px!important;align-items:center!important;justify-content:flex-end!important}
-  #battleScreen .battle-controls .auto-chip{height:23px!important;min-height:23px!important;padding:0 7px!important;font-size:8.5px!important}
+  #battleScreen .battle-controls .control-row{grid-row:2!important;grid-column:1/-1!important;min-height:0!important;padding:1px 2px!important;zoom:.58}
+  #battleScreen .battle-controls .panel-row{grid-row:3!important;grid-column:1!important;margin:0!important;gap:4px!important;align-items:center!important;height:23px!important}
+  #battleScreen .battle-controls .panel-btn{height:23px!important;min-height:23px!important;max-height:23px!important;padding:0 10px!important;font-size:9px!important;line-height:1!important;display:flex!important;align-items:center!important;justify-content:center!important}
+  #battleScreen .battle-controls .battle-sub{grid-row:3!important;grid-column:2!important;margin:0!important;padding:0!important;gap:4px!important;align-items:center!important;justify-content:flex-end!important;height:23px!important}
+  #battleScreen .battle-controls .auto-chip{height:23px!important;min-height:23px!important;max-height:23px!important;padding:0 7px!important;font-size:9px!important;line-height:1!important;display:flex!important;align-items:center!important}
   #battleScreen .battle-controls #pauseBtn{height:23px!important;min-height:23px!important;padding:0 9px!important;font-size:9px!important}
 }
 </style>
@@ -5703,7 +5703,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='8c2751553d';
-const __HTML_V='24d6bb81dc';
+const __HTML_V='867035bfe7';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
