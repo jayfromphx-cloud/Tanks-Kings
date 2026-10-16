@@ -5865,7 +5865,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='3a2157f0ff';
-const __HTML_V='de07715338';
+const __HTML_V='c0a9b38212';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -7212,8 +7212,8 @@ function enemyFireStep(dt){
  if(state.enemyShotClock>=efi)fireEnemy();
 }
 function damageEnemy(amount,crit,kind){if(!state.enemy)return;if(state.tutorialMode&&kind!=='ult'&&typeof tutorialState!=='undefined'&&tutorialState.step<=2){amount=Math.min(amount,Math.max(0,state.enemy.hp-Math.max(1,totalAtk()*1.15)));if(amount<=0){state.ult=Math.min(100,state.ult+8);return}}if(state.enemy.god){var gid=state.enemy.godId;
-/* Umbra Viceroy signature: Shadowstep — 15% of shots slip through the shadows unharmed. */
-if(gid==='umbra'&&Math.random()<.15){number(state.enemy.x,tankFxY(true),'EVADED','#c9a6ff','dodge');return}
+/* Umbra Viceroy signature: Shadowstep — 15% of shots slip through the shadows unharmed. Ultimates are exempt (Jay, 2026-10-15): a full-meter ULT must never be nullified by the passive roll. */
+if(gid==='umbra'&&kind!=='ult'&&Math.random()<.15){number(state.enemy.x,tankFxY(true),'EVADED','#c9a6ff','dodge');return}
 /* Crag Patriarch signature: Stone Armor — stone-plated hull shrugs off 32% of damage. */
 if(gid==='crag')amount*=0.68}
 if(state.mode==='dungeon'){amount*=DUNGEON_DEF_MULT;if(dungeonAdvantage()){amount*=DUNGEON_ADV_MULT;if(state.enemy&&!state.enemy._advShown){state.enemy._advShown=1;number(state.enemy.x,tankFxY(true)-.14,'ADVANTAGE x1.5','#ffe36e','status')}}}let k=byT(chosenTank).k;const _sigMult=kingdomSetCount()>=4?1.25:1;if(k==='volt'&&Math.random()<.25*_sigMult+skinPerkStat(chosenTank,'crit')){amount*=1.75;crit=true}if(k==='ember')state.enemy.burn=Math.max(state.enemy.burn,4*_sigMult*(1+skinPerkStat(chosenTank,'burnDur')));if(k==='bloom')state.enemy.poison=Math.max(state.enemy.poison,5*_sigMult*(1+skinPerkStat(chosenTank,'poisonDur')));if(k==='tide')state.enemy.freeze=Math.max(state.enemy.freeze,1.3*_sigMult*(1+skinPerkStat(chosenTank,'freezeDur')));const _creditDmg=Math.min(amount,Math.max(0,state.enemy.hp));state.enemy.hp-=amount;state.runDmg=(state.runDmg||0)+_creditDmg;const lethal=state.enemy.hp<=0,impactKind=kind==='ult'?(lethal?'ult kill':'ult'):(lethal?'kill':crit?'crit':'to-enemy');state.enemy.hit=1;state.hitStop=Math.max(state.hitStop,kind==='ult'?.075:kind==='melee'?.06:crit?.055:.018);state.shake=Math.max(state.shake,kind==='ult'?16:kind==='melee'?10:crit?8:3.2);state.ult=Math.min(100,state.ult+8);if(crit||kind==='melee'||kind==='ult')state.shakeDirX=.6;retriggerArt('enemySprite',(crit||kind==='melee')?'hit-crit':'hit',(crit||kind==='melee')?460:420);burst(state.enemy.x-.025,tankFxY(true),crit?'#ffe36e':byK(byT(chosenTank).k).colors[1],crit?34:22,'impact');if(crit||kind==='melee'||kind==='ult')spawnDebris(state.enemy.x-.025,tankFxY(true),kind==='ult'?.8:.55);state.scorches.push({x:state.enemy.x-.025,y:.72,life:8,size:crit?34:23});if(state.scorches.length>9)state.scorches.shift();number(state.enemy.x,tankFxY(true),Math.round(amount),crit?'#ffdf47':'#fff',impactKind);sfx('hit');if(lethal)killEnemy()}
