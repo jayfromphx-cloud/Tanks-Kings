@@ -5865,7 +5865,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='3a2157f0ff';
-const __HTML_V='b1c1c1211f';
+const __HTML_V='de07715338';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -6576,31 +6576,25 @@ function bgmRecover(){
 }
 /* Legacy no-ops so older call sites never break. */
 function wireBgmSources(){return !!(audioCtx&&audioCtx.state==='running');}
-function audioNoise(duration,filterType,frequency,volume,when){
- const frames=Math.max(1,Math.ceil(audioCtx.sampleRate*duration)),buffer=audioCtx.createBuffer(1,frames,audioCtx.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<frames;i++)data[i]=(Math.random()*2-1)*(1-i/frames);
- const source=audioCtx.createBufferSource(),filter=audioCtx.createBiquadFilter(),gain=audioCtx.createGain();source.buffer=buffer;filter.type=filterType;filter.frequency.setValueAtTime(frequency,when);gain.gain.setValueAtTime(volume,when);gain.gain.exponentialRampToValueAtTime(.0001,when+duration);source.connect(filter).connect(gain).connect(sfxOut||audioSfxBus);source.start(when);source.stop(when+duration);
-}
-function audioTone(type,from,to,duration,volume,when,delay){
- const start=when+(delay||0),osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type=type;osc.frequency.setValueAtTime(Math.max(1,from),start);osc.frequency.exponentialRampToValueAtTime(Math.max(1,to),start+duration);gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(volume,start+.008);gain.gain.exponentialRampToValueAtTime(.0001,start+duration);osc.connect(gain).connect(sfxOut||audioSfxBus);osc.start(start);osc.stop(start+duration+.015);
-}
+/* audioNoise/audioTone (oscillator + noise synthesis) REMOVED 2026-10-15 - Jay's rule: every sound effect comes from a file he supplied. Synthesized fallbacks and synth-only sounds are silent until he supplies clips. */
 let missilePlayQueued=false,parryPlayQueued=false,cannonPlayQueued=false,enemyCannonPlayQueued=false,impactPlayQueued=false;
 function playSfxNow(type){
  const t=audioCtx.currentTime+.006;
  /* Enemy-originated combat sounds run through the 0.8x enemy bus; player sounds use the SFX bus at full volume (which ducks under ULT signatures). */
  sfxOut=(type==='enemyFire'||type==='playerHit'||type==='shield'||type==='impactTaken')?(audioEnemyGain||audioSfxBus):audioSfxBus;
- if(type==='fire'){var _ck=byT(chosenTank).k,_cb={iron:ironCannonBuffer,volt:voltCannonBuffer,bloom:bloomCannonBuffer,tide:tideCannonBuffer,ember:emberCannonBuffer}[_ck];if(!_cb&&!cannonPlayQueued){cannonPlayQueued=true;var _cdf={iron:decodeIronholdCannon,volt:decodeVoltspireCannon,bloom:decodeBloomCannon,tide:decodeTideCannon,ember:decodeEmberCannon}[_ck];if(_cdf){try{_cdf().then(function(){cannonPlayQueued=false},function(){cannonPlayQueued=false})}catch(_de){cannonPlayQueued=false}}}if(byT(chosenTank).k==='iron'&&ironCannonBuffer)playIronholdCannon();else if(byT(chosenTank).k==='volt'&&voltCannonBuffer)playVoltspireCannon();else if(byT(chosenTank).k==='bloom'&&bloomCannonBuffer)playBloomvaleCannon();else if(byT(chosenTank).k==='tide'&&tideCannonBuffer)playTidereignCannon();else if(byT(chosenTank).k==='ember'&&emberCannonBuffer)playEmberCrownCannon();else{audioNoise(.16,'bandpass',980,.24,t);audioTone('square',165,58,.19,.20,t);audioTone('triangle',84,42,.24,.20,t,.012)}}
- else if(type==='enemyFire'){if(!enemyCannonBuffer&&!enemyCannonPlayQueued){enemyCannonPlayQueued=true;try{decodeEnemyCannon().then(function(){enemyCannonPlayQueued=false},function(){enemyCannonPlayQueued=false})}catch(_de){enemyCannonPlayQueued=false}}/* 2026-09-30: ALL enemy tanks and bosses (campaign grunts, campaign bosses, and every Tower of Gods god-boss) fire Jay's unaltered enemy_tank.bin clip through the existing 0.8x enemy bus. */if(enemyCannonBuffer)playEnemyCannon(audioEnemyGain);else{audioNoise(.13,'bandpass',720,.28,t);audioTone('sawtooth',128,52,.18,.24,t)}}
- else if(type==='hit'){audioNoise(.18,'lowpass',1250,.26,t);audioTone('triangle',112,48,.21,.24,t);audioTone('square',410,118,.095,.10,t)}
- else if(type==='impact'||type==='impactTaken'){/* Jay's impact.bin on projectile→body hits (both sides); synth hit is the pre-decode fallback, leveled to match the real clip's band. */if(!playImpact(sfxOut)){audioNoise(.18,'lowpass',1250,.26,t);audioTone('triangle',112,48,.21,.24,t);audioTone('square',410,118,.095,.10,t);if(!impactPlayQueued){impactPlayQueued=true;try{decodeImpact().then(function(){impactPlayQueued=false},function(){impactPlayQueued=false})}catch(_de){impactPlayQueued=false}}}}
- else if(type==='ultImpact'){/* ULT projectile detonation on the enemy tank: its own sample; synth fallback is a deeper, longer hit than 'impact'. */if(!playUltImpact(sfxOut)){audioNoise(.34,'lowpass',900,.40,t);audioTone('triangle',96,30,.50,.48,t);audioTone('sine',58,28,.62,.46,t,.012);audioNoise(.5,'bandpass',700,.16,t+.04);if(!ultImpactPlayQueued){ultImpactPlayQueued=true;try{decodeUltImpact().then(function(){ultImpactPlayQueued=false},function(){ultImpactPlayQueued=false})}catch(_de){ultImpactPlayQueued=false}}}}
- else if(type==='playerHit'){audioNoise(.22,'lowpass',900,.30,t);audioTone('sawtooth',96,38,.25,.26,t);audioTone('triangle',280,72,.15,.14,t)}
- else if(type==='shield'){audioTone('sine',620,1180,.24,.22,t);audioTone('triangle',310,660,.19,.14,t,.025)}
- else if(type==='kill'){audioNoise(.28,'lowpass',720,.32,t);audioTone('sawtooth',145,34,.32,.28,t);audioTone('square',82,31,.38,.16,t,.025)}
- else if(type==='ult'){audioNoise(.46,'bandpass',620,.24,t);audioTone('sawtooth',150,790,.5,.22,t);audioTone('triangle',74,220,.55,.24,t,.015)}
+ if(type==='fire'){var _ck=byT(chosenTank).k,_cb={iron:ironCannonBuffer,volt:voltCannonBuffer,bloom:bloomCannonBuffer,tide:tideCannonBuffer,ember:emberCannonBuffer}[_ck];if(!_cb&&!cannonPlayQueued){cannonPlayQueued=true;var _cdf={iron:decodeIronholdCannon,volt:decodeVoltspireCannon,bloom:decodeBloomCannon,tide:decodeTideCannon,ember:decodeEmberCannon}[_ck];if(_cdf){try{_cdf().then(function(){cannonPlayQueued=false},function(){cannonPlayQueued=false})}catch(_de){cannonPlayQueued=false}}}if(byT(chosenTank).k==='iron'&&ironCannonBuffer)playIronholdCannon();else if(byT(chosenTank).k==='volt'&&voltCannonBuffer)playVoltspireCannon();else if(byT(chosenTank).k==='bloom'&&bloomCannonBuffer)playBloomvaleCannon();else if(byT(chosenTank).k==='tide'&&tideCannonBuffer)playTidereignCannon();else if(byT(chosenTank).k==='ember'&&emberCannonBuffer)playEmberCrownCannon();else{} /* silent until the faction cannon clip decodes - samples only (2026-10-15) */}
+ else if(type==='enemyFire'){if(!enemyCannonBuffer&&!enemyCannonPlayQueued){enemyCannonPlayQueued=true;try{decodeEnemyCannon().then(function(){enemyCannonPlayQueued=false},function(){enemyCannonPlayQueued=false})}catch(_de){enemyCannonPlayQueued=false}}/* 2026-09-30: ALL enemy tanks and bosses (campaign grunts, campaign bosses, and every Tower of Gods god-boss) fire Jay's unaltered enemy_tank.bin clip through the existing 0.8x enemy bus. */if(enemyCannonBuffer)playEnemyCannon(audioEnemyGain);else{} /* silent until Jay's enemy cannon clip decodes (2026-10-15) */}
+ else if(type==='hit'){if(!playImpact(sfxOut)){if(!impactPlayQueued){impactPlayQueued=true;try{decodeImpact().then(function(){impactPlayQueued=false},function(){impactPlayQueued=false})}catch(_de){impactPlayQueued=false}}}} /* 'hit' plays Jay's impact clip (2026-10-15); was synthesized noise/tones */
+ else if(type==='impact'||type==='impactTaken'){/* Jay's impact.bin on projectile→body hits (both sides); silent until decoded - no synth fallback (2026-10-15). */if(!playImpact(sfxOut)){if(!impactPlayQueued){impactPlayQueued=true;try{decodeImpact().then(function(){impactPlayQueued=false},function(){impactPlayQueued=false})}catch(_de){impactPlayQueued=false}}}}
+ else if(type==='ultImpact'){/* ULT projectile detonation on the enemy tank: Jay's ult-impact sample; silent until decoded - no synth fallback (2026-10-15). */if(!playUltImpact(sfxOut)){if(!ultImpactPlayQueued){ultImpactPlayQueued=true;try{decodeUltImpact().then(function(){ultImpactPlayQueued=false},function(){ultImpactPlayQueued=false})}catch(_de){ultImpactPlayQueued=false}}}}
+ else if(type==='playerHit'){if(!playImpact(sfxOut)){if(!impactPlayQueued){impactPlayQueued=true;try{decodeImpact().then(function(){impactPlayQueued=false},function(){impactPlayQueued=false})}catch(_de){impactPlayQueued=false}}}} /* 'playerHit' plays Jay's impact clip (2026-10-15); was synthesized noise/tones */
+ else if(type==='shield'){} /* silent (2026-10-15): was a synthesized sweep; awaits a Jay-supplied shield clip */
+ else if(type==='kill'){if(!playImpact(sfxOut)){if(!impactPlayQueued){impactPlayQueued=true;try{decodeImpact().then(function(){impactPlayQueued=false},function(){impactPlayQueued=false})}catch(_de){impactPlayQueued=false}}}} /* 'kill' plays Jay's impact clip (2026-10-15); was synthesized noise/tones */
+ else if(type==='ult'){} /* silent (2026-10-15): the ULT sound is Jay's voice clip via playUltimateAudio; the synthesized swell is removed */
  else if(type==='missile'){if(!playMissile()&&!missilePlayQueued){missilePlayQueued=true;decodeMissile().then(function(){missilePlayQueued=false;if(soundOn)playMissile()})}}
  else if(type==='parry'){if(!playParry()&&!parryPlayQueued){parryPlayQueued=true;decodeParry().then(function(){parryPlayQueued=false;if(soundOn)playParry()})}}
- else if(type==='coin'){audioTone('sine',620,920,.11,.16,t);audioTone('triangle',880,1320,.14,.13,t,.075)}
- else{audioTone('triangle',420,680,.11,.14,t)}
+ else if(type==='coin'){} /* silent (2026-10-15): was synthesized blips; awaits a Jay-supplied reward chime */
+ else{} /* silent (2026-10-15): no synthesized UI blip */
 }
 function sfx(type){
  try{
@@ -6609,7 +6603,7 @@ function sfx(type){
   else if(!tkBgSuspended)ctx.resume().then(function(){if(soundOn&&!tkBgSuspended){try{playSfxNow(type)}catch(e){}}}).catch(function(){});
  }catch(e){}
 }
-function bossRoar(){if(!soundOn)return;const ctx=initAudio();if(!ctx)return;const t=audioCtx.currentTime,duration=.92,master=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();filter.type='lowpass';filter.frequency.setValueAtTime(420,t);filter.frequency.exponentialRampToValueAtTime(110,t+duration);filter.Q.value=2.2;master.gain.setValueAtTime(.0001,t);master.gain.exponentialRampToValueAtTime(.24,t+.05);master.gain.setValueAtTime(.24,t+.28);master.gain.exponentialRampToValueAtTime(.0001,t+duration);filter.connect(master).connect(audioSfxBus);[64,43].forEach((frequency,index)=>{const o=audioCtx.createOscillator();o.type=index?'triangle':'sawtooth';o.frequency.setValueAtTime(frequency,t);o.frequency.exponentialRampToValueAtTime(index?28:34,t+duration);o.detune.setValueAtTime(index?7:-8,t);o.connect(filter);o.start(t);o.stop(t+duration)});const buffer=audioCtx.createBuffer(1,Math.ceil(audioCtx.sampleRate*duration),audioCtx.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*(1-i/data.length);const noise=audioCtx.createBufferSource();noise.buffer=buffer;noise.connect(filter);noise.start(t);noise.stop(t+duration)}
+function bossRoar(){/* silent (2026-10-15): was 100% synthesized (oscillators + noise); awaits a Jay-supplied boss roar file */}
 function triggerBossIntro(kingdom){const stage=$('battleStage'),intro=$('bossIntro');$('bossIntroName').textContent=bossNames[kingdom.id];$('bossIntroKingdom').textContent=kingdom.name+' Royal War Machine';intro.hidden=false;intro.classList.remove('show');stage.classList.remove('boss-intro-active');void stage.offsetWidth;intro.classList.add('show');stage.classList.add('boss-intro-active');state.cineSlow=Math.max(state.cineSlow,1.2);state.shake=Math.max(state.shake,22);bossRoar();clearTimeout(bossIntroTimer);bossIntroTimer=setTimeout(()=>{intro.classList.remove('show');intro.hidden=true;stage.classList.remove('boss-intro-active')},1650)}
 function updateSound(){try{localStorage.setItem('tk_sound_on',soundOn?'1':'0')}catch(e){}document.querySelectorAll('.soundBtn').forEach(b=>b.innerHTML=soundOn?SVG_SOUND_ON:SVG_SOUND_OFF);setAudioEnabled(soundOn);if(typeof refreshBgmForSoundToggle==='function')refreshBgmForSoundToggle()}
 document.querySelectorAll('.soundBtn').forEach(b=>b.onclick=()=>{soundOn=!soundOn;updateSound();if(soundOn)sfx('coin')});updateSound();
@@ -8124,7 +8118,7 @@ function renderEvolution(){const prog=progressFor(chosenTank),rank=stageFor(chos
 function renderUpgrade(){let t=byT(chosenTank),prog=progressFor(chosenTank),rank=stageFor(chosenTank),cost=tankLevelCost(prog.level);$('upTankName').innerHTML=t.name+' <span class="rank-badge '+prog.stage+'">'+rank.name+'</span>';$('upgradeCopy').textContent=prog.level>=rank.cap?rank.name+' level cap reached — fulfill the evolution requirements below.':'Level up for more power and sturdier armor. Max Lv '+rank.cap+'.';$('levelBtn').textContent=prog.level>=rank.cap?'MAX LV '+rank.cap:'⚙ '+cost+' Scrap';$('levelBtn').disabled=prog.level>=rank.cap||state.scrap<cost;const maxBtn=$('levelMaxBtn');if(maxBtn){if(prog.level>=rank.cap){maxBtn.textContent='MAX LV '+rank.cap;maxBtn.disabled=true}else{let rem=state.scrap,lv=prog.level,tot=0;while(lv<rank.cap){const c=tankLevelCost(lv);if(rem<c)break;rem-=c;tot+=c;lv++}maxBtn.textContent=lv>prog.level?'MAX LEVEL · ⚙ '+tot.toLocaleString()+' Scrap':'MAX LEVEL';maxBtn.disabled=lv<=prog.level}}const shortScrap=prog.level<rank.cap&&state.scrap<cost;$('shopNudge').hidden=!shortScrap;if(shortScrap)$('shopNudge').onclick=function(){triggerFlash('scrap');openStore()};$('statsGrid').innerHTML=`<div class="bigstat"><b>${totalAtk()}</b><span>Power</span></div><div class="bigstat"><b>${totalHp()}</b><span>Max HP</span></div><div class="bigstat"><b>${Math.round(1000/t.rate)}</b><span>Fire speed</span></div>`;renderEvolution()}
 $('levelBtn').onclick=()=>{let prog=progressFor(chosenTank),rank=stageFor(chosenTank),cost=tankLevelCost(prog.level);if(prog.level>=rank.cap||state.scrap<cost)return;state.scrap-=cost;prog.level++;state.level=prog.level;let old=state.maxHp,oldShield=state.maxShield;state.maxHp=playerMaxHp();state.hp+=state.maxHp-old;state.maxShield=shieldCapacity();state.shield=Math.min(state.maxShield,state.shield+Math.max(0,state.maxShield-oldShield));sfx('coin');burst(.23,.5,'#ffdc55',24,'star');renderUpgrade();updateHUD();progressSave()};
 $('levelMaxBtn').onclick=()=>{let prog=progressFor(chosenTank),rank=stageFor(chosenTank);if(prog.level>=rank.cap||state.scrap<tankLevelCost(prog.level))return;let old=state.maxHp,oldShield=state.maxShield,gained=0,spent=0;while(prog.level<rank.cap){let cost=tankLevelCost(prog.level);if(state.scrap<cost)break;state.scrap-=cost;spent+=cost;prog.level++;gained++}if(!gained)return;state.level=prog.level;state.maxHp=playerMaxHp();state.hp+=state.maxHp-old;state.maxShield=shieldCapacity();state.shield=Math.min(state.maxShield,state.shield+Math.max(0,state.maxShield-oldShield));sfx('coin');burst(.23,.5,'#ffdc55',48,'star');renderUpgrade();updateHUD();progressSave();if(typeof garageToast==='function')garageToast('⚙ +'+gained+' level'+(gained===1?'':'s')+' — now Lv '+prog.level+' · spent '+spent.toLocaleString()+' Scrap')};
-function evolutionFanfare(){if(!soundOn)return;const ctx=initAudio();if(!ctx)return;const now=audioCtx.currentTime,notes=[392,523.25,659.25,783.99];notes.forEach((f,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=i===3?'triangle':'sine';o.frequency.value=f;o.connect(g).connect(audioSfxBus);const at=now+i*.11;g.gain.setValueAtTime(.0001,at);g.gain.exponentialRampToValueAtTime(.11,at+.025);g.gain.exponentialRampToValueAtTime(.0001,at+.48);o.start(at);o.stop(at+.5)})}
+function evolutionFanfare(){/* silent (2026-10-15): was a synthesized oscillator arpeggio; awaits a Jay-supplied fanfare file */}
 function celebrateEvolution(from,to){const banner=$('evolutionCelebration'),text=from==='squire'?'A SQUIRE BECOMES A KNIGHT':from==='knight'?'A KNIGHT ASCENDS TO PALADIN':from==='godking'?'A GOD KING ASCENDS TO ASCENDANT':'A PALADIN ASCENDS TO GOD KING';$('evolutionBannerText').textContent=text;banner.classList.remove('show');void banner.offsetWidth;banner.classList.add('show');applyEvolutionVisual();burst(.23,.5,to==='paladin'||to==='godking'||to==='ascendant'?'#ffdf62':'#a9dcff',to==='ascendant'?180:to==='godking'?140:90,'star');evolutionFanfare();setTimeout(()=>banner.classList.remove('show'),2500);try{if(typeof codexCheckRewards==='function')codexCheckRewards()}catch(e){}}
 $('evolveBtn').onclick=()=>{if(!canEvolve())return;const prog=progressFor(chosenTank),from=prog.stage,rank=stageFor(chosenTank),to=rank.next;state.scrap-=rank.cost.scrap||0;state.valorMedals-=rank.cost.valorMedals||0;state.royalSeals-=rank.cost.royalSeals||0;const embCost=rank.cost.prestigeEmblems||0;for(let ei=0;ei<embCost;ei++)spendPrestigeEmblem();prog.stage=to;prog.level=1;state.level=1;state.maxHp=playerMaxHp();state.hp=state.maxHp;state.maxShield=shieldCapacity();state.shield=state.maxShield;$('upgradeSheet').classList.remove('open');updateHUD();progressSave();celebrateEvolution(from,to)};
 const slotIconHTML=slot=>`<img src="${assetManifest.ui[slot]}" alt="${slot} icon">`;
@@ -9717,27 +9711,7 @@ function loginFxLoop(now){
  loginFx.raf=requestAnimationFrame(step);
 }
 /* --- fanfare --- */
-function loginFanfare(jackpot){
- if(!soundOn)return;initAudio();
- if(!audioCtx||!audioMaster)return;
- const notes=jackpot?[523.25,659.25,783.99,1046.5,1318.5,1567.98,2093]:[587.33,739.99,880,1174.66];
- const t=audioCtx.currentTime;
- notes.forEach((f,i)=>{
-  const o=audioCtx.createOscillator(),g=audioCtx.createGain();
-  o.type='triangle';o.frequency.value=f;o.connect(g);g.connect(audioSfxBus);
-  const at=t+i*(jackpot?.09:.08);
-  g.gain.setValueAtTime(.0001,at);
-  g.gain.exponentialRampToValueAtTime(.14,at+.02);
-  g.gain.exponentialRampToValueAtTime(.0001,at+.55);
-  o.start(at);o.stop(at+.6);
- });
- if(jackpot){
-  const o2=audioCtx.createOscillator(),g2=audioCtx.createGain();
-  o2.type='sawtooth';o2.frequency.value=1046.5;o2.connect(g2);g2.connect(audioSfxBus);
-  g2.gain.setValueAtTime(.0001,t);g2.gain.exponentialRampToValueAtTime(.05,t+.5);
-  g2.gain.exponentialRampToValueAtTime(.0001,t+1.2);o2.start(t);o2.stop(t+1.25);
- }
-}
+function loginFanfare(jackpot){/* silent (2026-10-15): was a synthesized oscillator arpeggio; awaits a Jay-supplied fanfare file */}
 /* --- garage toasts --- */
 const garageToastQueue=[];let garageToastBusy=false;
 function garageToast(msg){garageToastQueue.push(msg);pumpGarageToast()}
