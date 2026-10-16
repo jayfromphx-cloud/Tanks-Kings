@@ -5853,7 +5853,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='63686e3484';
-const __HTML_V='1727b62a60';
+const __HTML_V='dddbf4c9be';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -8019,7 +8019,7 @@ else if(p.shape==='heart'){ctx.globalAlpha=pa;var _hs=heartSpriteFor(p.color);ct
 else{ctx.globalAlpha=pa;var _ss=starSpriteFor(p.color);ctx.save();ctx.translate(x,y);ctx.rotate((p.rot||0)+time*2);ctx.drawImage(_ss,-s,-s,s*2,s*2);ctx.restore()}}
 ctx.globalAlpha=1;ctx.restore()
  try{drawDamageNumbers()}catch(e){}}
-let dtGlobal=0,__loopGen=0,__batteryDrawFlip=0,__loopHeartbeat=0;
+let dtGlobal=0,__loopGen=0,__batteryDrawFlip=0,__loopHeartbeat=0,__lastPresent=0;
 const BATTLE_LOOP_STALL_MS=3000,THERMAL_FRAME_WINDOW=60,THERMAL_FRAME_LIMIT_MS=20;
 const __thermalFrames=new Float32Array(THERMAL_FRAME_WINDOW);let __thermalFrameCursor=0,__thermalFrameCount=0,__thermalFrameSum=0;
 let __thermalLevel=0,__thermalGoodWindows=0,__thermalFrameMin=Infinity;
@@ -8034,7 +8034,7 @@ function scheduleBattleLoop(g){if(g!==__loopGen||!state.running||state.screen!==
    a double arm (double-tapped Deploy, store/shop return while a stale frame is
    still queued) silently stacked TWO full tick+draw loops per frame. Newer arms
    now supersede older ones — identical single-loop behavior, never doubled. */
-function armLoop(){const now=performance.now();state.last=now;__loopHeartbeat=now;__batteryDrawFlip=0;__stepAcc=0;__interpAlpha=1;const g=++__loopGen;scheduleBattleLoop(g)}
+function armLoop(){const now=performance.now();state.last=now;__loopHeartbeat=now;__batteryDrawFlip=0;__lastPresent=0;__stepAcc=0;__interpAlpha=1;const g=++__loopGen;scheduleBattleLoop(g)}
 /* Battle-loop watchdog. Its one-second timer is independent of requestAnimationFrame,
    so a dead frame chain can be recovered in every active mode. Tower battles also
    recover a paused state with no visible UI explaining it. Legitimate pause/result/
@@ -8067,8 +8067,19 @@ function loop(now,g){
  if(g!==__loopGen)return;
  if(!state.running||state.screen!=='battle')return;
  if(state.paused||document.hidden){__loopHeartbeat=performance.now();scheduleBattleLoop(g);return}
+ /* Thermal pacing (2026-10-15): present at the sim's design rate - 60fps, or
+    30 in Battery Saver / Performance Mode, the rates batterySaverState has
+    always advertised but nothing enforced. On 120Hz ProMotion iPhones/iPads
+    the unpaced loop ran every tick, draw and composite twice as often for no
+    visible gain - the battle overheating reported on both devices. Skipped
+    rAFs only reschedule: state.last is untouched, so dt accumulates and the
+    fixed-step sim consumes it normally (the 3-step cap covers the 33.3ms
+    saver interval). */
+ const __paceMs=(batterySaver||performanceMode)?1000/30:1000/60;
+ if(now-__lastPresent<__paceMs-1){__loopHeartbeat=now;scheduleBattleLoop(g);return}
+ __lastPresent=now;
  const frameMs=Math.max(0,now-state.last);
- if(frameMs>0&&frameMs<250){perfSamples[perfCursor]=frameMs;perfCursor=(perfCursor+1)%perfSamples.length;perfCount=Math.min(perfCount+1,perfSamples.length);trackThermalFrame(frameMs)}
+ if(frameMs>0&&frameMs<250){perfSamples[perfCursor]=frameMs;perfCursor=(perfCursor+1)%perfSamples.length;perfCount=Math.min(perfCount+1,perfSamples.length);trackThermalFrame(Math.max(0,frameMs-__paceMs+16.7))} /* pacing-normalized feed */
  dtGlobal=TK_STEP;
  state.last=now;
  beginFrameLayoutCache();
