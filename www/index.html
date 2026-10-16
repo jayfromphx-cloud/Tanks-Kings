@@ -5658,19 +5658,44 @@ try{
   localStorage.setItem('tk_title_story_seen_v1','1');
  }
 }catch(e){}
-/* Dev gesture: 5 rapid taps on the title logo open the hidden developer menu
-   (Art Review gallery, audio fingerprint check, dev reset). Deliberately
-   invisible: no hint, no cursor change, nothing else on the logo. */
+/* Dev access is DOUBLE-GATED (Jay, 2026-10-15): 5 rapid taps on the title logo
+   open a PIN prompt; only the correct PIN unlocks the developer menu
+   (Art Review gallery, audio fingerprint check, dev resources, dev reset).
+   The gesture stays invisible: no hint, no cursor change, nothing on the logo.
+   The PIN is stored only as a hash; 3 wrong attempts lock the prompt for 60s. */
+const TK_DEV_PIN_HASH=2109580657;
+let __tkPinFails=0,__tkPinLockUntil=0;
+function tkDevPinHash(str){let h=5381;for(let i=0;i<str.length;i++)h=((h<<5)+h+str.charCodeAt(i))>>>0;return h}
+function tkDevPinPrompt(){
+ if(window.__tkDevUnlocked){tkDevMenu();return}
+ var m=document.getElementById('tkDevPin');
+ if(!m){
+  m=document.createElement('div');m.id='tkDevPin';m.className='dev-menu';
+  m.innerHTML='<div class="dev-card"><h3>Developer Access</h3><input id="dpInput" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN" style="width:100%;box-sizing:border-box;padding:10px;margin:4px 0 8px;font-size:16px;text-align:center"><button id="dpUnlock" type="button">Unlock</button><button id="dpCancel" type="button">Cancel</button><div id="dpStatus" class="dev-status"></div></div>';
+  document.body.appendChild(m);
+  var inp=document.getElementById('dpInput'),st=document.getElementById('dpStatus');
+  var attempt=function(){
+   if(Date.now()<__tkPinLockUntil){st.textContent='Locked - try again in '+Math.ceil((__tkPinLockUntil-Date.now())/1000)+'s.';return}
+   if(tkDevPinHash(inp.value)===TK_DEV_PIN_HASH){__tkPinFails=0;inp.value='';st.textContent='';m.hidden=true;window.__tkDevUnlocked=true;tkDevMenu()}
+   else{__tkPinFails++;inp.value='';if(__tkPinFails>=3){__tkPinLockUntil=Date.now()+60000;__tkPinFails=0;st.textContent='Too many attempts - locked for 60s.'}else st.textContent='Incorrect PIN ('+__tkPinFails+'/3).'}
+  };
+  document.getElementById('dpUnlock').onclick=attempt;
+  inp.addEventListener('keydown',function(ev){if(ev.key==='Enter')attempt()});
+  document.getElementById('dpCancel').onclick=function(){m.hidden=true};
+  m.addEventListener('pointerdown',function(ev){if(ev.target===m)m.hidden=true});
+ }
+ m.hidden=false;
+ var inp2=document.getElementById('dpInput');if(inp2){inp2.value='';setTimeout(function(){try{inp2.focus()}catch(e){}},60)}
+}
 function tkDevMenu(){
- window.__tkDevUnlocked=true;
  var m=document.getElementById('tkDevMenu');
  if(!m){
   m=document.createElement('div');m.id='tkDevMenu';m.className='dev-menu';
-  m.innerHTML='<div class="dev-card"><h3>Developer</h3><button id="dmArt" type="button">Art Review — evolution sprites &amp; shields</button><button id="dmAudio" type="button">Verify audio fingerprints</button><button id="dmResources" type="button">Max all resources — 99,999,999</button><button id="dmWipe" type="button">Dev reset — new game</button><button id="dmClose" type="button">Close</button><div id="dmStatus" class="dev-status"></div></div>';
+  m.innerHTML='<div class="dev-card"><h3>Developer</h3><button id="dmArt" type="button">Art Review — evolution sprites &amp; shields</button><button id="dmAudio" type="button">Verify audio fingerprints</button><button id="dmResources" type="button">Grant dev resources — 1M scrap · 100 materials · 2,500 gems</button><button id="dmWipe" type="button">Dev reset — new game</button><button id="dmClose" type="button">Close</button><div id="dmStatus" class="dev-status"></div></div>';
   document.body.appendChild(m);
   document.getElementById('dmClose').onclick=function(){m.hidden=true};
   document.getElementById('dmArt').onclick=function(){m.hidden=true;if(window.__tkArtReview)window.__tkArtReview.open()};
-  document.getElementById('dmResources').onclick=function(){var st=document.getElementById('dmStatus');if(window.TanksKingsDebug&&window.TanksKingsDebug.grantAllResources){var r=window.TanksKingsDebug.grantAllResources();if(st)st.textContent=r&&r.amount?'All resources set to '+r.amount.toLocaleString('en-US')+'.':'Resources granted.'}else if(st)st.textContent='Resource grant unavailable';};
+  document.getElementById('dmResources').onclick=function(){var st=document.getElementById('dmStatus');if(window.TanksKingsDebug&&window.TanksKingsDebug.grantAllResources){var r=window.TanksKingsDebug.grantAllResources();if(st)st.textContent=r&&r.scrap?'Granted '+r.scrap.toLocaleString('en-US')+' scrap, '+r.materials+' materials, '+r.gems.toLocaleString('en-US')+' gems.':'Resources granted.'}else if(st)st.textContent='Resource grant unavailable';};
   document.getElementById('dmWipe').onclick=function(){try{sessionStorage.setItem('tk_dev_newgame','1')}catch(e){}try{window.location.reload()}catch(e){}};
   document.getElementById('dmAudio').onclick=function(){
    var st=document.getElementById('dmStatus');if(st)st.textContent='Hashing approved sounds…';
@@ -5696,7 +5721,7 @@ try{
    __tkTapLast=__tkNow;
    if(__tkTapCount>=5){
     __tkTapCount=0;
-    tkDevMenu();
+    tkDevPinPrompt();
    }
   });
  }
@@ -5865,7 +5890,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='3a2157f0ff';
-const __HTML_V='c0a9b38212';
+const __HTML_V='1a940bf8fa';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -10170,22 +10195,22 @@ refreshBattleCustomLayers();
  * simulates the charge with a satisfying processing sequence; no real payment.
  * ========================================================================== */
 const STORE={version:1,ownedSkins:[],ownedGodskins:[],receipts:[],starterClaimed:false,firstPurchaseEver:false,emblems:0,flash:null,ltoAnchor:Date.now(),freeSkinsFired:{},dailyDealClaimDate:0};
-const DEV_RESOURCE_AMOUNT=99999999;
+const DEV_GRANT={scrap:1000000,gems:2500,materials:100}; /* dev grant caps (Jay, 2026-10-15): 1,000,000 scrap, 100 of every material, 2,500 gems */
 function grantAllDevResources(){
- const amount=DEV_RESOURCE_AMOUNT;
- state.scrap=amount;state.gems=amount;state.valorMedals=amount;state.royalSeals=amount;state.prestigeEmblems=amount;
+ const grant=DEV_GRANT;
+ state.scrap=grant.scrap;state.gems=grant.gems;state.valorMedals=grant.materials;state.royalSeals=grant.materials;state.prestigeEmblems=grant.materials;
  STORE.emblems=0;
- SKILL_KEYS.forEach(function(k){shardPools()[k]=amount});syncShardMirror();
+ SKILL_KEYS.forEach(function(k){shardPools()[k]=grant.materials});syncShardMirror();
  if(typeof updateHUD==='function')updateHUD();
  if(typeof renderStoreWallet==='function')renderStoreWallet();
  if(state.screen==='skills'&&typeof renderSkills==='function')renderSkills();
  if(state.screen==='character'&&typeof renderCharacter==='function')renderCharacter();
  if(state.screen==='mode'&&typeof renderModeSelect==='function')renderModeSelect();
  if(typeof progressSave==='function')progressSave();
- return {amount:amount,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,prestigeEmblems:prestigeEmblemTotal(),shardPools:JSON.parse(JSON.stringify(shardPools())),skillShards:state.skillShards};
+ return {scrap:state.scrap,materials:grant.materials,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,prestigeEmblems:prestigeEmblemTotal(),shardPools:JSON.parse(JSON.stringify(shardPools())),skillShards:state.skillShards};
 }
 window.TanksKingsDebug.grantAllResources=function(){if(!window.__tkDevUnlocked)return{error:'dev menu locked'};return grantAllDevResources()};
-window.TanksKingsDebug.devResourceState=function(){return {amount:DEV_RESOURCE_AMOUNT,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,prestigeEmblems:prestigeEmblemTotal(),shardPools:JSON.parse(JSON.stringify(shardPools())),skillShards:state.skillShards}};
+window.TanksKingsDebug.devResourceState=function(){return {grant:DEV_GRANT,scrap:state.scrap,gems:state.gems,valorMedals:state.valorMedals,royalSeals:state.royalSeals,prestigeEmblems:prestigeEmblemTotal(),shardPools:JSON.parse(JSON.stringify(shardPools())),skillShards:state.skillShards}};
 const CUR_META={scrap:{icon:'⚙',label:'Scrap'},valorMedals:{icon:'✦',label:'Valor Medals'},royalSeals:{icon:'♛',label:'Royal Seals'},gems:{icon:'♦',label:'Gems'},emblems:{icon:'⛨',label:'Prestige Emblems'},shards:{icon:'✧',label:'Skill Shards'}};
 function storeCur(c){if(c==='emblems')return prestigeEmblemTotal();if(c==='shards')return totalShards();return state[c]||0}
 function addCur(c,n){if(c==='emblems')STORE.emblems+=n;else if(c==='shards')grantShardsEven(n);else state[c]+=n;renderStoreWallet();updateHUD()}
