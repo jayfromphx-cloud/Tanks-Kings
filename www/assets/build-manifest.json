@@ -1,6 +1,6 @@
 {
-  "build": "63686e3484",
-  "html": "02dd5d8bbf",
+  "build": "3a2157f0ff",
+  "html": "4e0224a09e",
   "assetCount": 425,
   "assets": [
     {
@@ -285,8 +285,8 @@
     },
     {
       "file": "assets/evo-knight-bloom-artillery-battle.png",
-      "bytes": 822451,
-      "md5": "28d16a6e738f4fa6ed0d19f221f05974"
+      "bytes": 501221,
+      "md5": "4f55c1af45990703bb1452935f9a564f"
     },
     {
       "file": "assets/evo-knight-bloom-artillery.png",
@@ -295,8 +295,8 @@
     },
     {
       "file": "assets/evo-knight-bloom-battle.png",
-      "bytes": 1123816,
-      "md5": "48f4bb0e302cbd1c774d7f9cae1f5824"
+      "bytes": 698532,
+      "md5": "c1985bf918616892e0dd66f7c55f72ee"
     },
     {
       "file": "assets/evo-knight-bloom.png",
@@ -305,8 +305,8 @@
     },
     {
       "file": "assets/evo-knight-ember-artillery-battle.png",
-      "bytes": 750921,
-      "md5": "9ac57e8c6a77d599138ca99537c54051"
+      "bytes": 458360,
+      "md5": "f287384390e8b211acbf8db95841a635"
     },
     {
       "file": "assets/evo-knight-ember-artillery.png",
@@ -315,8 +315,8 @@
     },
     {
       "file": "assets/evo-knight-ember-battle.png",
-      "bytes": 1053174,
-      "md5": "fdb81210ad0842e1c980913945832797"
+      "bytes": 660834,
+      "md5": "b6e3cb7df4b68c20a3500237ff283236"
     },
     {
       "file": "assets/evo-knight-ember.png",
@@ -325,8 +325,8 @@
     },
     {
       "file": "assets/evo-knight-ironhold-artillery-battle.png",
-      "bytes": 875347,
-      "md5": "c286cea1a367d7e3b95cd8873535d83f"
+      "bytes": 535924,
+      "md5": "f4f0426074122e422b4119fbc64b6c74"
     },
     {
       "file": "assets/evo-knight-ironhold-artillery.png",
@@ -335,8 +335,8 @@
     },
     {
       "file": "assets/evo-knight-ironhold-battle.png",
-      "bytes": 1193940,
-      "md5": "065f10bf428750f200e8386dac3f4581"
+      "bytes": 737083,
+      "md5": "0ff163c0578f8ae6851e17b48990866d"
     },
     {
       "file": "assets/evo-knight-ironhold.png",
@@ -345,8 +345,8 @@
     },
     {
       "file": "assets/evo-knight-tidereign-artillery-battle.png",
-      "bytes": 848268,
-      "md5": "9cd137482e5146ec1d9f79400810800f"
+      "bytes": 520616,
+      "md5": "55e564955a5ba7433ca242a86c0b32da"
     },
     {
       "file": "assets/evo-knight-tidereign-artillery.png",
@@ -355,8 +355,8 @@
     },
     {
       "file": "assets/evo-knight-tidereign-battle.png",
-      "bytes": 1112420,
-      "md5": "811980e451e0547ab7bf46fbdb94f6d2"
+      "bytes": 695007,
+      "md5": "8cbd26953a4c9c15d8f0b720771b8bf3"
     },
     {
       "file": "assets/evo-knight-tidereign.png",
@@ -365,8 +365,8 @@
     },
     {
       "file": "assets/evo-knight-voltspire-artillery-battle.png",
-      "bytes": 773163,
-      "md5": "3df227de41a4c8448601810320653246"
+      "bytes": 477720,
+      "md5": "219bd60f01f8279d37dea0549d6524dd"
     },
     {
       "file": "assets/evo-knight-voltspire-artillery.png",
@@ -375,8 +375,8 @@
     },
     {
       "file": "assets/evo-knight-voltspire-battle.png",
-      "bytes": 1163349,
-      "md5": "2855b1430ab116280d483be81761381a"
+      "bytes": 721472,
+      "md5": "f5563143052ea14778fcc671fef5409d"
     },
     {
       "file": "assets/evo-knight-voltspire.png",
@@ -385,8 +385,8 @@
     },
     {
       "file": "assets/evo-paladin-bloom-artillery-battle.png",
-      "bytes": 1067875,
-      "md5": "0b360c6b6c685b436687daf99737ef45"
+      "bytes": 650170,
+      "md5": "50e5d5de48963c797d503b01718732eb"
     },
     {
       "file": "assets/evo-paladin-bloom-artillery.png",
@@ -395,8 +395,8 @@
     },
     {
       "file": "assets/evo-paladin-bloom-battle.png",
-      "bytes": 998812,
-      "md5": "b389b1e43cd54b0e0a44fecb3364c40e"
+      "bytes": 609755,
+      "md5": "963b2b857010f03176d18bc228b2ab84"
     },
     {
       "file": "assets/evo-paladin-bloom.png",
@@ -405,8 +405,8 @@
     },
     {
       "file": "assets/evo-paladin-ember-artillery-battle.png",
-      "bytes": 870436,
-      "md5": "4ba15ec681275e0647a84c5cef22023e"
+      "bytes": 529440,
+      "md5": "8b495f54a438e7864edab3cf050848cf"
     },
     {
       "file": "assets/evo-paladin-ember-artillery.png",
@@ -415,8 +415,8 @@
     },
     {
       "file": "assets/evo-paladin-ember-battle.png",
-      "bytes": 1105327,
-      "md5": "710a8e0e3a12afbe393e8dfaecd567ec"
+      "bytes": 681785,
+      "md5": "fad2b5b2bdd22c2888a0f012924e3fb2"
     },
     {
       "file": "assets/evo-paladin-ember.png",
@@ -425,8 +425,8 @@
     },
     {
       "file": "assets/evo-paladin-ironhold-artillery-battle.png",
-      "bytes": 676610,
-      "md5": "8e8eca4f8a00e4d293f6db252b5e75ba"
+      "bytes": 409470,
+      "md5": "6f34f985b8f7a2f812ffe314a6ee13d8"
     },
     {
       "file": "assets/evo-paladin-ironhold-artillery.png",
@@ -435,8 +435,8 @@
     },
     {
       "file": "assets/evo-paladin-ironhold-battle.png",
-      "bytes": 1198195,
-      "md5": "9506e55d66254329f67be8d81f97af02"
+      "bytes": 731492,
+      "md5": "51443dd5af7911b5b407b08ed2e3c6d3"
     },
     {
       "file": "assets/evo-paladin-ironhold.png",
@@ -445,8 +445,8 @@
     },
     {
       "file": "assets/evo-paladin-tidereign-artillery-battle.png",
-      "bytes": 956843,
-      "md5": "c50994cf762b0bc433fdc59ea360b701"
+      "bytes": 589888,
+      "md5": "d3c53602fe475258ea950a11c164268b"
     },
     {
       "file": "assets/evo-paladin-tidereign-artillery.png",
@@ -455,8 +455,8 @@
     },
     {
       "file": "assets/evo-paladin-tidereign-battle.png",
-      "bytes": 1163618,
-      "md5": "73f5769dc3de2b3475085436372ad95c"
+      "bytes": 720416,
+      "md5": "4bc0b4b7d84dc46b0ccbe7d01d2e6fd9"
     },
     {
       "file": "assets/evo-paladin-tidereign.png",
@@ -465,8 +465,8 @@
     },
     {
       "file": "assets/evo-paladin-voltspire-artillery-battle.png",
-      "bytes": 963813,
-      "md5": "5ff146d788ec90a15ba3e1bf62711894"
+      "bytes": 584966,
+      "md5": "c5b222cd0e5259087036be83b1fb2308"
     },
     {
       "file": "assets/evo-paladin-voltspire-artillery.png",
@@ -475,8 +475,8 @@
     },
     {
       "file": "assets/evo-paladin-voltspire-battle.png",
-      "bytes": 1180903,
-      "md5": "3725c232aa7d6d54870daaa141b2d249"
+      "bytes": 727332,
+      "md5": "9a6f7fa5abc08b7cf0e81900bc2a56f6"
     },
     {
       "file": "assets/evo-paladin-voltspire.png",
@@ -1475,8 +1475,8 @@
     },
     {
       "file": "assets/tower-boss-gale.png",
-      "bytes": 1921177,
-      "md5": "81b5fae21b7008efa2ff32dc6e3eb5df"
+      "bytes": 381836,
+      "md5": "5c5ca86b4b929eb18664dad186a12f41"
     },
     {
       "file": "assets/tower-boss-pontiff.png",
@@ -1570,503 +1570,503 @@
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-aimdown.png",
-      "bytes": 474065,
-      "md5": "ec00d391838d53f195a00be6bbdc85a8"
+      "bytes": 288442,
+      "md5": "048f7817d0f0c4f3687b15ef8f7f5f05"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-ascendant-aimdown.png",
-      "bytes": 545137,
-      "md5": "865756702c6e801e3e41ab366a0f6ff5"
+      "bytes": 326564,
+      "md5": "848692650f5937b3a3db5771c6259d54"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-ascendant.png",
-      "bytes": 532077,
-      "md5": "505d70091a0c5dc414a4aeb1725b3990"
+      "bytes": 318897,
+      "md5": "42d61bdc722a0c79be147689053f2fc4"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-godking-aimdown.png",
-      "bytes": 704183,
-      "md5": "19e3aa268e17b947848957679cc28961"
+      "bytes": 420466,
+      "md5": "0d4b730a1656433f188e350cb98707f4"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-godking.png",
-      "bytes": 826928,
-      "md5": "7c2f51f9b0b27dc7e2700869d2e9104f"
+      "bytes": 497248,
+      "md5": "ee92a22739d40d6af655e011cbd229d6"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-knight-aimdown.png",
-      "bytes": 537462,
-      "md5": "2679ae8b9e47738c57fead440fbf723c"
+      "bytes": 322586,
+      "md5": "17b49b14f316c2ec7300b9bbf7ce69db"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-knight.png",
-      "bytes": 577044,
-      "md5": "f0d9244b2f9c50001928567b5f57570d"
+      "bytes": 346536,
+      "md5": "48726e40892726369c4b4cfb6685acd7"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-paladin-aimdown.png",
-      "bytes": 566684,
-      "md5": "96a8bf4e4f0ceb07dbbfffcadf4b6097"
+      "bytes": 334649,
+      "md5": "5a3698e3472c7888ff7b17a16539edeb"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery-paladin.png",
-      "bytes": 550400,
-      "md5": "f952c3bb091ff8d50f98635f18893795"
+      "bytes": 329566,
+      "md5": "5fbfb10f4cefcaa546694a83071201f4"
     },
     {
       "file": "assets/ult-pose-bloomvale-artillery.png",
-      "bytes": 509827,
-      "md5": "c0f6a168fa2ac5c9444d522e6dc796d7"
+      "bytes": 312358,
+      "md5": "e2a1cd3dad5511f82df0eb721d00770f"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-aimdown.png",
-      "bytes": 740283,
-      "md5": "8e495b078e7e6f820582d90d8cbcc279"
+      "bytes": 456085,
+      "md5": "2ca6c98d2641f88af65d4fc074b74550"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-ascendant-aimdown.png",
-      "bytes": 555784,
-      "md5": "92ad829c05deaa4a1613f7fc3f10c349"
+      "bytes": 333200,
+      "md5": "12beb5ee716b3ea3a4310aa5aaebc18a"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-ascendant.png",
-      "bytes": 572741,
-      "md5": "353fb80957814001b2699f89436a3dec"
+      "bytes": 344356,
+      "md5": "52342f9a923ecbe8ab1e97be39f250f1"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-godking-aimdown.png",
-      "bytes": 732881,
-      "md5": "4ebf1a7041d2b0b5b4ca0ed32246a453"
+      "bytes": 436890,
+      "md5": "d1a1644d59d2acede6cf618cc3eb187a"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-godking.png",
-      "bytes": 809122,
-      "md5": "e96a1a693876843bce39332c58c49c51"
+      "bytes": 481185,
+      "md5": "f3950140e3b5e67728651f336809537b"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-knight-aimdown.png",
-      "bytes": 760142,
-      "md5": "641b741695893af2973ac813172c62d0"
+      "bytes": 465552,
+      "md5": "f3d8202a7482cd03281138de0f930a87"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-knight.png",
-      "bytes": 852120,
-      "md5": "1e9c559dbb81ef06ef04b3a0b2de1971"
+      "bytes": 524878,
+      "md5": "da3ebb3fbecf81d88d0ccc8f2506500f"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-paladin-aimdown.png",
-      "bytes": 507561,
-      "md5": "f5d854c2bf8cac2588a8087c85b9ad78"
+      "bytes": 302787,
+      "md5": "7b5541a09a9f3944bc1822c5dcfccc77"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard-paladin.png",
-      "bytes": 546046,
-      "md5": "394fca8a8b6cd629a73dfae1d00cd339"
+      "bytes": 329099,
+      "md5": "01cbd5e0417791568f1a599ca07acff4"
     },
     {
       "file": "assets/ult-pose-bloomvale-vanguard.png",
-      "bytes": 790211,
-      "md5": "c1b7e7be7f2e28da63cf745e8c4abc7f"
+      "bytes": 487713,
+      "md5": "499a79ea0e277a8e8dca5d67c745e9e4"
     },
     {
       "file": "assets/ult-pose-ember-artillery-aimdown.png",
-      "bytes": 499060,
-      "md5": "558fa0a848ca31e3c0adada548529c8d"
+      "bytes": 302352,
+      "md5": "c99ec7be0394636b24ed781cdc4cfcb6"
     },
     {
       "file": "assets/ult-pose-ember-artillery-ascendant-aimdown.png",
-      "bytes": 450184,
-      "md5": "06d487cf61bc667c923cf13dd793f282"
+      "bytes": 268306,
+      "md5": "1cb889929b0b566dfa6fcbbe4289c131"
     },
     {
       "file": "assets/ult-pose-ember-artillery-ascendant.png",
-      "bytes": 464256,
-      "md5": "bdb216290529ab2e12bec0e1f08a0906"
+      "bytes": 278181,
+      "md5": "01d504fedfe118c56ddcebeb3b41f104"
     },
     {
       "file": "assets/ult-pose-ember-artillery-godking-aimdown.png",
-      "bytes": 552088,
-      "md5": "f8c5beb71d7e73726a10b092271482fe"
+      "bytes": 331445,
+      "md5": "36ca4325bf18b032d19851a487b56005"
     },
     {
       "file": "assets/ult-pose-ember-artillery-godking.png",
-      "bytes": 672054,
-      "md5": "3935adf2e889da6b5ad67dabb6a6dc61"
+      "bytes": 405488,
+      "md5": "810835f031cefcbf8eca042a17329cb2"
     },
     {
       "file": "assets/ult-pose-ember-artillery-knight-aimdown.png",
-      "bytes": 493414,
-      "md5": "e28a2d26f5e76655c9966441a004db05"
+      "bytes": 296313,
+      "md5": "4844d7b7424de7a80c3c068ecc4e961f"
     },
     {
       "file": "assets/ult-pose-ember-artillery-knight.png",
-      "bytes": 522125,
-      "md5": "624016818110f860f0d1146897c57995"
+      "bytes": 314112,
+      "md5": "85b6ee0ce39689bd2dbe991c9fc47002"
     },
     {
       "file": "assets/ult-pose-ember-artillery-paladin-aimdown.png",
-      "bytes": 517538,
-      "md5": "f56d1f4846778454ef825d2bf8bf909d"
+      "bytes": 312343,
+      "md5": "b879a9e4478724093734faf88d32a018"
     },
     {
       "file": "assets/ult-pose-ember-artillery-paladin.png",
-      "bytes": 567484,
-      "md5": "c53653fb36b81f20b3e78e82c0580dd6"
+      "bytes": 342830,
+      "md5": "e6f51d8476496df679a82dc505130618"
     },
     {
       "file": "assets/ult-pose-ember-artillery.png",
-      "bytes": 551451,
-      "md5": "9a567366cf74c9f943d5dbd875dfb7df"
+      "bytes": 333653,
+      "md5": "f5baf7c6823e6186f827c5f7d65983ae"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-aimdown.png",
-      "bytes": 655184,
-      "md5": "7f6a16f62b9a176ce307e6786f6ee20e"
+      "bytes": 404437,
+      "md5": "afc913bde40f848a8a3ceac4afba4be3"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-ascendant-aimdown.png",
-      "bytes": 464056,
-      "md5": "7e4d89c44cffdf371fbe7f9eae3a843b"
+      "bytes": 278184,
+      "md5": "427cf145ca6e4798fe61b173897541d6"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-ascendant.png",
-      "bytes": 469180,
-      "md5": "0338454f94976d16d641945daf4b1a72"
+      "bytes": 281874,
+      "md5": "3ddcf61a7c240c6cc649f57ac02a580f"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-godking-aimdown.png",
-      "bytes": 627930,
-      "md5": "931751052d852e3963bd14af479bbc09"
+      "bytes": 376268,
+      "md5": "dd50d3622c3e0368fb35313f01530ecc"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-godking.png",
-      "bytes": 687207,
-      "md5": "3a83b270a95d7b421bb92bcfadb96002"
+      "bytes": 412251,
+      "md5": "3f8770ac43bb78383177e345272af76f"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-knight-aimdown.png",
-      "bytes": 626305,
-      "md5": "e4dde0b9a46fd3e546ff002b7cdebdbb"
+      "bytes": 385916,
+      "md5": "cde7ddfbdfc803f1a5a37dca9b0564ae"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-knight.png",
-      "bytes": 657677,
-      "md5": "2b7614562a40340e59859a1746cd60f7"
+      "bytes": 406897,
+      "md5": "15804bcb0cfa9640a3622aef2d314080"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-paladin-aimdown.png",
-      "bytes": 641454,
-      "md5": "d931c17a44717fe189b9da1b3bfc00e7"
+      "bytes": 393735,
+      "md5": "540a5e027b7bacb354e4ded9913cb131"
     },
     {
       "file": "assets/ult-pose-ember-vanguard-paladin.png",
-      "bytes": 714705,
-      "md5": "197a10f858143304afae086385feb0cd"
+      "bytes": 438142,
+      "md5": "de83858138a5bc116771ba800f9c2b43"
     },
     {
       "file": "assets/ult-pose-ember-vanguard.png",
-      "bytes": 702359,
-      "md5": "fbd806dd0b9b675343ec2c1741c56c76"
+      "bytes": 436457,
+      "md5": "d06c898f20f1ae1e59b2741ae40c3c27"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-aimdown.png",
-      "bytes": 372288,
-      "md5": "a08550056fa6e133567625d1980e3b41"
+      "bytes": 225358,
+      "md5": "25c12049516c688487e5709e525ff68e"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-ascendant-aimdown.png",
-      "bytes": 352925,
-      "md5": "fa8ade69c521f0805cd447c78bc00285"
+      "bytes": 214136,
+      "md5": "084adcc9087ff830b6fb54381537b5fb"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-ascendant.png",
-      "bytes": 359291,
-      "md5": "71d454da520ed3fce24943f799ae6e06"
+      "bytes": 218140,
+      "md5": "9ba0c182fb0cb5b7cbbfb37dd24c5cfe"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-godking-aimdown.png",
-      "bytes": 588467,
-      "md5": "4332f4fbc055fe43d8d5e99bcc9cd0a6"
+      "bytes": 355274,
+      "md5": "a04f4e5763308415156ae284e632832b"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-godking.png",
-      "bytes": 649669,
-      "md5": "a1e625dd3daa4f0118666ad5b2a9bb02"
+      "bytes": 394937,
+      "md5": "94d901c71ae47cb0a1f3dc57a647d9c2"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-knight-aimdown.png",
-      "bytes": 524546,
-      "md5": "97e145e87c4451a5f7cd3cb361c8f4d7"
+      "bytes": 311990,
+      "md5": "2a1929a54615bcd00fc735b5dd05adc4"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-knight.png",
-      "bytes": 506923,
-      "md5": "a2e0a1ff98c45184a7b8257b44b99d7c"
+      "bytes": 302098,
+      "md5": "d9408e137d4ba0be857a68062c3f7c69"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-paladin-aimdown.png",
-      "bytes": 472205,
-      "md5": "8291c73338328f5edd0aa44c341ee1ee"
+      "bytes": 282208,
+      "md5": "9d74b4a1eaade8c1592d3500ad7bd049"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery-paladin.png",
-      "bytes": 393481,
-      "md5": "3a4aa7f165b5fbd45e8ac0ee3275e68e"
+      "bytes": 235163,
+      "md5": "706b99a085e190ddb29a2a575b3f8e24"
     },
     {
       "file": "assets/ult-pose-ironhold-artillery.png",
-      "bytes": 423770,
-      "md5": "847623c7d42c9d73370515f5f009d982"
+      "bytes": 258217,
+      "md5": "2223d60d1efb1752a225b0f8ec8ea5cb"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-aimdown.png",
-      "bytes": 679152,
-      "md5": "bef1149886bfcc645f2bbcf53233932d"
+      "bytes": 416917,
+      "md5": "f8e0d20ab6b224ceeef7da835db26be1"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-ascendant-aimdown.png",
-      "bytes": 521134,
-      "md5": "904d1dd881da3519ec50bf41b99cee0a"
+      "bytes": 316896,
+      "md5": "b14fc2c5d39c982cbf14aeae13a61084"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-ascendant.png",
-      "bytes": 538545,
-      "md5": "1c5420debaad32ed85179c8b3db20b1a"
+      "bytes": 329301,
+      "md5": "8b0e12395ddde5e0eb23aa015883f478"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-godking-aimdown.png",
-      "bytes": 631766,
-      "md5": "12319b970647b5fbfe55dee84b03d1d7"
+      "bytes": 380420,
+      "md5": "b14d59e823d2d805f002d81ee8683e31"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-godking.png",
-      "bytes": 725876,
-      "md5": "0c67706cc0372e53f8d6db4de9921b79"
+      "bytes": 432711,
+      "md5": "a897ec3cbbc0263f56ec9e70fd2092d5"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-knight-aimdown.png",
-      "bytes": 710567,
-      "md5": "66ec58a52a5b031a0f13ac937c46f191"
+      "bytes": 430944,
+      "md5": "b6770d0304bfba9da35f5f3835f95ae3"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-knight.png",
-      "bytes": 837710,
-      "md5": "1e26300e6f2eb2212c1e6d5d37ad57da"
+      "bytes": 512935,
+      "md5": "2d8997594e9e74d3aeb815be05776932"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-paladin-aimdown.png",
-      "bytes": 697440,
-      "md5": "afd1a90353f86e89b6be48c1ed44239b"
+      "bytes": 414178,
+      "md5": "5b52471ba61a596405aa85e5e183dd4d"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard-paladin.png",
-      "bytes": 671897,
-      "md5": "d78cfac0f056ca37d112e99495ab638a"
+      "bytes": 403913,
+      "md5": "0a16f6253e4a8c9241bc549a8c0d6751"
     },
     {
       "file": "assets/ult-pose-ironhold-vanguard.png",
-      "bytes": 668550,
-      "md5": "52d873f8181516105c6dc209d31a78d4"
+      "bytes": 412697,
+      "md5": "e42399a845ffd56a9fbdb8f25b7289ea"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-aimdown.png",
-      "bytes": 433602,
-      "md5": "87b49e85d65f8f7797e9e0c925e41ede"
+      "bytes": 262767,
+      "md5": "32a1ccd883aaac4ce2a25b036b047f8a"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-ascendant-aimdown.png",
-      "bytes": 485473,
-      "md5": "011d9744bfd3552c17c6b4bdf15257c3"
+      "bytes": 293498,
+      "md5": "72ea83edd65440087a8178a3b5cc4c3e"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-ascendant.png",
-      "bytes": 505004,
-      "md5": "dde26615d9bc114540f8fd346ba14bb3"
+      "bytes": 306464,
+      "md5": "f5ec997bcb270a0461b8a4b725228bbf"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-godking-aimdown.png",
-      "bytes": 734280,
-      "md5": "abfd6d6c447f09a9b6cafa12eabd8621"
+      "bytes": 442437,
+      "md5": "d94db61b8ecdb18b090a0b513cbcbc80"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-godking.png",
-      "bytes": 853716,
-      "md5": "e51b554f21e6d7adc550fc9b669086db"
+      "bytes": 514763,
+      "md5": "6d633a5e0876c2f543aa07accf48ca8f"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-knight-aimdown.png",
-      "bytes": 528666,
-      "md5": "569287c2e90518daf0716227b0e9d32c"
+      "bytes": 320505,
+      "md5": "ea4946e62f9d66df7db6516cf7e525fe"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-knight.png",
-      "bytes": 548241,
-      "md5": "80f8104f7d26dd0d3663bd1dc0f09dd7"
+      "bytes": 331835,
+      "md5": "76104886bd3b2a66fc5352c5a5c400c1"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-paladin-aimdown.png",
-      "bytes": 501795,
-      "md5": "dac174f82ec84c5ee8f07d999144b78a"
+      "bytes": 303140,
+      "md5": "35e2808ab589330028a0ffaf7c892304"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery-paladin.png",
-      "bytes": 495577,
-      "md5": "7497e4ee871ae3d39ef7b3b7c182f1e3"
+      "bytes": 300235,
+      "md5": "9fcc6d2926ed2ed6966f9c3014c966dd"
     },
     {
       "file": "assets/ult-pose-tidereign-artillery.png",
-      "bytes": 441634,
-      "md5": "5b32cbfd54872ab6a5cc45d7c4c4f46e"
+      "bytes": 269478,
+      "md5": "e4cdc5157f3ee77f7dc23501ff6b0d9f"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-aimdown.png",
-      "bytes": 724884,
-      "md5": "737405e287e0d0fe9a4336907bec5b90"
+      "bytes": 446900,
+      "md5": "4c1ca9a2b9d34dcdeb1d23f3ef1bb072"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-ascendant-aimdown.png",
-      "bytes": 447088,
-      "md5": "44981d34bba380a6d4a964765208dcf7"
+      "bytes": 268704,
+      "md5": "a0f22d8b91df1e6461a26c5730d4652d"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-ascendant.png",
-      "bytes": 475969,
-      "md5": "d33542552424e58e6970e10b69c5c169"
+      "bytes": 287241,
+      "md5": "ceaba04095702456976f5acd86a3bd21"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-godking-aimdown.png",
-      "bytes": 690189,
-      "md5": "bd013426ea2182193d953a2b0c24b728"
+      "bytes": 408947,
+      "md5": "3898f1444d66353762b23c5a1e4379e6"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-godking.png",
-      "bytes": 776509,
-      "md5": "3e825de5ac45b53b6c2065e921d9b83b"
+      "bytes": 458217,
+      "md5": "81e81385fbec3eba48c0dccb7affb404"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-knight-aimdown.png",
-      "bytes": 749502,
-      "md5": "dedf2d7c54075bd87264fb66be79a67b"
+      "bytes": 457395,
+      "md5": "b328ed47ca5443c34cc4d0b3ad730e8d"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-knight.png",
-      "bytes": 785261,
-      "md5": "4e0b15b8ab1322fca84fc6760bcd7ce6"
+      "bytes": 481709,
+      "md5": "4d89d878050f53e52b517eedc9da0eb0"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-paladin-aimdown.png",
-      "bytes": 691852,
-      "md5": "592a0019da7aedfbcd9fabd1263bf6a5"
+      "bytes": 420351,
+      "md5": "a6cf56bf9e65b73a191a8c83da569aa0"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard-paladin.png",
-      "bytes": 706635,
-      "md5": "120da18cbaf111d6c4ba937f2421d6b2"
+      "bytes": 430794,
+      "md5": "b2fbd02c8d0a1ea4ed8839ba51aeba9e"
     },
     {
       "file": "assets/ult-pose-tidereign-vanguard.png",
-      "bytes": 774134,
-      "md5": "27d791d7176c8bce99758be17eaf8d44"
+      "bytes": 479158,
+      "md5": "7044ea9587931da4eb6e285ad82dc698"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-aimdown.png",
-      "bytes": 476990,
-      "md5": "b79c5f8fbeaaa5b7cfae9edab444e21c"
+      "bytes": 289509,
+      "md5": "caf7a8c1f82d8b9e7bf39f742f8195c4"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-ascendant-aimdown.png",
-      "bytes": 457192,
-      "md5": "f480d570dd91d5eebc1aad41d89b5240"
+      "bytes": 274673,
+      "md5": "d074283108c2c05d50f66179c6b1450e"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-ascendant.png",
-      "bytes": 478167,
-      "md5": "65d0b09f0a0553eb0d0d17d7b1474967"
+      "bytes": 288459,
+      "md5": "a33a76644b91d8b52c69adb857c553e9"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-godking-aimdown.png",
-      "bytes": 611128,
-      "md5": "c0098017e38ff85bedc0040acf78f23e"
+      "bytes": 370941,
+      "md5": "4a387bf383c93334b48196c99cb3551e"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-godking.png",
-      "bytes": 645266,
-      "md5": "f3885a49db9c6557d9038e6803d7a728"
+      "bytes": 390257,
+      "md5": "80897960ed8f1e13dc4109c8a7b0d30b"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-knight-aimdown.png",
-      "bytes": 556957,
-      "md5": "cca7b015925d475820ccca5332a0ca2e"
+      "bytes": 338989,
+      "md5": "b737fee675d9a81b7d85d2da2ea228a1"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-knight.png",
-      "bytes": 584822,
-      "md5": "b95fe180e3810c049dafa1754fbae48d"
+      "bytes": 356662,
+      "md5": "3c6723cd3b1314a1f03e4abc76b79555"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-paladin-aimdown.png",
-      "bytes": 420659,
-      "md5": "2460ba176b1067dccc614a54fc8bc4ca"
+      "bytes": 252756,
+      "md5": "ae1745dd0d67cdb3bafa2b98261aa3f1"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery-paladin.png",
-      "bytes": 412682,
-      "md5": "5280066c8021ae5875548ea5343dd391"
+      "bytes": 249646,
+      "md5": "f3bf6ec8d77051c6b471fca015f3ff2b"
     },
     {
       "file": "assets/ult-pose-voltspire-artillery.png",
-      "bytes": 468507,
-      "md5": "0f54b7ebdb08426cdc18f578699070c3"
+      "bytes": 286398,
+      "md5": "8225746cefdb18ce6f4e28a8e5c32c4e"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-aimdown.png",
-      "bytes": 770827,
-      "md5": "45b29006947d30fdefe9a8758c23e656"
+      "bytes": 470477,
+      "md5": "ed35fb4d0323f6218ef5a7e5dae392c8"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-ascendant-aimdown.png",
-      "bytes": 503435,
-      "md5": "3d5010c99450a91f226cab4aac5b8f03"
+      "bytes": 304050,
+      "md5": "54757e8b159235931cda2eaaf596d52a"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-ascendant.png",
-      "bytes": 470743,
-      "md5": "c5ce706ffa999d612ba2d3450aade497"
+      "bytes": 284724,
+      "md5": "a94c0309c70d028646eae1522a39f4de"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-godking-aimdown.png",
-      "bytes": 592878,
-      "md5": "6b0dfa3dfe62d0d08dc6d1bc20edbdbd"
+      "bytes": 356324,
+      "md5": "d46f1c01f323a1da9639df45b4d1fb17"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-godking.png",
-      "bytes": 625861,
-      "md5": "dc7b60db06bdb0f131d0a7ee84961a57"
+      "bytes": 375776,
+      "md5": "297f936e3b81f229b81b60863ca55d56"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-knight-aimdown.png",
-      "bytes": 688318,
-      "md5": "f912c2cc03869223e68a416196519770"
+      "bytes": 419033,
+      "md5": "d3f927e0c56323d366b12f74339ae318"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-knight.png",
-      "bytes": 766517,
-      "md5": "08c32f2f74651262720c0a572b74c11a"
+      "bytes": 471798,
+      "md5": "2d762079ba32839430c099d035bec5fc"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-paladin-aimdown.png",
-      "bytes": 677166,
-      "md5": "25cf4e58fd2631eb178144748213f841"
+      "bytes": 414066,
+      "md5": "cf30ccf338859310a0f26aa7ac84fd69"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard-paladin.png",
-      "bytes": 745221,
-      "md5": "e84e004087a3c90e7d1a11a1bd1aab64"
+      "bytes": 456360,
+      "md5": "8b876c7334a2a62fa5242762b151c0c6"
     },
     {
       "file": "assets/ult-pose-voltspire-vanguard.png",
-      "bytes": 830084,
-      "md5": "9d9bb42b9fb77bc248124d85f3fafb1f"
+      "bytes": 507546,
+      "md5": "43097eb235028e7650f91cd8c15eb6bf"
     },
     {
       "file": "assets/ult-tank-bloomvale-artillery.png",
