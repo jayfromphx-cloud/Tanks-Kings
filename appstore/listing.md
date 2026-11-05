@@ -10,7 +10,7 @@ Idle Tank Battler: Rule 5 Kingdoms
 Command adorable chibi tanks across five elemental kingdoms in this side-scrolling idle battler!
 
 **CHOOSE YOUR KINGDOM**
-Pick from Ironhold, Ember Wastes, Voltspire, Bloomvale, or Tidereign — each with unique mechanics, signature tanks, and devastating Ultimates.
+Pick from Ironhold, Ember Crown, Voltspire, Bloomvale, or Tidereign — each with unique mechanics, signature tanks, and devastating Ultimates.
 
 **EVOLVE YOUR TANKS**
 Rise from Squire to Knight to Paladin to God King. Each rank unlocks stunning new designs and crushing power multipliers.
@@ -21,7 +21,7 @@ Let your tank auto-battle while you're away, or take manual control — parry en
 **DEEP PROGRESSION**
 - 6 gear slots with forging, prestige stars, and set bonuses
 - 10 tanks across 5 kingdoms, each with unique Ultimates
-- Tower of Gods: 100 floors of escalating boss battles
+- Tower of Gods: endless floors of escalating boss battles
 - Royal Armory: skins, chests, and limited seasonal drops
 - Daily login rewards and events
 
@@ -47,6 +47,10 @@ Secondary: Games > Action
 - Recommended: title screen, battle gameplay, evolution/garage screen
 
 ## App Privacy (Nutrition Label)
-- Data Collected: None
-- Tracking: None
+- Data Collected (via the RevenueCat purchase SDK; needed for purchase verification and restore):
+  - Purchases → Purchase History — Not Linked to You — App Functionality
+  - Identifiers → User ID (anonymous app user ID) — Not Linked to You — App Functionality
+- Data Linked to You: None
+- Tracking: None (no cross-app tracking, no advertising SDKs, no IDFA)
 - Account: Not required
+- Note: iCloud backup goes to the player's own iCloud account — not developer collection; it is disclosed in the privacy policy, not the label.

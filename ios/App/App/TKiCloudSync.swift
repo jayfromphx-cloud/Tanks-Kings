@@ -33,8 +33,8 @@ public class TKiCloudSync: CAPPlugin {
             return
         }
         store.set(snapshot, forKey: cloudKey)
-        store.synchronize()
-        call.resolve(["ok": true])
+        let synced = store.synchronize()
+        call.resolve(["ok": true, "synced": synced])
     }
 
     /// Pull the latest snapshot from iCloud. Resolves with {snapshot} or {snapshot: null}.
@@ -55,8 +55,8 @@ public class TKiCloudSync: CAPPlugin {
         if ts >= existingTs {
             store.set(snapshot, forKey: cloudKey)
             store.set(ts, forKey: cloudKey + "_ts")
-            store.synchronize()
-            call.resolve(["ok": true, "written": true])
+            let synced = store.synchronize()
+            call.resolve(["ok": true, "written": true, "synced": synced])
         } else {
             call.resolve(["ok": true, "written": false, "reason": "remote-newer"])
         }

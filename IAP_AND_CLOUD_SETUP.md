@@ -34,7 +34,7 @@
    you'll need to add one line; template below)
 
 ### B. App Store Connect products (20 min)
-Create these 8 consumable IAPs in App Store Connect → your app → Monetization:
+Create these 9 IAPs in App Store Connect → your app → Monetization (8 consumable + the seasonpass non-consumable):
 
 | Product ID | Type | Price | What it grants |
 |---|---|---|---|
@@ -47,6 +47,8 @@ Create these 8 consumable IAPs in App Store Connect → your app → Monetizatio
 | `com.tanksandkings.app.starter` | Consumable | $2.99 | 500 gems + 1500 scrap + Rare chest |
 | `com.tanksandkings.app.treasury` | Consumable | $14.99 | 3200 gems (LTO) |
 | `com.tanksandkings.app.seasonpass` | Non-consumable | $9.99 | Season Pass Premium for the current season (added 2026-11-05) |
+
+Note: the game's first-purchase-ever bonus doubles the gem grant of whichever gem-granting product a player buys first — including Treasury — and the product card discloses this before purchase. The table above lists the standard grants.
 
 All are **consumable** except `seasonpass`, which is a **non-consumable** (the game re-derives the current-season premium flag from the receipt on restore; not a subscription).
 

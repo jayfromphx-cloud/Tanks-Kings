@@ -77,6 +77,16 @@ try {
     Storage.prototype.setItem = function (k, v) {
       origSetItem.apply(this, arguments);
       if (DURABLE_KEYS.indexOf(k) !== -1) mirrorToPreferences(k, v);
+      // Cloud auto-push seam: the game's save functions are closure-scoped
+      // inside its IIFE (never exposed on window, so wrapping them from here
+      // can never fire). Every save path ends in a write of the unified blob,
+      // so watch the blob write instead — it catches debounced and direct
+      // saves alike. The scheduler is exposed by the DOMContentLoaded flow
+      // below; writes before that (boot saves) are covered by the boot
+      // restore and the pause-event push.
+      if (k === 'tk_progression_v1' && window.__tkScheduleCloudPush) {
+        try { window.__tkScheduleCloudPush(); } catch (e) {}
+      }
     };
   } catch (e) {}
 
@@ -105,7 +115,7 @@ try {
     try {
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
-        if (k && k.indexOf('tk_') === 0 && k !== RELOAD_FLAG && k.indexOf('tk_progression_corrupt_') !== 0 && !/__mts$/.test(k)) snap[k] = localStorage.getItem(k); /* corrupt-save backups + timestamp sidecars stay local: up to 3 full blob copies would blow the 1MB KVS limit and silently stop sync */
+        if (k && k.indexOf('tk_') === 0 && k !== RELOAD_FLAG && k.indexOf('tk_progression_corrupt_') !== 0 && !/__mts$/.test(k) && k !== 'tk_blackbox' && k !== 'tk_blackbox_debug') snap[k] = localStorage.getItem(k); /* corrupt-save backups + timestamp sidecars stay local: up to 3 full blob copies would blow the 1MB KVS limit and silently stop sync */
       }
     } catch (e) {}
     return JSON.stringify({ v: 1, ts: Date.now(), data: snap });
@@ -319,22 +329,10 @@ try {
       } catch (e) { failClosed('RevenueCat init failed: ' + e); }
     })();
 
-    // Cloud save auto-push: hook the game's save function
-    var hooked = false;
-    var hookTimer = setInterval(function () {
-      if (hooked) { clearInterval(hookTimer); return; }
-      if (typeof window.progressSaveSoon === 'function') {
-        var orig = window.progressSaveSoon;
-        window.progressSaveSoon = function () {
-          orig.apply(this, arguments);
-          schedulePush();
-        };
-        hooked = true;
-        clearInterval(hookTimer);
-        console.log('[TK] Cloud save auto-push hooked');
-      }
-    }, 500);
-    setTimeout(function () { clearInterval(hookTimer); }, 10000);
+    // Cloud save auto-push: expose the scheduler for the localStorage
+    // blob-write watch above (the game's save functions are closure-scoped
+    // and cannot be wrapped from here).
+    window.__tkScheduleCloudPush = schedulePush;
 
     document.addEventListener('pause', pushCloudSave, false);
     /* 2026-10-10: native-backed background/foreground signals (stock Capacitor
