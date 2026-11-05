@@ -283,7 +283,7 @@ try {
           orderId: t.transactionIdentifier,
           key: byPid[t.productIdentifier] || null,
           productIdentifier: t.productIdentifier,
-          when: t.purchaseDate ? Date.parse(t.purchaseDate) : Date.now(),
+          when: (t.purchaseDate && !isNaN(Date.parse(t.purchaseDate))) ? Date.parse(t.purchaseDate) : Date.now(),
           provider: 'revenuecat-restore'
         };
       }).filter(function (r) { return !!r.id; });

@@ -5822,7 +5822,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='3a2157f0ff';
-const __HTML_V='49ed6cf083';
+const __HTML_V='5cc504643d';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -10233,7 +10233,7 @@ function triggerFlash(kind){if(STORE.flash&&STORE.flash.kind===kind&&!flashExpir
 function clearFlash(){STORE.flash=null;updateStoreBadges();renderFlashUI()}
 function updateStoreBadges(){document.querySelectorAll('.store-badge').forEach(function(b){b.hidden=!STORE.flash})}
 function renderFlashUI(){const host=$('storeFlash');if(!host)return;if(!STORE.flash||STORE.flash.dismissed){host.hidden=true;host.innerHTML='';return}if(flashExpired()){clearFlash();return}const def=FLASH_DEFS[STORE.flash.kind];host.hidden=false;host.innerHTML='<span class="flash-badge">FLASH</span><div class="flash-art">'+makeFlashProduct(STORE.flash.kind).art+'</div><div class="flash-copy"><b>'+def.title.split(': ')[1]+'</b><small>'+def.sub+'</small><span class="flash-timer" data-cd="flash"></span></div><button class="store-buy gems flash-btn" id="flashBuyBtn">'+def.icon+' '+def.title.split(': ')[1]+' · ◆'+def.priceGems+'</button><button class="flash-dismiss" id="flashDismiss" aria-label="Dismiss flash offer">✕</button>';$('flashDismiss').onclick=function(){STORE.flash.dismissed=true;renderFlashUI()};$('flashBuyBtn').onclick=function(){if(flashExpired()){clearFlash();showToast('That flash offer just expired.');return}sfx('coin');openBuy(makeFlashProduct(STORE.flash.kind))}}
-function makeFlashProduct(kind){const d=FLASH_DEFS[kind];return{key:'flash_'+kind,kind:'flash',title:d.title,sub:d.sub,priceGems:d.priceGems,odds:(kind==='boss')?oddsHTMLAuto('Epic'):null,art:(kind==='boss'?artBolt:kind==='scrap'?artScrap:kind==='valor'?artMedal:artSeal)(),contents:d.contents,tag:'FLASH',tagKind:'crimson',grant:d.grant}}
+function makeFlashProduct(kind){const d=FLASH_DEFS[kind];return{key:'flash_'+kind,kind:'flash',title:d.title,sub:d.sub,priceGems:d.priceGems,odds:(kind==='boss')?oddsHTML(SLOT_CHEST_ODDS):null,art:(kind==='boss'?artBolt:kind==='scrap'?artScrap:kind==='valor'?artMedal:artSeal)(),contents:d.contents,tag:'FLASH',tagKind:'crimson',grant:d.grant}}
 function weakestSlot(){let best='Hull',bestV=1e9;slots.forEach(function(s){const i=state.equipped[s];const v=i?i.power:0;if(v<bestV){bestV=v;best=s}});return best}
 function bossNear(){const w=(state.mode==='tower'?(state.floor|0):(state.wave|0))%10;return w===8||w===9} /* C-9: state.wave is always 1 in Tower — use the floor so BOSS NEAR shows during climbs */
 /* ---------- wallet ---------- */
@@ -10264,7 +10264,7 @@ function productCard(p,idx){const price=p.priceUsd?fmtUSD(p.priceUsd):(p.priceGe
  return '<div class="store-card '+(p.cardClass||'')+'" style="--stag:'+(idx*0.045)+'s">'+(p.tag?'<div class="store-tag '+p.tagKind+'">'+p.tag+'</div>':'')+'<div class="art">'+p.art+'</div><div class="body">'+body+buy+'</div></div>'}
 /* --- featured --- */
 function evolutionBundleProduct(){const prog=progressFor(chosenTank),rank=stageFor(chosenTank);if(!rank.next)return null;const c=rank.cost;const contents=[];if(c.scrap)contents.push('⚙ '+fmtN(c.scrap)+' Scrap');if(c.valorMedals)contents.push('✦ '+c.valorMedals+' Valor Medals');if(c.royalSeals)contents.push('♛ '+c.royalSeals+' Royal Seals');if(c.prestigeEmblems)contents.push('⛨ '+c.prestigeEmblems+' Prestige Emblems');const price={squire:280,knight:780,paladin:1990,godking:4990}[prog.stage]||780;return{key:'evolve_ready',kind:'evo',title:'Evolution Cache: '+EVOLUTION_STAGES[rank.next].name,sub:'Exactly what your next evolution requires',priceGems:price,art:artEvolve(),contents:contents,tag:'ASCEND NOW',tagKind:'gold',grant:function(){if(c.scrap)addCur('scrap',c.scrap);if(c.valorMedals)addCur('valorMedals',c.valorMedals);if(c.royalSeals)addCur('royalSeals',c.royalSeals);if(c.prestigeEmblems)addCur('emblems',c.prestigeEmblems)}}}
-function bossSlayerProduct(){return{key:'boss_slayer',kind:'chest',title:'Boss-Slayer Kit',sub:'Scrap + targeted chest for your weakest slot',priceGems:520,odds:oddsHTMLAuto('Epic'),art:artBolt(),contents:['1× targeted chest (weakest slot)','750 Scrap'],tag:bossNearCached?'BOSS NEAR':'',tagKind:'crimson',grant:function(pending){pending.chests.push({tier:'Epic',slot:weakestSlot()});addCur('scrap',750)}}}
+function bossSlayerProduct(){return{key:'boss_slayer',kind:'chest',title:'Boss-Slayer Kit',sub:'Scrap + targeted chest for your weakest slot',priceGems:520,odds:oddsHTML(SLOT_CHEST_ODDS),art:artBolt(),contents:['1× targeted chest (weakest slot)','750 Scrap'],tag:bossNearCached?'BOSS NEAR':'',tagKind:'crimson',grant:function(pending){pending.chests.push({tier:'Epic',slot:weakestSlot()});addCur('scrap',750)}}}
 function starterProduct(){return{key:'starter',kind:'starter',title:'New Monarch Starter Pack',sub:'Gems · Scrap · Rare chest',priceUsd:2.99,art:artGift(),contents:['500 Gems','1,500 Scrap','1× Rare chest'],odds:oddsHTMLAuto('Rare'),tag:'ONE-TIME',tagKind:'gold',ownedState:STORE.starterClaimed?'claimed':'',grant:function(pending){addCur('gems',500);addCur('scrap',1500);pending.chests.push({tier:'Rare',slot:null});STORE.starterClaimed=true}}}
 function bestValueGemCard(){const g=GEM_LADDER[2];return gemProduct(g,2)}
 function dailyDealProduct(){const tier=dailyDealTier();const claimedToday=STORE.dailyDealClaimDate===dayIndex();return{key:'dailydeal',kind:'chest',title:tier+' Chest',sub:'Daily deal · '+dataCountdown('dd'),priceGems:dailyDealPrice(),art:artChest(CHEST_COLOR[tier]),contents:['1× '+tier+' chest'],odds:oddsHTMLAuto(tier),tag:'-30% DAILY',tagKind:'mint',cardClass:'rarity-'+tier.toLowerCase(),ownedState:claimedToday?'claimed':undefined,disabled:claimedToday,disabledReason:claimedToday?'CLAIMED':undefined,grant:function(pending){pending.chests.push({tier:tier,slot:null});STORE.dailyDealClaimDate=dayIndex()}}}
@@ -10428,7 +10428,7 @@ async function doPurchase(p){
    if(!recovered){const fc=applyReceiptEntitlements([rc2.id]);recChests=recChests.concat(fc)}
    storeSave();renderStoreWallet();updateHUD();
    $('buySheet').classList.remove('open');renderStore();
-   showToast(recovered?'Purchase complete — delivered after a brief hiccup.':'Purchase recorded — your items were delivered from the receipt.');
+   if(recovered)showToast('Purchase complete — delivered after a brief hiccup.');else if(p.key==='starter'||p.key==='season_premium'||p.key.indexOf('godskin_')===0)showToast('Purchase recorded — your items were delivered from the receipt.');else showToast('Purchase recorded — if your items don\'t appear, use Restore Purchases in the shop.');
    if(recChests.length)openReveal(recChests);
    return
   }
@@ -10492,8 +10492,8 @@ function applyReceiptEntitlements(freshIds){
    if(fresh[r.id]&&!r.fulfilled){r.fulfilled=true;addCur('gems',500);addCur('scrap',1500);try{chestItems.push(grantChest('Rare',null))}catch(e){}}}
   else if(r.key==='season_premium'&&typeof season!=='undefined'){
    /* premium binds to the season the purchase was made in */
-   let inSeason=true;
-   try{if(r.when&&season.startDay!=null&&season.endDay!=null){const _d=new Date(r.when);const _rd=Math.floor(Date.UTC(_d.getFullYear(),_d.getMonth(),_d.getDate())/86400000);inSeason=_rd>=season.startDay&&_rd<=season.endDay}}catch(e){}
+   let inSeason=false;
+   try{if(r.when&&isFinite(r.when)&&season.startDay!=null&&season.endDay!=null){const _d=new Date(r.when);const _rd=Math.floor(Date.UTC(_d.getFullYear(),_d.getMonth(),_d.getDate())/86400000);inSeason=_rd>=season.startDay&&_rd<=season.endDay}}catch(e){}
    if(inSeason&&!season.premium){season.premium=true;season.premiumReceipt={when:r.when||Date.now(),price:'$9.99',restored:true};r.fulfilled=true;try{progressSaveSoon()}catch(e){}}
    else if(inSeason)r.fulfilled=true}
   else if(r.key.indexOf('gem_')===0)STORE.firstPurchaseEver=true;
@@ -10511,7 +10511,7 @@ function initStore(){
      the current in-memory state only; entitlements re-derive from receipt keys below. */
   const seen={};STORE.receipts.forEach(function(r){seen[r.id]=1});
   const freshIds=[];
-  (Array.isArray(receipts)?receipts:[]).forEach(function(r){if(r&&r.id&&!seen[r.id]){seen[r.id]=1;freshIds.push(r.id);STORE.receipts.unshift(r)}});
+  (Array.isArray(receipts)?receipts:[]).forEach(function(r){if(r&&r.id&&!seen[r.id]){seen[r.id]=1;freshIds.push(r.id);try{if(!(r.when>0))r.when=Date.now();if(r.title==null||r.art==null){const _p=findProduct(r.key);if(_p){if(r.title==null)r.title=_p.title;if(r.art==null)r.art=_p.art;if(r.contents==null)r.contents=Array.isArray(_p.contents)?_p.contents.join(' · '):(_p.contents||'');if(r.price==null)r.price=_p.priceUsd?fmtUSD(_p.priceUsd):(_p.priceGems?('◆ '+fmtN(_p.priceGems)+' gems'):'')}}}catch(e){}STORE.receipts.unshift(r)}});
   const fulfilledChests=applyReceiptEntitlements(freshIds);
   storeSave();
   renderStore();renderReceipts();showToast('Purchases restored — the treasury ledgers are complete.');if(fulfilledChests.length)openReveal(fulfilledChests)}).catch(function(){showToast('Restore failed — try again later.')}).finally(function(){$('storeRestoreBtn').disabled=false})}catch(e){$('storeRestoreBtn').disabled=false}};
