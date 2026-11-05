@@ -5822,7 +5822,7 @@ const assetManifest={
    cache:'no-store' and hard-reloads once if EITHER the live asset build or the
    live HTML version differs, so a stale cache can never survive a republish. */
 const __BUILD_ID='3a2157f0ff';
-const __HTML_V='5cc504643d';
+const __HTML_V='2abb385a1b';
 const __ASSET_V=__BUILD_ID;
 /* Synchronous snapshot of the actual art files in assets/build-manifest.json. The live
    manifest refresh below replaces this set as soon as it arrives. All player/enemy
@@ -10070,7 +10070,7 @@ function storeImport(d,silent){
   if(d.version!=null&&d.version!==STORE_SCHEMA_VERSION)throw new Error('store schema v'+d.version);
   STORE.ownedSkins=Array.isArray(d.ownedSkins)?d.ownedSkins.filter(function(x){return typeof x==='string'}):[];
   STORE.ownedGodskins=Array.isArray(d.ownedGodskins)?d.ownedGodskins.filter(function(x){return typeof x==='string'}):[];
-  STORE.receipts=Array.isArray(d.receipts)?d.receipts.filter(function(r){return r&&typeof r==='object'}).slice(0,60):[];
+  STORE.receipts=Array.isArray(d.receipts)?d.receipts.filter(function(r){return r&&typeof r==='object'&&typeof r.id==='string'&&typeof r.key==='string'}).filter(function(r,i,a){return a.findIndex(function(x){return x.id===r.id})===i}).map(function(r){r.fulfilled=r.fulfilled===true;return r}).slice(0,60):[];
   STORE.starterClaimed=!!d.starterClaimed;
   STORE.firstPurchaseEver=!!d.firstPurchaseEver;
   STORE.emblems=Math.max(0,Math.floor(+d.emblems)||0);
@@ -10392,7 +10392,7 @@ async function doPurchase(p){
   receipt=await promise;
   /* F9: never act on a malformed adapter resolve — validate before any deduction */
   if(!receipt||typeof receipt.orderId!=='string'||!receipt.orderId){showToast('Purchase failed — try again.');showBuyStage(0);return}
-  const recordRestoredReceipt=function(){const rc={id:receipt.orderId,key:p.key,when:receipt.when||Date.now(),provider:(receipt.provider||'demo'),title:p.title,contents:p.contents.join(' · '),price:p.priceUsd?fmtUSD(p.priceUsd):('◆ '+fmtN(p.priceGems)+' gems'),art:glyphForProduct(p),fulfilled:true};STORE.receipts.unshift(rc);if(STORE.receipts.length>60)STORE.receipts.length=60;storeSave()};
+  const recordRestoredReceipt=function(){const rc={id:receipt.orderId,key:p.key,when:receipt.when||Date.now(),provider:(receipt.provider||'demo'),title:p.title,contents:p.contents.join(' · '),price:p.priceUsd?fmtUSD(p.priceUsd):('◆ '+fmtN(p.priceGems)+' gems'),art:glyphForProduct(p),fulfilled:true};if(!STORE.receipts.some(function(x){return x&&x.id===rc.id}))STORE.receipts.unshift(rc);if(STORE.receipts.length>60)STORE.receipts.length=60;storeSave()};
   /* P2.3: re-check balance after the billing window — a concurrent spend (e.g. tower revive) must not drive gems negative */
   if(!p.priceUsd&&p.priceGems>storeCur('gems')){showToast('Not enough gems — your balance changed during purchase.');showBuyStage(0);return}
   /* P2.1: re-check the flash window after the billing window too — the offer may have expired mid-purchase */
@@ -10448,11 +10448,11 @@ async function doPurchase(p){
  renderStore()
  if(p.kind==='season'){try{if(typeof renderSeasonScreen==='function')renderSeasonScreen()}catch(e){}}
  }finally{purchaseInFlight=false}}
-function showBuyStage(n){[0,1,2].forEach(function(i){$('buyStage'+i).classList.toggle('on',i===n)})}
+function showBuyStage(n){[0,1,2].forEach(function(i){$('buyStage'+i).classList.toggle('on',i===n)});if(n!==0){var _bc=$('buyConfirm');if(_bc){_bc.disabled=true;_bc.onclick=null}}}
 function glyphForProduct(p){if(p.kind==='gem')return '♦';if(p.kind==='skin')return '◈';if(p.kind==='godskin')return '⚡';if(p.kind==='chest'||p.kind==='lto')return '📦';if(p.kind==='starter')return '🎁';if(p.kind==='levels')return '⚔';if(p.kind==='evo')return '♛';return '⚙'}
 /* ---------- receipts view ---------- */
 function escHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function renderReceipts(){const host=$('receiptList');if(!host)return;if(!STORE.receipts.length){host.innerHTML='<div class="receipt-empty">No purchases yet. The treasury scrolls await, monarch.</div>';return}host.innerHTML=STORE.receipts.map(function(r){const d=new Date(r.when);return '<div class="receipt-row"><div class="rc-art">'+r.art+'</div><div class="rc-copy"><b>'+escHtml(r.title)+'</b><small>'+escHtml(r.id)+' · '+d.toLocaleString()+'<br>'+escHtml(r.contents)+'</small></div><div class="rc-price">'+escHtml(r.price)+'</div></div>'}).join('')}
+function renderReceipts(){const host=$('receiptList');if(!host)return;if(!STORE.receipts.length){host.innerHTML='<div class="receipt-empty">No purchases yet. The treasury scrolls await, monarch.</div>';return}host.innerHTML=STORE.receipts.map(function(r){const d=new Date(r.when);return '<div class="receipt-row"><div class="rc-art">'+(r.art||'◆')+'</div><div class="rc-copy"><b>'+escHtml(r.title||r.key||'Purchase')+'</b><small>'+escHtml(r.id)+' · '+((r.when>0&&isFinite(d.getTime()))?d.toLocaleString():'Date unavailable')+'<br>'+escHtml(r.contents||'')+'</small></div><div class="rc-price">'+escHtml(r.price||'')+'</div></div>'}).join('')}
 /* ---------- chest reveal ---------- */
 function openReveal(items){const box=$('revealBox');box.innerHTML='<div class="sheet-handle"></div><div class="reveal-wrap"><h3>Spoils of War</h3><div class="sub">Claimed from the Royal Shop — auto-added to your inventory</div><div class="reveal-cards">'+items.map(function(i){return '<div class="reveal-card" data-rarity="'+i.rarity+'">'+rarityFrameHTML(i)+'<div class="rc-slot-ic">'+slotIconHTML(i.slot)+'</div><b class="od-'+i.rarity+'">'+i.rarity+' '+i.slot+'</b><small>'+byK(i.kingdom).name+' · '+i.ability+'</small><div class="power">+'+i.power+' Power</div></div>'}).join('')+'</div><button class="buy-confirm" id="revealDone">Claim</button></div>';$('revealSheet').classList.add('open');storeConfetti(1);$('revealDone').onclick=function(){$('revealSheet').classList.remove('open');renderStore()}}
 /* ---------- purchased celebration (transform-only, pooled) ---------- */
@@ -10483,17 +10483,18 @@ function applyReceiptEntitlements(freshIds){
     the restore in progress or recorded by an interrupted purchase — so a
     legacy receipt can never re-grant at boot. Consumables (gem packs,
     Treasury) fulfill at purchase time and are never re-granted here. */
- const fresh={};(freshIds||[]).forEach(function(id){fresh[id]=1});
+ const fresh={};(freshIds||[]).forEach(function(id){fresh[id]=1});const _paidIds={};const _seenEntry={};
  const chestItems=[];
  STORE.receipts.forEach(function(r){
   if(!r||typeof r.key!=='string')return;
+  const _firstEntry=r.id?!_seenEntry[r.id]:true;if(r.id)_seenEntry[r.id]=1;
   if(r.key.indexOf('godskin_')===0)grantGodskin(r.key);
-  else if(r.key==='starter'){STORE.starterClaimed=true;
-   if(fresh[r.id]&&!r.fulfilled){r.fulfilled=true;addCur('gems',500);addCur('scrap',1500);try{chestItems.push(grantChest('Rare',null))}catch(e){}}}
+  else if(r.key==='starter'){const _wasClaimed=STORE.starterClaimed;STORE.starterClaimed=true;
+   if(!_wasClaimed&&_firstEntry&&fresh[r.id]&&!r.fulfilled&&!_paidIds[r.id]){_paidIds[r.id]=1;r.fulfilled=true;addCur('gems',500);addCur('scrap',1500);try{chestItems.push(grantChest('Rare',null))}catch(e){}}}
   else if(r.key==='season_premium'&&typeof season!=='undefined'){
    /* premium binds to the season the purchase was made in */
    let inSeason=false;
-   try{if(r.when&&isFinite(r.when)&&season.startDay!=null&&season.endDay!=null){const _d=new Date(r.when);const _rd=Math.floor(Date.UTC(_d.getFullYear(),_d.getMonth(),_d.getDate())/86400000);inSeason=_rd>=season.startDay&&_rd<=season.endDay}}catch(e){}
+   try{if(r.when&&isFinite(r.when)&&season.startDay!=null&&season.endDay!=null){const _d=new Date(r.when);const _rd=Math.floor(Date.UTC(_d.getFullYear(),_d.getMonth(),_d.getDate())/86400000);inSeason=_rd>=season.startDay&&_rd<season.endDay}}catch(e){}
    if(inSeason&&!season.premium){season.premium=true;season.premiumReceipt={when:r.when||Date.now(),price:'$9.99',restored:true};r.fulfilled=true;try{progressSaveSoon()}catch(e){}}
    else if(inSeason)r.fulfilled=true}
   else if(r.key.indexOf('gem_')===0)STORE.firstPurchaseEver=true;
@@ -10511,7 +10512,7 @@ function initStore(){
      the current in-memory state only; entitlements re-derive from receipt keys below. */
   const seen={};STORE.receipts.forEach(function(r){seen[r.id]=1});
   const freshIds=[];
-  (Array.isArray(receipts)?receipts:[]).forEach(function(r){if(r&&r.id&&!seen[r.id]){seen[r.id]=1;freshIds.push(r.id);try{if(!(r.when>0))r.when=Date.now();if(r.title==null||r.art==null){const _p=findProduct(r.key);if(_p){if(r.title==null)r.title=_p.title;if(r.art==null)r.art=_p.art;if(r.contents==null)r.contents=Array.isArray(_p.contents)?_p.contents.join(' · '):(_p.contents||'');if(r.price==null)r.price=_p.priceUsd?fmtUSD(_p.priceUsd):(_p.priceGems?('◆ '+fmtN(_p.priceGems)+' gems'):'')}}}catch(e){}STORE.receipts.unshift(r)}});
+  (Array.isArray(receipts)?receipts:[]).forEach(function(r){if(r&&r.id&&!seen[r.id]){seen[r.id]=1;freshIds.push(r.id);try{if(r.title==null||r.art==null){const _p=findProduct(r.key);if(_p){if(r.title==null)r.title=_p.title;if(r.art==null)r.art=_p.art;if(r.contents==null)r.contents=Array.isArray(_p.contents)?_p.contents.join(' · '):(_p.contents||'');if(r.price==null)r.price=_p.priceUsd?fmtUSD(_p.priceUsd):(_p.priceGems?('◆ '+fmtN(_p.priceGems)+' gems'):'')}else if(r.key==='season_premium'){if(r.title==null)r.title='Season Pass — Premium';if(r.art==null)r.art='👑';if(r.contents==null)r.contents='Premium season track';if(r.price==null)r.price='$9.99'}}}catch(e){}STORE.receipts.unshift(r)}});
   const fulfilledChests=applyReceiptEntitlements(freshIds);
   storeSave();
   renderStore();renderReceipts();showToast('Purchases restored — the treasury ledgers are complete.');if(fulfilledChests.length)openReveal(fulfilledChests)}).catch(function(){showToast('Restore failed — try again later.')}).finally(function(){$('storeRestoreBtn').disabled=false})}catch(e){$('storeRestoreBtn').disabled=false}};

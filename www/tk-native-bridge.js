@@ -239,6 +239,7 @@ try {
   var Purchases = null;
   try { Purchases = Capacitor.Plugins.Purchases; } catch (e) {}
 
+  var _orderSeq = 0;
   var RevenueCatBillingAdapter = {
     id: 'revenuecat',
     async purchase(product) {
@@ -250,22 +251,31 @@ try {
          * mapping is a configuration error — fail loudly, never
          * fabricate a charge or a grant (C2). */
         if (product && product.priceUsd) throw new Error('No store product mapped for ' + product.key);
-        return { orderId: 'GEM-' + Date.now().toString(36).toUpperCase(), when: Date.now(), provider: 'gems' };
+        return { orderId: 'GEM-' + Date.now().toString(36).toUpperCase() + '-' + (++_orderSeq).toString(36).toUpperCase(), when: Date.now(), provider: 'gems' };
       }
       /* C1: the v13 SDK has no purchaseProduct — fetch the store product,
        * then purchase it. */
       var res = await Purchases.getProducts({ productIdentifiers: [pid] });
-      var storeProduct = res && res.products && res.products[0];
+      var _prods = (res && res.products) || [];
+      var storeProduct = null;
+      for (var _pi = 0; _pi < _prods.length; _pi++) { if (_prods[_pi] && _prods[_pi].identifier === pid) { storeProduct = _prods[_pi]; break; } }
       if (!storeProduct) throw new Error('Store product unavailable: ' + pid);
       var result = await Purchases.purchaseStoreProduct({ product: storeProduct });
       /* M1: record the real transaction id — this product's entry in the
        * post-purchase customer info. */
-      var txId = null;
+      var txId = null, txWhen = 0;
       var txs = (result && result.customerInfo && result.customerInfo.nonSubscriptionTransactions) || [];
-      for (var i = txs.length - 1; i >= 0; i--) {
-        if (txs[i].productIdentifier === pid) { txId = txs[i].transactionIdentifier; break; }
+      for (var i = 0; i < txs.length; i++) {
+        if (txs[i].productIdentifier === pid && txs[i].transactionIdentifier) {
+          var _pd = txs[i].purchaseDate ? Date.parse(txs[i].purchaseDate) : NaN;
+          if (txId === null || (!isNaN(_pd) && _pd >= txWhen)) { txId = txs[i].transactionIdentifier; txWhen = isNaN(_pd) ? txWhen : _pd; }
+        }
       }
-      return { orderId: txId || ('RC-' + Date.now().toString(36).toUpperCase()), transactionId: txId, productIdentifier: (result && result.productIdentifier) || pid, when: Date.now(), provider: 'revenuecat' };
+      /* Never fabricate a receipt: a purchase whose transaction cannot be
+       * identified fails honestly — if a charge did occur, Restore returns
+       * the real transaction and entitlements flow from it. */
+      if (!txId) throw new Error('Purchase could not be verified — if you were charged, use Restore Purchases.');
+      return { orderId: txId, transactionId: txId, productIdentifier: (result && result.productIdentifier) || pid, when: Date.now(), provider: 'revenuecat' };
     },
     async restore() {
       if (!Purchases) throw new Error('RevenueCat not available');
@@ -274,7 +284,8 @@ try {
        * merge contract: id (dedupe), key (entitlement), when (the real
        * purchase date). */
       var info = await Purchases.restorePurchases();
-      var txs = (info && info.customerInfo && info.customerInfo.nonSubscriptionTransactions) || [];
+      if (!info || !info.customerInfo || !Array.isArray(info.customerInfo.nonSubscriptionTransactions)) throw new Error('Restore returned no purchase data');
+      var txs = info.customerInfo.nonSubscriptionTransactions;
       var byPid = {};
       Object.keys(PRODUCT_IDS).forEach(function (k) { byPid[PRODUCT_IDS[k]] = k; });
       return txs.map(function (t) {
@@ -283,7 +294,7 @@ try {
           orderId: t.transactionIdentifier,
           key: byPid[t.productIdentifier] || null,
           productIdentifier: t.productIdentifier,
-          when: (t.purchaseDate && !isNaN(Date.parse(t.purchaseDate))) ? Date.parse(t.purchaseDate) : Date.now(),
+          when: t.purchaseDate ? Date.parse(t.purchaseDate) : NaN,
           provider: 'revenuecat-restore'
         };
       }).filter(function (r) { return !!r.id; });
