@@ -105,7 +105,7 @@ try {
     try {
       for (var i = 0; i < localStorage.length; i++) {
         var k = localStorage.key(i);
-        if (k && k.indexOf('tk_') === 0 && k !== RELOAD_FLAG) snap[k] = localStorage.getItem(k);
+        if (k && k.indexOf('tk_') === 0 && k !== RELOAD_FLAG && k.indexOf('tk_progression_corrupt_') !== 0 && !/__mts$/.test(k)) snap[k] = localStorage.getItem(k); /* corrupt-save backups + timestamp sidecars stay local: up to 3 full blob copies would blow the 1MB KVS limit and silently stop sync */
       }
     } catch (e) {}
     return JSON.stringify({ v: 1, ts: Date.now(), data: snap });
@@ -147,25 +147,49 @@ try {
   }
   BOOT_LOCAL_TS = localTs();
 
-  async function bootRestore() {
-    if (!CloudSync) return;
+  var BOOT_TIME = Date.now();
+  var firstPullSettled = false;
+
+  async function bootRestore(attempt) {
+    if (!CloudSync) { firstPullSettled = true; return; }
     // Don't loop: if we already restored this session, skip
     try {
-      if (sessionStorage.getItem(RELOAD_FLAG) === '1') return;
+      if (sessionStorage.getItem(RELOAD_FLAG) === '1') { firstPullSettled = true; return; }
     } catch (e) {}
     try {
       var res = await CloudSync.pullWithTimestamp({});
       if (res && res.snapshot && res.timestamp > BOOT_LOCAL_TS) {
+        /* Late-apply guard: if real local play has already advanced the
+         * save well past boot, the cloud copy must not discard it — local
+         * wins and gets pushed instead. (Fresh installs, BOOT_LOCAL_TS 0,
+         * always take the established cloud save.) */
+        if (BOOT_LOCAL_TS > 0 && localTs() > BOOT_LOCAL_TS && Date.now() - BOOT_TIME > 2500) {
+          console.log('[TK] Cloud restore skipped — local progress has moved on');
+          firstPullSettled = true;
+          schedulePush();
+          return;
+        }
         var n = applySnapshot(res.snapshot);
         if (n > 0) {
           // Durable flags outrank the cloud copy (durable > local > cloud)
           await restoreDurableFlags();
           try { sessionStorage.setItem(RELOAD_FLAG, '1'); } catch (e) {}
           console.log('[TK] Restored ' + n + ' keys from iCloud, reloading');
+          firstPullSettled = true;
           location.reload();
+          return;
         }
       }
+      /* On a fresh install the first pull can answer before KVS has
+       * downloaded the remote value (timestamp 0). Retry once before
+       * settling — until then pushes stay gated, so a new-game blob can
+       * never overwrite an existing cloud save. */
+      if (BOOT_LOCAL_TS === 0 && !(res && res.timestamp > 0) && !attempt) {
+        setTimeout(function () { bootRestore(1); }, 1500);
+        return;
+      }
     } catch (e) {}
+    firstPullSettled = true;
   }
 
   // Kick off once durable flags are back (don't wait for DOMContentLoaded)
@@ -175,6 +199,11 @@ try {
   var pushTimer = null;
   async function pushCloudSave() {
     if (!CloudSync) return;
+    /* First-launch gate: with no local progression at bridge load, hold
+     * pushes until the first cloud pull has settled (including its
+     * retry), so a fresh device can never push a new-game blob over an
+     * existing cloud save before seeing it. */
+    if (BOOT_LOCAL_TS === 0 && !firstPullSettled) { schedulePush(); return; }
     try {
       await CloudSync.pushWithTimestamp({ snapshot: collectSnapshot(), timestamp: localTs() || Date.now() }); /* content time, not push time: last-save-wins across devices */
     } catch (e) {}
