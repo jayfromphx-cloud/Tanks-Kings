@@ -46,8 +46,9 @@ Create these 8 consumable IAPs in App Store Connect → your app → Monetizatio
 | `com.tanksandkings.app.gems16100` | Consumable | $99.99 | 16100 gems (8080+8020) |
 | `com.tanksandkings.app.starter` | Consumable | $2.99 | 500 gems + 1500 scrap + Rare chest |
 | `com.tanksandkings.app.treasury` | Consumable | $14.99 | 3200 gems (LTO) |
+| `com.tanksandkings.app.seasonpass` | Non-consumable | $9.99 | Season Pass Premium for the current season (added 2026-11-05) |
 
-All are **consumable** (not subscriptions, not non-consumables).
+All are **consumable** except `seasonpass`, which is a **non-consumable** (the game re-derives the current-season premium flag from the receipt on restore; not a subscription).
 
 ### C. RevenueCat dashboard (10 min)
 1. RevenueCat → your project → Products → import from App Store Connect

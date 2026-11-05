@@ -58,11 +58,12 @@ workflows:
           # TK_REVENUECAT_KEY is set as an encrypted environment variable
           # in the Codemagic UI (never committed to the repo).
           if [ -z "$TK_REVENUECAT_KEY" ]; then
-            echo "TK_REVENUECAT_KEY not set — RevenueCat billing will fall back to demo mode"
-          else
-            sed -i '' "s|<script src=\"tk-native-bridge.js\">|<script>window.__TK_REVENUECAT_KEY=\"$TK_REVENUECAT_KEY\";</script><script src=\"tk-native-bridge.js\">|" www/index.html
-            echo "RevenueCat key injected"
+            echo "ERROR: TK_REVENUECAT_KEY is not set — refusing to build a store binary with demo billing (H2 fail-closed)"
+            exit 1
           fi
+          sed -i '' "s|<script src=\"tk-native-bridge.js\">|<script>window.__TK_REVENUECAT_KEY=\"$TK_REVENUECAT_KEY\";</script><script src=\"tk-native-bridge.js\">|" www/index.html
+          grep -q "window.__TK_REVENUECAT_KEY=" www/index.html || { echo "ERROR: RevenueCat key injection failed — anchor not found in www/index.html"; exit 1; }
+          echo "RevenueCat key injected and verified"
       - name: Sync Capacitor iOS project
         script: |
           npx cap sync ios

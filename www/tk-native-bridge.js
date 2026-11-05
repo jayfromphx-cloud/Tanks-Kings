@@ -13,15 +13,14 @@
   if (!Capacitor || !Capacitor.isNativePlatform()) return;
 
 /* ---- Production hardening (native only) ----
- * Hide dev/web-only surfaces that must not ship in the App Store build:
- * - Diagnostics button (internal Tower-freeze debug tooling)
+ * Hide web-only surfaces that must not ship in the App Store build:
  * - Check-for-update button + build status (web hot-update mechanism;
  *   native updates come through the App Store, not this)
  * The bridge only runs natively, so the web game is untouched. */
 try {
   document.documentElement.classList.add('tk-native');
   var prodCss = document.createElement('style');
-  prodCss.textContent = 'html.tk-native #diagnosticsBtn,html.tk-native #updateCheckBtn,html.tk-native #updateStatus{display:none!important}';
+  prodCss.textContent = 'html.tk-native #updateCheckBtn,html.tk-native #updateStatus{display:none!important}';
   (document.head || document.documentElement).appendChild(prodCss);
 } catch (e) {}
 
@@ -194,7 +193,8 @@ try {
     gem_4: 'com.tanksandkings.app.gems7650',
     gem_5: 'com.tanksandkings.app.gems16100',
     starter: 'com.tanksandkings.app.starter',
-    lto_treasury: 'com.tanksandkings.app.treasury'
+    lto_treasury: 'com.tanksandkings.app.treasury',
+    season_premium: 'com.tanksandkings.app.seasonpass'
   };
 
   var Purchases = null;
@@ -206,37 +206,88 @@ try {
       if (!Purchases) throw new Error('RevenueCat not available');
       var pid = PRODUCT_IDS[product.key];
       if (!pid) {
+        /* Soft-currency purchases pass through: the game deducts gems
+         * itself after this resolves. A USD-priced product with no store
+         * mapping is a configuration error — fail loudly, never
+         * fabricate a charge or a grant (C2). */
+        if (product && product.priceUsd) throw new Error('No store product mapped for ' + product.key);
         return { orderId: 'GEM-' + Date.now().toString(36).toUpperCase(), when: Date.now(), provider: 'gems' };
       }
-      await Purchases.purchaseProduct({ productIdentifier: pid });
-      return { orderId: 'RC-' + Date.now().toString(36).toUpperCase(), when: Date.now(), provider: 'revenuecat' };
+      /* C1: the v13 SDK has no purchaseProduct — fetch the store product,
+       * then purchase it. */
+      var res = await Purchases.getProducts({ productIdentifiers: [pid] });
+      var storeProduct = res && res.products && res.products[0];
+      if (!storeProduct) throw new Error('Store product unavailable: ' + pid);
+      var result = await Purchases.purchaseStoreProduct({ product: storeProduct });
+      /* M1: record the real transaction id — this product's entry in the
+       * post-purchase customer info. */
+      var txId = null;
+      var txs = (result && result.customerInfo && result.customerInfo.nonSubscriptionTransactions) || [];
+      for (var i = txs.length - 1; i >= 0; i--) {
+        if (txs[i].productIdentifier === pid) { txId = txs[i].transactionIdentifier; break; }
+      }
+      return { orderId: txId || ('RC-' + Date.now().toString(36).toUpperCase()), transactionId: txId, productIdentifier: (result && result.productIdentifier) || pid, when: Date.now(), provider: 'revenuecat' };
     },
     async restore() {
-      if (!Purchases) return [];
-      try {
-        var info = await Purchases.restorePurchases();
-        var txs = (info.customerInfo && info.customerInfo.nonSubscriptionTransactions) || [];
-        return txs.map(function (t) {
-          return { orderId: t.transactionId || 'RC-RESTORE', when: Date.now(), provider: 'revenuecat-restore' };
-        });
-      } catch (e) { return []; }
+      if (!Purchases) throw new Error('RevenueCat not available');
+      /* C3 + M3: errors propagate so the game shows 'Restore failed'
+       * instead of a false success. Returned receipts carry the game's
+       * merge contract: id (dedupe), key (entitlement), when (the real
+       * purchase date). */
+      var info = await Purchases.restorePurchases();
+      var txs = (info && info.customerInfo && info.customerInfo.nonSubscriptionTransactions) || [];
+      var byPid = {};
+      Object.keys(PRODUCT_IDS).forEach(function (k) { byPid[PRODUCT_IDS[k]] = k; });
+      return txs.map(function (t) {
+        return {
+          id: t.transactionIdentifier,
+          orderId: t.transactionIdentifier,
+          key: byPid[t.productIdentifier] || null,
+          productIdentifier: t.productIdentifier,
+          when: t.purchaseDate ? Date.parse(t.purchaseDate) : Date.now(),
+          provider: 'revenuecat-restore'
+        };
+      }).filter(function (r) { return !!r.id; });
     }
+  };
+
+  /* Fail-closed adapter (H2, runtime side): the plugin is present but
+   * RevenueCat cannot be configured (missing key, init error) — purchases
+   * fail instead of falling through to the free demo adapter in a native
+   * build. */
+  var NativeBillingUnavailable = {
+    id: 'unavailable',
+    async purchase() { throw new Error('Billing unavailable — check your connection and try again'); },
+    async restore() { throw new Error('Billing unavailable — check your connection and try again'); }
   };
 
   /* ---- Wire everything on DOM ready ---- */
   document.addEventListener('DOMContentLoaded', function () {
     // RevenueCat
     (async function () {
-      if (!Purchases) return;
+      /* Close the pre-configure window: until RevenueCat is live, purchases
+       * fail closed instead of running through the free demo adapter. */
+      if (window.TanksKingsBilling && window.TanksKingsBilling.setAdapter) {
+        window.TanksKingsBilling.setAdapter(NativeBillingUnavailable);
+      }
       var apiKey = window.__TK_REVENUECAT_KEY || '';
-      if (!apiKey) { console.warn('[TK] RevenueCat key missing — demo billing'); return; }
+      function failClosed(why) {
+        console.warn('[TK] ' + why + ' — billing unavailable (fail-closed)');
+        if (window.TanksKingsBilling && window.TanksKingsBilling.setAdapter) {
+          window.TanksKingsBilling.setAdapter(NativeBillingUnavailable);
+        }
+      }
+      /* The bridge only runs natively, so a missing plugin is a broken
+       * build — fail closed rather than leave the free demo adapter live. */
+      if (!Purchases) { failClosed('RevenueCat plugin missing'); return; }
+      if (!apiKey) { failClosed('RevenueCat key missing'); return; }
       try {
         await Purchases.configure({ apiKey: apiKey });
         if (window.TanksKingsBilling && window.TanksKingsBilling.setAdapter) {
           window.TanksKingsBilling.setAdapter(RevenueCatBillingAdapter);
           console.log('[TK] RevenueCat billing live');
         }
-      } catch (e) { console.warn('[TK] RevenueCat init failed:', e); }
+      } catch (e) { failClosed('RevenueCat init failed: ' + e); }
     })();
 
     // Cloud save auto-push: hook the game's save function
